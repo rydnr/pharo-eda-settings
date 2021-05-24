@@ -37,7 +37,7 @@ BaselineOfPharoEDASettings >> declarePackagesIn: spec [
 		package: #'EDAS-Settings-Adapters-ByPriority'
 			with: [ spec
 				requires:
-					#('PharoEDAApi' 'EDAS-Settings-Ports' 'EDAS-Settings-Adapters-InMemory' 'EDAS-Settings-Adapters-EnvVars') ]
+					#('PharoEDACommon' 'EDAS-Settings-Ports' 'EDAS-Settings-Adapters-InMemory' 'EDAS-Settings-Adapters-EnvVars') ]
 ]
 
 { #category : #dependencies }
