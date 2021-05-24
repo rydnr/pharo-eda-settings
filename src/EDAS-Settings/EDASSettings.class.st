@@ -10,8 +10,6 @@ Build Settings menu entries with EDA-specific configuration settings, for the us
 Class {
 	#name : #EDASSettings,
 	#superclass : #Object,
-	#traits : 'EDATSettingsHelper',
-	#classTraits : 'EDATSettingsHelper classTrait',
 	#classInstVars : [
 		'duEnvironmentClass',
 		'noApplications',
