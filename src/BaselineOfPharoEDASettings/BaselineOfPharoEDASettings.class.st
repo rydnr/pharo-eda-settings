@@ -39,9 +39,9 @@ BaselineOfPharoEDASettings >> declarePackagesIn: spec [
 		package: #'EDAS-Settings-Ports'
 			with: [ spec requires: #('PharoEDAApi') ];
 		package: #'EDAS-Settings-Adapters-InMemory'
-			with: [ spec requires: #('PharoEDAApi' 'EDA-Settings-Ports') ];
+			with: [ spec requires: #('PharoEDAApi' 'EDAS-Settings-Ports') ];
 		package: #'EDAS-Settings-Adapters-EnvVars'
-			with: [ spec requires: #('PharoEDAApi' 'EDA-Settings-Ports') ];
+			with: [ spec requires: #('PharoEDAApi' 'EDAS-Settings-Ports') ];
 		package: #'EDAS-Settings-Adapters-ByPriority'
 			with: [ spec
 				requires:
