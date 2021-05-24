@@ -16,7 +16,7 @@ BaselineOfPharoEDASettings >> baseline: spec [
 ]
 
 { #category : #dependencies }
-BaselineOfPharoEDA >> includePharoEDAApi: spec [
+BaselineOfPharoEDASettings >> includePharoEDAApi: spec [
 spec
 		baseline: 'PharoEDAApi'
 		with: [ spec repository: 'github://osoco/pharo-eda-api:main' ].
