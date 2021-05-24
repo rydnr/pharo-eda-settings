@@ -1,8 +1,8 @@
 Class {
 	#name : #EDAMongoSettingsInMemoryAdapter,
 	#superclass : #Object,
-	#traits : 'EDAPrintOnHelper + EDATInMemoryAdapter',
-	#classTraits : 'EDAPrintOnHelper classTrait + EDATInMemoryAdapter classTrait',
+	#traits : 'EDATInMemoryAdapter',
+	#classTraits : 'EDATInMemoryAdapter classTrait',
 	#instVars : [
 		'authenticationMechanism',
 		'databaseName',
