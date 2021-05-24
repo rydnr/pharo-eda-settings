@@ -17,14 +17,14 @@ BaselineOfPharoEDASettings >> baseline: spec [
 { #category : #meta }
 BaselineOfPharoEDASettings >> declareGroupsIn: spec [
 	spec
-		group: 'core'
-			with:
-			#(#'EDAS-Settings');
-		group: 'default' with: #('core')
+		group: 'core' with: #(#'EDAS-Settings');
+		group: 'tests' with: #(#'EDAS-Settings-Tests');
+		group: 'default' with: #('core' 'tests')
 ]
 
 { #category : #meta }
 BaselineOfPharoEDASettings >> declarePackagesIn: spec [
 	spec
-		package: #'EDAS-Settings'
+		package: #'EDAS-Settings';
+		package: #'EDAS-Settings-Tests' with: [ spec requires: #('EDAS-Settings') ]
 ]
