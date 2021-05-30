@@ -437,7 +437,7 @@ EDASSettings class >> projectionsRepositorySettingsOn: aBuilder withConfig: aCon
 
 { #category : #settings }
 EDASSettings class >> resetSettings [
-	#(EDACommandStompTopicListener EDAEventStompTopicPublisher #EDAAMongoEventStore #EDACLoggingSettings EDAApplication  EDAProjector 	 EDACompositeProjector  EDAProjectionMongoRepository)
+	#(#EDAACommandStompTopicListener #EDAAEventStompTopicPublisher #EDAAMongoEventStore #EDACLoggingSettings EDAApplication  EDAProjector 	 EDACompositeProjector  #EDAAProjectionMongoRepository)
 		do: [ :cls | cls initialize ]
 ]
 
