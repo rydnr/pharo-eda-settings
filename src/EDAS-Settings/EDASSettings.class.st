@@ -217,7 +217,7 @@ EDASSettings class >> loggingSettingsOn: aBuilder under: parent on: app [
 		description: 'Logging level';
 		order: 1;
 		domainValues:
-			(EDALoggingSettings levels
+			(EDACLoggingSettings levels
 				collect: [ :level | level translated -> level greaseString ]);
 		default: (extSettings at: 'level')
 ]
@@ -437,7 +437,7 @@ EDASSettings class >> projectionsRepositorySettingsOn: aBuilder withConfig: aCon
 
 { #category : #settings }
 EDASSettings class >> resetSettings [
-	#(EDACommandStompTopicListener EDAEventStompTopicPublisher EDAMongoEventStore EDALoggingSettings EDAApplication  EDAProjector 	 EDACompositeProjector  EDAProjectionMongoRepository)
+	#(EDACommandStompTopicListener EDAEventStompTopicPublisher #EDAAMongoEventStore #EDACLoggingSettings EDAApplication  EDAProjector 	 EDACompositeProjector  EDAProjectionMongoRepository)
 		do: [ :cls | cls initialize ]
 ]
 
