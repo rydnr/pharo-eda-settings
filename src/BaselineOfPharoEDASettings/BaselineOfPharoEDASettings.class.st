@@ -10,6 +10,7 @@ BaselineOfPharoEDASettings >> baseline: spec [
 	spec
 		for: #common
 		do: [ spec blessing: #baseline.
+			self includeDeployUtils: spec.
 			self includePharoEDACommon: spec.
 			self declarePackagesIn: spec.
 			self declareGroupsIn: spec ]
@@ -26,7 +27,7 @@ BaselineOfPharoEDASettings >> declareGroupsIn: spec [
 { #category : #meta }
 BaselineOfPharoEDASettings >> declarePackagesIn: spec [
 	spec
-		package: #'EDAS-Settings';
+		package: #'EDAS-Settings' with: [ spec requires: #('DeployUtils') ];
 		package: #'EDAS-Settings-Tests' with: [ spec requires: #('EDAS-Settings') ];
 		package: #'EDAS-Settings-Ports'
 			with: [ spec requires: #('PharoEDACommon') ];
@@ -38,6 +39,12 @@ BaselineOfPharoEDASettings >> declarePackagesIn: spec [
 			with: [ spec
 				requires:
 					#('PharoEDACommon' 'EDAS-Settings-Ports' 'EDAS-Settings-Adapters-InMemory' 'EDAS-Settings-Adapters-EnvVars') ]
+]
+
+{ #category : #dependencies }
+BaselineOfPharoEDASettings >> includeDeployUtils: spec [
+	spec baseline: 'DeployUtils' with: [ spec repository: 'github://fstephany/DeployUtils/repository' ].
+	^ spec
 ]
 
 { #category : #dependencies }
