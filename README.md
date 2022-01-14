@@ -9,7 +9,7 @@ Additionally, it allows managing the configuration of each adapter.
 
 ## Design
 
-PharoEDA-Settings use PharoEDA to access the information regarding the current applications, and also the adapters published by [PharoEDA-Adapters](https://github.com/osoco/pharo-eda-adapters "PharoEDA-Adapters").
+PharoEDA-Settings use PharoEDA to access the information regarding the current applications, and also the adapters published by [PharoEDA-Adapters](https://github.com/rydnr/pharo-eda-adapters "PharoEDA-Adapters").
 The design is centered around a single class, `EDASettings`.
 
 ## Usage
@@ -17,7 +17,7 @@ The design is centered around a single class, `EDASettings`.
 Load it with Metacello:
 
 ```smalltalk
-Metacello new repository: 'github://osoco/pharo-eda-settings:main'; baseline: #PharoEDASettings; load
+Metacello new repository: 'github://rydnr/pharo-eda-settings:main'; baseline: #PharoEDASettings; load
 ```
 
 Then, launch `SettingBrowser`

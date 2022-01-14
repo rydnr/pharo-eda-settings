@@ -51,6 +51,6 @@ BaselineOfPharoEDASettings >> includeDeployUtils: spec [
 BaselineOfPharoEDASettings >> includePharoEDACommon: spec [
 spec
 		baseline: 'PharoEDACommon'
-		with: [ spec repository: 'github://osoco/pharo-eda-common:main' ].
+		with: [ spec repository: 'github://rydnr/pharo-eda-common:main' ].
 	^ spec
 ]
