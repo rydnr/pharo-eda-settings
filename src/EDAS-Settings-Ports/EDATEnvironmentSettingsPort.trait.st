@@ -14,3 +14,8 @@ EDATEnvironmentSettingsPort >> availableEnvironments [
 EDATEnvironmentSettingsPort >> supportsMultiple: aSymbol [
 	self subclassResponsibility
 ]
+
+{ #category : #testing }
+EDATEnvironmentSettingsPort >> values [
+	^ self availableEnvironments
+]

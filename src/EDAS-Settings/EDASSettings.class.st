@@ -448,7 +448,7 @@ EDASSettings class >> settingOn: aBuilder named: aSymbol labelled: aString withD
 		ifTrue: [ entry := aBuilder pickOne: aSymbol.
 			entry
 				domainValues:
-					(aConfig availableEnvironments
+					(aConfig values
 						collect: [ :level | level translated -> level greaseString ]) ]
 		ifFalse: [ (aConfig isReadOnly: aSymbol)
 				ifTrue: [ entry := aBuilder group: aSymbol.

@@ -1,8 +1,8 @@
 Class {
 	#name : #EDAPredefinedEnvironmentSettingsInMemoryAdapter,
 	#superclass : #Object,
-	#traits : 'EDATEnvironmentSettingsPort + EDATInMemoryAdapter',
-	#classTraits : 'EDATEnvironmentSettingsPort classTrait + EDATInMemoryAdapter classTrait',
+	#traits : 'EDATEnvironmentSettingsPort + EDATInMemoryAdapter + EDACCollectionHelper',
+	#classTraits : 'EDATEnvironmentSettingsPort classTrait + EDATInMemoryAdapter classTrait + EDACCollectionHelper classTrait',
 	#instVars : [
 		'currentEnvironment',
 		'edaApplication'
