@@ -32,6 +32,6 @@ EDASSettingsAnnouncer >> initialize [
 
 { #category : #initialization }
 EDASSettingsAnnouncer >> setupListeners [
-	EDASTSettingsChangedListener traitUsers
+	EDASSettingsChangedListener traitUsers
 		do: [ :l | l subscribeToSettingsChangedEventsIn: self ]
 ]

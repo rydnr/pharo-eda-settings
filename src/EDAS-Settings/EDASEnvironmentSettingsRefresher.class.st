@@ -1,15 +1,15 @@
 Class {
 	#name : #EDASEnvironmentSettingsRefresher,
 	#superclass : #Object,
-	#traits : 'EDASTSettingsChangedListener',
-	#classTraits : 'EDASTSettingsChangedListener classTrait',
+	#traits : 'EDASSettingsChangedListener + EDACSettingBrowserHelper',
+	#classTraits : 'EDASSettingsChangedListener classTrait + EDACSettingBrowserHelper classTrait',
 	#category : #'EDAS-Settings'
 }
 
 { #category : #helper }
 EDASEnvironmentSettingsRefresher class >> subscribeToSettingsChangedEventsIn: anEDASettingsAnnouncer [
 	anEDASettingsAnnouncer
-		when: EDAEnvironmentSettingsAdapterClassChanged
+		when: EDASEnvironmentSettingsAdapterClassChanged
 		do:
 			[ :event | event edaApplication environmentSettingsPort: event newValue new. self refreshSettingBrowsers ]
 ]

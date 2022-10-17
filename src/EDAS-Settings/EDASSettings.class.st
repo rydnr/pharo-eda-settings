@@ -26,12 +26,12 @@ EDASSettings class >> NEW_portSettingsOn: aBuilder under: aParent on: app [
 	entry
 		label: 'Ports' translated;
 		parent: aParent.
-	byPriorityAdapter := EDAPortResolverByPriorityAdapter new.
+	byPriorityAdapter := EDASPortResolverByPriorityAdapter new.
 	priorizedAdapter := byPriorityAdapter resolveEnvironmentSettingsPort.
 	values := OrderedCollection
 		with:
 			('By priority (' , priorizedAdapter class description , ')')
-				-> EDAPortResolverByPriorityAdapter.
+				-> EDASPortResolverByPriorityAdapter.
 	values
 		addAll:
 			((byPriorityAdapter availableEnvironmentSettingsAdapters
@@ -326,30 +326,36 @@ EDASSettings class >> mongodbUsernameSettingOn: aBuilder withConfig: aConfig und
 
 { #category : #settings }
 EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app [
+
 	| entry environmentValues key portResolver commandListenerErrorStrategyValues |
 	key := aParent , 'ports'.
 	entry := aBuilder group: key.
 	entry
 		label: 'Ports' translated;
 		parent: aParent.
-	portResolver := EDAPortResolver new.
-	environmentValues := OrderedCollection
-		withAll:
-			(portResolver availableEnvironmentSettingsAdapters
-				collect:
-					[ :adapterClass | adapterClass description translated -> adapterClass ]).
+	portResolver := EDASPortResolver new.
+	environmentValues := OrderedCollection withAll:
+		                     ((portResolver
+			                       availableEnvironmentSettingsAdapters 
+			                       collect: [ :adapterClass | 
+			                       adapterClass description translated
+			                       -> adapterClass ]) sorted: [ :a :b | a < b ]).
 	(aBuilder pickOne: #environmentSettingsAdapterClass)
 		label: 'Environment adapter' translated;
 		target: app portSettingsPort;
 		parent: key;
 		domainValues: environmentValues.
-	commandListenerErrorStrategyValues := OrderedCollection withAll: (portResolver availableCommandListenerSettingsErrorStrategyAdapters collect: [ :adapterClass | adapterClass description translated -> adapterClass ]).
+	commandListenerErrorStrategyValues := OrderedCollection withAll:
+		                                      ((portResolver
+			                                       availableCommandListenerSettingsErrorStrategyAdapters 
+			                                       collect: [ :adapterClass | 
+			                                       adapterClass description
+				                                       translated -> adapterClass ]) sorted: [ :a :b | a < b ]).
 	(aBuilder pickOne: #commandListenerErrorStrategyAdapterClass)
 		label: 'Error strategy' translated;
 		target: app portSettingsPort;
 		parent: key;
-		domainValues: commandListenerErrorStrategyValues.
-	
+		domainValues: commandListenerErrorStrategyValues
 ]
 
 { #category : #settings }
