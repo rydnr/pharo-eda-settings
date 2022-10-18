@@ -1,8 +1,8 @@
 Class {
 	#name : #EDASSettingBrowserRefresher,
 	#superclass : #Object,
-	#traits : 'EDACSettingBrowserHelper',
-	#classTraits : 'EDACSettingBrowserHelper classTrait',
+	#traits : 'EDACSettingBrowserHelper + EDASSettingsChangedListener',
+	#classTraits : 'EDACSettingBrowserHelper classTrait + EDASSettingsChangedListener classTrait',
 	#category : #'EDAS-Settings'
 }
 

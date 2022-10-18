@@ -47,7 +47,23 @@ EDASSettings class >> NEW_portSettingsOn: aBuilder under: aParent on: app [
 ]
 
 { #category : #settings }
+EDASSettings class >> commandListenerErrorStrategySettingsOn: aBuilder under: aParent on: app order: anInteger [
+
+	^ self
+		  settingOn: aBuilder
+		  named: #strategyName
+		  labelled: 'Command Listener Error strategy'
+		  withDescription:
+		  'Strategy to use when incoming commands cannot be processed for some reason'
+		  usingConfig: app commandListenerErrorStrategySettingsPort
+		  under: aParent
+		  on: app
+		  order: anInteger
+]
+
+{ #category : #settings }
 EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app [
+
 	| key |
 	key := parent , 'commandListener'.
 	(aBuilder group: key)
@@ -55,22 +71,101 @@ EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app 
 		description: 'Command listener';
 		parent: parent.
 	self
-		stompListenerSettingsOn: aBuilder
-		withConfig: app commandListenerSettingsPort
+		settingOn: aBuilder
+		named: #host
+		labelled: 'Host'
+		withDescription: 'Stomp host address / IP'
+		usingConfig: app commandListenerSettingsPort
 		under: key
-		populatedWithValuesFrom: 'commandListener'.
-	(aBuilder pickOne: #strategy)
-		parent: key;
-		target: app commandListenerSettingsPort;
-		label: 'Command Consuming Error' translated;
-		description: 'Strategy when dealing with command consuming errors';
-		order: 1;
-		domainValues:
-			(EDAErrorHandlingStrategy subclasses
-				collect:
-					[ :strategy | strategy description translated -> strategy greaseString ]);
-		default: EDAPublishMessageErrorStrategy greaseString.
-	^ self
+		on: app
+		order: 1.
+	self
+		settingOn: aBuilder
+		named: #port
+		labelled: 'Port'
+		withDescription: 'Stomp host port'
+		usingConfig: app commandListenerSettingsPort
+		under: key
+		on: app
+		order: 2.
+	self
+		settingOn: aBuilder
+		named: #username
+		labelled: 'User'
+		withDescription: 'Stomp user'
+		usingConfig: app commandListenerSettingsPort
+		under: key
+		on: app
+		order: 3.
+	self
+		settingOn: aBuilder
+		named: #password
+		labelled: 'Password'
+		withDescription: 'Stomp password'
+		usingConfig: app commandListenerSettingsPort
+		under: key
+		on: app
+		order: 4.
+	self
+		settingOn: aBuilder
+		named: #queue
+		labelled: 'Queue'
+		withDescription: 'Stomp queue'
+		usingConfig: app commandListenerSettingsPort
+		under: key
+		on: app
+		order: 5.
+	self
+		settingOn: aBuilder
+		named: #timeout
+		labelled: 'Timeout'
+		withDescription: 'Stomp timeout'
+		usingConfig: app commandListenerSettingsPort
+		under: key
+		on: app
+		order: 5.
+	self
+		settingOn: aBuilder
+		named: #prefetchCount
+		labelled: 'Prefetch count'
+		withDescription: 'The number of messages to prefetch'
+		usingConfig: app commandListenerSettingsPort
+		under: key
+		on: app
+		order: 6.
+	self
+		settingOn: aBuilder
+		named: #durable
+		labelled: 'Durable'
+		withDescription: 'Whether the topic is durable'
+		usingConfig: app commandListenerSettingsPort
+		under: key
+		on: app
+		order: 7.
+	self
+		settingOn: aBuilder
+		named: #debug
+		labelled: 'Debug'
+		withDescription: 'Whether to enable debug mode'
+		usingConfig: app commandListenerSettingsPort
+		under: key
+		on: app
+		order: 8.
+	self
+		commandListenerErrorStrategySettingsOn: aBuilder
+		under: key
+		on: app
+		order: 9.
+	self
+		settingOn: aBuilder
+		named: #restartOnError
+		labelled: 'Restart on error'
+		withDescription: 'Whether to restart the listener in case of errors'
+		usingConfig: app commandListenerSettingsPort
+		under: key
+		on: app
+		order: 10.
+
 ]
 
 { #category : #settings }
@@ -120,6 +215,7 @@ EDASSettings class >> edaSettingsOn: aBuilder [
 
 { #category : #settings }
 EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymbol [
+
 	| parent parentGroup |
 	parent := anEDAApplication applicationName.
 	parentGroup := aBuilder group: parent.
@@ -132,10 +228,11 @@ EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymb
 		environmentSettingsOn: aBuilder
 		under: parent
 		on: anEDAApplication.
-	"self
+	self
 		commandListenerSettingsOn: aBuilder
 		under: parent
 		on: anEDAApplication.
+	"
 	self
 		eventPublisherSettingsOn: aBuilder
 		under: parent
@@ -325,6 +422,33 @@ EDASSettings class >> mongodbUsernameSettingOn: aBuilder withConfig: aConfig und
 ]
 
 { #category : #settings }
+EDASSettings class >> old_commandListenerSettingsOn: aBuilder under: parent on: app [
+
+	| key |
+	key := parent , 'commandListener'.
+	(aBuilder group: key)
+		label: 'Command Listener' translated;
+		description: 'Command listener';
+		parent: parent.
+	self
+		stompListenerSettingsOn: aBuilder
+		withConfig: app commandListenerSettingsPort
+		under: key
+		populatedWithValuesFrom: 'commandListener'.
+	(aBuilder pickOne: #strategy)
+		parent: key;
+		target: app commandListenerSettingsPort;
+		label: 'Command Consuming Error' translated;
+		description: 'Strategy when dealing with command consuming errors';
+		order: 1;
+		domainValues:
+			(EDAEErrorHandlingStrategy subclasses collect: [ :strategy | 
+					 strategy description translated -> strategy greaseString ]);
+		default: EDAEPublishMessageErrorStrategy greaseString.
+	^ self
+]
+
+{ #category : #settings }
 EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app [
 
 	| entry environmentValues key portResolver commandListenerErrorStrategyValues |
@@ -449,15 +573,24 @@ EDASSettings class >> resetSettings [
 
 { #category : #settings }
 EDASSettings class >> settingOn: aBuilder named: aSymbol labelled: aString withDescription: aDescription usingConfig: aConfig under: aParent on: app [
+
+	^ self settingOn: aBuilder named: aSymbol labelled: aString withDescription: aDescription usingConfig: aConfig under: aParent on: app order: 1
+
+]
+
+{ #category : #settings }
+EDASSettings class >> settingOn: aBuilder named: aSymbol labelled: aString withDescription: aDescription usingConfig: aConfig under: aParent on: app order: anInteger [
+
 	| entry |
 	(aConfig supportsMultiple: aSymbol)
-		ifTrue: [ entry := aBuilder pickOne: aSymbol.
-			entry
-				domainValues:
-					(aConfig values
-						collect: [ :level | level translated -> level greaseString ]) ]
-		ifFalse: [ (aConfig isReadOnly: aSymbol)
-				ifTrue: [ entry := aBuilder group: aSymbol.
+		ifTrue: [ 
+			entry := aBuilder pickOne: aSymbol.
+			entry domainValues: (aConfig values collect: [ :level | 
+					 level translated -> level greaseString ]) ]
+		ifFalse: [ 
+			(aConfig isReadOnly: aSymbol)
+				ifTrue: [ 
+					entry := aBuilder group: aSymbol.
 					entry dialog: [ LabelMorph newLabel: (aConfig perform: aSymbol) ] ]
 				ifFalse: [ entry := aBuilder setting: aSymbol ] ].
 	entry
@@ -465,7 +598,7 @@ EDASSettings class >> settingOn: aBuilder named: aSymbol labelled: aString withD
 		target: aConfig;
 		label: aString translated;
 		description: aDescription;
-		order: 1
+		order: anInteger
 ]
 
 { #category : #settings }

@@ -5,12 +5,12 @@ Trait {
 
 { #category : #logic }
 EDASTPortResolver >> availableAdapters: aPort [
-	^ (aPort traitUsers select: [ :cls | cls accepts: self ]) sorted
+	^ (aPort traitUsers select: [ :cls | cls accepts: aPort ]) sorted
 ]
 
 { #category : #logic }
 EDASTPortResolver >> availableCommandListenerSettingsErrorStrategyAdapters [
-	^ self availableAdapters: EDASCommandListenerSettingsErrorStrategyPort
+	^ self availableAdapters: EDASCommandListenerErrorStrategySettingsPort
 ]
 
 { #category : #logic }
@@ -21,6 +21,12 @@ EDASTPortResolver >> availableEnvironmentSettingsAdapters [
 { #category : #accessing }
 EDASTPortResolver >> environmentSettingsPort [
 	^ self resolveEnvironmentSettingsPort
+]
+
+{ #category : #accessing }
+EDASTPortResolver >> resolveCommandListenerErrorStrategySettingsPort [
+
+	^ self resolvePort: EDASCommandListenerErrorStrategySettingsPort
 ]
 
 { #category : #accessing }

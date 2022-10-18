@@ -4,6 +4,7 @@ Class {
 	#traits : 'EDASCommandListenerSettingsPort',
 	#classTraits : 'EDASCommandListenerSettingsPort classTrait',
 	#instVars : [
+		'topicListener',
 		'ack',
 		'queue',
 		'strategy',
@@ -17,6 +18,12 @@ EDASStompTopicListenerSettingsInMemoryAdapter class >> accepts: anEDAApplication
 	^ true
 ]
 
+{ #category : #testing }
+EDASStompTopicListenerSettingsInMemoryAdapter class >> description [
+
+	^ 'Stomp topic listener'
+]
+
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter class >> priority [
 	^ 0
@@ -24,7 +31,8 @@ EDASStompTopicListenerSettingsInMemoryAdapter class >> priority [
 
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> ack [
-	^ ack
+
+	^ ack ifNil: [ #auto ]
 ]
 
 { #category : #accessing }
@@ -55,7 +63,8 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> initialize [
 
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount [
-	^ prefetchCount
+
+	^ prefetchCount ifNil: [ 1 ]
 ]
 
 { #category : #accessing }
@@ -65,7 +74,8 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount: val [
 
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> queue [
-	^ queue
+
+	^ queue ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -91,4 +101,16 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> strategy [
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> strategy: aStrategy [
 	strategy := aStrategy
+]
+
+{ #category : #accessing }
+EDASStompTopicListenerSettingsInMemoryAdapter >> topicListener [
+
+	^ topicListener ifNil: [ self topicListener: (EDAACommandStompTopicListener withConfig: self). topicListener  ]
+]
+
+{ #category : #accessing }
+EDASStompTopicListenerSettingsInMemoryAdapter >> topicListener: anObject [
+
+	topicListener := anObject
 ]

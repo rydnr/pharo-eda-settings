@@ -5,7 +5,8 @@ Class {
 		'announcer',
 		'environmentSettingsPort',
 		'environmentSettingsAdapterClass',
-		'commandListenerErrorStrategyAdapterClass'
+		'commandListenerErrorStrategyAdapterClass',
+		'commandListenerErrorStrategySettingsPort'
 	],
 	#category : #'EDAS-Settings-Ports'
 }
@@ -33,6 +34,22 @@ EDASPortSettingsPort >> commandListenerErrorStrategyAdapterClass [
 { #category : #accessing }
 EDASPortSettingsPort >> commandListenerErrorStrategyAdapterClass: anObject [
 	commandListenerErrorStrategyAdapterClass := anObject
+]
+
+{ #category : #accessing }
+EDASPortSettingsPort >> commandListenerErrorStrategySettingsPort [
+
+	^ commandListenerErrorStrategySettingsPort ifNil: [ 
+		  | result |
+		  result := EDASPortResolver new resolveCommandListenerErrorStrategySettingsPort.
+		  self commandListenerErrorStrategySettingsPort: result.
+		  result ]
+]
+
+{ #category : #accessing }
+EDASPortSettingsPort >> commandListenerErrorStrategySettingsPort: anObject [
+
+	commandListenerErrorStrategySettingsPort := anObject
 ]
 
 { #category : #accessing }

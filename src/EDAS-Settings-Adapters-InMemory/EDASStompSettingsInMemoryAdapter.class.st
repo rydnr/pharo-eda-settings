@@ -12,6 +12,7 @@ Class {
 		'username',
 		'debug',
 		'durable',
+		'restartOnError',
 		'edaApplication'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
@@ -19,7 +20,8 @@ Class {
 
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> debug [
-	^ debug
+
+	^ debug ifNil: [ true ]
 ]
 
 { #category : #accessing }
@@ -39,7 +41,8 @@ EDASStompSettingsInMemoryAdapter >> doInitialize [
 
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> durable [
-	^ durable
+
+	^ durable ifNil: [ true ]
 ]
 
 { #category : #accessing }
@@ -59,7 +62,8 @@ EDASStompSettingsInMemoryAdapter >> edaApplication: anEDAApplication [
 
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> host [
-	^ host
+
+	^ host ifNil: [ 'localhost' ]
 ]
 
 { #category : #accessing }
@@ -75,7 +79,8 @@ EDASStompSettingsInMemoryAdapter >> initialize [
 
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> password [
-	^ password
+
+	^ password ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -85,7 +90,8 @@ EDASStompSettingsInMemoryAdapter >> password: val [
 
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> port [
-	^ port
+
+	^ port ifNil: [ 61613 ]
 ]
 
 { #category : #accessing }
@@ -94,8 +100,21 @@ EDASStompSettingsInMemoryAdapter >> port: val [
 ]
 
 { #category : #accessing }
+EDASStompSettingsInMemoryAdapter >> restartOnError [
+
+	^ restartOnError ifNil: [ true ]
+]
+
+{ #category : #accessing }
+EDASStompSettingsInMemoryAdapter >> restartOnError: anObject [
+
+	restartOnError := anObject
+]
+
+{ #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> timeout [
-	^ timeout
+
+	^ timeout ifNil: [ 60 ]
 ]
 
 { #category : #accessing }
@@ -105,7 +124,8 @@ EDASStompSettingsInMemoryAdapter >> timeout: val [
 
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> username [
-	^ username
+
+	^ username ifNil: [ '' ]
 ]
 
 { #category : #accessing }
