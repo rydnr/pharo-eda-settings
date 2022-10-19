@@ -11,11 +11,7 @@ EDASEnvironmentSettingsPort >> availableEnvironments [
 ]
 
 { #category : #testing }
-EDASEnvironmentSettingsPort >> supportsMultiple: aSymbol [
-	self subclassResponsibility
-]
+EDASEnvironmentSettingsPort >> values: aSymbol [
 
-{ #category : #testing }
-EDASEnvironmentSettingsPort >> values [
 	^ self availableEnvironments
 ]

@@ -51,31 +51,32 @@ EDASSettings class >> commandListenerErrorStrategySettingsOn: aBuilder under: aP
 
 	^ self
 		  settingOn: aBuilder
-		  named: #strategyName
-		  labelled: 'Command Listener Error strategy'
+		  named: #errorStrategyName
+		  labelled: 'Error strategy'
 		  withDescription:
 		  'Strategy to use when incoming commands cannot be processed for some reason'
-		  usingConfig: app commandListenerErrorStrategySettingsPort
+		  usingConfig: app commandListenerSettings
 		  under: aParent
 		  on: app
 		  order: anInteger
 ]
 
 { #category : #settings }
-EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app [
+EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app order: anInteger [
 
 	| key |
 	key := parent , 'commandListener'.
 	(aBuilder group: key)
 		label: 'Command Listener' translated;
 		description: 'Command listener';
-		parent: parent.
+		parent: parent;
+		order: anInteger.
 	self
 		settingOn: aBuilder
 		named: #host
 		labelled: 'Host'
 		withDescription: 'Stomp host address / IP'
-		usingConfig: app commandListenerSettingsPort
+		usingConfig: app commandListenerSettings
 		under: key
 		on: app
 		order: 1.
@@ -84,7 +85,7 @@ EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app 
 		named: #port
 		labelled: 'Port'
 		withDescription: 'Stomp host port'
-		usingConfig: app commandListenerSettingsPort
+		usingConfig: app commandListenerSettings
 		under: key
 		on: app
 		order: 2.
@@ -93,7 +94,7 @@ EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app 
 		named: #username
 		labelled: 'User'
 		withDescription: 'Stomp user'
-		usingConfig: app commandListenerSettingsPort
+		usingConfig: app commandListenerSettings
 		under: key
 		on: app
 		order: 3.
@@ -102,7 +103,7 @@ EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app 
 		named: #password
 		labelled: 'Password'
 		withDescription: 'Stomp password'
-		usingConfig: app commandListenerSettingsPort
+		usingConfig: app commandListenerSettings
 		under: key
 		on: app
 		order: 4.
@@ -111,7 +112,7 @@ EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app 
 		named: #queue
 		labelled: 'Queue'
 		withDescription: 'Stomp queue'
-		usingConfig: app commandListenerSettingsPort
+		usingConfig: app commandListenerSettings
 		under: key
 		on: app
 		order: 5.
@@ -120,7 +121,7 @@ EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app 
 		named: #timeout
 		labelled: 'Timeout'
 		withDescription: 'Stomp timeout'
-		usingConfig: app commandListenerSettingsPort
+		usingConfig: app commandListenerSettings
 		under: key
 		on: app
 		order: 5.
@@ -129,7 +130,7 @@ EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app 
 		named: #prefetchCount
 		labelled: 'Prefetch count'
 		withDescription: 'The number of messages to prefetch'
-		usingConfig: app commandListenerSettingsPort
+		usingConfig: app commandListenerSettings
 		under: key
 		on: app
 		order: 6.
@@ -138,7 +139,7 @@ EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app 
 		named: #durable
 		labelled: 'Durable'
 		withDescription: 'Whether the topic is durable'
-		usingConfig: app commandListenerSettingsPort
+		usingConfig: app commandListenerSettings
 		under: key
 		on: app
 		order: 7.
@@ -147,7 +148,7 @@ EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app 
 		named: #debug
 		labelled: 'Debug'
 		withDescription: 'Whether to enable debug mode'
-		usingConfig: app commandListenerSettingsPort
+		usingConfig: app commandListenerSettings
 		under: key
 		on: app
 		order: 8.
@@ -161,11 +162,10 @@ EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app 
 		named: #restartOnError
 		labelled: 'Restart on error'
 		withDescription: 'Whether to restart the listener in case of errors'
-		usingConfig: app commandListenerSettingsPort
+		usingConfig: app commandListenerSettings
 		under: key
 		on: app
-		order: 10.
-
+		order: 10
 ]
 
 { #category : #settings }
@@ -227,11 +227,13 @@ EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymb
 	self
 		environmentSettingsOn: aBuilder
 		under: parent
-		on: anEDAApplication.
+		on: anEDAApplication
+		order: 1.
 	self
 		commandListenerSettingsOn: aBuilder
 		under: parent
-		on: anEDAApplication.
+		on: anEDAApplication
+		order: 2.
 	"
 	self
 		eventPublisherSettingsOn: aBuilder
@@ -247,19 +249,21 @@ EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymb
 		populatedWithValuesFrom: 'projections'
 		on: anEDAApplication.
 	self loggingSettingsOn: aBuilder under: parent on: anEDAApplication."
-	self portSettingsOn: aBuilder under: parent on: anEDAApplication
+	self portSettingsOn: aBuilder under: parent on: anEDAApplication order: 3
 ]
 
 { #category : #settings }
-EDASSettings class >> environmentSettingsOn: aBuilder under: aParent on: app [
+EDASSettings class >> environmentSettingsOn: aBuilder under: aParent on: app order: anInteger [
+
 	^ self
-		settingOn: aBuilder
-		named: #currentEnvironment
-		labelled: 'Environment'
-		withDescription: 'Environment'
-		usingConfig: app environmentSettingsPort
-		under: aParent
-		on: app
+		  settingOn: aBuilder
+		  named: #currentEnvironment
+		  labelled: 'Environment'
+		  withDescription: 'Environment'
+		  usingConfig: app environmentSettings
+		  under: aParent
+		  on: app
+		order: anInteger
 ]
 
 { #category : #settings }
@@ -321,24 +325,27 @@ EDASSettings class >> loggingSettingsOn: aBuilder under: parent on: app [
 
 { #category : #settings }
 EDASSettings class >> mongoSettingsOn: aBuilder withConfig: container under: parent populatedWithValuesFrom: mongoConfig on: app [
+
 	(aBuilder setting: #urls)
 		parent: parent;
 		target: container;
 		label: 'Urls' translated;
 		description: 'Comma-separated MongoDB urls';
 		order: 1;
-		default: (mongoConfig at: 'urls' ifAbsent: 'mondodb://localhost:27017/admin').
+		default:
+			(mongoConfig at: 'urls' ifAbsent: 'mondodb://localhost:27017/admin').
 	(aBuilder setting: #tls)
 		parent: parent;
 		target: container;
 		label: 'Use TLS' translated;
 		description: 'Whether to connect using TLS';
 		default: (mongoConfig at: 'tls' ifAbsent: false).
-	self
-		mongodbUsernameSettingOn: aBuilder
-		withConfig: container
-		under: parent
-		on: app.
+	(aBuilder setting: #password)
+		parent: parent;
+		target: container;
+		label: 'Mongo user' translated;
+		description: 'Mongo user';
+		default: (mongoConfig at: 'user' ifAbsent: 'mongodb').
 	(aBuilder setting: #password)
 		parent: parent;
 		target: container;
@@ -357,14 +364,16 @@ EDASSettings class >> mongoSettingsOn: aBuilder withConfig: container under: par
 		label: 'AuthenticationMechanism' translated;
 		description: 'AuthenticationMechanism';
 		domainValues:
-			((MongoAuthMechanism allSubclasses reject: [ :item | item isAbstract ])
-				collect: [ :item | item textDescription -> item ]);
-		default:
-			(MongoAuthMechanism allSubclasses
-				select: [ :item | 
-					item isAbstract not
-						and: [ item textDescription = (mongoConfig at: 'authenticationMechanism' ifAbsent: 'SCRAM-SHA-1') ] ])
-				first.
+			((MongoAuthMechanism allSubclasses reject: [ :item | 
+					  item isAbstract ]) collect: [ :item | 
+					 item textDescription -> item ]);
+		default: (MongoAuthMechanism allSubclasses select: [ :item | 
+					 item isAbstract not and: [ 
+							 item textDescription
+							 =
+								 (mongoConfig
+									  at: 'authenticationMechanism'
+									  ifAbsent: 'SCRAM-SHA-1') ] ]) first.
 	(aBuilder setting: #debug)
 		parent: parent;
 		target: container;
@@ -394,7 +403,10 @@ EDASSettings class >> mongoSettingsOn: aBuilder withConfig: container under: par
 		target: container;
 		label: 'Current references on queries' translated;
 		description: 'Ensure current references on queries';
-		default: (mongoConfig at: 'ensuringCurrentReferencesOnQueries' ifAbsent: true).
+		default:
+			(mongoConfig
+				 at: 'ensuringCurrentReferencesOnQueries'
+				 ifAbsent: true).
 	(aBuilder setting: #lazySynchronize)
 		parent: parent;
 		target: container;
@@ -410,18 +422,6 @@ EDASSettings class >> mongoSettingsOn: aBuilder withConfig: container under: par
 ]
 
 { #category : #settings }
-EDASSettings class >> mongodbUsernameSettingOn: aBuilder withConfig: aConfig under: aParent on: app [
-	^ self
-		settingOn: aBuilder
-		named: #username
-		labelled: 'MongoDB user name'
-		withDescription: 'The name of the MongoDB user'
-		usingConfig: aConfig
-		under: aParent
-		on: app
-]
-
-{ #category : #settings }
 EDASSettings class >> old_commandListenerSettingsOn: aBuilder under: parent on: app [
 
 	| key |
@@ -432,12 +432,12 @@ EDASSettings class >> old_commandListenerSettingsOn: aBuilder under: parent on: 
 		parent: parent.
 	self
 		stompListenerSettingsOn: aBuilder
-		withConfig: app commandListenerSettingsPort
+		withConfig: app commandListenerSettings
 		under: key
 		populatedWithValuesFrom: 'commandListener'.
 	(aBuilder pickOne: #strategy)
 		parent: key;
-		target: app commandListenerSettingsPort;
+		target: app commandListenerSettings;
 		label: 'Command Consuming Error' translated;
 		description: 'Strategy when dealing with command consuming errors';
 		order: 1;
@@ -449,9 +449,9 @@ EDASSettings class >> old_commandListenerSettingsOn: aBuilder under: parent on: 
 ]
 
 { #category : #settings }
-EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app [
+EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app order: anInteger [
 
-	| entry environmentValues key portResolver commandListenerErrorStrategyValues |
+	| entry environmentValues key portResolver commandListenerValues |
 	key := aParent , 'ports'.
 	entry := aBuilder group: key.
 	entry
@@ -466,20 +466,23 @@ EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app [
 			                       -> adapterClass ]) sorted: [ :a :b | a < b ]).
 	(aBuilder pickOne: #environmentSettingsAdapterClass)
 		label: 'Environment adapter' translated;
-		target: app portSettingsPort;
+		target: app portSettings;
 		parent: key;
-		domainValues: environmentValues.
-	commandListenerErrorStrategyValues := OrderedCollection withAll:
-		                                      ((portResolver
-			                                       availableCommandListenerSettingsErrorStrategyAdapters 
-			                                       collect: [ :adapterClass | 
-			                                       adapterClass description
-				                                       translated -> adapterClass ]) sorted: [ :a :b | a < b ]).
-	(aBuilder pickOne: #commandListenerErrorStrategyAdapterClass)
-		label: 'Error strategy' translated;
-		target: app portSettingsPort;
+		domainValues: environmentValues;
+		order: 1.
+	commandListenerValues := OrderedCollection withAll:
+		                         ((portResolver
+			                           availableCommandListenerSettingsAdapters 
+			                           collect: [ :adapterClass | 
+			                           adapterClass description translated
+			                           -> adapterClass ]) sorted: [ :a :b | 
+			                          a < b ]).
+	(aBuilder pickOne: #commandListenerAdapterClass)
+		label: 'Command listener' translated;
+		target: app portSettings;
 		parent: key;
-		domainValues: commandListenerErrorStrategyValues
+		domainValues: commandListenerValues;
+		order: 2
 ]
 
 { #category : #settings }
@@ -585,7 +588,7 @@ EDASSettings class >> settingOn: aBuilder named: aSymbol labelled: aString withD
 	(aConfig supportsMultiple: aSymbol)
 		ifTrue: [ 
 			entry := aBuilder pickOne: aSymbol.
-			entry domainValues: (aConfig values collect: [ :level | 
+			entry domainValues: ((aConfig values: aSymbol) collect: [ :level | 
 					 level translated -> level greaseString ]) ]
 		ifFalse: [ 
 			(aConfig isReadOnly: aSymbol)

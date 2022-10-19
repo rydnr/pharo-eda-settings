@@ -5,12 +5,20 @@ Trait {
 	#category : #'EDAS-Settings-Ports'
 }
 
+{ #category : #resolving }
+EDASCommandListenerSettingsPort >> availableErrorStrategies [
+
+	self shouldBeImplemented
+]
+
 { #category : #testing }
-EDASCommandListenerSettingsPort >> restartOnCommandConsumingErrors [
+EDASCommandListenerSettingsPort >> errorStrategy [
+
 	self subclassResponsibility
 ]
 
 { #category : #testing }
-EDASCommandListenerSettingsPort >> strategy [
+EDASCommandListenerSettingsPort >> restartOnError [
+
 	self subclassResponsibility
 ]

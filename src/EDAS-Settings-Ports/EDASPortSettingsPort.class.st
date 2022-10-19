@@ -3,10 +3,10 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'announcer',
-		'environmentSettingsPort',
+		'environmentSettings',
 		'environmentSettingsAdapterClass',
-		'commandListenerErrorStrategyAdapterClass',
-		'commandListenerErrorStrategySettingsPort'
+		'commandListenerSettings',
+		'commandListenerAdapterClass'
 	],
 	#category : #'EDAS-Settings-Ports'
 }
@@ -27,29 +27,47 @@ EDASPortSettingsPort >> announcer: anObject [
 ]
 
 { #category : #accessing }
-EDASPortSettingsPort >> commandListenerErrorStrategyAdapterClass [
-	^ commandListenerErrorStrategyAdapterClass
+EDASPortSettingsPort >> commandListenerAdapterClass [
+
+	^ commandListenerAdapterClass
 ]
 
 { #category : #accessing }
-EDASPortSettingsPort >> commandListenerErrorStrategyAdapterClass: anObject [
-	commandListenerErrorStrategyAdapterClass := anObject
+EDASPortSettingsPort >> commandListenerAdapterClass: anObject [
+
+	commandListenerAdapterClass := anObject
 ]
 
 { #category : #accessing }
-EDASPortSettingsPort >> commandListenerErrorStrategySettingsPort [
+EDASPortSettingsPort >> commandListenerSettings [
 
-	^ commandListenerErrorStrategySettingsPort ifNil: [ 
+	^ commandListenerSettings ifNil: [ 
 		  | result |
-		  result := EDASPortResolver new resolveCommandListenerErrorStrategySettingsPort.
-		  self commandListenerErrorStrategySettingsPort: result.
+		  result := EDASPortResolver new resolveCommandListenerSettingsPort.
+		  self commandListenerSettings: result.
 		  result ]
 ]
 
 { #category : #accessing }
-EDASPortSettingsPort >> commandListenerErrorStrategySettingsPort: anObject [
+EDASPortSettingsPort >> commandListenerSettings: anObject [
 
-	commandListenerErrorStrategySettingsPort := anObject
+	commandListenerSettings := anObject
+]
+
+{ #category : #accessing }
+EDASPortSettingsPort >> environmentSettings [
+
+	^ environmentSettings ifNil: [ 
+		  | result |
+		  result := EDASPortResolver new resolveEnvironmentSettingsPort.
+		  self environmentSettings: result.
+		  result ]
+]
+
+{ #category : #accessing }
+EDASPortSettingsPort >> environmentSettings: anObject [
+
+	environmentSettings := anObject
 ]
 
 { #category : #accessing }
@@ -69,14 +87,4 @@ EDASPortSettingsPort >> environmentSettingsAdapterClass: newValue [
 						old: oldValue
 						new: newValue
 						on: self announcer edaApplication) ]
-]
-
-{ #category : #accessing }
-EDASPortSettingsPort >> environmentSettingsPort [
-	^ environmentSettingsPort ifNil: [ | result | result := EDASPortResolver new resolveEnvironmentSettingsPort. self environmentSettingsPort: result. result ]
-]
-
-{ #category : #accessing }
-EDASPortSettingsPort >> environmentSettingsPort: anObject [
-	environmentSettingsPort := anObject
 ]

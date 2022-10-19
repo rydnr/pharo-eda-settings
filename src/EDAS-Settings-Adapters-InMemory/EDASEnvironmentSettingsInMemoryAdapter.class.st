@@ -40,7 +40,19 @@ EDASEnvironmentSettingsInMemoryAdapter >> edaApplication: anEDAApplication [
 	edaApplication := anEDAApplication
 ]
 
+{ #category : #testing }
+EDASEnvironmentSettingsInMemoryAdapter >> isReadOnly: environment [
+
+	^ false
+]
+
 { #category : #logic }
 EDASEnvironmentSettingsInMemoryAdapter >> resolveEnvironmentSettingsPort [
 	^ self
+]
+
+{ #category : #testing }
+EDASEnvironmentSettingsInMemoryAdapter >> supportsMultiple: environment [
+
+	^ false
 ]

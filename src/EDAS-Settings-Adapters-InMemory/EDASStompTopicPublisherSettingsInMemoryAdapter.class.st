@@ -17,6 +17,12 @@ EDASStompTopicPublisherSettingsInMemoryAdapter class >> accepts: anEDAApplicatio
 	^ true
 ]
 
+{ #category : #testing }
+EDASStompTopicPublisherSettingsInMemoryAdapter class >> description [
+
+	^ 'Stomp'
+]
+
 { #category : #accessing }
 EDASStompTopicPublisherSettingsInMemoryAdapter class >> priority [
 	^ 0

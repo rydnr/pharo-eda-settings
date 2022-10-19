@@ -8,8 +8,9 @@ Class {
 
 { #category : #helper }
 EDASEnvironmentSettingsAdapterClassChangedListener class >> subscribeToSettingsChangedEventsIn: anEDASettingsAnnouncer [
+
 	anEDASettingsAnnouncer
 		when: EDASEnvironmentSettingsAdapterClassChanged
-		do:
-			[ :event | event edaApplication environmentSettingsPort: event newValue new ]
+		do: [ :event | 
+			event edaApplication environmentSettings: event newValue new ]
 ]

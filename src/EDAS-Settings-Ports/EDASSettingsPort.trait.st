@@ -48,11 +48,13 @@ EDASSettingsPort classSide >> withApp: anEDAApplication [
 ]
 
 { #category : #testing }
-EDASSettingsPort >> isReadOnly [
+EDASSettingsPort >> isReadOnly: aSymbol [
+
 	self shouldBeImplemented
 ]
 
 { #category : #testing }
-EDASSettingsPort >> supportsMultiple [
+EDASSettingsPort >> supportsMultiple: aSymbol [
+
 	self shouldBeImplemented
 ]

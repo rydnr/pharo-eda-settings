@@ -59,3 +59,21 @@ EDASEnvironmentSettingsEnvVarAdapter >> edaApplication: anEDAApplication [
 EDASEnvironmentSettingsEnvVarAdapter >> environmentVariableName [
 	^ self class environmentVariableName
 ]
+
+{ #category : #testing }
+EDASEnvironmentSettingsEnvVarAdapter >> isReadOnly: aSymbol [
+
+	^ true
+]
+
+{ #category : #testing }
+EDASEnvironmentSettingsEnvVarAdapter >> supportsMultiple: aSymbol [
+
+	^ false
+]
+
+{ #category : #testing }
+EDASEnvironmentSettingsEnvVarAdapter >> values: aSymbol [
+
+	^ false
+]

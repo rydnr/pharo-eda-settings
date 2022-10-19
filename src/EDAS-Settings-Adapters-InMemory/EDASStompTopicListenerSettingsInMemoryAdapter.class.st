@@ -5,10 +5,10 @@ Class {
 	#classTraits : 'EDASCommandListenerSettingsPort classTrait',
 	#instVars : [
 		'topicListener',
+		'prefetchCount',
 		'ack',
 		'queue',
-		'strategy',
-		'restartOnCommandConsumingErrors'
+		'errorStrategy'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
@@ -21,7 +21,7 @@ EDASStompTopicListenerSettingsInMemoryAdapter class >> accepts: anEDAApplication
 { #category : #testing }
 EDASStompTopicListenerSettingsInMemoryAdapter class >> description [
 
-	^ 'Stomp topic listener'
+	^ 'Stomp'
 ]
 
 { #category : #accessing }
@@ -41,6 +41,12 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> ack: val [
 	ack := val
 ]
 
+{ #category : #resolving }
+EDASStompTopicListenerSettingsInMemoryAdapter >> availableErrorStrategies [
+
+	^ super availableErrorStrategies
+]
+
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> destination [
 	^ '/amq/queue/' , self queue
@@ -55,10 +61,22 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> doInitialize [
 	self ack: #'client-individual'
 ]
 
+{ #category : #accessing }
+EDASStompTopicListenerSettingsInMemoryAdapter >> errorStrategy [
+
+	^ super errorStrategy
+]
+
 { #category : #initialization }
 EDASStompTopicListenerSettingsInMemoryAdapter >> initialize [
 	super initialize.
 	self doInitialize
+]
+
+{ #category : #testing }
+EDASStompTopicListenerSettingsInMemoryAdapter >> isReadOnly: aSymbol [
+
+	^ false
 ]
 
 { #category : #accessing }
@@ -83,24 +101,16 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> queue: val [
 	queue := val
 ]
 
-{ #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> restartOnCommandConsumingErrors [
-	^ restartOnCommandConsumingErrors
+{ #category : #testing }
+EDASStompTopicListenerSettingsInMemoryAdapter >> restartOnError [
+
+	^ super restartOnError
 ]
 
-{ #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> restartOnCommandConsumingErrors: aBoolean [
-	restartOnCommandConsumingErrors := aBoolean
-]
+{ #category : #testing }
+EDASStompTopicListenerSettingsInMemoryAdapter >> supportsMultiple: aSymbol [
 
-{ #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> strategy [
-	^ strategy
-]
-
-{ #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> strategy: aStrategy [
-	strategy := aStrategy
+	^ aSymbol = #errorStrategyName
 ]
 
 { #category : #accessing }

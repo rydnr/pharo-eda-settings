@@ -9,8 +9,10 @@ EDASTPortResolver >> availableAdapters: aPort [
 ]
 
 { #category : #logic }
-EDASTPortResolver >> availableCommandListenerSettingsErrorStrategyAdapters [
-	^ self availableAdapters: EDASCommandListenerErrorStrategySettingsPort
+EDASTPortResolver >> availableCommandListenerSettingsAdapters [
+
+	^ self availableAdapters:
+		  EDASCommandListenerSettingsPort
 ]
 
 { #category : #logic }
@@ -24,9 +26,9 @@ EDASTPortResolver >> environmentSettingsPort [
 ]
 
 { #category : #accessing }
-EDASTPortResolver >> resolveCommandListenerErrorStrategySettingsPort [
+EDASTPortResolver >> resolveCommandListenerSettingsPort [
 
-	^ self resolvePort: EDASCommandListenerErrorStrategySettingsPort
+	^ self resolvePort: EDASCommandListenerSettingsPort
 ]
 
 { #category : #accessing }

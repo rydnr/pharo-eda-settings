@@ -61,7 +61,7 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> resolveEnvironmentSettingsPo
 	^ self
 ]
 
-{ #category : #testing }
+{ #category : #'as yet unclassified' }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter >> supportsMultiple: aSymbol [
 	^ true
 ]

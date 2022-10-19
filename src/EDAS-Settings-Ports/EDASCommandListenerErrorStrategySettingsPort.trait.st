@@ -11,13 +11,13 @@ EDASCommandListenerErrorStrategySettingsPort >> availableStrategies [
 ]
 
 { #category : #testing }
-EDASCommandListenerErrorStrategySettingsPort >> supportsMultiple [
+EDASCommandListenerErrorStrategySettingsPort >> supportsMultiple: aSymbol [
 
 	^ true
 ]
 
 { #category : #accessing }
-EDASCommandListenerErrorStrategySettingsPort >> values [
+EDASCommandListenerErrorStrategySettingsPort >> values: aSymbol [
 
 	^ self availableStrategies
 ]
