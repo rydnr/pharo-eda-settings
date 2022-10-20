@@ -83,7 +83,7 @@ EDASPortSettingsPort >> environmentSettingsAdapterClass: newValue [
 	oldValue = newValue
 		ifFalse: [ self announcer
 				announce:
-					(EDASEnvironmentSettingsAdapterClassChanged
+					(EDASEnvironmentChanged
 						old: oldValue
 						new: newValue
 						on: self announcer edaApplication) ]

@@ -10,7 +10,11 @@ Class {
 EDASEnvironmentSettingsAdapterClassChangedListener class >> subscribeToSettingsChangedEventsIn: anEDASettingsAnnouncer [
 
 	anEDASettingsAnnouncer
-		when: EDASEnvironmentSettingsAdapterClassChanged
+		when: EDASEnvironmentChanged
 		do: [ :event | 
-			event edaApplication environmentSettings: event newValue new ]
+			event edaApplication environmentSettings: event newValue new.
+			self halt.
+			event newValue = EDASEnvironmentSettingsInMemoryAdapter ifTrue: [ 
+				event edaApplication commandListenerSettings:
+					EDASStompTopicListenerSettingsInMemoryAdapter new ] ]
 ]

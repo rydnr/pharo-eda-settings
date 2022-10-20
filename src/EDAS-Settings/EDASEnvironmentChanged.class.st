@@ -1,5 +1,5 @@
 Class {
-	#name : #EDASEnvironmentSettingsAdapterClassChanged,
+	#name : #EDASEnvironmentChanged,
 	#superclass : #EDASSettingsChanged,
 	#instVars : [
 		'oldAdapterClass',
