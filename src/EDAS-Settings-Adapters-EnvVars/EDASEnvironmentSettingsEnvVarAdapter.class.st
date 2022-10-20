@@ -12,7 +12,7 @@ Class {
 { #category : #testing }
 EDASEnvironmentSettingsEnvVarAdapter class >> accepts: aPort [
 
-	^ true
+	^ (self getValueFor: self environmentVariableName orElse: nil) ifNil: [ false ] ifNotNil: [ true ]
 ]
 
 { #category : #testing }
