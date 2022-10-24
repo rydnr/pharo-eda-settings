@@ -18,14 +18,3 @@ EDASPortResolver >> environmentSettingsAdapterClass [
 EDASPortResolver >> environmentSettingsAdapterClass: aClass [
 	environmentSettingsAdapterClass := aClass
 ]
-
-{ #category : #logic }
-EDASPortResolver >> resolveSettingsPort: aPort [
-
-	| candidates candidate |
-	candidates := (self availableAdapters: aPort) sorted.
-	candidate := candidates
-		             ifEmpty: [ nil ]
-		             ifNotEmpty: [ :col | col first ].
-	^ candidate ifNil: [ nil ] ifNotNil: [ :c | c new ]
-]

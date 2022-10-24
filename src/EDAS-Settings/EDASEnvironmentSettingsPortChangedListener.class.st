@@ -1,5 +1,5 @@
 Class {
-	#name : #EDASEnvironmentSettingsAdapterClassChangedListener,
+	#name : #EDASEnvironmentSettingsPortChangedListener,
 	#superclass : #Object,
 	#traits : 'EDASSettingsChangedListener',
 	#classTraits : 'EDASSettingsChangedListener classTrait',
@@ -7,14 +7,12 @@ Class {
 }
 
 { #category : #helper }
-EDASEnvironmentSettingsAdapterClassChangedListener class >> subscribeToSettingsChangedEventsIn: anEDASettingsAnnouncer [
+EDASEnvironmentSettingsPortChangedListener class >> subscribeToSettingsChangedEventsIn: anEDASettingsAnnouncer [
 
 	anEDASettingsAnnouncer
-		when: EDASEnvironmentChanged
+		when: EDASEnvironmentSettingsPortChanged
 		do: [ :event | 
-			event edaApplication environmentSettings: event newValue new.
-			self halt.
 			event newValue = EDASEnvironmentSettingsInMemoryAdapter ifTrue: [ 
-				event edaApplication commandListenerSettings:
+				event edaApplication portSettings commandListenerSettings:
 					EDASStompTopicListenerSettingsInMemoryAdapter new ] ]
 ]
