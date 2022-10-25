@@ -14,5 +14,6 @@ EDASEnvironmentSettingsPortChangedListener class >> subscribeToSettingsChangedEv
 		do: [ :event | 
 			event newValue = EDASEnvironmentSettingsInMemoryAdapter ifTrue: [ 
 				event edaApplication portSettings commandListenerSettings:
-					EDASStompTopicListenerSettingsInMemoryAdapter new ] ]
+					(EDASStompTopicListenerSettingsInMemoryAdapter withApp:
+						 event edaApplication) ] ]
 ]

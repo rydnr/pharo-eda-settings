@@ -6,24 +6,25 @@ Trait {
 }
 
 { #category : #testing }
-EDASPortSettingsPort >> commandListenerSettingsAdapterClass [
-	self shouldBeImplemented
-]
-
-{ #category : #testing }
-EDASPortSettingsPort >> commandListenerSettingsAdapterClass: aClass [
+EDASPortSettingsPort >> commandListenerSettings [
 
 	self shouldBeImplemented
 ]
 
 { #category : #testing }
-EDASPortSettingsPort >> environmentSettingsAdapterClass [
+EDASPortSettingsPort >> commandListenerSettings: anObject [
+
+	self shouldBeImplemented
+]
+
+{ #category : #testing }
+EDASPortSettingsPort >> environmentSettings [
 
 	self shouldBeImplemented
 ]
 
 { #category : #accessing }
-EDASPortSettingsPort >> environmentSettingsAdapterClass: aClass [
+EDASPortSettingsPort >> environmentSettings: anObject [
 
 	self shouldBeImplemented
 ]

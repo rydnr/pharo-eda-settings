@@ -27,11 +27,14 @@ EDASEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
 
 { #category : #accessing }
 EDASEnvironmentSettingsInMemoryAdapter >> currentEnvironment: anObject [
+
 	| oldValue |
 	currentEnvironment ~= anObject ifFalse: [ ^ self ].
-oldValue = currentEnvironment.
+	oldValue := currentEnvironment.
 	currentEnvironment := anObject.
-	self edaApplication notifyEnvironmentChangedFrom: oldValue to: anObject.
+	self edaApplication
+		notifyEnvironmentChangedFrom: oldValue
+		to: anObject
 ]
 
 { #category : #accessing }

@@ -263,7 +263,7 @@ EDASSettings class >> environmentSettingsOn: aBuilder under: aParent on: app ord
 		  usingConfig: app environmentSettings
 		  under: aParent
 		  on: app
-		order: anInteger
+		  order: anInteger
 ]
 
 { #category : #settings }
@@ -566,13 +566,6 @@ EDASSettings class >> projectionsRepositorySettingsOn: aBuilder withConfig: aCon
 EDASSettings class >> resetSettings [
 	#(#EDAACommandStompTopicListener #EDAAEventStompTopicPublisher #EDAAMongoEventStore #EDACLoggingSettings EDAApplication  EDAProjector 	 EDACompositeProjector  #EDAAProjectionMongoRepository)
 		do: [ :cls | cls initialize ]
-]
-
-{ #category : #settings }
-EDASSettings class >> settingOn: aBuilder named: aSymbol labelled: aString withDescription: aDescription usingConfig: aConfig under: aParent on: app [
-
-	^ self settingOn: aBuilder named: aSymbol labelled: aString withDescription: aDescription usingConfig: aConfig under: aParent on: app order: 1
-
 ]
 
 { #category : #settings }
