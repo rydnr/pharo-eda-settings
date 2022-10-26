@@ -476,7 +476,13 @@ EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app order: anI
 			                           collect: [ :adapterClass | 
 			                           adapterClass description translated
 			                           -> adapterClass ]) sorted: [ :a :b | 
-			                          a < b ])
+			                          a < b ]).
+	(aBuilder pickOne: #commandListenerSettingsAdapterClass)
+		label: 'Command Listener adapter' translated;
+		target: app portSettings;
+		parent: key;
+		domainValues: commandListenerValues;
+		order: 2
 ]
 
 { #category : #settings }
