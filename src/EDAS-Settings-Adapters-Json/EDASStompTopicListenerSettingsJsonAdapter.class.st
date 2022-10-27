@@ -22,6 +22,18 @@ Class {
 }
 
 { #category : #'instance creation' }
+EDASStompTopicListenerSettingsJsonAdapter class >> availableEnvironments [
+
+	| helper |
+	helper := EDACSourceCodeHelperStub new.
+	^ ((FileSystem workingDirectory / 'config') files
+		   select: [ :f | f pathString endsWith: '.json' ]
+		   thenCollect: [ :f | 
+		   helper replace: '.json' with: '' inString: f asPath basename ])
+		  reversed
+]
+
+{ #category : #'instance creation' }
 EDASStompTopicListenerSettingsJsonAdapter class >> forEnvironment: anEnvironment withApp: anEDAApplication [
 
 	^ self fromFile:

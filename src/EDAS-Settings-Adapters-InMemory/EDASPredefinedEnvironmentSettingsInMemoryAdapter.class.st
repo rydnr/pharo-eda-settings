@@ -18,7 +18,8 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> accepts: aPort [
 
 { #category : #meta }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> availableEnvironments [
-	^ OrderedCollection with: 'dev' with: 'test' with: 'PRO'
+
+	^ EDASStompTopicListenerSettingsJsonAdapter availableEnvironments
 ]
 
 { #category : #meta }
