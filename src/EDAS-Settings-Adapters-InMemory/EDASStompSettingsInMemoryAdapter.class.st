@@ -97,6 +97,12 @@ EDASStompSettingsInMemoryAdapter >> initialize [
 	self doInitialize
 ]
 
+{ #category : #testing }
+EDASStompSettingsInMemoryAdapter >> isReadOnly: aSymbol [
+
+	self shouldBeImplemented 
+]
+
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> password [
 

@@ -40,6 +40,14 @@ EDASStompTopicListenerSettingsJsonAdapter class >> fromFile: aFileReference with
 	^ result
 ]
 
+{ #category : #'instance creation' }
+EDASStompTopicListenerSettingsJsonAdapter class >> supportsEnvironment: anEnvironment [
+
+	^ 
+		(FileSystem workingDirectory / 'config' / (anEnvironment , '.json')) exists
+
+]
+
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> ack [
 
