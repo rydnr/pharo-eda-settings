@@ -1,6 +1,8 @@
 Class {
 	#name : #EDASStompTopicListenerSettingsJsonAdapter,
 	#superclass : #Object,
+	#traits : 'EDASSettingsPort',
+	#classTraits : 'EDASSettingsPort classTrait',
 	#instVars : [
 		'host',
 		'port',
@@ -20,13 +22,21 @@ Class {
 }
 
 { #category : #'instance creation' }
-EDASStompTopicListenerSettingsJsonAdapter class >> fromFile: aFileReference [
+EDASStompTopicListenerSettingsJsonAdapter class >> forEnvironment: anEnvironment withApp: anEDAApplication [
+
+	^ self fromFile:
+		  FileSystem workingDirectory / 'config' / (anEnvironment , '.json') withApp: anEDAApplication 
+]
+
+{ #category : #'instance creation' }
+EDASStompTopicListenerSettingsJsonAdapter class >> fromFile: aFileReference withApp: anEDAApplication [
 
 	| result json commandListener |
-	result := self new.
+	result := self withApp: anEDAApplication.
 	json := (NeoJSONReader on: aFileReference readStream) next.
 	commandListener := json at: 'commandListener'.
-	commandListener keysAndValuesDo: [ :k :v | result instVarNamed: k put: v ].
+	commandListener keysAndValuesDo: [ :k :v | 
+		result instVarNamed: k put: v ].
 	^ result
 ]
 

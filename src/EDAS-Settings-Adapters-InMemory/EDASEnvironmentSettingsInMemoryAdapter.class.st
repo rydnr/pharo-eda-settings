@@ -11,8 +11,9 @@ Class {
 }
 
 { #category : #testing }
-EDASEnvironmentSettingsInMemoryAdapter class >> accepts: anEDAApplication [
-	^ true
+EDASEnvironmentSettingsInMemoryAdapter class >> accepts: aPort [
+
+	^ aPort = EDASEnvironmentSettingsPort
 ]
 
 { #category : #accessing }
@@ -29,7 +30,7 @@ EDASEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
 EDASEnvironmentSettingsInMemoryAdapter >> currentEnvironment: anObject [
 
 	| oldValue |
-	currentEnvironment ~= anObject ifFalse: [ ^ self ].
+	currentEnvironment = anObject ifTrue: [ ^ self ].
 	oldValue := currentEnvironment.
 	currentEnvironment := anObject.
 	self edaApplication

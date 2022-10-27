@@ -13,8 +13,9 @@ Class {
 }
 
 { #category : #testing }
-EDASStompTopicPublisherSettingsInMemoryAdapter class >> accepts: anEDAApplication [
-	^ true
+EDASStompTopicPublisherSettingsInMemoryAdapter class >> accepts: aPort [
+
+	^ false
 ]
 
 { #category : #testing }

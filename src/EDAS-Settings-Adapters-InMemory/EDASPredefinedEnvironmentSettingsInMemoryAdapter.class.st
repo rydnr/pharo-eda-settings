@@ -13,7 +13,7 @@ Class {
 { #category : #testing }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> accepts: aPort [
 
-	^ true
+	^ aPort = EDASEnvironmentSettingsPort
 ]
 
 { #category : #meta }
@@ -42,8 +42,15 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
 ]
 
 { #category : #accessing }
-EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment: anEnvironment [
-	currentEnvironment := anEnvironment
+EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment: anObject [
+
+	| oldValue |
+	currentEnvironment = anObject ifTrue: [ ^ self ].
+	oldValue := currentEnvironment.
+	currentEnvironment := anObject.
+	self edaApplication
+		notifyEnvironmentChangedFrom: oldValue
+		to: anObject
 ]
 
 { #category : #accessing }

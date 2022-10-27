@@ -14,8 +14,9 @@ Class {
 }
 
 { #category : #testing }
-EDASStompTopicListenerSettingsInMemoryAdapter class >> accepts: anEDAApplication [
-	^ true
+EDASStompTopicListenerSettingsInMemoryAdapter class >> accepts: aPort [
+
+	^ aPort = EDASCommandListenerSettingsPort
 ]
 
 { #category : #testing }
