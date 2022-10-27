@@ -1,8 +1,8 @@
 Class {
 	#name : #EDASStompTopicListenerSettingsJsonAdapter,
 	#superclass : #Object,
-	#traits : 'EDASSettingsPort',
-	#classTraits : 'EDASSettingsPort classTrait',
+	#traits : 'EDASSettingsPort + EDASStompSettingsPort',
+	#classTraits : 'EDASSettingsPort classTrait + EDASStompSettingsPort classTrait',
 	#instVars : [
 		'host',
 		'port',
@@ -112,6 +112,12 @@ EDASStompTopicListenerSettingsJsonAdapter >> host: anObject [
 	host := anObject
 ]
 
+{ #category : #testing }
+EDASStompTopicListenerSettingsJsonAdapter >> isReadOnly: aSymbol [
+
+	^ true
+]
+
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> password [
 
@@ -163,13 +169,19 @@ EDASStompTopicListenerSettingsJsonAdapter >> queue: anObject [
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> restartOnErrors [
 
-	^ restartOnErrors
+	^ restartOnErrors ifNil: [ true ]
 ]
 
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> restartOnErrors: anObject [
 
 	restartOnErrors := anObject
+]
+
+{ #category : #testing }
+EDASStompTopicListenerSettingsJsonAdapter >> supportsMultiple: aSymbol [
+
+	^ aSymbol = #errorStrategyName
 ]
 
 { #category : #accessing }
@@ -194,4 +206,12 @@ EDASStompTopicListenerSettingsJsonAdapter >> user [
 EDASStompTopicListenerSettingsJsonAdapter >> user: anObject [
 
 	user := anObject
+]
+
+{ #category : #testing }
+EDASStompTopicListenerSettingsJsonAdapter >> values: aSymbol [
+
+	aSymbol = #errorStrategyName
+		ifTrue: [ ^ self availableErrorStrategies ]
+		ifFalse: [ ^ OrderedCollection new ]
 ]

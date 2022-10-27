@@ -11,6 +11,6 @@ EDASEnvironmentChangedListener class >> subscribeToSettingsChangedEventsIn: anED
 
 	anEDASettingsAnnouncer when: EDASEnvironmentChanged do: [ :event | 
 		event edaApplication portSettings commandListenerSettings:
-				(EDASStompTopicListenerSettingsInMemoryAdapter withApp:
-					 event edaApplication) ]
+			(EDASStompTopicListenerSettingsJsonAdapter forEnvironment: event newValue withApp:
+				 event edaApplication) ]
 ]

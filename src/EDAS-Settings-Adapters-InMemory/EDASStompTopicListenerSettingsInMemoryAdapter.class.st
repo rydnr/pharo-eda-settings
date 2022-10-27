@@ -103,15 +103,15 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> queue: val [
 ]
 
 { #category : #testing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> restartOnError [
+EDASStompTopicListenerSettingsInMemoryAdapter >> restartOnErrors [
 
-	^ super restartOnError
+	^ super restartOnErrors
 ]
 
 { #category : #testing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> supportsMultiple: aSymbol [
 
-	^ aSymbol = #errorStrategyName
+	^ super supportsMultiple: aSymbol
 ]
 
 { #category : #accessing }

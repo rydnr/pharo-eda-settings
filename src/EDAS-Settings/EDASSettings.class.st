@@ -91,7 +91,7 @@ EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app 
 		order: 2.
 	self
 		settingOn: aBuilder
-		named: #username
+		named: #user
 		labelled: 'User'
 		withDescription: 'Stomp user'
 		usingConfig: app commandListenerSettings
@@ -159,8 +159,8 @@ EDASSettings class >> commandListenerSettingsOn: aBuilder under: parent on: app 
 		order: 9.
 	self
 		settingOn: aBuilder
-		named: #restartOnError
-		labelled: 'Restart on error'
+		named: #restartOnErrors
+		labelled: 'Restart on errors'
 		withDescription: 'Whether to restart the listener in case of errors'
 		usingConfig: app commandListenerSettings
 		under: key
@@ -581,13 +581,15 @@ EDASSettings class >> settingOn: aBuilder named: aSymbol labelled: aString withD
 	(aConfig supportsMultiple: aSymbol)
 		ifTrue: [ 
 			entry := aBuilder pickOne: aSymbol.
-			entry domainValues: ((aConfig values: aSymbol) collect: [ :level | 
+			entry domainValues:
+				((aConfig values: aSymbol) collect: [ :level | 
 					 level translated -> level greaseString ]) ]
 		ifFalse: [ 
 			(aConfig isReadOnly: aSymbol)
 				ifTrue: [ 
 					entry := aBuilder group: aSymbol.
-					entry dialog: [ LabelMorph newLabel: (aConfig perform: aSymbol) ] ]
+					entry dialog: [ 
+						LabelMorph newLabel: (aConfig perform: aSymbol) asString ] ]
 				ifFalse: [ entry := aBuilder setting: aSymbol ] ].
 	entry
 		parent: aParent;

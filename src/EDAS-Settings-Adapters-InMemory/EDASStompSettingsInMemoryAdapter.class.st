@@ -1,8 +1,8 @@
 Class {
 	#name : #EDASStompSettingsInMemoryAdapter,
 	#superclass : #Object,
-	#traits : 'EDASInMemoryAdapter',
-	#classTraits : 'EDASInMemoryAdapter classTrait',
+	#traits : 'EDASInMemoryAdapter + EDASStompSettingsPort',
+	#classTraits : 'EDASInMemoryAdapter classTrait + EDASStompSettingsPort classTrait',
 	#instVars : [
 		'host',
 		'port',
@@ -11,24 +11,13 @@ Class {
 		'timeout',
 		'debug',
 		'durable',
-		'restartOnError',
 		'errorStrategyName',
-		'edaApplication'
+		'edaApplication',
+		'restartOnErrors',
+		'user'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
-
-{ #category : #resolving }
-EDASStompSettingsInMemoryAdapter class >> availableErrorStrategies [
-
-	^ EDAEErrorHandlingStrategy subclasses collect: [ :s | s name ]
-]
-
-{ #category : #accessing }
-EDASStompSettingsInMemoryAdapter >> availableErrorStrategies [ 
-
-	^ self class availableErrorStrategies
-]
 
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> debug [
@@ -46,7 +35,7 @@ EDASStompSettingsInMemoryAdapter >> doInitialize [
 
 	self host: nil.
 	self port: nil.
-	self username: nil.
+	self user: nil.
 	self password: nil.
 	self timeout: nil.
 	self durable: true
@@ -131,21 +120,20 @@ EDASStompSettingsInMemoryAdapter >> port: val [
 ]
 
 { #category : #accessing }
-EDASStompSettingsInMemoryAdapter >> restartOnError [
+EDASStompSettingsInMemoryAdapter >> restartOnErrors [
 
-	^ restartOnError ifNil: [ true ]
+	^ restartOnErrors ifNil: [ true ]
 ]
 
 { #category : #accessing }
-EDASStompSettingsInMemoryAdapter >> restartOnError: anObject [
-
-	restartOnError := anObject
+EDASStompSettingsInMemoryAdapter >> restartOnErrors: aBoolean [
+	restartOnErrors := aBoolean
 ]
 
 { #category : #testing }
 EDASStompSettingsInMemoryAdapter >> supportsMultiple: aSymbol [
 
-	^ aSymbol = #errorStrategyName
+	^ aSymbol = #errorStrategy
 ]
 
 { #category : #accessing }
@@ -160,20 +148,13 @@ EDASStompSettingsInMemoryAdapter >> timeout: val [
 ]
 
 { #category : #accessing }
-EDASStompSettingsInMemoryAdapter >> username [
+EDASStompSettingsInMemoryAdapter >> user [
 
-	^ username ifNil: [ '' ]
+	^ user ifNil: [ '' ]
 ]
 
 { #category : #accessing }
-EDASStompSettingsInMemoryAdapter >> username: val [
-	username := val
-]
+EDASStompSettingsInMemoryAdapter >> user: aString [
 
-{ #category : #accessing }
-EDASStompSettingsInMemoryAdapter >> values: aSymbol [
-
-	aSymbol = #errorStrategyName
-		ifTrue: [ ^ self availableErrorStrategies ]
-		ifFalse: [ ^ OrderedCollection new ]
+	user := aString
 ]
