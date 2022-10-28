@@ -6,6 +6,30 @@ Trait {
 }
 
 { #category : #testing }
+EDASEnvironmentSettingsPort classSide >> description [
+
+	^ 'Environment'
+]
+
+{ #category : #accessing }
+EDASEnvironmentSettingsPort classSide >> label [
+
+	^ 'Environment'
+]
+
+{ #category : #accessing }
+EDASEnvironmentSettingsPort classSide >> selector [
+	^ #currentEnvironment
+]
+
+{ #category : #testing }
+EDASEnvironmentSettingsPort classSide >> settingsBlock [
+	^ [ :app |  app
+		notifyEnvironmentChangedFrom: nil
+		to: app environmentSettings currentEnvironment ]
+]
+
+{ #category : #testing }
 EDASEnvironmentSettingsPort >> availableEnvironments [
 	self subclassResponsibility
 ]

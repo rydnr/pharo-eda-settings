@@ -16,6 +16,12 @@ EDASEnvironmentSettingsInMemoryAdapter class >> accepts: aPort [
 	^ aPort = EDASEnvironmentSettingsPort
 ]
 
+{ #category : #ambiguous }
+EDASEnvironmentSettingsInMemoryAdapter class >> description [
+
+	^ 'Environment'
+]
+
 { #category : #accessing }
 EDASEnvironmentSettingsInMemoryAdapter class >> priority [
 	^ 99

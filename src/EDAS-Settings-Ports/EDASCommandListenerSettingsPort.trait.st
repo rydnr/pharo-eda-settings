@@ -5,6 +5,22 @@ Trait {
 	#category : #'EDAS-Settings-Ports'
 }
 
+{ #category : #testing }
+EDASCommandListenerSettingsPort classSide >> description [
+	^ 'Command listener'
+]
+
+{ #category : #testing }
+EDASCommandListenerSettingsPort classSide >> label [
+
+	^ 'Command listener'
+]
+
+{ #category : #metadata }
+EDASCommandListenerSettingsPort classSide >> selector [
+	^ nil
+]
+
 { #category : #resolving }
 EDASCommandListenerSettingsPort >> availableErrorStrategies [
 

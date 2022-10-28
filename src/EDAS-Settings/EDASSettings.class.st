@@ -47,6 +47,43 @@ EDASSettings class >> NEW_portSettingsOn: aBuilder under: aParent on: app [
 ]
 
 { #category : #settings }
+EDASSettings class >> adapterSettingsOn: aBuilder for: aPort implementedBy: anAdapter under: aParent on: app order: anInteger [
+
+	aPort selector
+		ifNil: [ 
+			| key attrs |
+			key := aParent , anAdapter class name.
+			(aBuilder group: key)
+				label: aPort label;
+				description: aPort description;
+				parent: aParent;
+				order: anInteger.
+			attrs := anAdapter class settingsAttributes.
+			attrs doWithIndex: [ :attr :i | 
+				self
+					settingOn: aBuilder
+					named: attr asSymbol
+					labelled: (anAdapter labelFor: attr)
+					withDescription: (anAdapter descriptionFor: attr)
+					usingConfig: anAdapter
+					under: key
+					on: app
+					order: i.
+				aPort settingsBlock value: app ] ]
+		ifNotNil: [ :s | 
+			self
+				settingOn: aBuilder
+				named: s
+				labelled: aPort label
+				withDescription: aPort description
+				usingConfig: anAdapter
+				under: aParent
+				on: app
+				order: anInteger.
+			aPort settingsBlock value: app ]
+]
+
+{ #category : #settings }
 EDASSettings class >> commandListenerErrorStrategySettingsOn: aBuilder under: aParent on: app order: anInteger [
 
 	^ self
@@ -225,31 +262,23 @@ EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymb
 		description: parent;
 		noOrdering.
 	self
-		environmentSettingsOn: aBuilder
+		adapterSettingsOn: aBuilder
+		for: EDASEnvironmentSettingsPort
+		implementedBy: anEDAApplication environmentSettings
 		under: parent
 		on: anEDAApplication
 		order: 1.
+	self adapterSettingsOn: aBuilder
+	for: EDASCommandListenerSettingsPort 
+	implementedBy: anEDAApplication commandListenerSettings
+	under: parent
+	on: anEDAApplication
+	order: 2.
 	self
-		commandListenerSettingsOn: aBuilder
+		portSettingsOn: aBuilder
 		under: parent
 		on: anEDAApplication
-		order: 2.
-	"
-	self
-		eventPublisherSettingsOn: aBuilder
-		under: parent
-		on: anEDAApplication.
-	self
-		eventStoreSettingsOn: aBuilder
-		under: parent
-		on: anEDAApplication.
-	self
-		projectionSettingsOn: aBuilder
-		under: parent
-		populatedWithValuesFrom: 'projections'
-		on: anEDAApplication.
-	self loggingSettingsOn: aBuilder under: parent on: anEDAApplication."
-	self portSettingsOn: aBuilder under: parent on: anEDAApplication order: 3
+		order: 3
 ]
 
 { #category : #settings }

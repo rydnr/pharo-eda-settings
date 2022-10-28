@@ -17,6 +17,16 @@ EDASStompSettingsPort >> availableErrorStrategies [
 	^ self class availableErrorStrategies
 ]
 
+{ #category : #settings }
+EDASStompSettingsPort >> descriptionFor: aString [ 
+	^ aString
+]
+
+{ #category : #settings }
+EDASStompSettingsPort >> labelFor: aString [ 
+	^ aString
+]
+
 { #category : #resolving }
 EDASStompSettingsPort >> values: aSymbol [
 

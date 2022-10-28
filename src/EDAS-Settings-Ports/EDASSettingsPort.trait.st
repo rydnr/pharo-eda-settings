@@ -40,6 +40,18 @@ EDASSettingsPort classSide >> priority [
 	self shouldBeImplemented 
 ]
 
+{ #category : #'as yet unclassified' }
+EDASSettingsPort classSide >> settingsAttributes [
+
+	^ ((Pragma allNamed: #edaSettings:withDescription:atPosition: in: self) sort: [ :a :b | (a argumentAt: 3) < (b argumentAt: 3) ])
+		  collect: [ :p | p method selector ]
+]
+
+{ #category : #settings }
+EDASSettingsPort classSide >> settingsBlock [
+	^ [ :app | ]
+]
+
 { #category : #testing }
 EDASSettingsPort classSide >> withApp: anEDAApplication [
 	^ self new
