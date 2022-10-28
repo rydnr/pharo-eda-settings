@@ -49,7 +49,7 @@ BaselineOfPharoEDASettings >> declarePackagesIn: spec [
 		with: [ spec requires: #( 'PharoEDACommon' 'EDAS-Settings-Ports' ) ];
 		package: #'EDAS-Settings-Adapters-Json-Tests'
 		with: [ spec requires: #( 'PharoEDACommon' 'EDAS-Settings-Ports' ) ];
-		package: #'EDAS-Settings-Adapters-Port-Tests'
+		package: #'EDAS-Settings-Port-Tests'
 		with: [ spec requires: #( 'PharoEDACommon' 'EDAS-Settings-Ports' ) ];
 		package: #'EDAS-Settings-Adapters-ByPriority' with: [ 
 			spec requires:
