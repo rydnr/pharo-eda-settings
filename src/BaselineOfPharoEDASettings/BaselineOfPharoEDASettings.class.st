@@ -24,11 +24,10 @@ BaselineOfPharoEDASettings >> declareGroupsIn: spec [
 		with:
 			#( #'EDAS-Settings' #'EDAS-Settings-Ports' #'EDAS-Settings-Adapters-InMemory'
 			   #'EDAS-Settings-Adapters-EnvVars'
-			#'EDAS-Settings-Adapters-Json'
-			   #'EDAS-Settings-Adapters-ByPriority' );
+			   #'EDAS-Settings-Adapters-Json' #'EDAS-Settings-Adapters-ByPriority' );
 		group: 'tests'
 		with:
-			#( #'EDAS-Settings-Tests' #'EDAS-Settings-Adapters-Json-Tests' );
+			#( #'EDAS-Settings-Tests' #'EDAS-Settings-Adapters-Json-Tests' #'EDAS-Settings-Ports-Tests');
 		group: 'default' with: #( 'core' 'tests' )
 ]
 
@@ -50,10 +49,13 @@ BaselineOfPharoEDASettings >> declarePackagesIn: spec [
 		with: [ spec requires: #( 'PharoEDACommon' 'EDAS-Settings-Ports' ) ];
 		package: #'EDAS-Settings-Adapters-Json-Tests'
 		with: [ spec requires: #( 'PharoEDACommon' 'EDAS-Settings-Ports' ) ];
+		package: #'EDAS-Settings-Adapters-Port-Tests'
+		with: [ spec requires: #( 'PharoEDACommon' 'EDAS-Settings-Ports' ) ];
 		package: #'EDAS-Settings-Adapters-ByPriority' with: [ 
 			spec requires:
 					#( 'PharoEDACommon' 'EDAS-Settings-Ports' 'EDAS-Settings-Adapters-InMemory'
-					   'EDAS-Settings-Adapters-EnvVars' 'EDAS-Settings-Adapters-Json') ]
+					   'EDAS-Settings-Adapters-EnvVars'
+					   'EDAS-Settings-Adapters-Json' ) ]
 ]
 
 { #category : #dependencies }

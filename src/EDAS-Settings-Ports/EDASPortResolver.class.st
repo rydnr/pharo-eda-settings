@@ -9,6 +9,11 @@ Class {
 	#category : #'EDAS-Settings-Ports'
 }
 
+{ #category : #helpers }
+EDASPortResolver >> availableAdaptersForPort: aString [ 
+	self shouldBeImplemented.
+]
+
 { #category : #accessing }
 EDASPortResolver >> environmentSettingsAdapterClass [
 	^ environmentSettingsAdapterClass

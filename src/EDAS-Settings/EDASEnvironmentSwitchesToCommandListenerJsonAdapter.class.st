@@ -1,5 +1,5 @@
 Class {
-	#name : #EDASPredefinedEnvironmentChangesCommandListener,
+	#name : #EDASEnvironmentSwitchesToCommandListenerJsonAdapter,
 	#superclass : #Object,
 	#traits : 'EDASSettingsChangedListener',
 	#classTraits : 'EDASSettingsChangedListener classTrait',
@@ -7,7 +7,7 @@ Class {
 }
 
 { #category : #helper }
-EDASPredefinedEnvironmentChangesCommandListener class >> subscribeToSettingsChangedEventsIn: anEDASettingsAnnouncer [
+EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> subscribeToSettingsChangedEventsIn: anEDASettingsAnnouncer [
 
 	anEDASettingsAnnouncer when: EDASEnvironmentChanged do: [ :event | 
 		(EDASStompTopicListenerSettingsJsonAdapter supportsEnvironment:

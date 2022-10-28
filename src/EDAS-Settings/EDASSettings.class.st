@@ -255,7 +255,7 @@ EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymb
 { #category : #settings }
 EDASSettings class >> environmentSettingsOn: aBuilder under: aParent on: app order: anInteger [
 
-	^ self
+	self
 		  settingOn: aBuilder
 		  named: #currentEnvironment
 		  labelled: 'Environment'
@@ -263,7 +263,8 @@ EDASSettings class >> environmentSettingsOn: aBuilder under: aParent on: app ord
 		  usingConfig: app environmentSettings
 		  under: aParent
 		  on: app
-		  order: anInteger
+		  order: anInteger.
+	app notifyEnvironmentChangedFrom: nil to: app environmentSettings currentEnvironment 
 ]
 
 { #category : #settings }
@@ -451,38 +452,27 @@ EDASSettings class >> old_commandListenerSettingsOn: aBuilder under: parent on: 
 { #category : #settings }
 EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app order: anInteger [
 
-	| entry environmentValues key portResolver commandListenerValues |
+	| entry key portResolver |
 	key := aParent , 'ports'.
 	entry := aBuilder group: key.
 	entry
 		label: 'Ports' translated;
 		parent: aParent.
 	portResolver := EDASPortResolver new.
-	environmentValues := OrderedCollection withAll:
-		                     ((portResolver
-			                       availableEnvironmentSettingsAdapters 
-			                       collect: [ :adapterClass | 
-			                       adapterClass description translated
-			                       -> adapterClass ]) sorted: [ :a :b | a < b ]).
-	(aBuilder pickOne: #environmentSettingsAdapterClass)
-		label: 'Environment adapter' translated;
-		target: app portSettings;
-		parent: key;
-		domainValues: environmentValues;
-		order: 1.
-	commandListenerValues := OrderedCollection withAll:
-		                         ((portResolver
-			                           availableCommandListenerSettingsAdapters 
-			                           collect: [ :adapterClass | 
-			                           adapterClass description translated
-			                           -> adapterClass ]) sorted: [ :a :b | 
-			                          a < b ]).
-	(aBuilder pickOne: #commandListenerSettingsAdapterClass)
-		label: 'Command Listener adapter' translated;
-		target: app portSettings;
-		parent: key;
-		domainValues: commandListenerValues;
-		order: 2
+	#( 'environment' 'commandListener' ) asOrderedCollection 
+		doWithIndex: [ :p :i | 
+			| values |
+			values := OrderedCollection withAll:
+				          (((portResolver availableAdaptersForPort: p) 
+					            collect: [ :adapterClass | 
+					            adapterClass description translated -> adapterClass ]) 
+					           sorted: [ :a :b | a < b ]).
+			(aBuilder pickOne: (portResolver portAdapterClassSymbol: p))
+				label: (portResolver portDescription: p) translated;
+				target: app portSettings;
+				parent: key;
+				domainValues: values;
+				order: i ]
 ]
 
 { #category : #settings }
