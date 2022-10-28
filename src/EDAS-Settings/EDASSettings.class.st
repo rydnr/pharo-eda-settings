@@ -460,19 +460,20 @@ EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app order: anI
 		parent: aParent.
 	portResolver := EDASPortResolver new.
 	#( 'environment' 'commandListener' ) asOrderedCollection 
-		doWithIndex: [ :p :i | 
+		keysAndValuesDo: [ :i :p | 
 			| values |
 			values := OrderedCollection withAll:
-				          (((portResolver availableAdaptersForPort: p) 
-					            collect: [ :adapterClass | 
+				          (((portResolver availableAdaptersFor: p) collect: [ 
+					            :adapterClass | 
 					            adapterClass description translated -> adapterClass ]) 
 					           sorted: [ :a :b | a < b ]).
+			values ifNotEmpty: [ 
 			(aBuilder pickOne: (portResolver portAdapterClassSymbol: p))
 				label: (portResolver portDescription: p) translated;
 				target: app portSettings;
 				parent: key;
 				domainValues: values;
-				order: i ]
+				order: i ] ]
 ]
 
 { #category : #settings }

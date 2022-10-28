@@ -16,27 +16,27 @@ EDASPortResolverByPriorityAdapter class >> description [
 
 { #category : #logic }
 EDASPortResolverByPriorityAdapter >> availableCommandListenerSettingsAdapters [
-	^ self availableAdapters: EDASCommandListenerSettingsPort
+	^ self availableAdaptersForPort: EDASCommandListenerSettingsPort
 ]
 
 { #category : #logic }
 EDASPortResolverByPriorityAdapter >> availableEventPublisherSettingsAdapters [
-	^ self availableAdapters: EDASEventPublisherSettingsPort
+	^ self availableAdaptersForPort: EDASEventPublisherSettingsPort
 ]
 
 { #category : #logic }
 EDASPortResolverByPriorityAdapter >> availableEventStoreSettingsAdapters [
-	^ self availableAdapters: EDASEventStoreSettingsPort
+	^ self availableAdaptersForPort: EDASEventStoreSettingsPort
 ]
 
 { #category : #logic }
 EDASPortResolverByPriorityAdapter >> availableLoggingSettingsAdapters [
-	^ self availableAdapters: EDASLoggingSettingsPort
+	^ self availableAdaptersForPort: EDASLoggingSettingsPort
 ]
 
 { #category : #logic }
 EDASPortResolverByPriorityAdapter >> availableProjectionSettingsAdapters [
-	^ self availableAdapters: EDASProjectionSettingsPort
+	^ self availableAdaptersForPort: EDASProjectionSettingsPort
 ]
 
 { #category : #accessing }

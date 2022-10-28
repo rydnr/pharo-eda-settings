@@ -13,6 +13,6 @@ EDASEnvironmentSettingsPort >> availableEnvironments [
 { #category : #testing }
 EDASEnvironmentSettingsPort >> values: aSymbol [
 
-	<edaPort: #environment>
+	<edaPort: #environment as: 'Environment'>
 	^ self availableEnvironments
 ]

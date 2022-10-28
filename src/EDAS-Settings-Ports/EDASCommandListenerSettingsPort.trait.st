@@ -8,7 +8,8 @@ Trait {
 { #category : #resolving }
 EDASCommandListenerSettingsPort >> availableErrorStrategies [
 
-	self shouldBeImplemented
+	<edaPort: #commandListener as: 'Command listener'>
+	self subclassResponsibility
 ]
 
 { #category : #testing }
