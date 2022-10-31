@@ -24,13 +24,14 @@ Class {
 { #category : #'instance creation' }
 EDASStompTopicListenerSettingsJsonAdapter class >> availableEnvironments [
 
-	| helper |
+	| helper folder |
 	helper := EDACSourceCodeHelperStub new.
-	^ ((FileSystem workingDirectory / 'config') files
-		   select: [ :f | f pathString endsWith: '.json' ]
-		   thenCollect: [ :f | 
+	folder := FileSystem workingDirectory / 'config'.
+	folder exists ifTrue: [ folder isDirectory ifFalse: [ folder delete. folder createDirectory  ] ] ifFalse: [ folder createDirectory  ].
+	^ ((folder files select: [ :f | 
+		    f pathString endsWithSubCollection: '.json' ]) collect: [ :f | 
 		   helper replace: '.json' with: '' inString: f asPath basename ])
-		  reversed
+		  reverse
 ]
 
 { #category : #'instance creation' }

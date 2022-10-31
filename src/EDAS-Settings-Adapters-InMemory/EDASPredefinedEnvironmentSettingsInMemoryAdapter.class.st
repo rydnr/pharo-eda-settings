@@ -13,7 +13,7 @@ Class {
 { #category : #testing }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> accepts: aPort [
 
-	^ aPort = EDASEnvironmentSettingsPort
+	^ aPort = EDASEnvironmentSettingsPort and: [ self availableEnvironments isNotEmpty  ]
 ]
 
 { #category : #meta }
@@ -39,7 +39,8 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> availableEnvironments [
 
 { #category : #accessing }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
-	^ currentEnvironment ifNil: [ self availableEnvironments first ]
+
+	^ currentEnvironment ifNil: [ self availableEnvironments ifEmpty: [ '' ] ifNotEmpty: [ :c | c first ]]
 ]
 
 { #category : #accessing }

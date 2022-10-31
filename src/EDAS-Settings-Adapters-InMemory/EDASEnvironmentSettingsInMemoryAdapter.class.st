@@ -19,7 +19,7 @@ EDASEnvironmentSettingsInMemoryAdapter class >> accepts: aPort [
 { #category : #ambiguous }
 EDASEnvironmentSettingsInMemoryAdapter class >> description [
 
-	^ 'Environment'
+	^ 'Manual'
 ]
 
 { #category : #accessing }
