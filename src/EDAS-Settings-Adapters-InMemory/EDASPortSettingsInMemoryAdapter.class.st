@@ -50,12 +50,7 @@ EDASPortSettingsInMemoryAdapter >> commandListenerSettings: newValue [
 
 	| oldValue |
 	oldValue := commandListenerSettings.
-	commandListenerSettings := newValue.
-	oldValue = newValue ifFalse: [ 
-		self announcer announce: (EDASCommandListenerSettingsPortChanged
-				 old: oldValue
-				 new: newValue
-				 on: self edaApplication) ]
+	commandListenerSettings := newValue
 ]
 
 { #category : #accessing }
@@ -111,12 +106,7 @@ EDASPortSettingsInMemoryAdapter >> environmentSettings: newValue [
 
 	| oldValue |
 	oldValue := environmentSettings.
-	environmentSettings := newValue.
-	oldValue = newValue ifFalse: [ 
-		self announcer announce: (EDASEnvironmentSettingsChanged
-				 old: oldValue
-				 new: newValue
-				 on: self edaApplication) ]
+	environmentSettings := newValue
 ]
 
 { #category : #accessing }
@@ -137,7 +127,7 @@ EDASPortSettingsInMemoryAdapter >> environmentSettingsAdapterClass: newValue [
 	environmentSettingsAdapterClass := newValue.
 	oldValue = newValue ifTrue: [ ^ self ].
 	self environmentSettings: (newValue withApp: self edaApplication).
-	self announcer announce: (EDASEnvironmentSettingsChanged
+	self announcer announce: (EDASEnvironmentSettingsPortChanged
 			 old: oldValue
 			 new: newValue
 			 on: self edaApplication)

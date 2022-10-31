@@ -51,25 +51,27 @@ EDASSettings class >> adapterSettingsOn: aBuilder for: aPort implementedBy: anAd
 
 	aPort selector
 		ifNil: [ 
-			| key attrs |
-			key := aParent , anAdapter class name.
-			(aBuilder group: key)
-				label: aPort label;
-				description: aPort description;
-				parent: aParent;
-				order: anInteger.
-			attrs := anAdapter class settingsAttributes.
-			attrs doWithIndex: [ :attr :i | 
-				self
-					settingOn: aBuilder
-					named: attr asSymbol
-					labelled: (anAdapter labelFor: attr)
-					withDescription: (anAdapter descriptionFor: attr)
-					usingConfig: anAdapter
-					under: key
-					on: app
-					order: i.
-				aPort settingsBlock value: app ] ]
+			| attributes |
+			attributes := anAdapter class settingsAttributes.
+			attributes ifNotEmpty: [ :attrs | 
+				| key |
+				key := aParent , anAdapter class name.
+				(aBuilder group: key)
+					label: aPort label;
+					description: aPort description;
+					parent: aParent;
+					order: anInteger.
+				attrs keysAndValuesDo: [ :i :attr | 
+					self
+						settingOn: aBuilder
+						named: attr asSymbol
+						labelled: (anAdapter labelFor: attr)
+						withDescription: (anAdapter descriptionFor: attr)
+						usingConfig: anAdapter
+						under: key
+						on: app
+						order: i.
+					aPort settingsBlock value: app ] ] ]
 		ifNotNil: [ :s | 
 			self
 				settingOn: aBuilder

@@ -136,12 +136,6 @@ EDASStompSettingsInMemoryAdapter >> restartOnErrors: aBoolean [
 	restartOnErrors := aBoolean
 ]
 
-{ #category : #testing }
-EDASStompSettingsInMemoryAdapter >> supportsMultiple: aSymbol [
-
-	^ aSymbol = #errorStrategy
-]
-
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> timeout [
 

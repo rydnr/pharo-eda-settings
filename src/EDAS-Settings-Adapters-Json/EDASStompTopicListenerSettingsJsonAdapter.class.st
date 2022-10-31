@@ -76,7 +76,6 @@ EDASStompTopicListenerSettingsJsonAdapter >> ack: anObject [
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> debug [
 
-	<edaSettings: 'Debug' withDescription:'Whether to enable debug mode' atPosition: 9>
 
 	^ debug
 ]
@@ -89,8 +88,6 @@ EDASStompTopicListenerSettingsJsonAdapter >> debug: anObject [
 
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> durable [
-
-	<edaSettings: 'Durable' withDescription: 'Whether the topic is durable' atPosition: 8>
 	^ durable
 ]
 
@@ -115,8 +112,7 @@ EDASStompTopicListenerSettingsJsonAdapter >> edaApplication: anObject [
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> errorStrategyName [
 
-	<edaSettings: 'Error strategy' withDescription: 'The strategy to use in case of errors' atPosition:
-	11>
+
 	^ errorStrategyName
 ]
 
@@ -129,7 +125,7 @@ EDASStompTopicListenerSettingsJsonAdapter >> errorStrategyName: anObject [
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> host [
 
-	<edaSettings: 'host' withDescription: 'The host' atPosition: 1>
+
 	^ host
 ]
 
@@ -148,7 +144,6 @@ EDASStompTopicListenerSettingsJsonAdapter >> isReadOnly: aSymbol [
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> password [
 
-	<edaSettings: 'password' withDescription: 'The password' atPosition: 4>
 	^ password
 ]
 
@@ -161,7 +156,6 @@ EDASStompTopicListenerSettingsJsonAdapter >> password: anObject [
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> port [
 
-	<edaSettings: 'port' withDescription: 'The port' atPosition: 2>
 	^ port
 ]
 
@@ -174,8 +168,6 @@ EDASStompTopicListenerSettingsJsonAdapter >> port: anObject [
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> prefetchCount [
 
-	<edaSettings: 'Prefetch count' withDescription: 'The number of messages to prefetch'
-	atPosition: 7>
 	^ prefetchCount
 ]
 
@@ -188,7 +180,6 @@ EDASStompTopicListenerSettingsJsonAdapter >> prefetchCount: anObject [
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> queue [
 
-	<edaSettings: 'queue' withDescription: 'The queue' atPosition: 5>
 	^ queue
 ]
 
@@ -201,8 +192,6 @@ EDASStompTopicListenerSettingsJsonAdapter >> queue: anObject [
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> restartOnErrors [
 
-	<edaSettings: 'Restart on errors' withDescription: 'Whether to restart on errors'
-	atPosition: 10>
 	^ restartOnErrors ifNil: [ true ]
 ]
 
@@ -221,7 +210,6 @@ EDASStompTopicListenerSettingsJsonAdapter >> supportsMultiple: aSymbol [
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> timeout [
 
-	<edaSettings: 'Timeout' withDescription: 'The timeout' atPosition: 6>
 	^ timeout
 ]
 
@@ -234,7 +222,6 @@ EDASStompTopicListenerSettingsJsonAdapter >> timeout: anObject [
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> user [
 
-	<edaSettings: 'user' withDescription: 'The user' atPosition: 3>
 	^ user
 ]
 

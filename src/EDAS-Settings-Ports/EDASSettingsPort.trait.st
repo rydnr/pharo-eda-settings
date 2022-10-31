@@ -40,11 +40,14 @@ EDASSettingsPort classSide >> priority [
 	self shouldBeImplemented 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #settings }
 EDASSettingsPort classSide >> settingsAttributes [
 
-	^ ((Pragma allNamed: #edaSettings:withDescription:atPosition: in: self) sort: [ :a :b | (a argumentAt: 3) < (b argumentAt: 3) ])
-		  collect: [ :p | p method selector ]
+	^ ((Pragma
+		    allNamed: #edaSettings:withDescription:atPosition:
+		    includingTraitsInSuperAndSubclasses: self) sort: [ :a :b | 
+		   (a argumentAt: 3) < (b argumentAt: 3) ]) collect: [ :p | 
+		  p method selector ]
 ]
 
 { #category : #settings }
@@ -59,10 +62,28 @@ EDASSettingsPort classSide >> withApp: anEDAApplication [
 		yourself
 ]
 
+{ #category : #accessing }
+EDASSettingsPort >> descriptionFor: aString [
+
+	^ ((Pragma
+		    allNamed: #edaSettings:withDescription:atPosition:
+		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
+		   p method selector = aString asSymbol ]) first argumentAt: 2
+]
+
 { #category : #testing }
 EDASSettingsPort >> isReadOnly: aSymbol [
 
 	self shouldBeImplemented
+]
+
+{ #category : #accessing }
+EDASSettingsPort >> labelFor: aString [
+
+	^ ((Pragma
+		    allNamed: #edaSettings:withDescription:atPosition:
+		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
+		   p method selector = aString asSymbol ]) first argumentAt: 1
 ]
 
 { #category : #testing }

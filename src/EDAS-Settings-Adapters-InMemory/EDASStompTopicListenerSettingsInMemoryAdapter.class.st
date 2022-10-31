@@ -102,7 +102,7 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> queue: val [
 	queue := val
 ]
 
-{ #category : #testing }
+{ #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> restartOnErrors [
 
 	^ super restartOnErrors
