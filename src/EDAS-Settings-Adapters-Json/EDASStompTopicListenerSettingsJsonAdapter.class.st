@@ -135,12 +135,6 @@ EDASStompTopicListenerSettingsJsonAdapter >> host: anObject [
 	host := anObject
 ]
 
-{ #category : #testing }
-EDASStompTopicListenerSettingsJsonAdapter >> isReadOnly: aSymbol [
-
-	^ true
-]
-
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> password [
 
@@ -199,12 +193,6 @@ EDASStompTopicListenerSettingsJsonAdapter >> restartOnErrors [
 EDASStompTopicListenerSettingsJsonAdapter >> restartOnErrors: anObject [
 
 	restartOnErrors := anObject
-]
-
-{ #category : #testing }
-EDASStompTopicListenerSettingsJsonAdapter >> supportsMultiple: aSymbol [
-
-	^ aSymbol = #errorStrategyName
 ]
 
 { #category : #accessing }

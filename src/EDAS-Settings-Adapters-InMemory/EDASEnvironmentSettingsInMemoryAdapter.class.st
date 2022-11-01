@@ -29,6 +29,8 @@ EDASEnvironmentSettingsInMemoryAdapter class >> priority [
 
 { #category : #accessing }
 EDASEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
+
+	<edaSettings: 'Environment' withDescription: 'The environment' atPosition: 1 readOnly: false multiple: false>
 	^ currentEnvironment ifNil: [ '' ]
 ]
 
@@ -54,19 +56,7 @@ EDASEnvironmentSettingsInMemoryAdapter >> edaApplication: anEDAApplication [
 	edaApplication := anEDAApplication
 ]
 
-{ #category : #testing }
-EDASEnvironmentSettingsInMemoryAdapter >> isReadOnly: environment [
-
-	^ false
-]
-
 { #category : #logic }
 EDASEnvironmentSettingsInMemoryAdapter >> resolveEnvironmentSettingsPort [
 	^ self
-]
-
-{ #category : #testing }
-EDASEnvironmentSettingsInMemoryAdapter >> supportsMultiple: environment [
-
-	^ false
 ]

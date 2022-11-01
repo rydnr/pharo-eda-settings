@@ -33,6 +33,8 @@ EDASStompTopicListenerSettingsInMemoryAdapter class >> priority [
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> ack [
 
+	<edaSettings: 'Ack' withDescription: 'The ACK mode' atPosition: 12
+	readOnly: false multiple: true>
 	^ ack ifNil: [ #auto ]
 ]
 
@@ -74,15 +76,12 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> initialize [
 	self doInitialize
 ]
 
-{ #category : #testing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> isReadOnly: aSymbol [
-
-	^ false
-]
-
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount [
 
+	<edaSettings: 'Prefetch count' withDescription:
+	'The number of messages to prefetch' atPosition: 7 readOnly: false
+	multiple: false>
 	^ prefetchCount ifNil: [ 1 ]
 ]
 
@@ -94,6 +93,8 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount: val [
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> queue [
 
+
+	<edaSettings: 'queue' withDescription: 'The queue' atPosition: 5 readOnly: false multiple: false>
 	^ queue ifNil: [ '' ]
 ]
 
@@ -106,12 +107,6 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> queue: val [
 EDASStompTopicListenerSettingsInMemoryAdapter >> restartOnErrors [
 
 	^ super restartOnErrors
-]
-
-{ #category : #testing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> supportsMultiple: aSymbol [
-
-	^ super supportsMultiple: aSymbol
 ]
 
 { #category : #accessing }

@@ -14,13 +14,3 @@ EDASTPortSettingsPort >> edaApplication [
 EDASTPortSettingsPort >> edaApplication: anEDAApplication [
 	self subclassResponsibility
 ]
-
-{ #category : #testing }
-EDASTPortSettingsPort >> isReadOnly: aSymbol [
-	^ false
-]
-
-{ #category : #testing }
-EDASTPortSettingsPort >> supportsMultiple: aSymbol [
-	^ false
-]

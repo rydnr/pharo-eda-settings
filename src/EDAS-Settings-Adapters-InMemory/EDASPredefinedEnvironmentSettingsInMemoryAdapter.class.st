@@ -69,8 +69,3 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> edaApplication: anEDAApplica
 EDASPredefinedEnvironmentSettingsInMemoryAdapter >> resolveEnvironmentSettingsPort [
 	^ self
 ]
-
-{ #category : #'as yet unclassified' }
-EDASPredefinedEnvironmentSettingsInMemoryAdapter >> supportsMultiple: aSymbol [
-	^ true
-]

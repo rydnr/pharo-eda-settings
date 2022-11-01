@@ -10,12 +10,6 @@ EDASCommandListenerErrorStrategySettingsPort >> availableStrategies [
 	self shouldBeImplemented
 ]
 
-{ #category : #testing }
-EDASCommandListenerErrorStrategySettingsPort >> supportsMultiple: aSymbol [
-
-	^ true
-]
-
 { #category : #accessing }
 EDASCommandListenerErrorStrategySettingsPort >> values: aSymbol [
 

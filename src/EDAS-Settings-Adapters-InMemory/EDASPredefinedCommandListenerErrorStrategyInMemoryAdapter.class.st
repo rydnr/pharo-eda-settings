@@ -62,9 +62,3 @@ EDASPredefinedCommandListenerErrorStrategyInMemoryAdapter >> strategyName: anObj
 
 	strategyName := anObject
 ]
-
-{ #category : #testing }
-EDASPredefinedCommandListenerErrorStrategyInMemoryAdapter >> supportsMultiple: aSymbol [
-
-	^ true
-]

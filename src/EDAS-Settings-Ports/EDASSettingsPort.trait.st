@@ -66,28 +66,41 @@ EDASSettingsPort classSide >> withApp: anEDAApplication [
 EDASSettingsPort >> descriptionFor: aString [
 
 	^ ((Pragma
-		    allNamed: #edaSettings:withDescription:atPosition:
+		    allNamed: #edaSettings:withDescription:atPosition:readOnly:multiple:
 		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
-		   p method selector = aString asSymbol ]) first argumentAt: 2
+		   p method selector = aString asSymbol ]) ifEmpty: [ nil ] ifNotEmpty: [ :col | col first argumentAt: 2 ]
 ]
 
 { #category : #testing }
-EDASSettingsPort >> isReadOnly: aSymbol [
+EDASSettingsPort >> isReadOnly: aString [
 
-	self shouldBeImplemented
+	^ ((Pragma
+		    allNamed:
+		    #edaSettings:withDescription:atPosition:readOnly:multiple:
+		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
+		   p method selector = aString asSymbol ])
+		  ifEmpty: [ false ]
+		  ifNotEmpty: [ :col | col first argumentAt: 4 ]
 ]
 
 { #category : #accessing }
 EDASSettingsPort >> labelFor: aString [
 
 	^ ((Pragma
-		    allNamed: #edaSettings:withDescription:atPosition:
+		    allNamed:
+		    #edaSettings:withDescription:atPosition:readOnly:multiple:
 		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
-		   p method selector = aString asSymbol ]) first argumentAt: 1
+		   p method selector = aString asSymbol ]) ifEmpty: [ nil ] ifNotEmpty: [ :col | col first argumentAt: 1 ]
 ]
 
 { #category : #testing }
-EDASSettingsPort >> supportsMultiple: aSymbol [
+EDASSettingsPort >> supportsMultiple: aString [
 
-	self shouldBeImplemented
+	^ ((Pragma
+		    allNamed:
+		    #edaSettings:withDescription:atPosition:readOnly:multiple:
+		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
+		   p method selector = aString asSymbol ])
+		  ifEmpty: [ false ]
+		  ifNotEmpty: [ :col | col first argumentAt: 5 ]
 ]

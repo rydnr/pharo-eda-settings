@@ -27,6 +27,7 @@ Pragma class >> allNamed: aString includingTraitsInSuperAndSubclasses: aClass [
 	^ Array streamContents: [ :stream | 
 		  | classes |
 		  classes := Set new.
+		classes add: aClass.
 		  traitsBlock value: aClass value: classes value: traitsBlock.
 		  superclassBlock
 			  value: aClass

@@ -12,14 +12,6 @@ EDASStompSettingsPort classSide >> availableErrorStrategies [
 ]
 
 { #category : #resolving }
-EDASStompSettingsPort >> ack [
-
-	<edaSettings: 'Ack' withDescription:
-	'The ACK mode' atPosition: 12>
-	self shouldBeImplemented
-]
-
-{ #category : #resolving }
 EDASStompSettingsPort >> availableErrorStrategies [
 
 	^ self class availableErrorStrategies
@@ -29,7 +21,7 @@ EDASStompSettingsPort >> availableErrorStrategies [
 EDASStompSettingsPort >> debug [
 
 	<edaSettings: 'Debug' withDescription: 'Whether to enable debug mode'
-	atPosition: 9>
+	atPosition: 9 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
@@ -37,20 +29,22 @@ EDASStompSettingsPort >> debug [
 EDASStompSettingsPort >> durable [
 
 	<edaSettings: 'Durable' withDescription:
-	'Whether the topic is durable' atPosition: 8>
+	'Whether the topic is durable' atPosition: 8 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> errorStrategyName [
+
 	<edaSettings: 'Error strategy' withDescription:
-	'The strategy to use in case of errors' atPosition: 11>
+	'The strategy to use in case of errors' atPosition: 11 readOnly: false multiple: true>
 	self shouldBeImplemented
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> host [
-	<edaSettings: 'host' withDescription: 'The host' atPosition: 1>
+
+	<edaSettings: 'host' withDescription: 'The host' atPosition: 1 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
@@ -58,32 +52,15 @@ EDASStompSettingsPort >> host [
 EDASStompSettingsPort >> password [
 
 	<edaSettings: 'password' withDescription: 'The password' atPosition:
-	4>
+	4 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> port [
 
-	<edaSettings: 'port' withDescription: 'The port' atPosition: 2>
+	<edaSettings: 'port' withDescription: 'The port' atPosition: 2 readOnly: false multiple: false>
 	self shouldBeImplemented
-]
-
-{ #category : #resolving }
-EDASStompSettingsPort >> prefetchCount [
-
-	<edaSettings: 'Prefetch count' withDescription:
-	'The number of messages to prefetch' atPosition: 7>
-	self shouldBeImplemented 
-	
-]
-
-{ #category : #resolving }
-EDASStompSettingsPort >> queue [
-
-	<edaSettings: 'queue' withDescription: 'The queue' atPosition: 5>
-	self shouldBeImplemented 
-	
 ]
 
 { #category : #resolving }
@@ -93,12 +70,6 @@ EDASStompSettingsPort >> restartOnErrors [
 	'Whether to restart on errors' atPosition: 10>
 	self shouldBeImplemented 
 	
-]
-
-{ #category : #testing }
-EDASStompSettingsPort >> supportsMultiple: aSymbol [
-
-	^ aSymbol = #errorStrategy or: [ aSymbol = #ack ]
 ]
 
 { #category : #resolving }
