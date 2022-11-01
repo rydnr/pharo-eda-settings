@@ -6,9 +6,11 @@ Trait {
 { #category : #logic }
 EDASTPortResolver >> availableAdaptersFor: aSymbol [
 
-	^ ((Pragma allNamed: #edaPort:as:)
+	^ ((Pragma allNamed: #edaPort:as:atPosition:)
 		   select: [ :p | p arguments first = aSymbol ]
-		   thenCollect: [ :p | p methodClass ]) asOrderedCollection ifEmpty: [ OrderedCollection new ] ifNotEmpty: [ :c | self availableAdaptersForPort: c first ]
+		   thenCollect: [ :p | p methodClass ]) asOrderedCollection
+		  ifEmpty: [ OrderedCollection new ]
+		  ifNotEmpty: [ :c | self availableAdaptersForPort: c first ]
 ]
 
 { #category : #logic }
@@ -17,16 +19,12 @@ EDASTPortResolver >> availableAdaptersForPort: aPort [
 	^ (aPort traitUsers select: [ :cls | cls accepts: aPort ]) sorted asOrderedCollection 
 ]
 
-{ #category : #logic }
-EDASTPortResolver >> availableCommandListenerSettingsAdapters [
+{ #category : #helpers }
+EDASTPortResolver >> availablePorts [
 
-	^ self availableAdaptersForPort:
-		  EDASCommandListenerSettingsPort
-]
-
-{ #category : #logic }
-EDASTPortResolver >> availableEnvironmentSettingsAdapters [
-	^ self availableAdaptersForPort: EDASEnvironmentSettingsPort
+	^ (((Pragma allNamed: #edaPort:as:atPosition:) sorted: [ :a :b | 
+		   (a argumentAt: 3) < (b argumentAt: 3) ]) collect: [ :p | 
+		    p method methodClass ]) asOrderedCollection
 ]
 
 { #category : #accessing }
@@ -43,20 +41,11 @@ EDASTPortResolver >> portAdapterClassSymbol: aString [
 { #category : #helpers }
 EDASTPortResolver >> portDescription: aSymbol [
 
-	^ ((Pragma allNamed: #edaPort:as:)
+	^ ((Pragma allNamed: #edaPort:as:atPosition:)
 		   select: [ :p | p arguments first = aSymbol ]
-		   thenCollect: [ :p | p arguments second ]) asOrderedCollection ifEmpty: [ nil ] ifNotEmpty: [ :c | c first ] 
-]
-
-{ #category : #accessing }
-EDASTPortResolver >> resolveCommandListenerSettingsPort [
-
-	^ self resolvePort: EDASCommandListenerSettingsPort
-]
-
-{ #category : #accessing }
-EDASTPortResolver >> resolveEnvironmentSettingsPort [
-	^ self resolvePort: EDASEnvironmentSettingsPort
+		   thenCollect: [ :p | p arguments second ]) asOrderedCollection
+		  ifEmpty: [ nil ]
+		  ifNotEmpty: [ :c | c first ]
 ]
 
 { #category : #api }

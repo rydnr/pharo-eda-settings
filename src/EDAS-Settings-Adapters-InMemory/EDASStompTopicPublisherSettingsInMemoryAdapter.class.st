@@ -39,6 +39,9 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> doInitialize [
 
 { #category : #accessing }
 EDASStompTopicPublisherSettingsInMemoryAdapter >> errorExchange [
+
+	<edaSettings: 'Error exchange' withDescription: 'The name of the error exchange' atPosition: 12
+	readOnly: false multiple: false>
 	^ errorExchange
 ]
 
@@ -49,6 +52,10 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> errorExchange: aString [
 
 { #category : #accessing }
 EDASStompTopicPublisherSettingsInMemoryAdapter >> errorRoutingKey [
+
+
+	<edaSettings: 'Error routing key' withDescription: 'The routing key for error messages' atPosition: 13
+	readOnly: false multiple: false>
 	^ errorRoutingKey
 ]
 
@@ -59,6 +66,9 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> errorRoutingKey: val [
 
 { #category : #accessing }
 EDASStompTopicPublisherSettingsInMemoryAdapter >> exchange [
+
+	<edaSettings: 'Exchange' withDescription: 'The name of the exchange'
+	atPosition: 5 readOnly: false multiple: false>
 	^ exchange
 ]
 
@@ -69,6 +79,9 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> exchange: val [
 
 { #category : #accessing }
 EDASStompTopicPublisherSettingsInMemoryAdapter >> routingKey [
+
+	<edaSettings: 'Routing key' withDescription: 'The routing key when publishing messages'
+	atPosition: 6 readOnly: false multiple: false>
 	^ routingKey
 ]
 

@@ -255,7 +255,7 @@ EDASSettings class >> edaSettingsOn: aBuilder [
 { #category : #settings }
 EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymbol [
 
-	| parent parentGroup |
+	| parent parentGroup ports resolver |
 	parent := anEDAApplication applicationName.
 	parentGroup := aBuilder group: parent.
 	parentGroup
@@ -263,19 +263,19 @@ EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymb
 		parent: aSymbol;
 		description: parent;
 		noOrdering.
-	self
-		adapterSettingsOn: aBuilder
-		for: EDASEnvironmentSettingsPort
-		implementedBy: anEDAApplication environmentSettings
-		under: parent
-		on: anEDAApplication
-		order: 1.
-	self adapterSettingsOn: aBuilder
-	for: EDASCommandListenerSettingsPort 
-	implementedBy: anEDAApplication commandListenerSettings
-	under: parent
-	on: anEDAApplication
-	order: 2.
+	resolver := EDASPortResolver new.
+	ports := resolver availablePorts.
+	ports doWithIndex: [ :p :i | 
+		| adapter |
+		adapter := resolver resolvePort: p forApp: anEDAApplication.
+		anEDAApplication portSettings adapterFor: p is: adapter.
+		self
+			adapterSettingsOn: aBuilder
+			for: p
+			implementedBy: adapter
+			under: parent
+			on: anEDAApplication
+			order: i ].
 	self
 		portSettingsOn: aBuilder
 		under: parent

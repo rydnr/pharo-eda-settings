@@ -63,6 +63,12 @@ EDASSettingsPort classSide >> withApp: anEDAApplication [
 ]
 
 { #category : #accessing }
+EDASSettingsPort >> adapterFor: aPort is: anAdapter [
+
+self shouldBeImplemented
+]
+
+{ #category : #accessing }
 EDASSettingsPort >> descriptionFor: aString [
 
 	^ ((Pragma

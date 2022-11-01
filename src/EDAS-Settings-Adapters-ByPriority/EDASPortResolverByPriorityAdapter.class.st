@@ -14,7 +14,7 @@ EDASPortResolverByPriorityAdapter class >> description [
 	^ 'Priority-based'
 ]
 
-{ #category : #logic }
+{ #category : #'as yet unclassified' }
 EDASPortResolverByPriorityAdapter >> availableCommandListenerSettingsAdapters [
 	^ self availableAdaptersForPort: EDASCommandListenerSettingsPort
 ]

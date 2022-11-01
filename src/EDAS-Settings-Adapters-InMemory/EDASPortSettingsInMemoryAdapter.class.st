@@ -9,7 +9,9 @@ Class {
 		'commandListenerSettingsAdapterClass',
 		'edaApplication',
 		'commandListenerSettings',
-		'environmentSettings'
+		'environmentSettings',
+		'adapters',
+		'adapterClasses'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
@@ -21,6 +23,12 @@ EDASPortSettingsInMemoryAdapter class >> withAnnouncer: anEDASettingsAnnouncer [
 		  announcer: anEDASettingsAnnouncer;
 		edaApplication: anEDASettingsAnnouncer edaApplication;
 		  yourself
+]
+
+{ #category : #accessing }
+EDASPortSettingsInMemoryAdapter >> adapterFor: aPort is: anAdapter [
+
+	adapters at: aPort put: anAdapter
 ]
 
 { #category : #accessing }
@@ -36,27 +44,19 @@ EDASPortSettingsInMemoryAdapter >> announcer: anObject [
 { #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> commandListenerSettings [
 
-	^ commandListenerSettings ifNil: [ 
-		  | t |
-		  t := EDASPortResolver new
-			       resolvePort: EDASCommandListenerSettingsPort
-			       forApp: self edaApplication.
-		  self commandListenerSettings: t.
-		  t ]
+	^ adapters at: EDASCommandListenerSettingsPort ifAbsent: [ nil ]
 ]
 
 { #category : #testing }
 EDASPortSettingsInMemoryAdapter >> commandListenerSettings: newValue [
 
-	| oldValue |
-	oldValue := commandListenerSettings.
-	commandListenerSettings := newValue
+	^ self adapterFor: #commandListener is: newValue
 ]
 
 { #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> commandListenerSettingsAdapterClass [
 
-	^ commandListenerSettingsAdapterClass ifNil: [ 
+	^ adapterClasses at: EDASCommandListenerSettingsPort ifAbsent: [ 
 		  | t |
 		  t := self commandListenerSettings.
 		  self commandListenerSettingsAdapterClass: t class.
@@ -66,15 +66,8 @@ EDASPortSettingsInMemoryAdapter >> commandListenerSettingsAdapterClass [
 { #category : #testing }
 EDASPortSettingsInMemoryAdapter >> commandListenerSettingsAdapterClass: newValue [
 
-	| oldValue |
-	oldValue := commandListenerSettingsAdapterClass.
-	commandListenerSettingsAdapterClass := newValue.
-	oldValue = newValue ifTrue: [ ^ self ].
-	self commandListenerSettings: (newValue withApp: self edaApplication).
-	self announcer announce: (EDASCommandListenerSettingsPortChanged
-			 old: oldValue
-			 new: newValue
-			 on: self edaApplication)
+	^ self updateAdapterClass: newValue for: #commandListener andAnnounce: EDASCommandListenerSettingsPortChanged
+
 ]
 
 { #category : #accessing }
@@ -92,13 +85,8 @@ EDASPortSettingsInMemoryAdapter >> edaApplication: anObject [
 { #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> environmentSettings [
 
-	^ environmentSettings ifNil: [ 
-		  | t |
-		  t := EDASPortResolver new
-			       resolvePort: EDASEnvironmentSettingsPort
-			       forApp: self edaApplication.
-		  self environmentSettings: t.
-		  t ]
+	^ adapters at: EDASEnvironmentSettingsPort ifAbsent: [ nil ]
+
 ]
 
 { #category : #accessing }
@@ -112,7 +100,7 @@ EDASPortSettingsInMemoryAdapter >> environmentSettings: newValue [
 { #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> environmentSettingsAdapterClass [
 
-	^ environmentSettingsAdapterClass ifNil: [ 
+	^ adapterClasses at: EDASCommandListenerSettingsPort ifAbsent: [ 
 		  | t |
 		  t := self environmentSettings.
 		  self environmentSettingsAdapterClass: t class.
@@ -122,13 +110,27 @@ EDASPortSettingsInMemoryAdapter >> environmentSettingsAdapterClass [
 { #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> environmentSettingsAdapterClass: newValue [
 
+
+	^ self
+		  updateAdapterClass: newValue
+		  for: #environment
+		  andAnnounce: EDASEnvironmentSettingsPortChanged
+]
+
+{ #category : #initialization }
+EDASPortSettingsInMemoryAdapter >> initialize [
+	super initialize.
+	adapters := Dictionary new.
+	adapterClasses := Dictionary new.
+]
+
+{ #category : #testing }
+EDASPortSettingsInMemoryAdapter >> updateAdapterClass: newValue for: aSymbol andAnnounce: anEventClass [
+
 	| oldValue |
-	oldValue := environmentSettingsAdapterClass.
-	environmentSettingsAdapterClass := newValue.
+	oldValue := adapterClasses at: aSymbol ifAbsent: [ nil ].
+	adapterClasses at: aSymbol put: newValue.
 	oldValue = newValue ifTrue: [ ^ self ].
-	self environmentSettings: (newValue withApp: self edaApplication).
-	self announcer announce: (EDASEnvironmentSettingsPortChanged
-			 old: oldValue
-			 new: newValue
-			 on: self edaApplication)
+	self adapterFor: newValue is: (newValue withApp: self edaApplication).
+	self announcer announce: (anEventClass old: oldValue new: newValue on: self edaApplication)
 ]

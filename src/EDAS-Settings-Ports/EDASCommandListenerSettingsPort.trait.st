@@ -34,6 +34,13 @@ EDASCommandListenerSettingsPort >> errorStrategy [
 	self subclassResponsibility
 ]
 
+{ #category : #accessing }
+EDASCommandListenerSettingsPort >> port [
+
+	<edaPort: #commandListener as: 'Command listener' atPosition: 2>
+	^ self
+]
+
 { #category : #testing }
 EDASCommandListenerSettingsPort >> restartOnErrors [
 
