@@ -19,25 +19,33 @@ Pragma class >> allNamed: aString includingTraitsInSuperAndSubclasses: aClass [
 			                   value: sb
 			                   value: tb.
 		                   tb value: c value: col value: tb ] ].
-	subclassBlock := [ :cls :col :tb | 
+	subclassBlock := [ :cls :col :sb :tb | 
 	                 cls subclassesDo: [ :c | 
 		                 col add: c.
+		                 sb
+			                 value: c
+			                 value: col
+			                 value: sb
+			                 value: tb.
 		                 tb value: c value: col value: tb ] ].
 
 	^ Array streamContents: [ :stream | 
 		  | classes |
 		  classes := Set new.
-		classes add: aClass.
+		  classes add: aClass.
 		  traitsBlock value: aClass value: classes value: traitsBlock.
 		  superclassBlock
 			  value: aClass
 			  value: classes
 			  value: superclassBlock
 			  value: traitsBlock.
-		  subclassBlock value: aClass value: classes value: traitsBlock.
+		  subclassBlock
+			  value: aClass
+			  value: classes
+			  value: subclassBlock
+			  value: traitsBlock.
 		  classes do: [ :class | 
 			  class pragmasDo: [ :pragma | 
 				  pragma selector = aString asSymbol ifTrue: [ 
-					  stream nextPut: pragma ] ].
-			  aClass = class ifTrue: [ ^ stream contents ] ] ]
+					  stream nextPut: pragma ] ] ] ]
 ]

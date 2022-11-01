@@ -44,7 +44,7 @@ EDASSettingsPort classSide >> priority [
 EDASSettingsPort classSide >> settingsAttributes [
 
 	^ ((Pragma
-		    allNamed: #edaSettings:withDescription:atPosition:
+		    allNamed: #edaSettings:withDescription:atPosition:readOnly:multiple:
 		    includingTraitsInSuperAndSubclasses: self) sort: [ :a :b | 
 		   (a argumentAt: 3) < (b argumentAt: 3) ]) collect: [ :p | 
 		  p method selector ]
