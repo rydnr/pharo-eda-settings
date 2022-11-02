@@ -44,14 +44,15 @@ EDASStompSettingsPort >> errorStrategyName [
 { #category : #resolving }
 EDASStompSettingsPort >> host [
 
-	<edaSettings: 'host' withDescription: 'The host' atPosition: 1 readOnly: false multiple: false>
+	<edaSettings: 'Host' withDescription: 'The host' atPosition: 1
+	readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> password [
 
-	<edaSettings: 'password' withDescription: 'The password' atPosition:
+	<edaSettings: 'Password' withDescription: 'The password' atPosition:
 	4 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
@@ -59,7 +60,8 @@ EDASStompSettingsPort >> password [
 { #category : #resolving }
 EDASStompSettingsPort >> port [
 
-	<edaSettings: 'port' withDescription: 'The port' atPosition: 2 readOnly: false multiple: false>
+	<edaSettings: 'Port' withDescription: 'The port' atPosition: 2
+	readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
@@ -91,7 +93,7 @@ EDASStompSettingsPort >> user [
 { #category : #resolving }
 EDASStompSettingsPort >> values: aSymbol [
 
-	aSymbol = #errorStrategyName
-		ifTrue: [ ^ self availableErrorStrategies ]
-		ifFalse: [ aSymbol = #ack ifTrue: [ ^ OrderedCollection with: #'client-individual' with: #auto ] ifFalse: [ ^ OrderedCollection new ] ]
+	^ aSymbol = #errorStrategyName
+		ifTrue: [ self availableErrorStrategies ]
+		ifFalse: [ OrderedCollection new ]
 ]

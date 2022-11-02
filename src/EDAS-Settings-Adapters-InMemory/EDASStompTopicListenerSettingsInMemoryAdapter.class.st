@@ -77,6 +77,12 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> initialize [
 ]
 
 { #category : #accessing }
+EDASStompTopicListenerSettingsInMemoryAdapter >> port [
+
+	^ super port
+]
+
+{ #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount [
 
 	<edaSettings: 'Prefetch count' withDescription:
@@ -93,8 +99,8 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount: val [
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> queue [
 
-
-	<edaSettings: 'queue' withDescription: 'The queue' atPosition: 5 readOnly: false multiple: false>
+	<edaSettings: 'Queue' withDescription: 'The queue' atPosition: 5
+	readOnly: false multiple: false>
 	^ queue ifNil: [ '' ]
 ]
 
@@ -119,4 +125,16 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> topicListener [
 EDASStompTopicListenerSettingsInMemoryAdapter >> topicListener: anObject [
 
 	topicListener := anObject
+]
+
+{ #category : #accessing }
+EDASStompTopicListenerSettingsInMemoryAdapter >> values: aSymbol [
+
+	^ aSymbol = #ack
+				ifTrue: [ 
+					OrderedCollection
+						  with: #'client-individual'
+						  with: #client
+						  with: #auto ]
+				ifFalse: [ super values: aSymbol ]
 ]
