@@ -5,6 +5,12 @@ Trait {
 	#category : #'EDAS-Settings-Ports'
 }
 
+{ #category : #accessing }
+EDASEnvironmentSettingsPort classSide >> adapterClassAccessor [
+
+	^ #environmentSettingsAdapterClass
+]
+
 { #category : #testing }
 EDASEnvironmentSettingsPort classSide >> description [
 

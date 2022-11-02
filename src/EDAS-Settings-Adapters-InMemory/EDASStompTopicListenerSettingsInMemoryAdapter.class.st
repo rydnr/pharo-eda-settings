@@ -51,6 +51,12 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> availableErrorStrategies [
 ]
 
 { #category : #accessing }
+EDASStompTopicListenerSettingsInMemoryAdapter >> commandListener [
+
+	^ self
+]
+
+{ #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> destination [
 	^ '/amq/queue/' , self queue
 ]

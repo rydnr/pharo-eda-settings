@@ -5,6 +5,12 @@ Trait {
 	#category : #'EDAS-Settings-Ports'
 }
 
+{ #category : #accessing }
+EDASPortSettingsPort >> adapterClassAccessor [
+
+	self shouldBeImplemented
+]
+
 { #category : #testing }
 EDASPortSettingsPort >> commandListenerSettings [
 

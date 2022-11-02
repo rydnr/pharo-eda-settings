@@ -481,6 +481,21 @@ EDASSettings class >> old_commandListenerSettingsOn: aBuilder under: parent on: 
 ]
 
 { #category : #settings }
+EDASSettings class >> portEntries [
+
+	| portResolver result |
+	result := OrderedCollection new.
+	portResolver := EDASPortResolver new.
+	portResolver availablePorts keysAndValuesDo: [ :i :p | 
+		result add: (OrderedCollection withAll:
+				 (((portResolver availableAdaptersForPort: p) collect: [ 
+					   :adapterClass | 
+					   adapterClass description translated -> adapterClass ]) 
+					  sorted: [ :a :b | a < b ])) ].
+	^ result
+]
+
+{ #category : #settings }
 EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app order: anInteger [
 
 	| entry key portResolver |
@@ -490,19 +505,19 @@ EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app order: anI
 		label: 'Ports' translated;
 		parent: aParent.
 	portResolver := EDASPortResolver new.
-	#( 'environment' 'commandListener' ) asOrderedCollection 
-		keysAndValuesDo: [ :i :p | 
-			| values |
-			values := OrderedCollection withAll:
-				          (((portResolver availableAdaptersFor: p) collect: [ 
-					            :adapterClass | 
-					            adapterClass description translated -> adapterClass ]) 
-					           sorted: [ :a :b | a < b ]).
-			values ifNotEmpty: [ 
-			(aBuilder pickOne: (portResolver portAdapterClassSymbol: p))
+	portResolver availablePorts keysAndValuesDo: [ :i :p | 
+		| values |
+		values := OrderedCollection withAll:
+			          (((portResolver availableAdaptersForPort: p) collect: [ 
+				            :adapterClass | 
+				            adapterClass description translated -> adapterClass ]) 
+				           sorted: [ :a :b | a < b ]).
+		values ifNotEmpty: [ 
+			(aBuilder pickOne: p adapterClassAccessor)
 				label: (portResolver portDescription: p) translated;
 				target: app portSettings;
 				parent: key;
+				default: values first key;
 				domainValues: values;
 				order: i ] ]
 ]

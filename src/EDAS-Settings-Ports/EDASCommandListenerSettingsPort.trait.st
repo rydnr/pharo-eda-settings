@@ -5,6 +5,12 @@ Trait {
 	#category : #'EDAS-Settings-Ports'
 }
 
+{ #category : #accessing }
+EDASCommandListenerSettingsPort classSide >> adapterClassAccessor [
+
+	^ #commandListenerSettingsAdapterClass
+]
+
 { #category : #testing }
 EDASCommandListenerSettingsPort classSide >> description [
 	^ 'Command listener'
@@ -18,7 +24,8 @@ EDASCommandListenerSettingsPort classSide >> label [
 
 { #category : #metadata }
 EDASCommandListenerSettingsPort classSide >> selector [
-	^ nil
+
+	^ #commandListener
 ]
 
 { #category : #resolving }

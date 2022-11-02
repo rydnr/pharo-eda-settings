@@ -39,10 +39,10 @@ EDASTPortResolver >> portAdapterClassSymbol: aString [
 ]
 
 { #category : #helpers }
-EDASTPortResolver >> portDescription: aSymbol [
+EDASTPortResolver >> portDescription: aPort [
 
 	^ ((Pragma allNamed: #edaPort:as:atPosition:)
-		   select: [ :p | p arguments first = aSymbol ]
+		   select: [ :p | p method methodClass = aPort ]
 		   thenCollect: [ :p | p arguments second ]) asOrderedCollection
 		  ifEmpty: [ nil ]
 		  ifNotEmpty: [ :c | c first ]

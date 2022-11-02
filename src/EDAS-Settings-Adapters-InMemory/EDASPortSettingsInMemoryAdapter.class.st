@@ -42,6 +42,12 @@ EDASPortSettingsInMemoryAdapter >> announcer: anObject [
 ]
 
 { #category : #accessing }
+EDASPortSettingsInMemoryAdapter >> commandListener [
+
+	^ adapters at: EDASCommandListenerSettingsPort ifAbsent: [ nil ]
+]
+
+{ #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> commandListenerSettings [
 
 	^ adapters at: EDASCommandListenerSettingsPort ifAbsent: [ nil ]
@@ -50,7 +56,7 @@ EDASPortSettingsInMemoryAdapter >> commandListenerSettings [
 { #category : #testing }
 EDASPortSettingsInMemoryAdapter >> commandListenerSettings: newValue [
 
-	^ self adapterFor: #commandListener is: newValue
+	^ self adapterFor: EDASCommandListenerSettingsPort is: newValue
 ]
 
 { #category : #accessing }
@@ -66,8 +72,15 @@ EDASPortSettingsInMemoryAdapter >> commandListenerSettingsAdapterClass [
 { #category : #testing }
 EDASPortSettingsInMemoryAdapter >> commandListenerSettingsAdapterClass: newValue [
 
-	^ self updateAdapterClass: newValue for: #commandListener andAnnounce: EDASCommandListenerSettingsPortChanged
+	^ self
+		  updateAdapterClass: newValue
+		  for: EDASCommandListenerSettingsPort
+		  andAnnounce: EDASCommandListenerSettingsPortChanged
+]
 
+{ #category : #accessing }
+EDASPortSettingsInMemoryAdapter >> currentEnvironment [
+	^ adapters at: EDASEnvironmentSettingsPort ifAbsent: [ nil ]
 ]
 
 { #category : #accessing }
@@ -92,15 +105,13 @@ EDASPortSettingsInMemoryAdapter >> environmentSettings [
 { #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> environmentSettings: newValue [
 
-	| oldValue |
-	oldValue := environmentSettings.
-	environmentSettings := newValue
+	^ self adapterFor: EDASEnvironmentSettingsPort is: newValue
 ]
 
 { #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> environmentSettingsAdapterClass [
 
-	^ adapterClasses at: EDASCommandListenerSettingsPort ifAbsent: [ 
+	^ adapterClasses at: EDASEnvironmentSettingsPort ifAbsent: [ 
 		  | t |
 		  t := self environmentSettings.
 		  self environmentSettingsAdapterClass: t class.
@@ -110,10 +121,9 @@ EDASPortSettingsInMemoryAdapter >> environmentSettingsAdapterClass [
 { #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> environmentSettingsAdapterClass: newValue [
 
-
 	^ self
 		  updateAdapterClass: newValue
-		  for: #environment
+		  for: EDASEnvironmentSettingsPort
 		  andAnnounce: EDASEnvironmentSettingsPortChanged
 ]
 
@@ -125,12 +135,13 @@ EDASPortSettingsInMemoryAdapter >> initialize [
 ]
 
 { #category : #testing }
-EDASPortSettingsInMemoryAdapter >> updateAdapterClass: newValue for: aSymbol andAnnounce: anEventClass [
+EDASPortSettingsInMemoryAdapter >> updateAdapterClass: newValue for: aPort andAnnounce: anEventClass [
 
 	| oldValue |
-	oldValue := adapterClasses at: aSymbol ifAbsent: [ nil ].
-	adapterClasses at: aSymbol put: newValue.
+	oldValue := adapterClasses at: aPort ifAbsent: [ nil ].
+	adapterClasses at: aPort put: newValue.
 	oldValue = newValue ifTrue: [ ^ self ].
 	self adapterFor: newValue is: (newValue withApp: self edaApplication).
-	self announcer announce: (anEventClass old: oldValue new: newValue on: self edaApplication)
+	self announcer announce:
+		(anEventClass old: oldValue new: newValue on: self edaApplication)
 ]
