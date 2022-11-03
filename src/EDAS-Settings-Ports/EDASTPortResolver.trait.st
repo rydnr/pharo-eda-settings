@@ -5,8 +5,10 @@ Trait {
 
 { #category : #logic }
 EDASTPortResolver >> availableAdaptersForPort: aPort [
-
-	^ (aPort traitUsers select: [ :cls | cls accepts: aPort ]) sorted asOrderedCollection 
+	| accepted |
+	accepted := [ :port :cls :blk | (cls accepts: aPort) or: [ cls subclasses do: [ :c | blk value: port value: c value: blk ] ] ].
+	^ (aPort traitUsers select: [ :cls | cls accepts: aPort ]) sorted
+		  asOrderedCollection
 ]
 
 { #category : #helpers }

@@ -30,22 +30,14 @@ Pragma class >> allNamed: aString includingTraitsInSuperAndSubclasses: aClass [
 		                 tb value: c value: col value: tb ] ].
 
 	^ Array streamContents: [ :stream | 
-		  | classes |
+		  | classes pragmas |
 		  classes := Set new.
-		  classes add: aClass.
-		  traitsBlock value: aClass value: classes value: traitsBlock.
-		  superclassBlock
-			  value: aClass
-			  value: classes
-			  value: superclassBlock
-			  value: traitsBlock.
-		  subclassBlock
-			  value: aClass
-			  value: classes
-			  value: subclassBlock
-			  value: traitsBlock.
+		  classes addAll: aClass superclassesAndTraits.
+		  classes addAll: aClass subclassesAndTraits.
+		  pragmas := Set new.
 		  classes do: [ :class | 
 			  class pragmasDo: [ :pragma | 
 				  pragma selector = aString asSymbol ifTrue: [ 
-					  stream nextPut: pragma ] ] ] ]
+					  pragmas add: pragma ] ] ].
+		  pragmas do: [ :pragma | stream nextPut: pragma ] ]
 ]

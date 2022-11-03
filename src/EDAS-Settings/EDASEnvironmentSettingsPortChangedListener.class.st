@@ -7,13 +7,19 @@ Class {
 }
 
 { #category : #helper }
+EDASEnvironmentSettingsPortChangedListener class >> handleEnvironmentSettingsPortChangedEvent: anEvent [
+
+			anEvent newValue = EDASEnvironmentSettingsInMemoryAdapter ifTrue: [ 
+				anEvent edaApplication portSettings commandListenerSettings:
+					(EDASStompTopicListenerSettingsInMemoryAdapter withApp:
+						 anEvent edaApplication) ]
+]
+
+{ #category : #helper }
 EDASEnvironmentSettingsPortChangedListener class >> subscribeToSettingsChangedEventsIn: anEDASettingsAnnouncer [
 
 	anEDASettingsAnnouncer
 		when: EDASEnvironmentSettingsPortChanged
-		do: [ :event | 
-			event newValue = EDASEnvironmentSettingsInMemoryAdapter ifTrue: [ 
-				event edaApplication portSettings commandListenerSettings:
-					(EDASStompTopicListenerSettingsInMemoryAdapter withApp:
-						 event edaApplication) ] ]
+		do: [ :event |
+			self handleEnvironmentSettingsPortChangedEvent: event ]
 ]
