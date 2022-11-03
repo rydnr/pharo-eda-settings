@@ -6,19 +6,25 @@ Class {
 	#category : #'EDAS-Settings'
 }
 
+{ #category : #'event handling - private' }
+EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> handleSettingsChangedEvent: anEvent [
+ 
+		(EDASStompTopicListenerSettingsJsonAdapter supportsEnvironment:
+			 anEvent newValue)
+			ifTrue: [ 
+				anEvent edaApplication portSettings commandListenerSettings:
+					(EDASStompTopicListenerSettingsJsonAdapter
+						 forEnvironment: anEvent newValue
+						 withApp: anEvent edaApplication) ]
+			ifFalse: [ 
+				anEvent edaApplication portSettings commandListenerSettings:
+					(EDASStompTopicListenerSettingsInMemoryAdapter withApp:
+						 anEvent edaApplication) ]
+]
+
 { #category : #helper }
 EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> subscribeToSettingsChangedEventsIn: anEDASettingsAnnouncer [
 
-	anEDASettingsAnnouncer when: EDASEnvironmentChanged do: [ :event | 
-		(EDASStompTopicListenerSettingsJsonAdapter supportsEnvironment:
-			 event newValue)
-			ifTrue: [ 
-				event edaApplication portSettings commandListenerSettings:
-					(EDASStompTopicListenerSettingsJsonAdapter
-						 forEnvironment: event newValue
-						 withApp: event edaApplication) ]
-			ifFalse: [ 
-				event edaApplication portSettings commandListenerSettings:
-					(EDASStompTopicListenerSettingsInMemoryAdapter withApp:
-						 event edaApplication) ] ]
+	anEDASettingsAnnouncer when: EDASEnvironmentChanged do: [ :event |
+		self handleSettingsChangedEvent: event ]
 ]

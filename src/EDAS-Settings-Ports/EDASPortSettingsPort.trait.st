@@ -11,6 +11,12 @@ EDASPortSettingsPort >> adapterClassAccessor [
 	self shouldBeImplemented
 ]
 
+{ #category : #accessing }
+EDASPortSettingsPort >> adapters [
+
+	self shouldBeImplemented
+]
+
 { #category : #testing }
 EDASPortSettingsPort >> commandListenerSettings [
 

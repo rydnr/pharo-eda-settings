@@ -22,10 +22,11 @@ EDASCommandListenerSettingsPort classSide >> label [
 	^ 'Command listener'
 ]
 
-{ #category : #metadata }
+{ #category : #testing }
 EDASCommandListenerSettingsPort classSide >> selector [
 
-	^ #commandListener
+	"Command listener settings is not a single setting, but a collection of them"
+	^ nil
 ]
 
 { #category : #resolving }
@@ -44,7 +45,7 @@ EDASCommandListenerSettingsPort >> errorStrategy [
 { #category : #accessing }
 EDASCommandListenerSettingsPort >> port [
 
-	<edaPort: #commandListener as: 'Command listener' atPosition: 2>
+	<edaPort: 'Command listener' atPosition: 2>
 	^ self
 ]
 

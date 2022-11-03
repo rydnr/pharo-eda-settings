@@ -43,8 +43,8 @@ EDASEnvironmentSettingsPort >> availableEnvironments [
 { #category : #testing }
 EDASEnvironmentSettingsPort >> port [
 
-	<edaPort: #environment as: 'Environment' atPosition: 1>
-	^ self 
+	<edaPort: 'Environment' atPosition: 1>
+	^ self
 ]
 
 { #category : #testing }

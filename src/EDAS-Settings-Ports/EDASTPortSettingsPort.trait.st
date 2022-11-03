@@ -14,3 +14,9 @@ EDASTPortSettingsPort >> edaApplication [
 EDASTPortSettingsPort >> edaApplication: anEDAApplication [
 	self subclassResponsibility
 ]
+
+{ #category : #accessing }
+EDASTPortSettingsPort >> edaPorts [
+
+	self shouldBeImplemented
+]

@@ -40,7 +40,12 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> availableEnvironments [
 { #category : #accessing }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
 
-	^ currentEnvironment ifNil: [ self availableEnvironments ifEmpty: [ '' ] ifNotEmpty: [ :c | c first ]]
+	<edaSettings: 'Environment' withDescription: 'The environment'
+	atPosition: 1 readOnly: false multiple: true>
+	^ currentEnvironment ifNil: [ 
+		  self availableEnvironments
+			  ifEmpty: [ '' ]
+			  ifNotEmpty: [ :c | c first ] ]
 ]
 
 { #category : #accessing }

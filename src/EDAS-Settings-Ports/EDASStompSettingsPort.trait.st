@@ -1,7 +1,5 @@
 Trait {
 	#name : #EDASStompSettingsPort,
-	#traits : 'EDASSettingsPort',
-	#classTraits : 'EDASSettingsPort classTrait',
 	#category : #'EDAS-Settings-Ports'
 }
 

@@ -5,11 +5,7 @@ Class {
 	#classTraits : 'EDASPortSettingsPort classTrait',
 	#instVars : [
 		'announcer',
-		'environmentSettingsAdapterClass',
-		'commandListenerSettingsAdapterClass',
 		'edaApplication',
-		'commandListenerSettings',
-		'environmentSettings',
 		'adapters',
 		'adapterClasses'
 	],
@@ -29,6 +25,12 @@ EDASPortSettingsInMemoryAdapter class >> withAnnouncer: anEDASettingsAnnouncer [
 EDASPortSettingsInMemoryAdapter >> adapterFor: aPort is: anAdapter [
 
 	adapters at: aPort put: anAdapter
+]
+
+{ #category : #accessing }
+EDASPortSettingsInMemoryAdapter >> adapters [
+
+	^ adapters
 ]
 
 { #category : #accessing }
@@ -96,6 +98,12 @@ EDASPortSettingsInMemoryAdapter >> edaApplication: anObject [
 ]
 
 { #category : #accessing }
+EDASPortSettingsInMemoryAdapter >> edaPorts [
+
+	^ adapterClasses keys
+]
+
+{ #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> environmentSettings [
 
 	^ adapters at: EDASEnvironmentSettingsPort ifAbsent: [ nil ]
@@ -141,7 +149,7 @@ EDASPortSettingsInMemoryAdapter >> updateAdapterClass: newValue for: aPort andAn
 	oldValue := adapterClasses at: aPort ifAbsent: [ nil ].
 	adapterClasses at: aPort put: newValue.
 	oldValue = newValue ifTrue: [ ^ self ].
-	self adapterFor: newValue is: (newValue withApp: self edaApplication).
+	self adapterFor: aPort is: (newValue withApp: self edaApplication).
 	self announcer announce:
 		(anEventClass old: oldValue new: newValue on: self edaApplication)
 ]
