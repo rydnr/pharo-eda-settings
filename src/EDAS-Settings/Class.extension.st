@@ -76,7 +76,7 @@ Class >> superclassesAndTraits [
 				                   value: col
 				                   value: sb
 				                   value: tb.
-			                   tb value: c value: col value: tb ] ] ].
+			                   tb value: self value: c value: col value: tb ] ] ].
 
 
 	result := Set new.

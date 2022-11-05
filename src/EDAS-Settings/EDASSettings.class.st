@@ -51,38 +51,21 @@ EDASSettings class >> adapterSettingsOn: aBuilder for: aPort implementedBy: anAd
 
 	aPort selector
 		ifNil: [ 
-			| attributes |
-			attributes := anAdapter class settingsAttributes.
-			attributes ifNotEmpty: [ :attrs | 
-				| key |
-				key := aParent , anAdapter class name.
-				(aBuilder group: key)
-					label: aPort label;
-					description: aPort description;
-					parent: aParent;
-					order: anInteger.
-				attrs keysAndValuesDo: [ :i :attr | 
-					self
-						settingOn: aBuilder
-						named: attr asSymbol
-						labelled: (anAdapter labelFor: attr)
-						withDescription: (anAdapter descriptionFor: attr)
-						usingConfig: anAdapter
-						under: key
-						on: app
-						order: i.
-					aPort settingsBlock value: app ] ] ]
-		ifNotNil: [ :s | 
 			self
-				settingOn: aBuilder
-				named: s
-				labelled: aPort label
-				withDescription: aPort description
-				usingConfig: anAdapter
+				multiAttributeAdapterSettingsOn: aBuilder
+				for: aPort
+				implementedBy: anAdapter
 				under: aParent
 				on: app
-				order: anInteger.
-			aPort settingsBlock value: app ]
+				order: anInteger ]
+		ifNotNil: [ :s | 
+			self
+				singleAttributeAdapterSettingsOn: aBuilder
+				for: aPort
+				implementedBy: anAdapter
+				under: aParent
+				on: app
+				order: anInteger ]
 ]
 
 { #category : #settings }
@@ -454,6 +437,32 @@ EDASSettings class >> mongoSettingsOn: aBuilder withConfig: container under: par
 ]
 
 { #category : #settings }
+EDASSettings class >> multiAttributeAdapterSettingsOn: aBuilder for: aPort implementedBy: anAdapter under: aParent on: app order: anInteger [
+
+	| attributes |
+	attributes := anAdapter class settingsAttributes.
+	attributes ifNotEmpty: [ :attrs | 
+		| key |
+		key := aParent , anAdapter class name.
+		(aBuilder group: key)
+			label: aPort label;
+			description: aPort description;
+			parent: aParent;
+			order: anInteger.
+		attrs keysAndValuesDo: [ :i :attr | 
+			self
+				settingOn: aBuilder
+				named: attr asSymbol
+				labelled: (anAdapter labelFor: attr)
+				withDescription: (anAdapter descriptionFor: attr)
+				usingConfig: anAdapter
+				under: key
+				on: app
+				order: i.
+			aPort settingsBlock value: app ] ]
+]
+
+{ #category : #settings }
 EDASSettings class >> old_commandListenerSettingsOn: aBuilder under: parent on: app [
 
 	| key |
@@ -478,6 +487,27 @@ EDASSettings class >> old_commandListenerSettingsOn: aBuilder under: parent on: 
 					 strategy description translated -> strategy greaseString ]);
 		default: EDAEPublishMessageErrorStrategy greaseString.
 	^ self
+]
+
+{ #category : #settings }
+EDASSettings class >> port: aPort settingsOn: aBuilder under: aParent on: app order: anInteger [
+
+	| values portResolver |
+	portResolver := EDASPortResolver new.
+	values := OrderedCollection withAll:
+		          (((portResolver availableAdaptersForPort: aPort) collect: [ 
+			            :adapterClass | 
+			            adapterClass description translated -> adapterClass ]) 
+			           sorted: [ :a :b | a < b ]).
+	values ifNotEmpty: [ 
+		(aBuilder pickOne: aPort adapterClassAccessor)
+			label: (portResolver portDescription: aPort) translated;
+			target: app;
+			targetSelector: #portSettings;
+			parent: aParent;
+			default: values first key;
+			domainValues: values;
+			order: anInteger ]
 ]
 
 { #category : #settings }
@@ -506,20 +536,7 @@ EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app order: anI
 		parent: aParent.
 	portResolver := EDASPortResolver new.
 	portResolver availablePorts keysAndValuesDo: [ :i :p | 
-		| values |
-		values := OrderedCollection withAll:
-			          (((portResolver availableAdaptersForPort: p) collect: [ 
-				            :adapterClass | 
-				            adapterClass description translated -> adapterClass ]) 
-				           sorted: [ :a :b | a < b ]).
-		values ifNotEmpty: [ 
-			(aBuilder pickOne: p adapterClassAccessor)
-				label: (portResolver portDescription: p) translated;
-				target: app portSettings;
-				parent: key;
-				default: values first key;
-				domainValues: values;
-				order: i ] ]
+		self port: p settingsOn: aBuilder under: key on: app order: i ]
 ]
 
 { #category : #settings }
@@ -634,6 +651,21 @@ EDASSettings class >> settingOn: aBuilder named: aSymbol labelled: aString withD
 		label: aString translated;
 		description: aDescription;
 		order: anInteger
+]
+
+{ #category : #settings }
+EDASSettings class >> singleAttributeAdapterSettingsOn: aBuilder for: aPort implementedBy: anAdapter under: aParent on: app order: anInteger [
+
+	self
+		settingOn: aBuilder
+		named: aPort selector
+		labelled: aPort label
+		withDescription: aPort description
+		usingConfig: anAdapter
+		under: aParent
+		on: app
+		order: anInteger.
+	aPort settingsBlock value: app
 ]
 
 { #category : #settings }
