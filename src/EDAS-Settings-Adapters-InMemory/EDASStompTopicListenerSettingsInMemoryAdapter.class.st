@@ -133,14 +133,14 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> topicListener: anObject [
 	topicListener := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #resolving }
 EDASStompTopicListenerSettingsInMemoryAdapter >> values: aSymbol [
 
 	^ aSymbol = #ack
 				ifTrue: [ 
-					OrderedCollection
-						  with: #'client-individual'
-						  with: #client
-						  with: #auto ]
+					Dictionary new
+						  at: 'client individual' put: #'client-individual';
+						  at: 'client' put: #client;
+						  at: 'auto' put: #auto; associations ]
 				ifFalse: [ super values: aSymbol ]
 ]

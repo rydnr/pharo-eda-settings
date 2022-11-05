@@ -13,7 +13,8 @@ EDASCommandListenerSettingsPort classSide >> adapterClassAccessor [
 
 { #category : #testing }
 EDASCommandListenerSettingsPort classSide >> description [
-	^ 'Command listener'
+
+	^ 'The adapter that consumes input commands'
 ]
 
 { #category : #testing }

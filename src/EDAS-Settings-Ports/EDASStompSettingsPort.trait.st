@@ -6,7 +6,7 @@ Trait {
 { #category : #resolving }
 EDASStompSettingsPort classSide >> availableErrorStrategies [
 
-	^ EDAEErrorHandlingStrategy subclasses collect: [ :s | s name ]
+	^ EDAEErrorHandlingStrategy subclasses collect: [ :s | s description -> s name]
 ]
 
 { #category : #resolving }

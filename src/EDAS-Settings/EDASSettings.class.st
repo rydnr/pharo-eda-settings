@@ -248,7 +248,7 @@ EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymb
 		noOrdering.
 	resolver := EDASPortResolver new.
 	ports := resolver availablePorts.
-	ports doWithIndex: [ :p :i | 
+	ports keysAndValuesDo: [ :i :p | 
 		| adapter |
 		adapter := resolver resolvePort: p forApp: anEDAApplication.
 		anEDAApplication portSettings adapterFor: p is: adapter.
@@ -263,7 +263,7 @@ EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymb
 		portSettingsOn: aBuilder
 		under: parent
 		on: anEDAApplication
-		order: 3
+		order: ports size + 1
 ]
 
 { #category : #settings }
@@ -636,8 +636,8 @@ EDASSettings class >> settingOn: aBuilder named: aSymbol labelled: aString withD
 		ifTrue: [ 
 			entry := aBuilder pickOne: aSymbol.
 			entry domainValues:
-				((aConfig values: aSymbol) collect: [ :level | 
-					 level translated -> level greaseString ]) ]
+				((aConfig values: aSymbol) collect: [ :v | 
+					 v key translated -> v value greaseString ]) ]
 		ifFalse: [ 
 			(aConfig isReadOnly: aSymbol)
 				ifTrue: [ 

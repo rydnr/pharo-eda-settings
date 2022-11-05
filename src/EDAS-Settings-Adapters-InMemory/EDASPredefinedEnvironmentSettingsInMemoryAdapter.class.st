@@ -19,12 +19,12 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> accepts: aPort [
 { #category : #meta }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> availableEnvironments [
 
-	^ EDASStompTopicListenerSettingsJsonAdapter availableEnvironments
+	^ EDASStompTopicListenerSettingsJsonAdapter availableEnvironments collect: [ :e | e -> e ]
 ]
 
 { #category : #meta }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> description [
-	^ 'Predefined list (', (self concatenateCollection: self availableEnvironments with: ', ') , ')'
+	^ 'Predefined list (', (self concatenateCollection: (self availableEnvironments collect: [ :assoc | assoc value ]) with: ', ') , ')'
 ]
 
 { #category : #meta }
@@ -45,7 +45,7 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
 	^ currentEnvironment ifNil: [ 
 		  self availableEnvironments
 			  ifEmpty: [ '' ]
-			  ifNotEmpty: [ :c | c first ] ]
+			  ifNotEmpty: [ :c | c first value ] ]
 ]
 
 { #category : #accessing }
