@@ -7,11 +7,9 @@ Class >> subclassesAndTraits [
 	traitsBlock := [ :s :cls :col :tb | 
 	               | aux |
 	               aux := OrderedCollection withAll:
-		                      (cls traits asOrderedCollection removeAllSuchThat: [ :c | 
+		                      (cls traits asOrderedCollection 
+			                       removeAllSuchThat: [ :c | 
 			                       c = s or: [ col includes: c ] ]).
-	               aux addAll:
-		               (cls traitUsers asOrderedCollection  removeAllSuchThat: [ :c | 
-			                c = s or: [ col includes: c ] ]).
 	               aux do: [ :t | 
 		               col add: t.
 		               tb
