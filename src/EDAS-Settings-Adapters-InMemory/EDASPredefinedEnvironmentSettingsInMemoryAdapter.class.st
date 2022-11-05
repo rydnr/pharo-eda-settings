@@ -40,8 +40,8 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> availableEnvironments [
 { #category : #accessing }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
 
-	<edaSettings: 'Environment' withDescription: 'The environment'
-	atPosition: 1 readOnly: false multiple: true>
+	<edaSettings: 'Environment' withDescription: 'The environment' icon:
+	#environment atPosition: 1 readOnly: false multiple: true>
 	^ currentEnvironment ifNil: [ 
 		  self availableEnvironments
 			  ifEmpty: [ '' ]
@@ -68,9 +68,4 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> edaApplication [
 { #category : #accessing }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter >> edaApplication: anEDAApplication [
 	edaApplication := anEDAApplication
-]
-
-{ #category : #accessing }
-EDASPredefinedEnvironmentSettingsInMemoryAdapter >> resolveEnvironmentSettingsPort [
-	^ self
 ]

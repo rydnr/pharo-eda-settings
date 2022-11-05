@@ -33,7 +33,7 @@ EDASStompTopicListenerSettingsInMemoryAdapter class >> priority [
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> ack [
 
-	<edaSettings: 'Ack' withDescription: 'The ACK mode' atPosition: 12
+	<edaSettings: 'Ack' withDescription: 'The ACK mode' icon: #protocolProtected atPosition: 12
 	readOnly: false multiple: true>
 	^ ack ifNil: [ #auto ]
 ]
@@ -92,7 +92,7 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> port [
 EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount [
 
 	<edaSettings: 'Prefetch count' withDescription:
-	'The number of messages to prefetch' atPosition: 7 readOnly: false
+	'The number of messages to prefetch' icon: #smallCentered atPosition: 7 readOnly: false
 	multiple: false>
 	^ prefetchCount ifNil: [ 1 ]
 ]
@@ -105,7 +105,7 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount: val [
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> queue [
 
-	<edaSettings: 'Queue' withDescription: 'The queue' atPosition: 5
+	<edaSettings: 'Queue' withDescription: 'The queue' icon: #smallJustified atPosition: 5
 	readOnly: false multiple: false>
 	^ queue ifNil: [ '' ]
 ]

@@ -30,7 +30,8 @@ EDASEnvironmentSettingsInMemoryAdapter class >> priority [
 { #category : #accessing }
 EDASEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
 
-	<edaSettings: 'Environment' withDescription: 'The environment' atPosition: 1 readOnly: false multiple: false>
+	<edaSettings: 'Environment' withDescription: 'The environment' icon:
+	#workspace atPosition: 1 readOnly: false multiple: false>
 	^ currentEnvironment ifNil: [ '' ]
 ]
 
@@ -54,9 +55,4 @@ EDASEnvironmentSettingsInMemoryAdapter >> edaApplication [
 { #category : #accessing }
 EDASEnvironmentSettingsInMemoryAdapter >> edaApplication: anEDAApplication [
 	edaApplication := anEDAApplication
-]
-
-{ #category : #logic }
-EDASEnvironmentSettingsInMemoryAdapter >> resolveEnvironmentSettingsPort [
-	^ self
 ]

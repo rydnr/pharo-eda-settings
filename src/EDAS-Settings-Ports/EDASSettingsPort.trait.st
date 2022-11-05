@@ -35,6 +35,23 @@ EDASSettingsPort classSide >> description [
 	self subclassResponsibility 
 ]
 
+{ #category : #testing }
+EDASSettingsPort classSide >> iconFor: aString in: anEDAApplication [
+
+	| iconName |
+	iconName := ((Pragma
+		              allNamed:
+		              #edaSettings:withDescription:icon:atPosition:readOnly:multiple:
+		              includingTraitsInSuperAndSubclasses: self) select: [ 
+		             :p | p method selector = aString asSymbol ])
+		            ifEmpty: [ #smallQuestion ]
+		            ifNotEmpty: [ :col | col first argumentAt: 3 ].
+	^ anEDAApplication iconProvider iconNamed: iconName ifAbsent: [ 
+		  Smalltalk ui icons
+			  iconNamed: iconName
+			  ifNone: [ Smalltalk ui icons iconNamed: #smallQuestion ] ]
+]
+
 { #category : #accessing }
 EDASSettingsPort classSide >> priority [
 	self shouldBeImplemented 
@@ -72,9 +89,21 @@ self shouldBeImplemented
 EDASSettingsPort >> descriptionFor: aString [
 
 	^ ((Pragma
-		    allNamed: #edaSettings:withDescription:atPosition:readOnly:multiple:
+		    allNamed: #edaSettings:withDescription:icon:atPosition:readOnly:multiple:
 		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
 		   p method selector = aString asSymbol ]) ifEmpty: [ nil ] ifNotEmpty: [ :col | col first argumentAt: 2 ]
+]
+
+{ #category : #testing }
+EDASSettingsPort >> iconFor: aString [ 
+
+	^ self iconFor: aString in: self edaApplication
+]
+
+{ #category : #testing }
+EDASSettingsPort >> iconFor: aString in: anEDAApplication [
+
+	^ self class iconFor: aString in: anEDAApplication 
 ]
 
 { #category : #testing }
@@ -82,11 +111,11 @@ EDASSettingsPort >> isReadOnly: aString [
 
 	^ ((Pragma
 		    allNamed:
-		    #edaSettings:withDescription:atPosition:readOnly:multiple:
+		    #edaSettings:withDescription:icon:atPosition:readOnly:multiple:
 		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
 		   p method selector = aString asSymbol ])
 		  ifEmpty: [ false ]
-		  ifNotEmpty: [ :col | col first argumentAt: 4 ]
+		  ifNotEmpty: [ :col | col first argumentAt: 5 ]
 ]
 
 { #category : #accessing }
@@ -94,7 +123,7 @@ EDASSettingsPort >> labelFor: aString [
 
 	^ ((Pragma
 		    allNamed:
-		    #edaSettings:withDescription:atPosition:readOnly:multiple:
+		    #edaSettings:withDescription:icon:atPosition:readOnly:multiple:
 		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
 		   p method selector = aString asSymbol ]) ifEmpty: [ nil ] ifNotEmpty: [ :col | col first argumentAt: 1 ]
 ]
@@ -104,9 +133,9 @@ EDASSettingsPort >> supportsMultiple: aString [
 
 	^ ((Pragma
 		    allNamed:
-		    #edaSettings:withDescription:atPosition:readOnly:multiple:
+		    #edaSettings:withDescription:icon:atPosition:readOnly:multiple:
 		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
 		   p method selector = aString asSymbol ])
 		  ifEmpty: [ false ]
-		  ifNotEmpty: [ :col | col first argumentAt: 5 ]
+		  ifNotEmpty: [ :col | col first argumentAt: 6 ]
 ]

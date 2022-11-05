@@ -19,7 +19,7 @@ EDASStompSettingsPort >> availableErrorStrategies [
 EDASStompSettingsPort >> debug [
 
 	<edaSettings: 'Debug' withDescription: 'Whether to enable debug mode'
-	atPosition: 9 readOnly: false multiple: false>
+	icon: #glamorousBug atPosition: 9 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
@@ -27,7 +27,8 @@ EDASStompSettingsPort >> debug [
 EDASStompSettingsPort >> durable [
 
 	<edaSettings: 'Durable' withDescription:
-	'Whether the topic is durable' atPosition: 8 readOnly: false multiple: false>
+	'Whether the topic is durable' icon: #glamorousAccept atPosition: 8
+	readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
@@ -35,31 +36,32 @@ EDASStompSettingsPort >> durable [
 EDASStompSettingsPort >> errorStrategyName [
 
 	<edaSettings: 'Error strategy' withDescription:
-	'The strategy to use in case of errors' atPosition: 11 readOnly: false multiple: true>
+	'The strategy to use in case of errors' icon: #flag atPosition: 11
+	readOnly: false multiple: true>
 	self shouldBeImplemented
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> host [
 
-	<edaSettings: 'Host' withDescription: 'The host' atPosition: 1
-	readOnly: false multiple: false>
+	<edaSettings: 'Host' withDescription: 'The host' icon: #home
+	atPosition: 1 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> password [
 
-	<edaSettings: 'Password' withDescription: 'The password' atPosition:
-	4 readOnly: false multiple: false>
+	<edaSettings: 'Password' withDescription: 'The password' icon:
+	#glamorousExample atPosition: 4 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> port [
 
-	<edaSettings: 'Port' withDescription: 'The port' atPosition: 2
-	readOnly: false multiple: false>
+	<edaSettings: 'Port' withDescription: 'The port' icon: #configLoaded
+	atPosition: 2 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
@@ -67,15 +69,15 @@ EDASStompSettingsPort >> port [
 EDASStompSettingsPort >> restartOnErrors [
 
 	<edaSettings: 'Restart on errors' withDescription:
-	'Whether to restart on errors' atPosition: 10>
-	self shouldBeImplemented 
-	
+	'Whether to restart on errors' icon: #exception atPosition: 10
+	readOnly: false multiple: false>
+	self shouldBeImplemented
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> timeout [
 
-	<edaSettings: 'Timeout' withDescription: 'The timeout' atPosition: 6>
+	<edaSettings: 'Timeout' withDescription: 'The timeout' icon: #smallProfile atPosition: 6>
 	self shouldBeImplemented 
 	
 ]
@@ -83,9 +85,9 @@ EDASStompSettingsPort >> timeout [
 { #category : #resolving }
 EDASStompSettingsPort >> user [
 
-	<edaSettings: 'user' withDescription: 'The user' atPosition: 3>
-	self shouldBeImplemented 
-	
+	<edaSettings: 'user' withDescription: 'The user' icon: #user
+	atPosition: 3 readOnly: false multiple: false>
+	self shouldBeImplemented
 ]
 
 { #category : #resolving }
