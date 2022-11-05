@@ -26,7 +26,8 @@ EDASTestSettings class >> commandPublisherSettingsOn: aBuilder [
 
 { #category : #initialization }
 EDASTestSettings class >> doInitialize [
-	self duEnvironmentClass: EDATestDUEnvironment
+
+	"self duEnvironmentClass: EDATestDUEnvironment"
 ]
 
 { #category : #settings }
