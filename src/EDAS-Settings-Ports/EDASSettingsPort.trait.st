@@ -26,17 +26,7 @@ EDASSettingsPort classSide >> >= anotherAdapterClass [
 ]
 
 { #category : #testing }
-EDASSettingsPort classSide >> accepts: aPortResolver [
-	^ false
-]
-
-{ #category : #testing }
-EDASSettingsPort classSide >> description [
-	self subclassResponsibility 
-]
-
-{ #category : #testing }
-EDASSettingsPort classSide >> iconFor: aString in: anEDAApplication [
+EDASSettingsPort classSide >> _iconFor: aString in: anEDAApplication [
 
 	| iconName |
 	iconName := ((Pragma
@@ -50,6 +40,75 @@ EDASSettingsPort classSide >> iconFor: aString in: anEDAApplication [
 		  Smalltalk ui icons
 			  iconNamed: iconName
 			  ifNone: [ Smalltalk ui icons iconNamed: #smallQuestion ] ]
+]
+
+{ #category : #testing }
+EDASSettingsPort classSide >> accepts: aPortResolver [
+	^ false
+]
+
+{ #category : #testing }
+EDASSettingsPort classSide >> description [
+
+	| pragmas match |
+	pragmas := Pragma
+		           allNamed: #edaPort:withDescription:icon:atPosition
+		           includingTraitsInSuperAndSubclasses: self.
+	match := pragmas select: [ :p | p method methodClass soleInstance = self ].
+	^ ((Pragma
+		    allNamed: #edaPort:withDescription:icon:atPosition
+		    includingTraitsInSuperAndSubclasses: self) select: [ :p | 
+		   p method methodClass soleInstance = self ])
+		  ifEmpty: [ '' ]
+		  ifNotEmpty: [ :col | col first argumentAt: 2 ]
+]
+
+{ #category : #testing }
+EDASSettingsPort classSide >> icon [
+
+	| provider |
+	provider := EDAIconProvider new.
+	^ (((Pragma allNamed: #edaPort:withDescription:icon:atPosition:) 
+		    select: [ :p | p method methodClass soleInstance = self ]) collect: [ :p | 
+		   p arguments third ]) asOrderedCollection
+		  ifEmpty: [ provider iconNamed: #comments ]
+		  ifNotEmpty: [ :c | provider iconNamed: c first ]
+]
+
+{ #category : #testing }
+EDASSettingsPort classSide >> iconFor: aString in: anEDAApplication [
+
+	| iconName |
+	iconName := ((Pragma
+		              allNamed: #edaPort:withDescription:icon:atPosition
+		              includingTraitsInSuperAndSubclasses: self) select: [ 
+		             :p | p method selector = aString asSymbol ])
+		            ifEmpty: [ #smallQuestion ]
+		            ifNotEmpty: [ :col | col first argumentAt: 3 ].
+	^ anEDAApplication iconProvider iconNamed: iconName ifAbsent: [ 
+		  Smalltalk ui icons
+			  iconNamed: iconName
+			  ifNone: [ Smalltalk ui icons iconNamed: #smallQuestion ] ]
+]
+
+{ #category : #testing }
+EDASSettingsPort classSide >> label [
+
+	^ (((Pragma allNamed: #edaPort:withDescription:icon:atPosition:) 
+		    select: [ :p | p method methodClass soleInstance = self ]) 
+		   collect: [ :p | p arguments first ]) asOrderedCollection
+		  ifEmpty: [ nil ]
+		  ifNotEmpty: [ :c | c first ]
+]
+
+{ #category : #testing }
+EDASSettingsPort classSide >> position [
+
+	^ (((Pragma allNamed: #edaPort:withDescription:icon:atPosition:) 
+		    select: [ :p | p method methodClass soleInstance = self ]) 
+		   collect: [ :p | p arguments fourth ]) asOrderedCollection
+		  ifEmpty: [ nil ]
+		  ifNotEmpty: [ :c | c first ]
 ]
 
 { #category : #accessing }

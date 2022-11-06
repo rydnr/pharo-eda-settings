@@ -12,15 +12,12 @@ EDASCommandListenerSettingsPort classSide >> adapterClassAccessor [
 ]
 
 { #category : #testing }
-EDASCommandListenerSettingsPort classSide >> description [
+EDASCommandListenerSettingsPort classSide >> edaPort [
 
-	^ 'The adapter that consumes input commands'
-]
-
-{ #category : #testing }
-EDASCommandListenerSettingsPort classSide >> label [
-
-	^ 'Command listener'
+	<edaPort: 'Command listener' withDescription:
+	'The adapter with the command listener settings' icon:
+	#commandlistener atPosition: 2>
+	^ self
 ]
 
 { #category : #testing }
@@ -41,13 +38,6 @@ EDASCommandListenerSettingsPort >> availableErrorStrategies [
 EDASCommandListenerSettingsPort >> errorStrategy [
 
 	self subclassResponsibility
-]
-
-{ #category : #accessing }
-EDASCommandListenerSettingsPort >> port [
-
-	<edaPort: 'Command listener' atPosition: 2>
-	^ self
 ]
 
 { #category : #testing }

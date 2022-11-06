@@ -12,15 +12,10 @@ EDASEnvironmentSettingsPort classSide >> adapterClassAccessor [
 ]
 
 { #category : #testing }
-EDASEnvironmentSettingsPort classSide >> description [
+EDASEnvironmentSettingsPort classSide >> edaPort [
 
-	^ 'Environment'
-]
-
-{ #category : #accessing }
-EDASEnvironmentSettingsPort classSide >> label [
-
-	^ 'Environment'
+	<edaPort: 'Environment' withDescription: 'The adapter to specify the environment' icon: #environment atPosition: 1>
+	^ self
 ]
 
 { #category : #accessing }
@@ -38,13 +33,6 @@ EDASEnvironmentSettingsPort classSide >> settingsBlock [
 { #category : #testing }
 EDASEnvironmentSettingsPort >> availableEnvironments [
 	self subclassResponsibility
-]
-
-{ #category : #testing }
-EDASEnvironmentSettingsPort >> port [
-
-	<edaPort: 'Environment' atPosition: 1>
-	^ self
 ]
 
 { #category : #testing }

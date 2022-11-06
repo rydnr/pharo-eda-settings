@@ -18,7 +18,7 @@ EDASEnvironmentSettingsEnvVarAdapter class >> accepts: aPort [
 			  ifNotNil: [ :arg | true ] ]
 ]
 
-{ #category : #testing }
+{ #category : #metadata }
 EDASEnvironmentSettingsEnvVarAdapter class >> description [
 	^ self environmentVariableName , ' environment variable'
 ]

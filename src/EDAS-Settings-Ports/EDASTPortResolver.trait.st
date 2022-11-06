@@ -26,9 +26,9 @@ EDASTPortResolver >> portAdapterClassSymbol: aString [
 { #category : #helpers }
 EDASTPortResolver >> portDescription: aPort [
 
-	^ ((Pragma allNamed: #edaPort:atPosition:)
-		   select: [ :p | p method methodClass = aPort ]
-		   thenCollect: [ :p | p arguments first ]) asOrderedCollection
+	^ (((Pragma allNamed: #edaPort:withDescription:icon:atPosition:) 
+		    select: [ :p | p method methodClass = aPort ]) collect: [ :p | 
+		   p arguments second ]) asOrderedCollection
 		  ifEmpty: [ nil ]
 		  ifNotEmpty: [ :c | c first ]
 ]
@@ -36,9 +36,9 @@ EDASTPortResolver >> portDescription: aPort [
 { #category : #helpers }
 EDASTPortResolver >> pragmaBasedPorts [
 
-	^ (((Pragma allNamed: #edaPort:atPosition:) sorted: [ :a :b | 
-		    (a argumentAt: 2) < (b argumentAt: 2) ]) collect: [ :p | 
-		   p method methodClass ]) asOrderedCollection
+	^ (((Pragma allNamed: #edaPort:withDescription:icon:atPosition:) sorted: [ :a :b | 
+		    (a argumentAt: 4) < (b argumentAt: 4) ]) collect: [ :p | 
+		   p method methodClass soleInstance ]) asOrderedCollection
 ]
 
 { #category : #api }

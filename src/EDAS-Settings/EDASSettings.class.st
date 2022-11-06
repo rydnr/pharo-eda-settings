@@ -131,8 +131,9 @@ EDASSettings class >> port: aPort settingsOn: aBuilder under: aParent on: app or
 			           sorted: [ :a :b | a < b ]).
 	values ifNotEmpty: [ 
 		(aBuilder pickOne: aPort adapterClassAccessor)
-			label: (portResolver portDescription: aPort) translated;
-			icon: (aPort iconFor: aPort adapterClassAccessor in: app);
+			label: aPort label translated;
+			description: aPort description translated;
+			icon: aPort icon;
 			target: app;
 			targetSelector: #portSettings;
 			parent: aParent;

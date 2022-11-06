@@ -19,7 +19,7 @@ EDASStompTopicListenerSettingsInMemoryAdapter class >> accepts: aPort [
 	^ aPort = EDASCommandListenerSettingsPort
 ]
 
-{ #category : #testing }
+{ #category : #'as yet unclassified' }
 EDASStompTopicListenerSettingsInMemoryAdapter class >> description [
 
 	^ 'Stomp'

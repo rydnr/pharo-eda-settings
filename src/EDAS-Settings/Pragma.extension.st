@@ -35,7 +35,7 @@ Pragma class >> allNamed: aString includingTraitsInSuperAndSubclasses: aClass [
 		  classes addAll: aClass superclassesAndTraits.
 		  classes addAll: aClass subclassesAndTraits.
 		  pragmas := Set new.
-		  classes do: [ :class | 
+		  (classes addAll: (classes collect: [ :c | c class ]); yourself) do: [ :class | 
 			  class pragmasDo: [ :pragma | 
 				  pragma selector = aString asSymbol ifTrue: [ 
 					  pragmas add: pragma ] ] ].
