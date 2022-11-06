@@ -54,7 +54,8 @@ EDASSettingsPort classSide >> description [
 	pragmas := Pragma
 		           allNamed: #edaPort:withDescription:icon:atPosition
 		           includingTraitsInSuperAndSubclasses: self.
-	match := pragmas select: [ :p | p method methodClass soleInstance = self ].
+	match := pragmas select: [ :p | 
+		         p method methodClass soleInstance = self ].
 	^ ((Pragma
 		    allNamed: #edaPort:withDescription:icon:atPosition
 		    includingTraitsInSuperAndSubclasses: self) select: [ :p | 
@@ -68,8 +69,10 @@ EDASSettingsPort classSide >> icon [
 
 	| provider |
 	provider := EDAIconProvider new.
-	^ (((Pragma allNamed: #edaPort:withDescription:icon:atPosition:) 
-		    select: [ :p | p method methodClass soleInstance = self ]) collect: [ :p | 
+	^ (((Pragma
+		     allNamed: #edaPort:withDescription:icon:atPosition:
+		     includingTraitsInSuperAndSubclasses: self) select: [ :p | 
+		    p method methodClass soleInstance = self ]) collect: [ :p | 
 		   p arguments third ]) asOrderedCollection
 		  ifEmpty: [ provider iconNamed: #comments ]
 		  ifNotEmpty: [ :c | provider iconNamed: c first ]
@@ -94,7 +97,7 @@ EDASSettingsPort classSide >> iconFor: aString in: anEDAApplication [
 { #category : #testing }
 EDASSettingsPort classSide >> label [
 
-	^ (((Pragma allNamed: #edaPort:withDescription:icon:atPosition:) 
+	^ (((Pragma allNamed: #edaPort:withDescription:icon:atPosition: includingTraitsInSuperAndSubclasses: self) 
 		    select: [ :p | p method methodClass soleInstance = self ]) 
 		   collect: [ :p | p arguments first ]) asOrderedCollection
 		  ifEmpty: [ nil ]
@@ -114,6 +117,12 @@ EDASSettingsPort classSide >> position [
 { #category : #accessing }
 EDASSettingsPort classSide >> priority [
 	self shouldBeImplemented 
+]
+
+{ #category : #testing }
+EDASSettingsPort classSide >> selector [
+
+	self subclassResponsibility 
 ]
 
 { #category : #settings }
@@ -145,12 +154,24 @@ self shouldBeImplemented
 ]
 
 { #category : #accessing }
+EDASSettingsPort >> description [
+
+	^ self class description
+]
+
+{ #category : #accessing }
 EDASSettingsPort >> descriptionFor: aString [
 
 	^ ((Pragma
 		    allNamed: #edaSettings:withDescription:icon:atPosition:readOnly:multiple:
 		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
 		   p method selector = aString asSymbol ]) ifEmpty: [ nil ] ifNotEmpty: [ :col | col first argumentAt: 2 ]
+]
+
+{ #category : #testing }
+EDASSettingsPort >> icon [
+
+	^ self class icon
 ]
 
 { #category : #testing }
@@ -178,6 +199,12 @@ EDASSettingsPort >> isReadOnly: aString [
 ]
 
 { #category : #accessing }
+EDASSettingsPort >> label [
+
+	^ self class label
+]
+
+{ #category : #accessing }
 EDASSettingsPort >> labelFor: aString [
 
 	^ ((Pragma
@@ -185,6 +212,12 @@ EDASSettingsPort >> labelFor: aString [
 		    #edaSettings:withDescription:icon:atPosition:readOnly:multiple:
 		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
 		   p method selector = aString asSymbol ]) ifEmpty: [ nil ] ifNotEmpty: [ :col | col first argumentAt: 1 ]
+]
+
+{ #category : #accessing }
+EDASSettingsPort >> selector [
+
+	^ self class selector
 ]
 
 { #category : #testing }

@@ -20,6 +20,7 @@ EDASEnvironmentSettingsPort classSide >> edaPort [
 
 { #category : #accessing }
 EDASEnvironmentSettingsPort classSide >> selector [
+
 	^ #currentEnvironment
 ]
 

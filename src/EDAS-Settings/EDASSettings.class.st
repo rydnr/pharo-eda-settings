@@ -208,10 +208,10 @@ EDASSettings class >> singleAttributeAdapterSettingsOn: aBuilder for: aPort impl
 
 	self
 		settingOn: aBuilder
-		named: aPort selector
-		labelled: aPort label
-		withDescription: aPort description
-		icon: (anAdapter iconFor: aPort selector)
+		named: anAdapter selector
+		labelled: anAdapter label
+		withDescription: anAdapter description
+		icon: anAdapter icon
 		usingConfig: anAdapter
 		under: aParent
 		on: app
