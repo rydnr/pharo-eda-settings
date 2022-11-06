@@ -68,7 +68,7 @@ EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymb
 	parentGroup
 		label: parent translated;
 		parent: aSymbol;
-		description: parent;
+		description: anEDAApplication description;
 		noOrdering.
 	resolver := EDASPortResolver new.
 	ports := resolver availablePorts.
