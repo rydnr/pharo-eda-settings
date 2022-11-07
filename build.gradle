@@ -4,7 +4,7 @@ version = "${tag}-SNAPSHOT" // do not forget to update the version also in docke
 apply plugin: PharoPlugin
 
 pharo {
-    imageVersion = '90'
+    imageVersion = '100'
 }
 
 def imageName = "${project.name}-${project.version}"
@@ -26,25 +26,31 @@ task retrieveFreshGtoolkitImage(type: RetrieveFreshGtoolkitImageTask, dependsOn:
   gtHome = gtoolkitHome
 }
 
-task loadPharoEDASettings(type: EvalSmalltalkExpressionTask, dependsOn: downloadFreshPharoImage) {
+task loadPharoEDASampleApp(type: EvalSmalltalkExpressionTask, dependsOn: downloadFreshPharoImage) {
     pharoPath = customPharoPath
     commonPharoArgs = customPharoArgs
-    expression = "Metacello new repository: 'github://rydnr/pharo-eda-settings:${branchOrTag}'; baseline: 'PharoEDASettings'; onConflictUseLoaded; load"
+    expression = "Metacello new repository: 'github://rydnr/pharo-eda-sample-app:main'; baseline: 'PharoEDASampleApp'; onConflictUseLoaded; load"
 }
 
-task loadPharoEDASettingsGt(type: EvalSmalltalkExpressionTask, dependsOn: retrieveFreshGtoolkitImage) {
+task loadPharoEDASampleAppGt(type: EvalSmalltalkExpressionTask, dependsOn: retrieveFreshGtoolkitImage) {
     pharoPath = customPharoPath
     commonPharoArgs = customPharoArgs
-    expression = "Metacello new repository: 'github://rydnr/pharo-eda-settings:${branchOrTag}'; baseline: 'PharoEDASettings'; onConflictUseLoaded; load"
+    expression = "Metacello new repository: 'github://rydnr/pharo-eda-sample-app:${branchOrTag}'; baseline: 'PharoEDASampleApp'; onConflictUseLoaded; load"
 }
 
-task customizeImage(type: RunSmalltalkScriptTask, dependsOn: loadPharoEDASettings) {
+task loadPillarApp(type: EvalSmalltalkExpressionTask, dependsOn: loadPharoEDASampleApp) {
+    pharoPath = customPharoPath
+    commonPharoArgs = customPharoArgs
+    expression = "[ Metacello new repository: 'github://pillar-markup/pillar:dev-8'; baseline: 'PillarApp'; onConflictUseLoaded; load ] on: MessageNotUnderstood do: [ ]"
+}
+
+task customizeImage(type: RunSmalltalkScriptTask, dependsOn: loadPharoEDASampleApp) {
     script = "customize.st"
     pharoPath = customPharoPath
     commonPharoArgs = customPharoArgs
 }
 
-task customizeImageGt(type: RunSmalltalkScriptTask, dependsOn: loadPharoEDASettingsGt) {
+task customizeImageGt(type: RunSmalltalkScriptTask, dependsOn: loadPharoEDASampleAppGt) {
     script = "customize.st"
     pharoPath = customPharoPath
     commonPharoArgs = customPharoArgs
@@ -115,6 +121,7 @@ class DownloadPharoImageTask extends DefaultTask {
 }
 
 class RetrieveFreshGtoolkitImageTask extends DefaultTask {
+    @Input
     String gtHome
     @TaskAction
     def retrieveFreshImage() {
@@ -125,10 +132,15 @@ class RetrieveFreshGtoolkitImageTask extends DefaultTask {
 }
 
 class SavePharoImageTask extends DefaultTask {
+    @Input
     String fromImageName = "Pharo.image"
+    @Input
     String pharoPath = "pharo"
+    @Input
     def commonPharoArgs
+    @Input
     String toImageName
+    @Input
     boolean shouldDeleteOldImage
 
     @TaskAction
@@ -147,10 +159,15 @@ class SavePharoImageTask extends DefaultTask {
 }
 
 class SaveGtoolkitImageTask extends DefaultTask {
+    @Input
     String fromImageName = "GlamorousToolkit/GlamorousToolkit.image"
+    @Input
     String pharoPath = "pharo"
+    @Input
     def commonPharoArgs
+    @Input
     String toImageName
+    @Input
     boolean shouldDeleteOldImage
 
     @TaskAction
@@ -169,11 +186,17 @@ class SaveGtoolkitImageTask extends DefaultTask {
 }
 
 class LoadMetacelloConfigTask extends DefaultTask {
+    @Input
     String image = "Pharo.image"
+    @Input
     String pharoPath = "pharo"
+    @Input
     def commonPharoArgs
+    @Input
     String repository
+    @Input
     String configuration
+    @Input
     String version
 
     @TaskAction
@@ -189,9 +212,13 @@ class LoadMetacelloConfigTask extends DefaultTask {
 }
 
 class EvalSmalltalkExpressionTask extends DefaultTask {
+    @Input
     String image = "Pharo.image"
+    @Input
     String pharoPath = "pharo"
+    @Input
     def commonPharoArgs
+    @Input
     String expression
 
     @TaskAction
@@ -207,9 +234,13 @@ class EvalSmalltalkExpressionTask extends DefaultTask {
 }
 
 class RunSmalltalkScriptTask extends DefaultTask {
+    @Input
     String image = "Pharo.image"
+    @Input
     String pharoPath = "pharo"
+    @Input
     def commonPharoArgs
+    @Input
     String script
 
     @TaskAction
@@ -225,10 +256,15 @@ class RunSmalltalkScriptTask extends DefaultTask {
 }
 
 class RunPharoTestsTask extends DefaultTask {
+    @Input
     String image = "Pharo.image"
+    @Input
     String pharoPath = "pharo"
+    @Input
     def commonPharoArgs
+    @Input
     String packageName
+    @Input
     boolean shouldOutputAsJUnit
 
     @TaskAction
