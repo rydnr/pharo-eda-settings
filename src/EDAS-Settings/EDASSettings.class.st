@@ -78,10 +78,8 @@ EDASSettings class >> edaSettingsOn: aBuilder [
 			root
 				label: label;
 				description: description;
-				icon: (iconProvider
-						 iconNamed: icon
-						 orElse: #collection);
-				noOrdering.
+				icon: (iconProvider iconNamed: icon orElse: #collection);
+				order: 1.
 			apps do: [ :app | 
 				self edaSettingsOn: aBuilder for: app under: rootSymbol ] ]
 ]

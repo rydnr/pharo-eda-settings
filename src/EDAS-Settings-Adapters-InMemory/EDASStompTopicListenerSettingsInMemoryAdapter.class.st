@@ -104,7 +104,7 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount [
 	#'pharoeda.settings.adapters.command_listener.stomp.prefetchCount.label'
 	withDescription:
 	#'pharoeda.settings.adapters.command_listener.stomp.prefetchCount.description'
-	icon: #prefetchCount atPosition: 7 readOnly: false multiple: false>
+	icon: #prefetchcount atPosition: 7 readOnly: false multiple: false>
 	^ prefetchCount ifNil: [ 1 ]
 ]
 
@@ -151,10 +151,21 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> topicListener: anObject [
 EDASStompTopicListenerSettingsInMemoryAdapter >> values: aSymbol [
 
 	^ aSymbol = #ack
-				ifTrue: [ 
-					Dictionary new
-						  at: 'client individual' put: #'client-individual';
-						  at: 'client' put: #client;
-						  at: 'auto' put: #auto; associations ]
-				ifFalse: [ super values: aSymbol ]
+		  ifTrue: [ 
+			  Dictionary new
+				  at:
+					  #'pharoeda.settings.adapters.command_listener.stomp.ack.client-individual'
+						  translated
+				  put: #'client-individual';
+				  at:
+					  #'pharoeda.settings.adapters.command_listener.stomp.ack.client'
+						  translated
+				  put: #client;
+				  at: 
+					  #'pharoeda.settings.adapters.command_listener.stomp.ack.auto'
+						  translated
+		
+				put: #auto;
+				  associations ]
+		  ifFalse: [ super values: aSymbol ]
 ]
