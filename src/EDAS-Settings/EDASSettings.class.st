@@ -42,21 +42,38 @@ EDASSettings class >> adapterSettingsOn: aBuilder for: aPort implementedBy: anAd
 
 { #category : #settings }
 EDASSettings class >> edaSettingsOn: aBuilder [
+
 	<systemsettings>
 	| root rootSymbol |
 	rootSymbol := #edaApps.
 	root := aBuilder group: rootSymbol.
 	EDAApplications uniqueInstance edaApplications
-		ifEmpty: [ root
-				label: 'No PharoEDA applications registered' translated;
-				description: 'No PharoEDA applications registered' ]
-		ifNotEmpty: [ :apps | 
+		ifEmpty: [
 			root
-				label: 'PharoEDA application(s)' translated , ': ' , apps size printString;
-				description: 'Registered PharoEDA applications';
+				label:
+					#'pharoeda.settings.no_applications_registered.label' translated;
+				description:
+					#'pharoeda.settings.no_applications_registered.description' ]
+		ifNotEmpty: [ :apps | 
+			| label description |
+			label := apps size = 1
+				         ifTrue: [ 
+				         #'pharoeda.settings.application_registered.label'
+					         translated ]
+				         ifFalse: [ 
+					         #'pharoeda.settings.applications_registered.label'
+						         translated , apps size printString ].
+			description := apps size = 1
+				               ifTrue: [ 
+				               #'pharoeda.settings.application_registered.description' ]
+				               ifFalse: [ 
+				               #'pharoeda.settings.applications_registered.description' ].
+			root
+				label: label;
+				description: description;
 				noOrdering.
-			apps
-				do: [ :app | self edaSettingsOn: aBuilder for: app under: rootSymbol ] ]
+			apps do: [ :app | 
+				self edaSettingsOn: aBuilder for: app under: rootSymbol ] ]
 ]
 
 { #category : #settings }
@@ -164,11 +181,17 @@ EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app order: anI
 	key := aParent , 'ports'.
 	entry := aBuilder group: key.
 	entry
-		label: 'Ports' translated;
+		label: #'pharoeda.settings.ports.label' translated;
+		description: #'pharoeda.settings.ports.description';
 		parent: aParent.
 	portResolver := EDASPortResolver new.
 	portResolver availablePorts keysAndValuesDo: [ :i :p | 
-		self port: p settingsOn: aBuilder under: key on: app order: i ]
+		self
+			port: p
+			settingsOn: aBuilder
+			under: key
+			on: app
+			order: i ]
 ]
 
 { #category : #settings }
