@@ -3,22 +3,22 @@
     "settings": {
       "no_applications_registered": {
         "label": "Ninguna aplicación PharoEDA",
-        "description": "Las aplicaciones PharoEDA ejecutándose actualmente se pueden ver aquí"
+        "description": "Las aplicaciones PharoEDA ejecutándose actualmente se pueden ver aquí."
       },
       "application_registered": {
         "label": "1 aplicación PharoEDA",
-        "description": "Sólo existe una aplicación PharoEDA ejecutándose actualmente"
+        "description": "Sólo existe una aplicación PharoEDA ejecutándose actualmente."
       },
       "applications_registered": {
         "label": "Aplicaciones PharoEDA: ",
-        "description": "Las aplicaciones PharoEDA ejecutándose actualmente"
+        "description": "Las aplicaciones PharoEDA ejecutándose actualmente."
       },
       "ports": {
         "label": "Puertos",
-        "description": "La lista de los puertos disponibles",
+        "description": "La lista de los puertos disponibles.",
         "environment": {
           "label": "Entorno",
-          "description": "El tipo de adaptador de configuración usado para definir el entorno",
+          "description": "El tipo de adaptador de configuración usado para definir el entorno.",
           "predefined": {
             "label": "Entorno",
             "description": "Lista predefinida"
@@ -30,7 +30,7 @@
         },
         "command_listener": {
           "label": "Consumidor de órdenes",
-          "description": "El tipo de adaptador de configuración usado para definir el consumidor de órdenes",
+          "description": "El tipo de adaptador de configuración usado para definir el consumidor de órdenes.",
           "stomp": {
             "label": "Consumidor de órdenes",
             "description": "Stomp"
@@ -42,47 +42,47 @@
           "stomp": {
             "host": {
               "label": "Servidor",
-              "description": "El servidor"
+              "description": "El servidor."
             },
             "port": {
               "label": "Puerto",
-              "description": "El puerto Stomp"
+              "description": "El puerto Stomp."
             },
             "user": {
               "label": "Usuario",
-              "description": "El nombre de usuario"
+              "description": "El nombre de usuario."
             },
             "password": {
               "label": "Contraseña",
-              "description": "La contraseña para autenticarse en el servidor Stomp"
+              "description": "La contraseña para autenticarse en el servidor Stomp."
             },
             "queue": {
               "label": "Cola",
-              "description": "El nombre de la cola"
+              "description": "El nombre de la cola."
             },
             "prefetchCount": {
               "label": "Mensajes preleídos",
-              "description": "El número de mensajes que se leen cada vez"
+              "description": "El número de mensajes que se leen cada vez."
             },
             "durable": {
               "label": "Persistente",
-              "description": "Si la cola es persistente"
+              "description": "Si la cola es persistente."
             },
             "debug": {
               "label": "Depuración",
-              "description": "Si habilitar el modo depuración o no"
+              "description": "Si habilitar el modo depuración o no."
             },
             "restartOnErrors": {
               "label": "Reiniciar si errores",
-              "description": "Si reiniciar automáticamente el adaptador si se produce algún error"
+              "description": "Si reiniciar automáticamente el adaptador si se produce algún error."
             },
             "errorStrategyName": {
               "label": "Estrategia de errores",
-              "description": "La estrategia a usar para gestionar los errores"
+              "description": "La estrategia a usar para gestionar los errores."
             },
             "ack": {
               "label": "Ack",
-              "description": "El modo ACK (cliente, cliente individual o auto)",
+              "description": "El modo ACK (cliente, cliente individual o auto).",
               "client": "cliente",
               "client-individual": "cliente individual",
               "auto": "auto"
