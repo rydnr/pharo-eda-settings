@@ -44,18 +44,22 @@ EDASSettings class >> adapterSettingsOn: aBuilder for: aPort implementedBy: anAd
 EDASSettings class >> edaSettingsOn: aBuilder [
 
 	<systemsettings>
-	| root rootSymbol |
+	| root rootSymbol iconProvider |
 	rootSymbol := #edaApps.
 	root := aBuilder group: rootSymbol.
+	iconProvider := EDACIconProvider new.
 	EDAApplications uniqueInstance edaApplications
-		ifEmpty: [
+		ifEmpty: [ 
 			root
 				label:
 					#'pharoeda.settings.no_applications_registered.label' translated;
 				description:
-					#'pharoeda.settings.no_applications_registered.description' ]
+					#'pharoeda.settings.no_applications_registered.description';
+				icon: (iconProvider
+						 iconNamed: #noapps
+						 ifAbsent: [ Smalltalk ui iconNamed: #collection ]) ]
 		ifNotEmpty: [ :apps | 
-			| label description |
+			| label description icon |
 			label := apps size = 1
 				         ifTrue: [ 
 				         #'pharoeda.settings.application_registered.label'
@@ -68,10 +72,15 @@ EDASSettings class >> edaSettingsOn: aBuilder [
 				               #'pharoeda.settings.application_registered.description' ]
 				               ifFalse: [ 
 				               #'pharoeda.settings.applications_registered.description' ].
+			icon := apps size = 1
+				        ifTrue: [ #oneapp ]
+				        ifFalse: [ #someapps ].
 			root
 				label: label;
 				description: description;
-				noOrdering.
+				icon: (iconProvider
+						 iconNamed: icon
+						 ifAbsent: [ Smalltalk ui iconNamed: #collection ]) noOrdering.
 			apps do: [ :app | 
 				self edaSettingsOn: aBuilder for: app under: rootSymbol ] ]
 ]
