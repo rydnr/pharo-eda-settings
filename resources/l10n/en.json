@@ -15,7 +15,15 @@
       },
       "ports": {
         "label": "Ports",
-        "description": "The available ports"
+        "description": "The available ports",
+        "environment": {
+          "label": "Environment",
+          "description": "The type of settings adapter used to determine the environment"
+        },
+        "command_listener": {
+          "label": "Command listener",
+          "description": "The type of settings adapter used to determine the command listener"
+        }
       },
       "adapters": {
         "command_listener": {

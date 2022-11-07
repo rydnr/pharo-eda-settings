@@ -15,7 +15,15 @@
       },
       "ports": {
         "label": "Puertos",
-        "description": "La lista de los puertos disponibles"
+        "description": "La lista de los puertos disponibles",
+        "environment": {
+          "label": "Entorno",
+          "description": "El tipo de adaptador de configuración usado para definir el entorno"
+        },
+        "command_listener": {
+          "label": "Consumidor de órdenes",
+          "description": "El tipo de adaptador de configuración usado para definir el consumidor de órdenes"
+        }
       },
       "adapters": {
         "command_listener": {
