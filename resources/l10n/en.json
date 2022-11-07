@@ -66,7 +66,7 @@
             },
             "durable": {
               "label": "Durable",
-              "description": "Whether to topic or queue is durable"
+              "description": "Whether the queue is durable"
             },
             "debug": {
               "label": "Debug",
