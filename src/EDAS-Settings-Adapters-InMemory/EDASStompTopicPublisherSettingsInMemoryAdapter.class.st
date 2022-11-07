@@ -18,10 +18,10 @@ EDASStompTopicPublisherSettingsInMemoryAdapter class >> accepts: aPort [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : #accessing }
 EDASStompTopicPublisherSettingsInMemoryAdapter class >> description [
 
-	^ 'Stomp'
+	^ #'pharoeda.settings.ports.topic_publisher.stomp.description'
 ]
 
 { #category : #testing }
