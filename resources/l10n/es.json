@@ -1,0 +1,22 @@
+{
+  "pharoeda": {
+    "settings": {
+      "no_applications_registered": {
+        "label": "Ninguna aplicación PharoEDA",
+        "description": "Las aplicaciones PharoEDA ejecutándose actualmente se pueden ver aquí"
+      },
+      "application_registered": {
+        "label": "Aplicación PharoEDA",
+        "description": "Sólo existe una aplicación PharoEDA ejecutándose actualmente"
+      },
+      "applications_registered": {
+        "label": "Aplicaciones PharoEDA: ",
+        "description": "Las aplicaciones PharoEDA ejecutándose actualmente"
+      },
+      "ports": {
+        "label": "Puertos",
+        "description": "La lista de los puertos disponibles"
+      }
+    }
+  }
+}
