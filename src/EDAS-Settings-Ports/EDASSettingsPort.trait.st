@@ -68,7 +68,7 @@ EDASSettingsPort classSide >> description [
 EDASSettingsPort classSide >> icon [
 
 	| provider |
-	provider := EDAIconProvider new.
+	provider := EDACIconProvider new.
 	^ (((Pragma
 		     allNamed: #edaPort:withDescription:icon:atPosition:
 		     includingTraitsInSuperAndSubclasses: self) select: [ :p | 
