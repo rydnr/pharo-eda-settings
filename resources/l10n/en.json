@@ -16,6 +16,56 @@
       "ports": {
         "label": "Ports",
         "description": "The available ports"
+      },
+      "adapters": {
+        "command_listener": {
+          "stomp": {
+            "host": {
+              "label": "Host",
+              "description": "The host"
+            },
+            "port": {
+              "label": "Port",
+              "description": "The STOMP port"
+            },
+            "user": {
+              "label": "User",
+              "description": "The user"
+            },
+            "password": {
+              "label": "Password",
+              "description": "The password"
+            },
+            "queue": {
+              "label": "Queue",
+              "description": "The name of the queue"
+            },
+            "prefetchCount": {
+              "label": "Prefetch count",
+              "description": "The number of messages to prefetch"
+            },
+            "durable": {
+              "label": "Durable",
+              "description": "Whether to topic or queue is durable"
+            },
+            "debug": {
+              "label": "Debug",
+              "description": "Whether to enable debug mode"
+            },
+            "restartOnErrors": {
+              "label": "Restart on errors",
+              "description": "Whether to restart on errors"
+            },
+            "errorStrategyName": {
+              "label": "Error strategy",
+              "description": "The strategy to use in case of errorsNa"
+            },
+            "ack": {
+              "label": "Ack",
+              "description": "The ACK mode (client, client-individual or auto)"
+            }
+          }
+        }
       }
     }
   }
