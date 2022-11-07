@@ -24,7 +24,14 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> availableEnvironments 
 
 { #category : #meta }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> description [
-	^ 'Predefined list (', (self concatenateCollection: (self availableEnvironments collect: [ :assoc | assoc value ]) with: ', ') , ')'
+
+	^ #'pharoeda.settings.ports.environment.predefined.description'
+]
+
+{ #category : #meta }
+EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> label [
+
+	^ #'pharoeda.settings.ports.environment.predefined.label'
 ]
 
 { #category : #meta }

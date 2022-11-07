@@ -14,8 +14,11 @@ EDASCommandListenerSettingsPort classSide >> adapterClassAccessor [
 { #category : #testing }
 EDASCommandListenerSettingsPort classSide >> edaPort [
 
-	<edaPort: 'Command listener' withDescription:
-	'The adapter with the command listener settings' icon:
+	<edaPort: 
+#'pharoeda.settings.ports.command_listener.label'
+	 withDescription:
+	#'pharoeda.settings.ports.command_listener.description'
+	icon:
 	#commandlistener atPosition: 2>
 	^ self
 ]

@@ -50,14 +50,8 @@ EDASSettingsPort classSide >> accepts: aPortResolver [
 { #category : #testing }
 EDASSettingsPort classSide >> description [
 
-	| pragmas match |
-	pragmas := Pragma
-		           allNamed: #edaPort:withDescription:icon:atPosition
-		           includingTraitsInSuperAndSubclasses: self.
-	match := pragmas select: [ :p | 
-		         p method methodClass soleInstance = self ].
 	^ ((Pragma
-		    allNamed: #edaPort:withDescription:icon:atPosition
+		    allNamed: #'edaPort:withDescription:icon:atPosition'
 		    includingTraitsInSuperAndSubclasses: self) select: [ :p | 
 		   p method methodClass soleInstance = self ])
 		  ifEmpty: [ '' ]
@@ -83,7 +77,7 @@ EDASSettingsPort classSide >> iconFor: aString in: anEDAApplication [
 
 	| iconName |
 	iconName := ((Pragma
-		              allNamed: #edaPort:withDescription:icon:atPosition
+		              allNamed: #'edaSettings:withDescription:icon:atPosition:readOnly:multiple:'
 		              includingTraitsInSuperAndSubclasses: self) select: [ 
 		             :p | p method selector = aString asSymbol ])
 		            ifEmpty: [ #smallQuestion ]

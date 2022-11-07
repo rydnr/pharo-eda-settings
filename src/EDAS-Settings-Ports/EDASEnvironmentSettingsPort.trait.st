@@ -14,7 +14,9 @@ EDASEnvironmentSettingsPort classSide >> adapterClassAccessor [
 { #category : #testing }
 EDASEnvironmentSettingsPort classSide >> edaPort [
 
-	<edaPort: 'Environment' withDescription: 'The adapter to specify the environment' icon: #environment atPosition: 1>
+	<edaPort: #'pharoeda.settings.ports.environment.label'
+	withDescription: #'pharoeda.settings.ports.environment.description'
+	icon: #environment atPosition: 1>
 	^ self
 ]
 

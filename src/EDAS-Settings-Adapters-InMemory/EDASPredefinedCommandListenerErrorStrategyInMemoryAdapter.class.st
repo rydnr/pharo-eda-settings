@@ -25,7 +25,13 @@ EDASPredefinedCommandListenerErrorStrategyInMemoryAdapter class >> availableStra
 { #category : #testing }
 EDASPredefinedCommandListenerErrorStrategyInMemoryAdapter class >> description [
 
-	^ 'Predefined list or error handling strategies for incoming commands'
+	^ #'pharoeda.settings.ports.command_listener.errorStrategy.predefined.description'
+]
+
+{ #category : #testing }
+EDASPredefinedCommandListenerErrorStrategyInMemoryAdapter class >> label [
+
+	^ #'pharoeda.settings.ports.command_listener.errorStrategy.predefined.label'
 ]
 
 { #category : #resolving }

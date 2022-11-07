@@ -19,7 +19,7 @@ EDASEnvironmentSettingsInMemoryAdapter class >> accepts: aPort [
 { #category : #ambiguous }
 EDASEnvironmentSettingsInMemoryAdapter class >> description [
 
-	^ 'Manual'
+	^ #'pharoeda.settings.ports.environment.manual.label'
 ]
 
 { #category : #accessing }

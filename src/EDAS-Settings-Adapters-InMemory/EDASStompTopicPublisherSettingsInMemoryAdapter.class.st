@@ -24,6 +24,12 @@ EDASStompTopicPublisherSettingsInMemoryAdapter class >> description [
 	^ 'Stomp'
 ]
 
+{ #category : #testing }
+EDASStompTopicPublisherSettingsInMemoryAdapter class >> label [
+
+	^ #'pharoeda.settings.ports.topic_publisher.stomp.label'
+]
+
 { #category : #accessing }
 EDASStompTopicPublisherSettingsInMemoryAdapter class >> priority [
 	^ 0

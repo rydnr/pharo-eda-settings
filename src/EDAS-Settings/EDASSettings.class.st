@@ -159,7 +159,7 @@ EDASSettings class >> port: aPort settingsOn: aBuilder under: aParent on: app or
 	values ifNotEmpty: [ 
 		(aBuilder pickOne: aPort adapterClassAccessor)
 			label: aPort label translated;
-			description: aPort description translated;
+			description: aPort description;
 			icon: aPort icon;
 			target: app;
 			targetSelector: #portSettings;
@@ -218,15 +218,14 @@ EDASSettings class >> settingOn: aBuilder named: aSymbol labelled: aString withD
 	(aConfig supportsMultiple: aSymbol)
 		ifTrue: [ 
 			entry := aBuilder pickOne: aSymbol.
-			entry domainValues:
-				((aConfig values: aSymbol) collect: [ :v | 
+			entry domainValues: ((aConfig values: aSymbol) collect: [ :v | 
 					 v key translated -> v value greaseString ]) ]
 		ifFalse: [ 
 			(aConfig isReadOnly: aSymbol)
 				ifTrue: [ 
 					entry := aBuilder group: aSymbol.
 					entry dialog: [ 
-						LabelMorph newLabel: (aConfig perform: aSymbol) asString ] ]
+						LabelMorph newLabel: (aConfig perform: aSymbol) greaseString ] ]
 				ifFalse: [ entry := aBuilder setting: aSymbol ] ].
 	entry
 		parent: aParent;

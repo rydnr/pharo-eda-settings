@@ -44,7 +44,7 @@ EDASStompSettingsPort >> errorStrategyName [
 	#'pharoeda.settings.adapters.command_listener.stomp.errorStrategyName.label'
 	withDescription:
 	#'pharoeda.settings.adapters.command_listener.stomp.errorStrategyName.description'
-	icon: #errorStrategy atPosition: 11 readOnly: false multiple: true>
+	icon: #errorstrategy atPosition: 11 readOnly: false multiple: true>
 	self shouldBeImplemented
 ]
 
@@ -80,10 +80,9 @@ EDASStompSettingsPort >> restartOnErrors [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.command_listener.stomp.restartOnErrors.label'
-	  withDescription:
+	withDescription:
 	#'pharoeda.settings.adapters.command_listener.stomp.restartOnErrors.description'
- icon: #restartOnErrors atPosition: 10
-	readOnly: false multiple: false>
+	icon: #restartonerrors atPosition: 10 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
