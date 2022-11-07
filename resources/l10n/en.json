@@ -83,8 +83,8 @@
             "ack": {
               "label": "Ack",
               "description": "The ACK mode (client, client-individual or auto)",
-              "client": "cliente",
-              "client-individual": "cliente individual",
+              "client": "client",
+              "client-individual": "client individual",
               "auto": "auto"
             }
           }
