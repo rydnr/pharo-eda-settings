@@ -6,7 +6,7 @@
         "description": "Las aplicaciones PharoEDA ejecutándose actualmente se pueden ver aquí"
       },
       "application_registered": {
-        "label": "Aplicación PharoEDA",
+        "label": "1 aplicación PharoEDA",
         "description": "Sólo existe una aplicación PharoEDA ejecutándose actualmente"
       },
       "applications_registered": {

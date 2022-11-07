@@ -6,7 +6,7 @@
         "description": "Running PharoEDA applications get listed here auto get here automatically"
       },
       "application_registered": {
-        "label": "PharoEDA application",
+        "label": "1 PharoEDA application",
         "description": "Only one PharoEDA application is currently running"
       },
       "applications_registered": {
