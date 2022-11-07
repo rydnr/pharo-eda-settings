@@ -18,11 +18,23 @@
         "description": "La lista de los puertos disponibles",
         "environment": {
           "label": "Entorno",
-          "description": "El tipo de adaptador de configuración usado para definir el entorno"
+          "description": "El tipo de adaptador de configuración usado para definir el entorno",
+          "predefined": {
+            "label": "Entorno",
+            "description": "Lista predefinida"
+          },
+          "manual": {
+            "label": "Entorno",
+            "description": "Manual"
+          }
         },
         "command_listener": {
           "label": "Consumidor de órdenes",
-          "description": "El tipo de adaptador de configuración usado para definir el consumidor de órdenes"
+          "description": "El tipo de adaptador de configuración usado para definir el consumidor de órdenes",
+          "stomp": {
+            "label": "Consumidor de órdenes",
+            "description": "Stomp"
+          }
         }
       },
       "adapters": {
@@ -34,7 +46,7 @@
             },
             "port": {
               "label": "Puerto",
-              "description": "El puerto STOMP"
+              "description": "El puerto Stomp"
             },
             "user": {
               "label": "Usuario",
@@ -42,7 +54,7 @@
             },
             "password": {
               "label": "Contraseña",
-              "description": "La contraseña para autenticarse en el servidor STOMP"
+              "description": "La contraseña para autenticarse en el servidor Stomp"
             },
             "queue": {
               "label": "Cola",

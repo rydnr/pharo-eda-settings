@@ -18,11 +18,23 @@
         "description": "The available ports",
         "environment": {
           "label": "Environment",
-          "description": "The type of settings adapter used to determine the environment"
+          "description": "The type of settings adapter used to determine the environment",
+          "predefined": {
+            "label": "Environment",
+            "description": "Predefined list"
+          },
+          "manual": {
+            "label": "Environment",
+            "description": "Manual"
+          }
         },
         "command_listener": {
           "label": "Command listener",
-          "description": "The type of settings adapter used to determine the command listener"
+          "description": "The type of settings adapter used to determine the command listener",
+          "stomp": {
+            "label": "Command listener",
+            "description": "Stomp"
+          }
         }
       },
       "adapters": {
@@ -34,7 +46,7 @@
             },
             "port": {
               "label": "Port",
-              "description": "The STOMP port"
+              "description": "The Stomp port"
             },
             "user": {
               "label": "User",
@@ -66,7 +78,7 @@
             },
             "errorStrategyName": {
               "label": "Error strategy",
-              "description": "The strategy to use in case of errorsNa"
+              "description": "The strategy to use in case of errors"
             },
             "ack": {
               "label": "Ack",
