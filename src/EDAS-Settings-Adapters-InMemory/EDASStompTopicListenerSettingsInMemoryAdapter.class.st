@@ -33,8 +33,11 @@ EDASStompTopicListenerSettingsInMemoryAdapter class >> priority [
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> ack [
 
-	<edaSettings: 'Ack' withDescription: 'The ACK mode' icon: #protocolProtected atPosition: 12
-	readOnly: false multiple: true>
+	<edaSettings:
+	#'pharoeda.settings.adapters.command_listener.stomp.ack.label'
+	withDescription:
+	#'pharoeda.settings.adapters.command_listener.stomp.ack.description'
+	icon: #ack atPosition: 12 readOnly: false multiple: true>
 	^ ack ifNil: [ #auto ]
 ]
 
@@ -91,9 +94,11 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> port [
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount [
 
-	<edaSettings: 'Prefetch count' withDescription:
-	'The number of messages to prefetch' icon: #smallCentered atPosition: 7 readOnly: false
-	multiple: false>
+	<edaSettings:
+	#'pharoeda.settings.adapters.command_listener.stomp.prefetchCount.label'
+	withDescription:
+	#'pharoeda.settings.adapters.command_listener.stomp.prefetchCount.description'
+	icon: #prefetchCount atPosition: 7 readOnly: false multiple: false>
 	^ prefetchCount ifNil: [ 1 ]
 ]
 
@@ -105,8 +110,11 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount: val [
 { #category : #accessing }
 EDASStompTopicListenerSettingsInMemoryAdapter >> queue [
 
-	<edaSettings: 'Queue' withDescription: 'The queue' icon: #smallJustified atPosition: 5
-	readOnly: false multiple: false>
+	<edaSettings:
+	#'pharoeda.settings.adapters.command_listener.stomp.queue.label'
+	withDescription:
+	#'pharoeda.settings.adapters.command_listener.stomp.queue.description'
+	icon: #queue atPosition: 5 readOnly: false multiple: false>
 	^ queue ifNil: [ '' ]
 ]
 

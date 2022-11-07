@@ -129,9 +129,10 @@ EDASSettingsPort classSide >> selector [
 EDASSettingsPort classSide >> settingsAttributes [
 
 	^ ((Pragma
-		    allNamed: #edaSettings:withDescription:atPosition:readOnly:multiple:
+		    allNamed:
+		    #edaSettings:withDescription:icon:atPosition:readOnly:multiple:
 		    includingTraitsInSuperAndSubclasses: self) sort: [ :a :b | 
-		   (a argumentAt: 3) < (b argumentAt: 3) ]) collect: [ :p | 
+		   (a argumentAt: 4) < (b argumentAt: 4) ]) collect: [ :p | 
 		  p method selector ]
 ]
 

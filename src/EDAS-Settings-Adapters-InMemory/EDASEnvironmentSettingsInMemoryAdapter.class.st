@@ -30,8 +30,12 @@ EDASEnvironmentSettingsInMemoryAdapter class >> priority [
 { #category : #accessing }
 EDASEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
 
-	<edaSettings: 'Environment' withDescription: 'The environment' icon:
-	#workspace atPosition: 1 readOnly: false multiple: false>
+	<edaSettings: 
+	#'pharoeda.settings.adapters.environment.label'	
+	withDescription:
+	#'pharoeda.settings.adapters.environment.description'	
+	 icon:
+	#environment atPosition: 1 readOnly: false multiple: false>
 	^ currentEnvironment ifNil: [ '' ]
 ]
 

@@ -39,9 +39,11 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> availableEnvironments [
 
 { #category : #accessing }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
-
-	<edaSettings: 'Environment' withDescription: 'The environment' icon:
-	#environment atPosition: 1 readOnly: false multiple: true>
+	
+	<edaSettings: #'pharoeda.settings.adapters.environment.label'
+	withDescription:
+	#'pharoeda.settings.adapters.environment.description' icon:
+	#environment atPosition: 1 readOnly: false multiple: false>	
 	^ currentEnvironment ifNil: [ 
 		  self availableEnvironments
 			  ifEmpty: [ '' ]
