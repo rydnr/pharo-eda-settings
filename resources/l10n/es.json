@@ -82,7 +82,10 @@
             },
             "ack": {
               "label": "Ack",
-              "description": "El modo ACK (client, client-individual o auto)"
+              "description": "El modo ACK (cliente, cliente individual o auto)",
+              "client": "cliente",
+              "client-individual": "cliente individual",
+              "auto": "auto"
             }
           }
         }
