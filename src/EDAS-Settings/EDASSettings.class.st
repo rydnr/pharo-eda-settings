@@ -80,7 +80,8 @@ EDASSettings class >> edaSettingsOn: aBuilder [
 				description: description;
 				icon: (iconProvider
 						 iconNamed: icon
-						 ifAbsent: [ Smalltalk ui iconNamed: #collection ]) noOrdering.
+						 orElse: #collection);
+				noOrdering.
 			apps do: [ :app | 
 				self edaSettingsOn: aBuilder for: app under: rootSymbol ] ]
 ]
@@ -192,6 +193,7 @@ EDASSettings class >> portSettingsOn: aBuilder under: aParent on: app order: anI
 	entry
 		label: #'pharoeda.settings.ports.label' translated;
 		description: #'pharoeda.settings.ports.description';
+		icon: (EDACIconProvider new iconNamed: #ports orElse: #smallConfiguration);
 		parent: aParent.
 	portResolver := EDASPortResolver new.
 	portResolver availablePorts keysAndValuesDo: [ :i :p | 
