@@ -74,9 +74,17 @@
             "label": "Contraseña",
             "description": "La contraseña para autenticarse en el servidor Stomp."
           },
+          "timeout": {
+            "label": "Tiempo de espera",
+            "description": "El tiempo de espera máximo en las conexiones Stomp."
+          },
           "debug": {
             "label": "Depuración",
             "description": "Si habilitar el modo depuración o no."
+          },
+          "durable": {
+            "label": "Persistente",
+            "description": "Si la cola o el exchange es persistente."
           },
           "restartOnErrors": {
             "label": "Reiniciar si errores",
@@ -101,10 +109,6 @@
             "prefetchCount": {
               "label": "Mensajes preleídos",
               "description": "El número de mensajes que se leen cada vez."
-            },
-            "durable": {
-              "label": "Persistente",
-              "description": "Si la cola es persistente."
             },
             "ack": {
               "label": "Ack",

@@ -79,9 +79,17 @@
             "label": "Password",
             "description": "The password."
           },
+          "timeout": {
+            "label": "Timeout",
+            "description": "The connection timeout."
+          },
           "debug": {
             "label": "Debug",
             "description": "Whether to enable debug mode."
+          },
+          "durable": {
+            "label": "Durable",
+            "description": "Whether the queue or exchange is durable."
           },
           "restartOnErrors": {
             "label": "Restart on errors",
@@ -106,10 +114,6 @@
             "prefetchCount": {
               "label": "Prefetch count",
               "description": "The number of messages to prefetch."
-            },
-            "durable": {
-              "label": "Durable",
-              "description": "Whether the queue is durable."
             },
             "ack": {
               "label": "Ack",
