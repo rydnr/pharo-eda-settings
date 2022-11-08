@@ -55,28 +55,44 @@
             "description": "Elija entre uno de la lista predefinida de entornos."
           }
         },
+        "stomp": {
+          "label": "Consumidor de órdenes",
+          "description": "Personalice la configuración Stomp.",
+          "host": {
+            "label": "Servidor",
+            "description": "El servidor."
+          },
+          "port": {
+            "label": "Puerto",
+            "description": "El puerto Stomp."
+          },
+          "user": {
+            "label": "Usuario",
+            "description": "El nombre de usuario."
+          },
+          "password": {
+            "label": "Contraseña",
+            "description": "La contraseña para autenticarse en el servidor Stomp."
+          },
+          "debug": {
+            "label": "Depuración",
+            "description": "Si habilitar el modo depuración o no."
+          },
+          "restartOnErrors": {
+            "label": "Reiniciar si errores",
+            "description": "Si reiniciar automáticamente el adaptador si se produce algún error."
+          },
+          "errorStrategyName": {
+            "label": "Estrategia de errores",
+            "description": "La estrategia a usar para gestionar los errores."
+          }
+        },
         "command_listener": {
           "stomp": {
             "label": "Consumidor de órdenes",
             "description": "Personalice la configuración Stomp.",
             "json": {
-              "description": "Valores obtenidos de config/[entorno].json"
-            },
-            "host": {
-              "label": "Servidor",
-              "description": "El servidor."
-            },
-            "port": {
-              "label": "Puerto",
-              "description": "El puerto Stomp."
-            },
-            "user": {
-              "label": "Usuario",
-              "description": "El nombre de usuario."
-            },
-            "password": {
-              "label": "Contraseña",
-              "description": "La contraseña para autenticarse en el servidor Stomp."
+              "description": "Valores obtenidos de config/[entorno].json."
             },
             "queue": {
               "label": "Cola",
@@ -90,24 +106,37 @@
               "label": "Persistente",
               "description": "Si la cola es persistente."
             },
-            "debug": {
-              "label": "Depuración",
-              "description": "Si habilitar el modo depuración o no."
-            },
-            "restartOnErrors": {
-              "label": "Reiniciar si errores",
-              "description": "Si reiniciar automáticamente el adaptador si se produce algún error."
-            },
-            "errorStrategyName": {
-              "label": "Estrategia de errores",
-              "description": "La estrategia a usar para gestionar los errores."
-            },
             "ack": {
               "label": "Ack",
               "description": "El modo ACK (cliente, cliente individual o auto).",
               "client": "cliente",
               "client-individual": "cliente individual",
               "auto": "auto"
+            }
+          }
+        },
+        "event_publisher": {
+          "stomp": {
+            "label": "Publicador de eventos",
+            "description": "Personalice la configuración Stomp.",
+            "json": {
+              "description": "Valores obtenidos de config/[entorno].json."
+            },
+            "exchange": {
+              "label": "Exchange",
+              "description": "El nombre del exchange."
+            },
+            "routingKey": {
+              "label": "Clave de enrutado",
+              "description": "La clave de enrutado."
+            },
+            "errorExchange": {
+              "label": "Exchange de errores",
+              "description": "El nombre del exchange donde publicar errores."
+            },
+            "errorRoutingKey": {
+              "label": "Clave de enrutado de errores",
+              "description": "La clave de enrutado para los errores."
             }
           }
         }

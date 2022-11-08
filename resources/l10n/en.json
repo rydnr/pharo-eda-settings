@@ -42,6 +42,13 @@
           "stomp": {
             "label": "Stomp"
           }
+        },
+        "event_publisher": {
+          "label": "Event publisher",
+          "description": "The type of settings adapter used to determine the event publisher.",
+          "stomp": {
+            "label": "Stomp"
+          }
         }
       },
       "adapters": {
@@ -55,28 +62,42 @@
             "description": "Choose one of the predefined environments."
           }
         },
+        "stomp": {
+          "host": {
+            "label": "Host",
+            "description": "The host."
+          },
+          "port": {
+            "label": "Port",
+            "description": "The Stomp port."
+          },
+          "user": {
+            "label": "User",
+            "description": "The user."
+          },
+          "password": {
+            "label": "Password",
+            "description": "The password."
+          },
+          "debug": {
+            "label": "Debug",
+            "description": "Whether to enable debug mode."
+          },
+          "restartOnErrors": {
+            "label": "Restart on errors",
+            "description": "Whether to restart on errors."
+          },
+          "errorStrategyName": {
+            "label": "Error strategy",
+            "description": "The strategy to use in case of errors."
+          }
+        },
         "command_listener": {
           "stomp": {
             "label": "Command Listener",
             "description": "Customize the Stomp settings.",
             "json": {
               "description": "Stomp values from config/[environment].json"
-            },
-            "host": {
-              "label": "Host",
-              "description": "The host."
-            },
-            "port": {
-              "label": "Port",
-              "description": "The Stomp port."
-            },
-            "user": {
-              "label": "User",
-              "description": "The user."
-            },
-            "password": {
-              "label": "Password",
-              "description": "The password."
             },
             "queue": {
               "label": "Queue",
@@ -90,24 +111,37 @@
               "label": "Durable",
               "description": "Whether the queue is durable."
             },
-            "debug": {
-              "label": "Debug",
-              "description": "Whether to enable debug mode."
-            },
-            "restartOnErrors": {
-              "label": "Restart on errors",
-              "description": "Whether to restart on errors."
-            },
-            "errorStrategyName": {
-              "label": "Error strategy",
-              "description": "The strategy to use in case of errors."
-            },
             "ack": {
               "label": "Ack",
               "description": "The ACK mode (client, client-individual or auto).",
               "client": "client",
               "client-individual": "client individual",
               "auto": "auto"
+            }
+          }
+        },
+        "event_publisher": {
+          "stomp": {
+            "label": "Event Publisher",
+            "description": "Customize the Stomp settings.",
+            "json": {
+              "description": "Stomp values from config/[environment].json"
+            },
+            "exchange": {
+              "label": "Exchange",
+              "description": "The name of the exchange."
+            },
+            "routingKey": {
+              "label": "Routing key",
+              "description": "The routing key."
+            },
+            "errorExchange": {
+              "label": "Error exchange",
+              "description": "The name of the exchange to publish errors."
+            },
+            "errorRoutingKey": {
+              "label": "Error routing key",
+              "description": "The routing key for errors."
             }
           }
         }
