@@ -25,10 +25,10 @@
             "test": "testing",
             "PRO": "production!",
             "translations": {
-              "es": {
-                "desarrollo": "dev",
-                "pruebas": "test",
-                "producción!": "PRO"
+              "en": {
+                "development": "dev",
+                "testing": "test",
+                "producton!": "PRO"
               }
             }
           },

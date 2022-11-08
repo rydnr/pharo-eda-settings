@@ -26,9 +26,9 @@
             "PRO": "producción!",
             "translations": {
               "en": {
-                "development": "dev",
-                "testing": "test",
-                "production!": "PRO"
+                "desarrollo": "dev",
+                "pruebas": "test",
+                "producción!": "PRO"
               }
             }
           },
