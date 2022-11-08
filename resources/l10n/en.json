@@ -23,7 +23,14 @@
             "label": "Predefined list",
             "dev": "development",
             "test": "testing",
-            "PRO": "production!"
+            "PRO": "production!",
+            "translations": {
+              "es": {
+                "desarrollo": "dev",
+                "pruebas": "test",
+                "producción!": "PRO"
+              }
+            }
           },
           "manual": {
             "label": "Manual"
