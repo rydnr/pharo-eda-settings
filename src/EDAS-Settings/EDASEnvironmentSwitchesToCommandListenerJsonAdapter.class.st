@@ -38,7 +38,10 @@ EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> subscribeToSettings
 { #category : #'event handling - private' }
 EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> translateToEnglish: anEnvironment [
 
-	^ ('pharoeda.settings.ports.environment.predefined.translations.en.', anEnvironment) asSymbol translated
+	| entry aux |
+	entry := ('pharoeda.settings.ports.environment.predefined.translations.en.', anEnvironment) asSymbol.
+	aux := entry translated.
+	^ aux = entry ifTrue: [ anEnvironment ] ifFalse: [ aux ]
 
 	
 ]
