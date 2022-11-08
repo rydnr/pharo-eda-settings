@@ -41,17 +41,20 @@
         "environment": {
           "manual": {
             "label": "Entorno",
-            "description": "Indique el nombre del entorno"
+            "description": "Indique el nombre del entorno."
           },
           "predefined": {
             "label": "Entorno",
-            "description": "Elija entre uno de la lista predefinida de entornos"
+            "description": "Elija entre uno de la lista predefinida de entornos."
           }
         },
         "command_listener": {
           "stomp": {
             "label": "Consumidor de órdenes",
-            "description": "Personalice la configuración Stomp",
+            "description": "Personalice la configuración Stomp.",
+            "json": {
+              "description": "Valores obtenidos de config/[entorno].json"
+            },
             "host": {
               "label": "Servidor",
               "description": "El servidor."

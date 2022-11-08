@@ -41,17 +41,20 @@
         "environment": {
           "manual": {
             "label": "Environment",
-            "description": "Specify the name of the environment"
+            "description": "Specify the name of the environment."
           },
           "predefined": {
             "label": "Environment",
-            "description": "Choose one of the predefined environments"
+            "description": "Choose one of the predefined environments."
           }
         },
         "command_listener": {
           "stomp": {
             "label": "Command Listener",
-            "description": "Customize the Stomp settings",
+            "description": "Customize the Stomp settings.",
+            "json": {
+              "description": "Stomp values from config/[environment].json"
+            },
             "host": {
               "label": "Host",
               "description": "The host."
