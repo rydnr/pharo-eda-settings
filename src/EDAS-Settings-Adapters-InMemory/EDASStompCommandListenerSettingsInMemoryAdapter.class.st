@@ -75,10 +75,25 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> destination [
 	^ '/amq/queue/' , self queue
 ]
 
+{ #category : #'class initialization' }
+EDASStompCommandListenerSettingsInMemoryAdapter >> doInitialize [
+	super doInitialize.
+	self queue: nil.
+	self prefetchCount: nil.
+	self durable: true.
+	self ack: #'client-individual'
+]
+
 { #category : #accessing }
 EDASStompCommandListenerSettingsInMemoryAdapter >> errorStrategy [
 
 	^ super errorStrategy
+]
+
+{ #category : #'class initialization' }
+EDASStompCommandListenerSettingsInMemoryAdapter >> initialize [
+	super initialize.
+	self doInitialize
 ]
 
 { #category : #accessing }
