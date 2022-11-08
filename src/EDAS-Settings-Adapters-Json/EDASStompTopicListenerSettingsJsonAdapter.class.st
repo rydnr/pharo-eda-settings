@@ -40,6 +40,14 @@ EDASStompTopicListenerSettingsJsonAdapter class >> description [
 	^ #'pharoeda.settings.adapters.command_listener.stomp.json.description'
 ]
 
+{ #category : #testing }
+EDASStompTopicListenerSettingsJsonAdapter class >> edaPort [
+
+	"This gets called in EDASSettings when selecting the port, so it gets selected correctly"
+
+	^ EDASStompTopicListenerSettingsInMemoryAdapter
+]
+
 { #category : #'instance creation' }
 EDASStompTopicListenerSettingsJsonAdapter class >> forEnvironment: anEnvironment withApp: anEDAApplication [
 
@@ -57,6 +65,12 @@ EDASStompTopicListenerSettingsJsonAdapter class >> fromFile: aFileReference with
 	commandListener keysAndValuesDo: [ :k :v | 
 		result instVarNamed: k put: v ].
 	^ result
+]
+
+{ #category : #testing }
+EDASStompTopicListenerSettingsJsonAdapter class >> icon [
+
+	^ EDACIconProvider new iconNamed: #commandlistener orElse: #comments
 ]
 
 { #category : #testing }

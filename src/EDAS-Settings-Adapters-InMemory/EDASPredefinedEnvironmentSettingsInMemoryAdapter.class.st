@@ -21,7 +21,7 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> availableEnvironments 
 
 	^ EDASStompTopicListenerSettingsJsonAdapter availableEnvironments 
 		  collect: [ :e | 
-			  ('pharoeda.settings.ports.environment.predefined' , e) asSymbol
+			  ('pharoeda.settings.ports.environment.predefined.' , e) asSymbol
 				  translated -> e ]
 ]
 
@@ -59,7 +59,7 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
 	<edaSettings: #'pharoeda.settings.adapters.environment.label'
 	withDescription:
 	#'pharoeda.settings.adapters.environment.description' icon:
-	#environment atPosition: 1 readOnly: false multiple: false>	
+	#environment atPosition: 1 readOnly: false multiple: true>	
 	^ currentEnvironment ifNil: [ 
 		  self availableEnvironments
 			  ifEmpty: [ '' ]

@@ -9,12 +9,17 @@ Class {
 { #category : #'event handling - private' }
 EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> handleEnvironmentChangedEvent: anEvent [
 
+	| englishValue |
+	englishValue := Locale current isoLanguage = 'en'
+		                ifTrue: [ anEvent newValue ]
+		                ifFalse: [ 
+		                self translateToEnglish: anEvent newValue fromLocale: Locale current ].
 	(EDASStompTopicListenerSettingsJsonAdapter supportsEnvironment:
-		 anEvent newValue)
+		 englishValue)
 		ifTrue: [ 
 			anEvent edaApplication portSettings commandListenerSettings:
 				(EDASStompTopicListenerSettingsJsonAdapter
-					 forEnvironment: anEvent newValue
+					 forEnvironment: englishValue
 					 withApp: anEvent edaApplication) ]
 		ifFalse: [ 
 			anEvent edaApplication portSettings commandListenerSettings:
@@ -28,4 +33,12 @@ EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> subscribeToSettings
 	anEDASettingsAnnouncer
 		when: EDASEnvironmentChanged
 		do: [ :event | self handleEnvironmentChangedEvent: event ]
+]
+
+{ #category : #'event handling - private' }
+EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> translateToEnglish: anEnvironment fromLocale: aLocale [
+
+	^ ('pharoeda.settings.ports.environment.predefined.translations.' , aLocale isoLanguage , '.', anEnvironment) asSymbol translated
+
+	
 ]

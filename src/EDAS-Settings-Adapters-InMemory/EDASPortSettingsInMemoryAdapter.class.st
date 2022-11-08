@@ -64,11 +64,16 @@ EDASPortSettingsInMemoryAdapter >> commandListenerSettings: newValue [
 { #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> commandListenerSettingsAdapterClass [
 
-	^ adapterClasses at: EDASCommandListenerSettingsPort ifAbsent: [ 
-		  | t |
-		  t := self commandListenerSettings.
-		  self commandListenerSettingsAdapterClass: t class.
-		  t ]
+	| result |
+	result := adapterClasses
+		          at: EDASCommandListenerSettingsPort
+		          ifAbsent: [ 
+			          | t |
+			          t := self commandListenerSettings.
+			          t ifNotNil: [ :arg | 
+				          self commandListenerSettingsAdapterClass: t class ].
+			          t ].
+	^ result edaPort
 ]
 
 { #category : #testing }
