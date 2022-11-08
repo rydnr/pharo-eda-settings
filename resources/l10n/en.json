@@ -20,26 +20,38 @@
           "label": "Environment",
           "description": "The type of settings adapter used to determine the environment.",
           "predefined": {
-            "label": "Environment",
-            "description": "Predefined list"
+            "label": "Predefined list",
+            "dev": "development",
+            "test": "testing",
+            "PRO": "production!"
           },
           "manual": {
-            "label": "Environment",
-            "description": "Manual"
+            "label": "Manual"
           }
         },
         "command_listener": {
           "label": "Command listener",
           "description": "The type of settings adapter used to determine the command listener.",
           "stomp": {
-            "label": "Command listener",
-            "description": "Stomp"
+            "label": "Stomp"
           }
         }
       },
       "adapters": {
+        "environment": {
+          "manual": {
+            "label": "Environment",
+            "description": "Specify the name of the environment"
+          },
+          "predefined": {
+            "label": "Environment",
+            "description": "Choose one of the predefined environments"
+          }
+        },
         "command_listener": {
           "stomp": {
+            "label": "Command Listener",
+            "description": "Customize the Stomp settings",
             "host": {
               "label": "Host",
               "description": "The host."

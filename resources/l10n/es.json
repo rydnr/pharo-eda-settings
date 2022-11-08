@@ -20,26 +20,38 @@
           "label": "Entorno",
           "description": "El tipo de adaptador de configuración usado para definir el entorno.",
           "predefined": {
-            "label": "Entorno",
-            "description": "Lista predefinida"
+            "label": "Lista predefinida",
+            "dev": "desarrollo",
+            "test": "pruebas",
+            "PRO": "producción!"
           },
           "manual": {
-            "label": "Entorno",
-            "description": "Manual"
+            "label": "Manual"
           }
         },
         "command_listener": {
           "label": "Consumidor de órdenes",
           "description": "El tipo de adaptador de configuración usado para definir el consumidor de órdenes.",
           "stomp": {
-            "label": "Consumidor de órdenes",
-            "description": "Stomp"
+            "label": "Stomp"
           }
         }
       },
       "adapters": {
+        "environment": {
+          "manual": {
+            "label": "Entorno",
+            "description": "Indique el nombre del entorno"
+          },
+          "predefined": {
+            "label": "Entorno",
+            "description": "Elija entre uno de la lista predefinida de entornos"
+          }
+        },
         "command_listener": {
           "stomp": {
+            "label": "Consumidor de órdenes",
+            "description": "Personalice la configuración Stomp",
             "host": {
               "label": "Servidor",
               "description": "El servidor."
