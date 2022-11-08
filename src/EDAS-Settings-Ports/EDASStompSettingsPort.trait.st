@@ -20,9 +20,9 @@ EDASStompSettingsPort >> availableErrorStrategies [
 EDASStompSettingsPort >> debug [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.command_listener.stomp.debug.label'
+	#'pharoeda.settings.adapters.stomp.debug.label'
 	withDescription:
-	#'pharoeda.settings.adapters.command_listener.stomp.debug.description'
+	#'pharoeda.settings.adapters.stomp.debug.description'
 	icon: #debug atPosition: 9 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
@@ -31,9 +31,9 @@ EDASStompSettingsPort >> debug [
 EDASStompSettingsPort >> durable [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.command_listener.stomp.durable.label'
+	#'pharoeda.settings.adapters.stomp.durable.label'
 	withDescription:
-	#'pharoeda.settings.adapters.command_listener.stomp.durable.description'
+	#'pharoeda.settings.adapters.stomp.durable.description'
 	icon: #durable atPosition: 8 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
@@ -53,26 +53,32 @@ EDASStompSettingsPort >> errorStrategyName [
 EDASStompSettingsPort >> host [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.command_listener.stomp.host.label'
+	#'pharoeda.settings.adapters.stomp.host.label'
 	withDescription:
-	#'pharoeda.settings.adapters.command_listener.stomp.host.description' icon:
-	#host atPosition: 1 readOnly: false multiple: false>
+	#'pharoeda.settings.adapters.stomp.host.description'
+	icon: #host atPosition: 1 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> password [
 
-	<edaSettings: #'pharoeda.settings.adapters.command_listener.stomp.password.label' withDescription: #'pharoeda.settings.adapters.command_listener.stomp.password.description' icon:
-	#password atPosition: 4 readOnly: false multiple: false>
+	<edaSettings:
+	#'pharoeda.settings.adapters.stomp.password.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.password.description'
+	icon: #password atPosition: 4 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> port [
 
-	<edaSettings: #'pharoeda.settings.adapters.command_listener.stomp.port.label' withDescription: #'pharoeda.settings.adapters.command_listener.stomp.port.description' icon: #port
-	atPosition: 2 readOnly: false multiple: false>
+	<edaSettings:
+	#'pharoeda.settings.adapters.stomp.port.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.port.description'
+	icon: #port atPosition: 2 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
@@ -80,9 +86,9 @@ EDASStompSettingsPort >> port [
 EDASStompSettingsPort >> restartOnErrors [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.command_listener.stomp.restartOnErrors.label'
+	#'pharoeda.settings.adapters.stomp.restartOnErrors.label'
 	withDescription:
-	#'pharoeda.settings.adapters.command_listener.stomp.restartOnErrors.description'
+	#'pharoeda.settings.adapters.stomp.restartOnErrors.description'
 	icon: #restartonerrors atPosition: 10 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
@@ -90,23 +96,21 @@ EDASStompSettingsPort >> restartOnErrors [
 { #category : #resolving }
 EDASStompSettingsPort >> timeout [
 
-	<edaSettings:
-	#'pharoeda.settings.adapters.command_listener.stomp.timeout.label'	
-	  withDescription: 
-	#'pharoeda.settings.adapters.command_listener.stomp.timeout.description'	
-	icon: #timeout atPosition: 6>
+	<edaSettings: #'pharoeda.settings.adapters.stomp.timeout.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.timeout.description' icon:
+	#timeout atPosition: 6 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> user [
 
-	<edaSettings: 
-	#'pharoeda.settings.adapters.command_listener.stomp.user.label'	
-	 withDescription: 
-	#'pharoeda.settings.adapters.command_listener.stomp.user.description'	
-	icon: #user
-	atPosition: 3 readOnly: false multiple: false>
+	<edaSettings:
+	#'pharoeda.settings.adapters.stomp.user.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.user.description'
+	icon: #user atPosition: 3 readOnly: false multiple: false>
 	self shouldBeImplemented
 ]
 

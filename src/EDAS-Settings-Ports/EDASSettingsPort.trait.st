@@ -30,6 +30,12 @@ EDASSettingsPort classSide >> accepts: aPortResolver [
 	^ false
 ]
 
+{ #category : #accessing }
+EDASSettingsPort classSide >> adapterClassAccessor [
+
+	self subclassResponsibility 
+]
+
 { #category : #testing }
 EDASSettingsPort classSide >> description [
 
@@ -40,6 +46,12 @@ EDASSettingsPort classSide >> description [
 		   p arguments second ]) asOrderedCollection
 		  ifEmpty: [ nil ]
 		  ifNotEmpty: [ :c | c first ]
+]
+
+{ #category : #metadata }
+EDASSettingsPort classSide >> edaPort [
+
+	self subclassResponsibility
 ]
 
 { #category : #testing }
@@ -80,6 +92,12 @@ EDASSettingsPort classSide >> label [
 		   collect: [ :p | p arguments first ]) asOrderedCollection
 		  ifEmpty: [ nil ]
 		  ifNotEmpty: [ :c | c first ]
+]
+
+{ #category : #metadata }
+EDASSettingsPort classSide >> portLabel [
+
+	self subclassResponsibility 
 ]
 
 { #category : #testing }

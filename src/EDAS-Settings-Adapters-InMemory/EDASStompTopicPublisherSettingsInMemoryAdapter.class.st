@@ -15,7 +15,7 @@ Class {
 { #category : #testing }
 EDASStompTopicPublisherSettingsInMemoryAdapter class >> accepts: aPort [
 
-	^ false
+	^ true
 ]
 
 { #category : #accessing }
@@ -28,6 +28,12 @@ EDASStompTopicPublisherSettingsInMemoryAdapter class >> description [
 EDASStompTopicPublisherSettingsInMemoryAdapter class >> label [
 
 	^ #'pharoeda.settings.ports.topic_publisher.stomp.label'
+]
+
+{ #category : #metadata }
+EDASStompTopicPublisherSettingsInMemoryAdapter class >> portLabel [
+
+	^ #'pharoeda.settings.ports.event_publisher.stomp.label'
 ]
 
 { #category : #accessing }
@@ -46,9 +52,12 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> doInitialize [
 { #category : #accessing }
 EDASStompTopicPublisherSettingsInMemoryAdapter >> errorExchange [
 
-	<edaSettings: 'Error exchange' withDescription: 'The name of the error exchange' atPosition: 12
-	readOnly: false multiple: false>
-	^ errorExchange
+	<edaSettings:
+	#'pharoeda.settings.adapters.event_publisher.stomp.errorExchange.label'
+	withDescription:
+	#'pharoeda.settings.adapters.event_publisher.stomp.errorExchange.description'
+	icon: #errorexchange atPosition: 12 readOnly: false multiple: false>
+	^ errorExchange ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -59,10 +68,13 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> errorExchange: aString [
 { #category : #accessing }
 EDASStompTopicPublisherSettingsInMemoryAdapter >> errorRoutingKey [
 
-
-	<edaSettings: 'Error routing key' withDescription: 'The routing key for error messages' atPosition: 13
-	readOnly: false multiple: false>
-	^ errorRoutingKey
+	<edaSettings:
+#'pharoeda.settings.adapters.event_publisher.stomp.errorRoutingKey.label'
+	withDescription:
+	#'pharoeda.settings.adapters.event_publisher.stomp.errorRoutingKey.description'
+	icon: #errorroutingkey
+	atPosition: 13 readOnly: false multiple: false>
+	^ errorRoutingKey ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -73,9 +85,14 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> errorRoutingKey: val [
 { #category : #accessing }
 EDASStompTopicPublisherSettingsInMemoryAdapter >> exchange [
 
-	<edaSettings: 'Exchange' withDescription: 'The name of the exchange'
-	atPosition: 5 readOnly: false multiple: false>
-	^ exchange
+	<edaSettings:
+	
+		#'pharoeda.settings.adapters.event_publisher.stomp.exchange.label'
+	withDescription:
+	#'pharoeda.settings.adapters.event_publisher.stomp.exchange.description'
+
+	icon: #exchange atPosition: 5 readOnly: false multiple: false>
+	^ exchange ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -86,9 +103,12 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> exchange: val [
 { #category : #accessing }
 EDASStompTopicPublisherSettingsInMemoryAdapter >> routingKey [
 
-	<edaSettings: 'Routing key' withDescription: 'The routing key when publishing messages'
+	<edaSettings:
+	#'pharoeda.settings.adapters.event_publisher.stomp.routingKey.label'
+	withDescription:
+	#'pharoeda.settings.adapters.event_publisher.stomp.routingKey.description'
 	atPosition: 6 readOnly: false multiple: false>
-	^ routingKey
+	^ routingKey ifNil: [ '' ]
 ]
 
 { #category : #accessing }

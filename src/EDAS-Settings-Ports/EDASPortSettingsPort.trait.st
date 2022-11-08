@@ -30,6 +30,18 @@ EDASPortSettingsPort >> commandListenerSettings: anObject [
 ]
 
 { #category : #testing }
+EDASPortSettingsPort >> commandListenerSettingsAdapterClass [
+
+	self shouldBeImplemented
+]
+
+{ #category : #testing }
+EDASPortSettingsPort >> commandListenerSettingsAdapterClass: aClass [
+
+	self shouldBeImplemented
+]
+
+{ #category : #testing }
 EDASPortSettingsPort >> environmentSettings [
 
 	self shouldBeImplemented
@@ -37,6 +49,18 @@ EDASPortSettingsPort >> environmentSettings [
 
 { #category : #accessing }
 EDASPortSettingsPort >> environmentSettings: anObject [
+
+	self shouldBeImplemented
+]
+
+{ #category : #testing }
+EDASPortSettingsPort >> eventPublisherSettingsAdapterClass [
+
+	self shouldBeImplemented
+]
+
+{ #category : #testing }
+EDASPortSettingsPort >> eventPublisherSettingsAdapterClass: aClass [
 
 	self shouldBeImplemented
 ]

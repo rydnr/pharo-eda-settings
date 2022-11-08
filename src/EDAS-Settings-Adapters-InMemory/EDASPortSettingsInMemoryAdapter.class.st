@@ -140,6 +140,42 @@ EDASPortSettingsInMemoryAdapter >> environmentSettingsAdapterClass: newValue [
 		  andAnnounce: EDASEnvironmentSettingsPortChanged
 ]
 
+{ #category : #accessing }
+EDASPortSettingsInMemoryAdapter >> eventPublisherSettings [
+
+	^ adapters at: EDASEventPublisherSettingsPort ifAbsent: [ nil ]
+]
+
+{ #category : #testing }
+EDASPortSettingsInMemoryAdapter >> eventPublisherSettings: newValue [
+
+	^ self adapterFor: EDASEventPublisherSettingsPort is: newValue
+]
+
+{ #category : #accessing }
+EDASPortSettingsInMemoryAdapter >> eventPublisherSettingsAdapterClass [
+
+	| result |
+	result := adapterClasses
+		          at: EDASEventPublisherSettingsPort
+		          ifAbsent: [ 
+			          | t |
+			          t := self eventPublisherSettings.
+			          t ifNotNil: [ :arg | 
+				          self eventPublisherSettingsAdapterClass: t class ].
+			          t class ].
+	^ result edaPort
+]
+
+{ #category : #testing }
+EDASPortSettingsInMemoryAdapter >> eventPublisherSettingsAdapterClass: newValue [
+
+	^ self
+		  updateAdapterClass: newValue
+		  for: EDASEventPublisherSettingsPort
+		  andAnnounce: EDASEventPublisherSettingsPortChanged
+]
+
 { #category : #initialization }
 EDASPortSettingsInMemoryAdapter >> initialize [
 	super initialize.

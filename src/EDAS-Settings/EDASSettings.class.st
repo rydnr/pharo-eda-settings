@@ -96,14 +96,15 @@ EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymb
 	ports keysAndValuesDo: [ :i :p | 
 		| adapter |
 		adapter := resolver resolvePort: p forApp: anEDAApplication.
-		anEDAApplication portSettings adapterFor: p is: adapter.
+		adapter ifNotNil: [ :ad |
+		anEDAApplication portSettings adapterFor: p is: ad.
 		self
 			adapterSettingsOn: aBuilder
 			for: p
-			implementedBy: adapter
+			implementedBy: ad
 			under: parent
 			on: anEDAApplication
-			order: i ].
+			order: i ] ].
 	self
 		portSettingsOn: aBuilder
 		under: parent
