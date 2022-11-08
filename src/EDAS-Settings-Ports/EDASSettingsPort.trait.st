@@ -33,12 +33,13 @@ EDASSettingsPort classSide >> accepts: aPortResolver [
 { #category : #testing }
 EDASSettingsPort classSide >> description [
 
-	^ ((Pragma
-		    allNamed: #'edaPort:withDescription:icon:atPosition'
-		    includingTraitsInSuperAndSubclasses: self) select: [ :p | 
-		   p method methodClass soleInstance = self ])
-		  ifEmpty: [ '' ]
-		  ifNotEmpty: [ :col | col first argumentAt: 2 ]
+	^ (((Pragma
+		     allNamed: #edaPort:withDescription:icon:atPosition:
+		     includingTraitsInSuperAndSubclasses: self) select: [ :p | 
+		    p method methodClass soleInstance = self ]) collect: [ :p | 
+		   p arguments second ]) asOrderedCollection
+		  ifEmpty: [ nil ]
+		  ifNotEmpty: [ :c | c first ]
 ]
 
 { #category : #testing }

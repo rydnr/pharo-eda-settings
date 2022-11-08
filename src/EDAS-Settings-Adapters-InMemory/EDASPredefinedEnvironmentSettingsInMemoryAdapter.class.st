@@ -19,19 +19,28 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> accepts: aPort [
 { #category : #meta }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> availableEnvironments [
 
-	^ EDASStompTopicListenerSettingsJsonAdapter availableEnvironments collect: [ :e | e -> e ]
+	^ EDASStompTopicListenerSettingsJsonAdapter availableEnvironments 
+		  collect: [ :e | 
+			  ('pharoeda.settings.ports.environment.predefined' , e) asSymbol
+				  translated -> e ]
 ]
 
 { #category : #meta }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> description [
 
-	^ #'pharoeda.settings.ports.environment.predefined.description'
+	^ #'pharoeda.settings.adapters.environment.predefined.description'
 ]
 
 { #category : #meta }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> label [
 
-	^ #'pharoeda.settings.ports.environment.predefined.label'
+	^ #'pharoeda.settings.adapters.environment.predefined.label'
+]
+
+{ #category : #meta }
+EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> portLabel [
+
+	^ #'pharoeda.settings.ports.environment.manual.label'
 ]
 
 { #category : #meta }

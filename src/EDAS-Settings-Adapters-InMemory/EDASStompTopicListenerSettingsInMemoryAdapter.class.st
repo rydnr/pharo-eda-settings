@@ -19,14 +19,20 @@ EDASStompTopicListenerSettingsInMemoryAdapter class >> accepts: aPort [
 	^ aPort = EDASCommandListenerSettingsPort
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #metadata }
 EDASStompTopicListenerSettingsInMemoryAdapter class >> description [
 
-	^ #'pharoeda.settings.ports.command_listener.stomp.description'
+	^ #'pharoeda.settings.adapters.command_listener.stomp.description'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #metadata }
 EDASStompTopicListenerSettingsInMemoryAdapter class >> label [
+
+	^ #'pharoeda.settings.adapters.command_listener.stomp.label'
+]
+
+{ #category : #metadata }
+EDASStompTopicListenerSettingsInMemoryAdapter class >> portLabel [
 
 	^ #'pharoeda.settings.ports.command_listener.stomp.label'
 ]

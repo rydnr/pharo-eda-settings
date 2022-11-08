@@ -124,8 +124,8 @@ EDASTPortResolver >> resolvePortForAdapter: anAdapter [
 		value: traitsBlock.
 	classes do: [ :class | 
 		result ifNil: [ 
-			(class traits select: [ :t | t = EDASSettingsPort ]) ifNotEmpty: [ 
-				result := class ] ] ].
+			(class traits select: [ :t | t = EDASSettingsPort class ]) ifNotEmpty: [ 
+				result := class soleInstance ] ] ].
 	^ result
 ]
 

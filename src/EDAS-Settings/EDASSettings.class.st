@@ -147,7 +147,7 @@ EDASSettings class >> port: aPort settingsOn: aBuilder under: aParent on: app or
 	values := OrderedCollection withAll:
 		          (((portResolver availableAdaptersForPort: aPort) collect: [ 
 			            :adapterClass | 
-			            adapterClass description translated -> adapterClass ]) 
+			            adapterClass portLabel translated -> adapterClass ]) 
 			           sorted: [ :a :b | a < b ]).
 	values ifNotEmpty: [ 
 		(aBuilder pickOne: aPort adapterClassAccessor)
