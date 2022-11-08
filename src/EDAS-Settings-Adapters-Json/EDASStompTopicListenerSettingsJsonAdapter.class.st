@@ -45,7 +45,7 @@ EDASStompTopicListenerSettingsJsonAdapter class >> edaPort [
 
 	"This gets called in EDASSettings when selecting the port, so it gets selected correctly"
 
-	^ EDASStompTopicListenerSettingsInMemoryAdapter
+	^ EDASStompCommandListenerSettingsInMemoryAdapter
 ]
 
 { #category : #'instance creation' }
@@ -141,7 +141,7 @@ EDASStompTopicListenerSettingsJsonAdapter >> edaPort [
 	"This is used by the settings framework to be able to select the STOMP adapter in the available ports.
 	This adapter is not selectable (#accepts: returns false). It's only used when the environment value matches any of the json files.
 	Take a look at EDASEnvironmentSwitchesToCommandListenerJsonAdapter"
-	^ EDASStompTopicListenerSettingsInMemoryAdapter
+	^ EDASStompCommandListenerSettingsInMemoryAdapter
 ]
 
 { #category : #accessing }

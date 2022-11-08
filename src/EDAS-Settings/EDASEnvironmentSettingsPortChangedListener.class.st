@@ -11,7 +11,7 @@ EDASEnvironmentSettingsPortChangedListener class >> handleEnvironmentSettingsPor
 
 			anEvent newValue = EDASEnvironmentSettingsInMemoryAdapter ifTrue: [ 
 				anEvent edaApplication portSettings commandListenerSettings:
-					(EDASStompTopicListenerSettingsInMemoryAdapter withApp:
+					(EDASStompCommandListenerSettingsInMemoryAdapter withApp:
 						 anEvent edaApplication) ]
 ]
 

@@ -1,5 +1,5 @@
 Class {
-	#name : #EDASStompTopicPublisherSettingsInMemoryAdapter,
+	#name : #EDASStompEventPublisherSettingsInMemoryAdapter,
 	#superclass : #EDASStompSettingsInMemoryAdapter,
 	#traits : 'EDASEventPublisherSettingsPort',
 	#classTraits : 'EDASEventPublisherSettingsPort classTrait',
@@ -13,36 +13,36 @@ Class {
 }
 
 { #category : #testing }
-EDASStompTopicPublisherSettingsInMemoryAdapter class >> accepts: aPort [
+EDASStompEventPublisherSettingsInMemoryAdapter class >> accepts: aPort [
 
 	^ true
 ]
 
 { #category : #accessing }
-EDASStompTopicPublisherSettingsInMemoryAdapter class >> description [
+EDASStompEventPublisherSettingsInMemoryAdapter class >> description [
 
-	^ #'pharoeda.settings.ports.topic_publisher.stomp.description'
+	^ #'pharoeda.settings.adapters.event_publisher.stomp.description'
 ]
 
 { #category : #testing }
-EDASStompTopicPublisherSettingsInMemoryAdapter class >> label [
+EDASStompEventPublisherSettingsInMemoryAdapter class >> label [
 
-	^ #'pharoeda.settings.ports.topic_publisher.stomp.label'
+	^ #'pharoeda.settings.adapters.event_publisher.stomp.label'
 ]
 
 { #category : #metadata }
-EDASStompTopicPublisherSettingsInMemoryAdapter class >> portLabel [
+EDASStompEventPublisherSettingsInMemoryAdapter class >> portLabel [
 
 	^ #'pharoeda.settings.ports.event_publisher.stomp.label'
 ]
 
 { #category : #accessing }
-EDASStompTopicPublisherSettingsInMemoryAdapter class >> priority [
+EDASStompEventPublisherSettingsInMemoryAdapter class >> priority [
 	^ 0
 ]
 
 { #category : #'class initialization' }
-EDASStompTopicPublisherSettingsInMemoryAdapter >> doInitialize [
+EDASStompEventPublisherSettingsInMemoryAdapter >> doInitialize [
 	super doInitialize.
 	self exchange: nil.
 	self routingKey: nil.
@@ -50,7 +50,7 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> doInitialize [
 ]
 
 { #category : #accessing }
-EDASStompTopicPublisherSettingsInMemoryAdapter >> errorExchange [
+EDASStompEventPublisherSettingsInMemoryAdapter >> errorExchange [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.event_publisher.stomp.errorExchange.label'
@@ -61,12 +61,12 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> errorExchange [
 ]
 
 { #category : #accessing }
-EDASStompTopicPublisherSettingsInMemoryAdapter >> errorExchange: aString [
+EDASStompEventPublisherSettingsInMemoryAdapter >> errorExchange: aString [
 	errorExchange := aString
 ]
 
 { #category : #accessing }
-EDASStompTopicPublisherSettingsInMemoryAdapter >> errorRoutingKey [
+EDASStompEventPublisherSettingsInMemoryAdapter >> errorRoutingKey [
 
 	<edaSettings:
 #'pharoeda.settings.adapters.event_publisher.stomp.errorRoutingKey.label'
@@ -78,12 +78,12 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> errorRoutingKey [
 ]
 
 { #category : #accessing }
-EDASStompTopicPublisherSettingsInMemoryAdapter >> errorRoutingKey: val [
+EDASStompEventPublisherSettingsInMemoryAdapter >> errorRoutingKey: val [
 	errorRoutingKey := val
 ]
 
 { #category : #accessing }
-EDASStompTopicPublisherSettingsInMemoryAdapter >> exchange [
+EDASStompEventPublisherSettingsInMemoryAdapter >> exchange [
 
 	<edaSettings:
 	
@@ -96,12 +96,12 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> exchange [
 ]
 
 { #category : #accessing }
-EDASStompTopicPublisherSettingsInMemoryAdapter >> exchange: val [
+EDASStompEventPublisherSettingsInMemoryAdapter >> exchange: val [
 	exchange := val
 ]
 
 { #category : #accessing }
-EDASStompTopicPublisherSettingsInMemoryAdapter >> routingKey [
+EDASStompEventPublisherSettingsInMemoryAdapter >> routingKey [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.event_publisher.stomp.routingKey.label'
@@ -112,6 +112,6 @@ EDASStompTopicPublisherSettingsInMemoryAdapter >> routingKey [
 ]
 
 { #category : #accessing }
-EDASStompTopicPublisherSettingsInMemoryAdapter >> routingKey: val [
+EDASStompEventPublisherSettingsInMemoryAdapter >> routingKey: val [
 	routingKey := val
 ]

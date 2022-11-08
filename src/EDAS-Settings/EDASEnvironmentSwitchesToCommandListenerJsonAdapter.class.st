@@ -23,7 +23,7 @@ EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> handleEnvironmentCh
 					 withApp: anEvent edaApplication) ]
 		ifFalse: [ 
 			anEvent edaApplication portSettings commandListenerSettings:
-				(EDASStompTopicListenerSettingsInMemoryAdapter withApp:
+				(EDASStompCommandListenerSettingsInMemoryAdapter withApp:
 					 anEvent edaApplication) ]
 ]
 

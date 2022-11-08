@@ -42,9 +42,9 @@ EDASStompSettingsPort >> durable [
 EDASStompSettingsPort >> errorStrategyName [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.command_listener.stomp.errorStrategyName.label'
+	#'pharoeda.settings.adapters.stomp.errorStrategyName.label'
 	withDescription:
-	#'pharoeda.settings.adapters.command_listener.stomp.errorStrategyName.description'
+	#'pharoeda.settings.adapters.stomp.errorStrategyName.description'
 	icon: #errorstrategy atPosition: 11 readOnly: false multiple: true>
 	self shouldBeImplemented
 ]

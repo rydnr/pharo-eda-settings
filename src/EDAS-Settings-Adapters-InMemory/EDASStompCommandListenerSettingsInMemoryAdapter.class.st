@@ -1,5 +1,5 @@
 Class {
-	#name : #EDASStompTopicListenerSettingsInMemoryAdapter,
+	#name : #EDASStompCommandListenerSettingsInMemoryAdapter,
 	#superclass : #EDASStompSettingsInMemoryAdapter,
 	#traits : 'EDASCommandListenerSettingsPort',
 	#classTraits : 'EDASCommandListenerSettingsPort classTrait',
@@ -7,43 +7,42 @@ Class {
 		'topicListener',
 		'prefetchCount',
 		'ack',
-		'queue',
-		'errorStrategy'
+		'queue'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
 
 { #category : #testing }
-EDASStompTopicListenerSettingsInMemoryAdapter class >> accepts: aPort [
+EDASStompCommandListenerSettingsInMemoryAdapter class >> accepts: aPort [
 
 	^ aPort = EDASCommandListenerSettingsPort
 ]
 
 { #category : #metadata }
-EDASStompTopicListenerSettingsInMemoryAdapter class >> description [
+EDASStompCommandListenerSettingsInMemoryAdapter class >> description [
 
 	^ #'pharoeda.settings.adapters.command_listener.stomp.description'
 ]
 
 { #category : #metadata }
-EDASStompTopicListenerSettingsInMemoryAdapter class >> label [
+EDASStompCommandListenerSettingsInMemoryAdapter class >> label [
 
 	^ #'pharoeda.settings.adapters.command_listener.stomp.label'
 ]
 
 { #category : #metadata }
-EDASStompTopicListenerSettingsInMemoryAdapter class >> portLabel [
+EDASStompCommandListenerSettingsInMemoryAdapter class >> portLabel [
 
 	^ #'pharoeda.settings.ports.command_listener.stomp.label'
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter class >> priority [
+EDASStompCommandListenerSettingsInMemoryAdapter class >> priority [
 	^ 0
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> ack [
+EDASStompCommandListenerSettingsInMemoryAdapter >> ack [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.command_listener.stomp.ack.label'
@@ -54,57 +53,42 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> ack [
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> ack: val [
+EDASStompCommandListenerSettingsInMemoryAdapter >> ack: val [
 	self assert: (#(#auto #client #'client-individual') includes: val).
 	ack := val
 ]
 
 { #category : #resolving }
-EDASStompTopicListenerSettingsInMemoryAdapter >> availableErrorStrategies [
+EDASStompCommandListenerSettingsInMemoryAdapter >> availableErrorStrategies [
 
 	^ super availableErrorStrategies
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> commandListener [
+EDASStompCommandListenerSettingsInMemoryAdapter >> commandListener [
 
 	^ self
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> destination [
+EDASStompCommandListenerSettingsInMemoryAdapter >> destination [
 	^ '/amq/queue/' , self queue
 ]
 
-{ #category : #initialization }
-EDASStompTopicListenerSettingsInMemoryAdapter >> doInitialize [
-	super doInitialize.
-	self queue: nil.
-	self prefetchCount: nil.
-	self durable: true.
-	self ack: #'client-individual'
-]
-
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> errorStrategy [
+EDASStompCommandListenerSettingsInMemoryAdapter >> errorStrategy [
 
 	^ super errorStrategy
 ]
 
-{ #category : #initialization }
-EDASStompTopicListenerSettingsInMemoryAdapter >> initialize [
-	super initialize.
-	self doInitialize
-]
-
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> port [
+EDASStompCommandListenerSettingsInMemoryAdapter >> port [
 
 	^ super port
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount [
+EDASStompCommandListenerSettingsInMemoryAdapter >> prefetchCount [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.command_listener.stomp.prefetchCount.label'
@@ -115,12 +99,12 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount [
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> prefetchCount: val [
+EDASStompCommandListenerSettingsInMemoryAdapter >> prefetchCount: val [
 	prefetchCount := val
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> queue [
+EDASStompCommandListenerSettingsInMemoryAdapter >> queue [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.command_listener.stomp.queue.label'
@@ -131,30 +115,30 @@ EDASStompTopicListenerSettingsInMemoryAdapter >> queue [
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> queue: val [
+EDASStompCommandListenerSettingsInMemoryAdapter >> queue: val [
 	queue := val
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> restartOnErrors [
+EDASStompCommandListenerSettingsInMemoryAdapter >> restartOnErrors [
 
 	^ super restartOnErrors
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> topicListener [
+EDASStompCommandListenerSettingsInMemoryAdapter >> topicListener [
 
 	^ topicListener ifNil: [ self topicListener: (EDAACommandStompTopicListener withConfig: self). topicListener  ]
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsInMemoryAdapter >> topicListener: anObject [
+EDASStompCommandListenerSettingsInMemoryAdapter >> topicListener: anObject [
 
 	topicListener := anObject
 ]
 
 { #category : #resolving }
-EDASStompTopicListenerSettingsInMemoryAdapter >> values: aSymbol [
+EDASStompCommandListenerSettingsInMemoryAdapter >> values: aSymbol [
 
 	^ aSymbol = #ack
 		  ifTrue: [ 
