@@ -72,7 +72,7 @@ EDASPortSettingsInMemoryAdapter >> commandListenerSettingsAdapterClass [
 			          t := self commandListenerSettings.
 			          t ifNotNil: [ :arg | 
 				          self commandListenerSettingsAdapterClass: t class ].
-			          t ].
+			          t class ].
 	^ result edaPort
 ]
 
