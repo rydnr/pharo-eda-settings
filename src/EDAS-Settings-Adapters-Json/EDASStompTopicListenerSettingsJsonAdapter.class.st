@@ -135,6 +135,15 @@ EDASStompTopicListenerSettingsJsonAdapter >> edaApplication: anObject [
 	edaApplication := anObject
 ]
 
+{ #category : #metadata }
+EDASStompTopicListenerSettingsJsonAdapter >> edaPort [
+	
+	"This is used by the settings framework to be able to select the STOMP adapter in the available ports.
+	This adapter is not selectable (#accepts: returns false). It's only used when the environment value matches any of the json files.
+	Take a look at EDASEnvironmentSwitchesToCommandListenerJsonAdapter"
+	^ EDASStompTopicListenerSettingsInMemoryAdapter
+]
+
 { #category : #accessing }
 EDASStompTopicListenerSettingsJsonAdapter >> errorStrategyName [
 
