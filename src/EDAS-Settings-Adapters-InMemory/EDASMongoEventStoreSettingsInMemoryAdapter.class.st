@@ -1,7 +1,6 @@
 Class {
 	#name : #EDASMongoEventStoreSettingsInMemoryAdapter,
 	#superclass : #EDASMongoSettingsInMemoryAdapter,
-	#traits : 'EDASEventStoreSettingsPort',
 	#classTraits : 'EDASEventStoreSettingsPort classTrait',
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }

@@ -10,11 +10,6 @@ Build Settings menu entries with EDA-specific configuration settings, for the us
 Class {
 	#name : #EDASSettings,
 	#superclass : #Object,
-	#classInstVars : [
-		'duEnvironmentClass',
-		'noApplications',
-		'priorizedAdapter'
-	],
 	#category : #'EDAS-Settings'
 }
 

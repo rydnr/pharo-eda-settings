@@ -1,8 +1,8 @@
 Class {
 	#name : #EDASEnvironmentSettingsInMemoryAdapter,
 	#superclass : #Object,
-	#traits : 'EDASEnvironmentSettingsPort + EDASInMemoryAdapter',
-	#classTraits : 'EDASEnvironmentSettingsPort classTrait + EDASInMemoryAdapter classTrait',
+	#traits : 'EDASEnvironmentSettingsPort',
+	#classTraits : 'EDASEnvironmentSettingsPort classTrait',
 	#instVars : [
 		'currentEnvironment',
 		'edaApplication'
@@ -19,7 +19,7 @@ EDASEnvironmentSettingsInMemoryAdapter class >> accepts: aPort [
 { #category : #ambiguous }
 EDASEnvironmentSettingsInMemoryAdapter class >> description [
 
-	^ #'pharoeda.settings.ports.environment.manual.label'
+	^ #'pharoeda.settings.ports.environment.manual.description'
 ]
 
 { #category : #accessing }

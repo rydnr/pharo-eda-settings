@@ -1,8 +1,8 @@
 Class {
 	#name : #EDASStompSettingsInMemoryAdapter,
 	#superclass : #Object,
-	#traits : 'EDASInMemoryAdapter + EDASStompSettingsPort',
-	#classTraits : 'EDASInMemoryAdapter classTrait + EDASStompSettingsPort classTrait',
+	#traits : 'EDASStompSettingsPort',
+	#classTraits : 'EDASStompSettingsPort classTrait',
 	#instVars : [
 		'host',
 		'port',
@@ -28,6 +28,11 @@ EDASStompSettingsInMemoryAdapter >> debug [
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> debug: aBoolean [
 	debug := aBoolean
+]
+
+{ #category : #accessing }
+EDASStompSettingsInMemoryAdapter >> description [
+	^ self subclassResponsibility
 ]
 
 { #category : #'class initialization' }

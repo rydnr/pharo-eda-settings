@@ -1,8 +1,6 @@
 Class {
 	#name : #EDASMongoSettingsInMemoryAdapter,
 	#superclass : #Object,
-	#traits : 'EDASInMemoryAdapter',
-	#classTraits : 'EDASInMemoryAdapter classTrait',
 	#instVars : [
 		'authenticationMechanism',
 		'databaseName',
@@ -22,6 +20,11 @@ Class {
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
+
+{ #category : #accessing }
+EDASMongoSettingsInMemoryAdapter class >> iconFor: arg1 in: arg2 [ 
+	^ self subclassResponsibility
+]
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> authenticationMechanism [

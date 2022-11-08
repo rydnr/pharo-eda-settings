@@ -1,8 +1,8 @@
 Class {
 	#name : #EDASLoggingSettingsInMemoryAdapter,
 	#superclass : #Object,
-	#traits : 'EDASLoggingSettingsPort + EDASInMemoryAdapter',
-	#classTraits : 'EDASLoggingSettingsPort classTrait + EDASInMemoryAdapter classTrait',
+	#traits : 'EDASLoggingSettingsPort',
+	#classTraits : 'EDASLoggingSettingsPort classTrait',
 	#instVars : [
 		'loggingLevel',
 		'edaApplication'

@@ -1,8 +1,7 @@
 Class {
 	#name : #EDASMongoProjectionSettingsInMemoryAdapter,
 	#superclass : #EDASMongoSettingsInMemoryAdapter,
-	#traits : 'EDASProjectionSettingsPort + EDASInMemoryAdapter',
-	#classTraits : 'EDASProjectionSettingsPort classTrait + EDASInMemoryAdapter classTrait',
+	#classTraits : 'EDASProjectionSettingsPort classTrait',
 	#instVars : [
 		'concurrentSynchronization',
 		'headlessMode',

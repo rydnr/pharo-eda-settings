@@ -26,23 +26,6 @@ EDASSettingsPort classSide >> >= anotherAdapterClass [
 ]
 
 { #category : #testing }
-EDASSettingsPort classSide >> _iconFor: aString in: anEDAApplication [
-
-	| iconName |
-	iconName := ((Pragma
-		              allNamed:
-		              #edaSettings:withDescription:icon:atPosition:readOnly:multiple:
-		              includingTraitsInSuperAndSubclasses: self) select: [ 
-		             :p | p method selector = aString asSymbol ])
-		            ifEmpty: [ #smallQuestion ]
-		            ifNotEmpty: [ :col | col first argumentAt: 3 ].
-	^ anEDAApplication iconProvider iconNamed: iconName ifAbsent: [ 
-		  Smalltalk ui icons
-			  iconNamed: iconName
-			  ifNone: [ Smalltalk ui icons iconNamed: #smallQuestion ] ]
-]
-
-{ #category : #testing }
 EDASSettingsPort classSide >> accepts: aPortResolver [
 	^ false
 ]
