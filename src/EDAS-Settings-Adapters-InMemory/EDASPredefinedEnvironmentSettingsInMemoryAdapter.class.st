@@ -40,7 +40,7 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> label [
 { #category : #meta }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> portLabel [
 
-	^ #'pharoeda.settings.ports.environment.manual.label'
+	^ #'pharoeda.settings.ports.environment.predefined.label'
 ]
 
 { #category : #meta }

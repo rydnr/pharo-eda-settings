@@ -90,7 +90,7 @@ EDASTPortResolver >> resolvePort: aPort forApp: app [
 			             ifNotEmpty: [ :adapterMatches | 
 				             app portSettings adapters
 					             at: aPort
-					             ifAbsent: [ adapterMatches first class withApp: app ] ] ].
+					             ifAbsent: [ adapterMatches first withApp: app ] ] ].
 	^ candidate ifNil: [ nil ] ifNotNil: [ :c | c ]
 ]
 

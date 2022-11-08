@@ -120,9 +120,9 @@ EDASSettings class >> multiAttributeAdapterSettingsOn: aBuilder for: aPort imple
 		| key |
 		key := aParent , anAdapter class name.
 		(aBuilder group: key)
-			label: aPort label;
-			description: aPort description;
-			icon: aPort icon;
+			label: anAdapter label;
+			description: anAdapter description;
+			icon: anAdapter icon;
 			parent: aParent;
 			order: anInteger.
 		attrs keysAndValuesDo: [ :i :attr | 
@@ -149,7 +149,7 @@ EDASSettings class >> port: aPort settingsOn: aBuilder under: aParent on: app or
 			            :adapterClass | 
 			            adapterClass portLabel translated -> adapterClass ]) 
 			           sorted: [ :a :b | a < b ]).
-	values ifNotEmpty: [ 
+	values ifNotEmpty: [ :v |
 		(aBuilder pickOne: aPort adapterClassAccessor)
 			label: aPort label translated;
 			description: aPort description;
@@ -157,8 +157,8 @@ EDASSettings class >> port: aPort settingsOn: aBuilder under: aParent on: app or
 			target: app;
 			targetSelector: #portSettings;
 			parent: aParent;
-			default: values first key;
-			domainValues: values;
+			default: v first key;
+			domainValues: v;
 			order: anInteger ]
 ]
 

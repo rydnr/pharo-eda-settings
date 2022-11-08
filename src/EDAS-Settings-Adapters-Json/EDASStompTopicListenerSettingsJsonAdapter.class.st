@@ -1,8 +1,8 @@
 Class {
 	#name : #EDASStompTopicListenerSettingsJsonAdapter,
 	#superclass : #Object,
-	#traits : 'EDASSettingsPort + EDASStompSettingsPort',
-	#classTraits : 'EDASSettingsPort classTrait + EDASStompSettingsPort classTrait',
+	#traits : 'EDASSettingsPort + EDASStompSettingsPort + EDASCommandListenerSettingsPort',
+	#classTraits : 'EDASSettingsPort classTrait + EDASStompSettingsPort classTrait + EDASCommandListenerSettingsPort classTrait',
 	#instVars : [
 		'host',
 		'port',
@@ -34,6 +34,12 @@ EDASStompTopicListenerSettingsJsonAdapter class >> availableEnvironments [
 		  reverse
 ]
 
+{ #category : #testing }
+EDASStompTopicListenerSettingsJsonAdapter class >> description [
+
+	^ #'pharoeda.settings.adapters.command_listener.stomp.json.description'
+]
+
 { #category : #'instance creation' }
 EDASStompTopicListenerSettingsJsonAdapter class >> forEnvironment: anEnvironment withApp: anEDAApplication [
 
@@ -51,6 +57,12 @@ EDASStompTopicListenerSettingsJsonAdapter class >> fromFile: aFileReference with
 	commandListener keysAndValuesDo: [ :k :v | 
 		result instVarNamed: k put: v ].
 	^ result
+]
+
+{ #category : #testing }
+EDASStompTopicListenerSettingsJsonAdapter class >> label [
+
+	^ #'pharoeda.settings.adapters.command_listener.stomp.label'
 ]
 
 { #category : #'instance creation' }
@@ -133,6 +145,12 @@ EDASStompTopicListenerSettingsJsonAdapter >> host [
 EDASStompTopicListenerSettingsJsonAdapter >> host: anObject [
 
 	host := anObject
+]
+
+{ #category : #testing }
+EDASStompTopicListenerSettingsJsonAdapter >> isReadOnly: aString [
+
+	^ true
 ]
 
 { #category : #accessing }
