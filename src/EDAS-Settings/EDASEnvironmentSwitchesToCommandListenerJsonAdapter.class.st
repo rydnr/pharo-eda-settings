@@ -13,7 +13,7 @@ EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> handleEnvironmentCh
 	englishValue := Locale current isoLanguage = 'en'
 		                ifTrue: [ anEvent newValue ]
 		                ifFalse: [ 
-		                self translateToEnglish: anEvent newValue fromLocale: Locale current ].
+		                self translateToEnglish: anEvent newValue ].
 	(EDASStompTopicListenerSettingsJsonAdapter supportsEnvironment:
 		 englishValue)
 		ifTrue: [ 
@@ -36,9 +36,9 @@ EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> subscribeToSettings
 ]
 
 { #category : #'event handling - private' }
-EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> translateToEnglish: anEnvironment fromLocale: aLocale [
+EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> translateToEnglish: anEnvironment [
 
-	^ ('pharoeda.settings.ports.environment.predefined.translations.' , aLocale isoLanguage , '.', anEnvironment) asSymbol translated
+	^ ('pharoeda.settings.ports.environment.predefined.translations.en.', anEnvironment) asSymbol translated
 
 	
 ]
