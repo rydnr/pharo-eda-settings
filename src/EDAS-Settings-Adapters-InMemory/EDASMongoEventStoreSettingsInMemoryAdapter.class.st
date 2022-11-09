@@ -80,6 +80,11 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> enableReplication [
 { #category : #accessing }
 EDASMongoEventStoreSettingsInMemoryAdapter >> enableSingleton [
 
+	<edaSettings:
+	#'pharoeda.settings.adapters.mongodb.enableSingleton.label'
+	withDescription:
+	#'pharoeda.settings.adapters.mongodb.enableSingleton.description'
+	icon: #singleton atPosition: 16 readOnly: false multiple: false>
 	^ super enableSingleton
 ]
 
@@ -190,4 +195,14 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> values: aSymbol [
 
 	aSymbol = #authenticationMechanism ifTrue: [ ^ self availableAuthenticationMechanisms ]
 		ifFalse: [ ^ OrderedCollection new ]
+]
+
+{ #category : #accessing }
+EDASMongoEventStoreSettingsInMemoryAdapter >> wireProtocolEnabled [
+
+	<edaSettings: #'pharoeda.settings.adapters.mongodb.wireProtocolEnabled.label'
+	withDescription:
+	#'pharoeda.settings.adapters.mongodb.wireProtocolEnabled.description' icon:
+	#wire atPosition: 15 readOnly: false multiple: false>
+	^ super wireProtocolEnabled
 ]
