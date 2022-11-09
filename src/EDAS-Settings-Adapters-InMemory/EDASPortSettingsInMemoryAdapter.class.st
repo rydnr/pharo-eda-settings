@@ -43,15 +43,13 @@ EDASPortSettingsInMemoryAdapter >> adapterGetter: aMessage [
 { #category : #'reflective operations' }
 EDASPortSettingsInMemoryAdapter >> adapterSetter: aMessage [
 
-	| adapterClass |
-	adapterClass := self portClassForSettings:
+	| portClass |
+	portClass := self portClassForSettings:
 		                (self
 			                 removeSuffix: ':'
 			                 from: aMessage selector greaseString).
-	^ adapterClass ifNotNil: [ :a | 
-		  self
-			  adapterFor: a
-			  is: aMessage arguments first ]
+	^ portClass ifNotNil: [ :p | 
+		  self adapterFor: p is: aMessage arguments first ]
 ]
 
 { #category : #accessing }
