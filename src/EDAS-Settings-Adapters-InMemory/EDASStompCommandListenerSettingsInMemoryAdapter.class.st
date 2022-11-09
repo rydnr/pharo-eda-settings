@@ -229,7 +229,7 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> user [
 	^ super user
 ]
 
-{ #category : #resolving }
+{ #category : #accessing }
 EDASStompCommandListenerSettingsInMemoryAdapter >> values: aSymbol [
 
 	^ aSymbol = #ack
@@ -243,11 +243,10 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> values: aSymbol [
 					  #'pharoeda.settings.adapters.command_listener.stomp.ack.client'
 						  translated
 				  put: #client;
-				  at: 
+				  at:
 					  #'pharoeda.settings.adapters.command_listener.stomp.ack.auto'
 						  translated
-		
-				put: #auto;
+				  put: #auto;
 				  associations ]
 		  ifFalse: [ super values: aSymbol ]
 ]
