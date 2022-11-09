@@ -33,12 +33,6 @@ EDASCommandListenerSettingsPort classSide >> edaPort [
 	^ self
 ]
 
-{ #category : #metadata }
-EDASCommandListenerSettingsPort classSide >> eventChangedName [
-
-	^ EDASCommandListenerSettingsPortChanged
-]
-
 { #category : #accessing }
 EDASCommandListenerSettingsPort classSide >> portChangedEventName [
 

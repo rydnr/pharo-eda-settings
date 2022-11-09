@@ -63,6 +63,7 @@ EDASTestSettings class >> initialize [
 
 { #category : #settings }
 EDASTestSettings class >> queueCleanerSettingsOn: aBuilder withConfig: container under: parent populatedWithValuesFrom: config [
+
 	(aBuilder setting: #host)
 		parent: parent;
 		target: container;
@@ -76,7 +77,7 @@ EDASTestSettings class >> queueCleanerSettingsOn: aBuilder withConfig: container
 		label: 'RabbitMQ HTTP port' translated;
 		description: 'RabbitMQ HTTP port';
 		default: (config at: 'httpPort' ifAbsent: 15672).
-	(aBuilder setting: #username)
+	(aBuilder setting: #user)
 		parent: parent;
 		target: container;
 		label: 'RabbitMQ user' translated;

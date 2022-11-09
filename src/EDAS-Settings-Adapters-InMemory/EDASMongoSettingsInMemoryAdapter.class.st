@@ -2,20 +2,22 @@ Class {
 	#name : #EDASMongoSettingsInMemoryAdapter,
 	#superclass : #Object,
 	#instVars : [
+		'host',
+		'port',
+		'user',
+		'password',
+		'database',
 		'authenticationMechanism',
-		'databaseName',
 		'debug',
 		'enableReplication',
 		'enableSingleton',
 		'ensuringCurrentOnSave',
 		'ensuringCurrentReferencesOnQueries',
-		'forceEager',
 		'lazySynchronize',
-		'password',
+		'wireProtocolEnabled',
 		'tls',
 		'urls',
-		'username',
-		'wireProtocolEnabled',
+		'forceEager',
 		'edaApplication'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
@@ -37,13 +39,15 @@ EDASMongoSettingsInMemoryAdapter >> authenticationMechanism: anObject [
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> databaseName [
-	^ databaseName
+EDASMongoSettingsInMemoryAdapter >> database [
+
+	^ database
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> databaseName: anObject [
-	databaseName := anObject
+EDASMongoSettingsInMemoryAdapter >> database: anObject [
+
+	database := anObject
 ]
 
 { #category : #accessing }
@@ -60,10 +64,11 @@ EDASMongoSettingsInMemoryAdapter >> debug: aBoolean [
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> doInitialize [
+
 	self urls: nil.
 	self tls: nil.
-	self databaseName: nil.
-	self username: nil.
+	self database: nil.
+	self user: nil.
 	self password: nil.
 	self debug: nil.
 	self enableReplication: nil.
@@ -146,6 +151,18 @@ EDASMongoSettingsInMemoryAdapter >> forceEager: aBoolean [
 ]
 
 { #category : #accessing }
+EDASMongoSettingsInMemoryAdapter >> host [
+
+	^ host
+]
+
+{ #category : #accessing }
+EDASMongoSettingsInMemoryAdapter >> host: aString [
+
+	^ host ifNil: [ 'localhost' ]
+]
+
+{ #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> initialize [
 	super initialize.
 	self doInitialize
@@ -174,6 +191,18 @@ EDASMongoSettingsInMemoryAdapter >> password: anObject [
 ]
 
 { #category : #accessing }
+EDASMongoSettingsInMemoryAdapter >> port [
+
+	^ port
+]
+
+{ #category : #accessing }
+EDASMongoSettingsInMemoryAdapter >> port: anObject [
+
+	port := anObject
+]
+
+{ #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> tls [
 	^ tls
 ]
@@ -194,13 +223,15 @@ EDASMongoSettingsInMemoryAdapter >> urls: aString [
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> username [
-	^ username
+EDASMongoSettingsInMemoryAdapter >> user [
+
+	^ user
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> username: anObject [
-	username := anObject
+EDASMongoSettingsInMemoryAdapter >> user: anObject [
+
+	user := anObject
 ]
 
 { #category : #accessing }
