@@ -139,9 +139,13 @@ EDASPortSettingsInMemoryAdapter >> portClassGetter: aMessage [
 
 	^ (self classOrTraitExists: aMessage selector greaseString)
 		  ifTrue: [ 
-			  adapterClasses
-				  at: (self classOrTraitNamed: aMessage selector greaseString)
-				  ifAbsent: [ nil ] ]
+			  | result |
+			  result := adapterClasses
+				            at:
+				            (self classOrTraitNamed:
+					             aMessage selector greaseString)
+				            ifAbsent: [ nil ].
+			  result ifNotNil: [ :r | r edaPort ] ]
 		  ifFalse: [ "super doesNotUnderstand: aMessage" ]
 ]
 
