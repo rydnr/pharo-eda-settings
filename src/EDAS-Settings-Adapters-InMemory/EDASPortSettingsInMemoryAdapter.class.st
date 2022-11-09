@@ -121,37 +121,6 @@ EDASPortSettingsInMemoryAdapter >> edaPorts [
 	^ adapterClasses keys
 ]
 
-{ #category : #accessing }
-EDASPortSettingsInMemoryAdapter >> environmentSettingsAdapterClass_ [
-
-	^ adapterClasses at: EDASEnvironmentSettingsPort ifAbsent: [ 
-		  | t |
-		  t := self environmentSettings_.
-		  self environmentSettingsAdapterClass_: t class.
-		  t ]
-]
-
-{ #category : #accessing }
-EDASPortSettingsInMemoryAdapter >> environmentSettingsAdapterClass_: newValue [
-
-	^ self
-		  updateAdapterClass: newValue
-		  for: EDASEnvironmentSettingsPort
-		  andAnnounce: EDASEnvironmentSettingsPortChanged
-]
-
-{ #category : #accessing }
-EDASPortSettingsInMemoryAdapter >> environmentSettings_ [
-
-	^ adapters at: EDASEnvironmentSettingsPort ifAbsent: [ nil ]
-]
-
-{ #category : #accessing }
-EDASPortSettingsInMemoryAdapter >> environmentSettings_: newValue [
-
-	^ self adapterFor: EDASEnvironmentSettingsPort is: newValue
-]
-
 { #category : #initialization }
 EDASPortSettingsInMemoryAdapter >> initialize [
 	super initialize.
