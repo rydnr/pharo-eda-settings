@@ -1,5 +1,5 @@
 Class {
-	#name : #EDASStompTopicListenerSettingsJsonAdapter,
+	#name : #EDASStompCommandListenerSettingsJsonAdapter,
 	#superclass : #Object,
 	#traits : 'EDASSettingsPort + EDASStompSettingsPort + EDASCommandListenerSettingsPort',
 	#classTraits : 'EDASSettingsPort classTrait + EDASStompSettingsPort classTrait + EDASCommandListenerSettingsPort classTrait',
@@ -22,7 +22,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-EDASStompTopicListenerSettingsJsonAdapter class >> availableEnvironments [
+EDASStompCommandListenerSettingsJsonAdapter class >> availableEnvironments [
 
 	| helper folder |
 	helper := EDACSourceCodeHelperStub new.
@@ -35,13 +35,13 @@ EDASStompTopicListenerSettingsJsonAdapter class >> availableEnvironments [
 ]
 
 { #category : #testing }
-EDASStompTopicListenerSettingsJsonAdapter class >> description [
+EDASStompCommandListenerSettingsJsonAdapter class >> description [
 
 	^ #'pharoeda.settings.adapters.command_listener.stomp.json.description'
 ]
 
 { #category : #testing }
-EDASStompTopicListenerSettingsJsonAdapter class >> edaPort [
+EDASStompCommandListenerSettingsJsonAdapter class >> edaPort [
 
 	"This gets called in EDASSettings when selecting the port, so it gets selected correctly"
 
@@ -49,14 +49,14 @@ EDASStompTopicListenerSettingsJsonAdapter class >> edaPort [
 ]
 
 { #category : #'instance creation' }
-EDASStompTopicListenerSettingsJsonAdapter class >> forEnvironment: anEnvironment withApp: anEDAApplication [
+EDASStompCommandListenerSettingsJsonAdapter class >> forEnvironment: anEnvironment withApp: anEDAApplication [
 
 	^ self fromFile:
 		  FileSystem workingDirectory / 'config' / (anEnvironment , '.json') withApp: anEDAApplication 
 ]
 
 { #category : #'instance creation' }
-EDASStompTopicListenerSettingsJsonAdapter class >> fromFile: aFileReference withApp: anEDAApplication [
+EDASStompCommandListenerSettingsJsonAdapter class >> fromFile: aFileReference withApp: anEDAApplication [
 
 	| result json commandListener |
 	result := self withApp: anEDAApplication.
@@ -68,19 +68,19 @@ EDASStompTopicListenerSettingsJsonAdapter class >> fromFile: aFileReference with
 ]
 
 { #category : #testing }
-EDASStompTopicListenerSettingsJsonAdapter class >> icon [
+EDASStompCommandListenerSettingsJsonAdapter class >> icon [
 
 	^ EDACIconProvider new iconNamed: #commandlistener orElse: #comments
 ]
 
 { #category : #testing }
-EDASStompTopicListenerSettingsJsonAdapter class >> label [
+EDASStompCommandListenerSettingsJsonAdapter class >> label [
 
 	^ #'pharoeda.settings.adapters.command_listener.stomp.label'
 ]
 
 { #category : #'instance creation' }
-EDASStompTopicListenerSettingsJsonAdapter class >> supportsEnvironment: anEnvironment [
+EDASStompCommandListenerSettingsJsonAdapter class >> supportsEnvironment: anEnvironment [
 
 	^ 
 		(FileSystem workingDirectory / 'config' / (anEnvironment , '.json')) exists
@@ -88,55 +88,55 @@ EDASStompTopicListenerSettingsJsonAdapter class >> supportsEnvironment: anEnviro
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> ack [
+EDASStompCommandListenerSettingsJsonAdapter >> ack [
 
 	^ ack
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> ack: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> ack: anObject [
 
 	ack := anObject
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> debug [
+EDASStompCommandListenerSettingsJsonAdapter >> debug [
 
 
 	^ debug
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> debug: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> debug: anObject [
 
 	debug := anObject
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> durable [
+EDASStompCommandListenerSettingsJsonAdapter >> durable [
 	^ durable
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> durable: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> durable: anObject [
 
 	durable := anObject
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> edaApplication [
+EDASStompCommandListenerSettingsJsonAdapter >> edaApplication [
 
 	^ edaApplication
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> edaApplication: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> edaApplication: anObject [
 
 	edaApplication := anObject
 ]
 
 { #category : #metadata }
-EDASStompTopicListenerSettingsJsonAdapter >> edaPort [
+EDASStompCommandListenerSettingsJsonAdapter >> edaPort [
 	
 	"This is used by the settings framework to be able to select the STOMP adapter in the available ports.
 	This adapter is not selectable (#accepts: returns false). It's only used when the environment value matches any of the json files.
@@ -145,123 +145,123 @@ EDASStompTopicListenerSettingsJsonAdapter >> edaPort [
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> errorStrategyName [
+EDASStompCommandListenerSettingsJsonAdapter >> errorStrategyName [
 
 
 	^ errorStrategyName
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> errorStrategyName: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> errorStrategyName: anObject [
 
 	errorStrategyName := anObject
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> host [
+EDASStompCommandListenerSettingsJsonAdapter >> host [
 
 
 	^ host
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> host: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> host: anObject [
 
 	host := anObject
 ]
 
 { #category : #testing }
-EDASStompTopicListenerSettingsJsonAdapter >> isReadOnly: aString [
+EDASStompCommandListenerSettingsJsonAdapter >> isReadOnly: aString [
 
 	^ true
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> password [
+EDASStompCommandListenerSettingsJsonAdapter >> password [
 
 	^ password
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> password: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> password: anObject [
 
 	password := anObject
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> port [
+EDASStompCommandListenerSettingsJsonAdapter >> port [
 
 	^ port
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> port: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> port: anObject [
 
 	port := anObject
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> prefetchCount [
+EDASStompCommandListenerSettingsJsonAdapter >> prefetchCount [
 
 	^ prefetchCount
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> prefetchCount: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> prefetchCount: anObject [
 
 	prefetchCount := anObject
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> queue [
+EDASStompCommandListenerSettingsJsonAdapter >> queue [
 
 	^ queue
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> queue: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> queue: anObject [
 
 	queue := anObject
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> restartOnErrors [
+EDASStompCommandListenerSettingsJsonAdapter >> restartOnErrors [
 
 	^ restartOnErrors ifNil: [ true ]
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> restartOnErrors: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> restartOnErrors: anObject [
 
 	restartOnErrors := anObject
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> timeout [
+EDASStompCommandListenerSettingsJsonAdapter >> timeout [
 
 	^ timeout
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> timeout: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> timeout: anObject [
 
 	timeout := anObject
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> user [
+EDASStompCommandListenerSettingsJsonAdapter >> user [
 
 	^ user
 ]
 
 { #category : #accessing }
-EDASStompTopicListenerSettingsJsonAdapter >> user: anObject [
+EDASStompCommandListenerSettingsJsonAdapter >> user: anObject [
 
 	user := anObject
 ]
 
 { #category : #testing }
-EDASStompTopicListenerSettingsJsonAdapter >> values: aSymbol [
+EDASStompCommandListenerSettingsJsonAdapter >> values: aSymbol [
 
 	aSymbol = #errorStrategyName
 		ifTrue: [ ^ self availableErrorStrategies ]

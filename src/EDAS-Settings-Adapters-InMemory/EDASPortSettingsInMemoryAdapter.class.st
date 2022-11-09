@@ -54,7 +54,9 @@ EDASPortSettingsInMemoryAdapter >> adapterSetter: aMessage [
 			                 removeSuffix: ':'
 			                 from: aMessage selector greaseString).
 	^ adapterClass ifNotNil: [ :a | 
-		  self adapterFor: (self classOrTraitNamed: a) is: aMessage arguments first ]
+		  self
+			  adapterFor: a
+			  is: aMessage arguments first ]
 ]
 
 { #category : #accessing }
@@ -93,7 +95,7 @@ EDASPortSettingsInMemoryAdapter >> doesNotUnderstand: aMessage [
 	className := setter
 		             ifTrue: [ self removeSuffix: ':' from: selector ]
 		             ifFalse: [ selector ].
-	"self halt."
+	self halt.
 	^ (self classOrTraitExists: className)
 		  ifTrue: [ 
 			  setter

@@ -14,11 +14,11 @@ EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> handleEnvironmentCh
 		                ifTrue: [ anEvent newValue ]
 		                ifFalse: [ 
 		                self translateToEnglish: anEvent newValue ].
-	(EDASStompTopicListenerSettingsJsonAdapter supportsEnvironment:
+	(EDASStompCommandListenerSettingsJsonAdapter supportsEnvironment:
 		 englishValue)
 		ifTrue: [ 
 			anEvent edaApplication portSettings commandListenerSettings:
-				(EDASStompTopicListenerSettingsJsonAdapter
+				(EDASStompCommandListenerSettingsJsonAdapter
 					 forEnvironment: englishValue
 					 withApp: anEvent edaApplication) ]
 		ifFalse: [ 

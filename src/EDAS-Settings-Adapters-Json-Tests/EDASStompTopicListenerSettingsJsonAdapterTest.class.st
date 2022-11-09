@@ -44,7 +44,7 @@ EDASStompTopicListenerSettingsJsonAdapterTest >> testAck [
 	tempFile writeStreamDo: [ :s | s nextPutAll: json ].
 	self
 		assert:
-			(EDASStompTopicListenerSettingsJsonAdapter fromFile: tempFile withApp: nil) ack
+			(EDASStompCommandListenerSettingsJsonAdapter fromFile: tempFile withApp: nil) ack
 			= (commandListener at: 'ack')
 		description: 'Ack parsing failed'
 		resumable: true.
@@ -70,7 +70,7 @@ EDASStompTopicListenerSettingsJsonAdapterTest >> testDebug [
 	tempFile writeStreamDo: [ :s | s nextPutAll: json ].
 	self
 		assert:
-			(EDASStompTopicListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
+			(EDASStompCommandListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
 				debug = (commandListener at: 'debug')
 		description: 'Debug parsing failed'
 		resumable: true.
@@ -98,7 +98,7 @@ EDASStompTopicListenerSettingsJsonAdapterTest >> testDurable [
 	tempFile writeStreamDo: [ :s | s nextPutAll: json ].
 	self
 		assert:
-			(EDASStompTopicListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
+			(EDASStompCommandListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
 				durable = (commandListener at: 'durable')
 		description: 'Durable parsing failed'
 		resumable: true.
@@ -124,7 +124,7 @@ EDASStompTopicListenerSettingsJsonAdapterTest >> testHost_127_0_0_1 [
 	tempFile writeStreamDo: [ :s | s nextPutAll: json ].
 	self
 		assert:
-			(EDASStompTopicListenerSettingsJsonAdapter fromFile: tempFile withApp: nil) host
+			(EDASStompCommandListenerSettingsJsonAdapter fromFile: tempFile withApp: nil) host
 			= '127.0.0.1'
 		description: 'Host parsing failed'
 		resumable: true.
@@ -150,7 +150,7 @@ EDASStompTopicListenerSettingsJsonAdapterTest >> testHost_localhost [
 	tempFile writeStreamDo: [ :s | s nextPutAll: json ].
 	self
 		assert:
-			(EDASStompTopicListenerSettingsJsonAdapter fromFile: tempFile withApp: nil) host
+			(EDASStompCommandListenerSettingsJsonAdapter fromFile: tempFile withApp: nil) host
 			= 'localhost'
 		description: 'Host parsing failed'
 		resumable: true.
@@ -176,7 +176,7 @@ EDASStompTopicListenerSettingsJsonAdapterTest >> testPassword [
 	tempFile writeStreamDo: [ :s | s nextPutAll: json ].
 	self
 		assert:
-			(EDASStompTopicListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
+			(EDASStompCommandListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
 				password = (commandListener at: 'password')
 		description: 'Password parsing failed'
 		resumable: true.
@@ -202,7 +202,7 @@ EDASStompTopicListenerSettingsJsonAdapterTest >> testPort [
 	tempFile writeStreamDo: [ :s | s nextPutAll: json ].
 	self
 		assert:
-			(EDASStompTopicListenerSettingsJsonAdapter fromFile: tempFile withApp: nil) port
+			(EDASStompCommandListenerSettingsJsonAdapter fromFile: tempFile withApp: nil) port
 			= 61614
 		description: 'Port parsing failed'
 		resumable: true.
@@ -228,7 +228,7 @@ EDASStompTopicListenerSettingsJsonAdapterTest >> testPrefetchCount [
 	tempFile writeStreamDo: [ :s | s nextPutAll: json ].
 	self
 		assert:
-			(EDASStompTopicListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
+			(EDASStompCommandListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
 				prefetchCount = (commandListener at: 'prefetchCount')
 		description: 'PrefetchCount parsing failed'
 		resumable: true.
@@ -254,7 +254,7 @@ EDASStompTopicListenerSettingsJsonAdapterTest >> testQueue [
 	tempFile writeStreamDo: [ :s | s nextPutAll: json ].
 	self
 		assert:
-			(EDASStompTopicListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
+			(EDASStompCommandListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
 				queue = (commandListener at: 'queue')
 		description: 'Queue parsing failed'
 		resumable: true.
@@ -282,7 +282,7 @@ EDASStompTopicListenerSettingsJsonAdapterTest >> testRestartOnErrors [
 	tempFile writeStreamDo: [ :s | s nextPutAll: json ].
 	self
 		assert:
-			(EDASStompTopicListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
+			(EDASStompCommandListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
 				restartOnErrors = (commandListener at: 'restartOnErrors')
 		description: 'RestartOnErrors parsing failed'
 		resumable: true.
@@ -308,7 +308,7 @@ EDASStompTopicListenerSettingsJsonAdapterTest >> testTimeout [
 	tempFile writeStreamDo: [ :s | s nextPutAll: json ].
 	self
 		assert:
-			(EDASStompTopicListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
+			(EDASStompCommandListenerSettingsJsonAdapter fromFile: tempFile withApp: nil)
 				timeout = (commandListener at: 'timeout')
 		description: 'Timeout parsing failed'
 		resumable: true.
@@ -334,7 +334,7 @@ EDASStompTopicListenerSettingsJsonAdapterTest >> testUser [
 	tempFile writeStreamDo: [ :s | s nextPutAll: json ].
 	self
 		assert:
-			(EDASStompTopicListenerSettingsJsonAdapter fromFile: tempFile withApp: nil) user
+			(EDASStompCommandListenerSettingsJsonAdapter fromFile: tempFile withApp: nil) user
 			= (commandListener at: 'user')
 		description: 'User parsing failed'
 		resumable: true.
