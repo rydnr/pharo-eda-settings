@@ -29,7 +29,8 @@ EDASPortSettingsInMemoryAdapter >> adapterFor: aPort [
 { #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> adapterFor: aPort is: anAdapter [
 
-	adapters at: aPort put: anAdapter
+	adapters at: aPort put: anAdapter.
+	adapterClasses at: aPort put: anAdapter class.
 ]
 
 { #category : #'reflective operations' }
@@ -82,14 +83,14 @@ EDASPortSettingsInMemoryAdapter >> currentEnvironment [
 { #category : #'reflective operations' }
 EDASPortSettingsInMemoryAdapter >> doesNotUnderstand: aMessage [
 
-	| selector className setter |
+	| selector className setter result |
 	selector := aMessage selector greaseString.
 	setter := selector endsWithAColon.
 	className := setter
 		             ifTrue: [ self removeSuffix: ':' from: selector ]
 		             ifFalse: [ selector ].
-	self halt.
-	^ (self classOrTraitExists: className)
+	"self halt."
+	result := (self classOrTraitExists: className)
 		  ifTrue: [ 
 			  setter
 				  ifTrue: [ self portClassSetter: aMessage ]
@@ -97,7 +98,8 @@ EDASPortSettingsInMemoryAdapter >> doesNotUnderstand: aMessage [
 		  ifFalse: [ 
 			  setter
 				  ifTrue: [ self adapterSetter: aMessage ]
-				  ifFalse: [ self adapterGetter: aMessage ] ]
+				  ifFalse: [ self adapterGetter: aMessage ] ].
+	^ result
 ]
 
 { #category : #accessing }
