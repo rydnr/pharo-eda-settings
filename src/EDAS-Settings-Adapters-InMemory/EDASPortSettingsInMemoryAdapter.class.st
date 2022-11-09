@@ -21,12 +21,6 @@ EDASPortSettingsInMemoryAdapter class >> withAnnouncer: anEDASettingsAnnouncer [
 		  yourself
 ]
 
-{ #category : #'reflective operations' }
-EDASPortSettingsInMemoryAdapter >> adapterClassForSettings: aSettingsName [
-
-	^ EDASPortResolver new availablePorts detect: [ :p | (p greaseString findString: aSettingsName capitalized) ~= 0 ] ifNone: [ nil ]
-]
-
 { #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> adapterFor: aPort [
 	^ adapters at: aPort ifAbsent: [ nil ]
@@ -41,15 +35,16 @@ EDASPortSettingsInMemoryAdapter >> adapterFor: aPort is: anAdapter [
 { #category : #'reflective operations' }
 EDASPortSettingsInMemoryAdapter >> adapterGetter: aMessage [
 
-	^ adapters at: (self adapterClassForSettings: aMessage selector greaseString) ifAbsent: [ nil ]
-
+	^ adapters
+		  at: (self portClassForSettings: aMessage selector greaseString)
+		  ifAbsent: [ nil ]
 ]
 
 { #category : #'reflective operations' }
 EDASPortSettingsInMemoryAdapter >> adapterSetter: aMessage [
 
 	| adapterClass |
-	adapterClass := self adapterClassForSettings:
+	adapterClass := self portClassForSettings:
 		                (self
 			                 removeSuffix: ':'
 			                 from: aMessage selector greaseString).
@@ -161,6 +156,12 @@ EDASPortSettingsInMemoryAdapter >> initialize [
 	super initialize.
 	adapters := Dictionary new.
 	adapterClasses := Dictionary new.
+]
+
+{ #category : #'reflective operations' }
+EDASPortSettingsInMemoryAdapter >> portClassForSettings: aSettingsName [
+
+	^ EDASPortResolver new availablePorts detect: [ :p | (p greaseString findString: aSettingsName capitalized) ~= 0 ] ifNone: [ nil ]
 ]
 
 { #category : #'reflective operations' }
