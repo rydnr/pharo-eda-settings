@@ -180,31 +180,29 @@ EDASPortSettingsInMemoryAdapter >> portClassGetter: aMessage [
 { #category : #'reflective operations' }
 EDASPortSettingsInMemoryAdapter >> portClassSetter: aMessage [
 
-	| port |
+	| port result previousAdapterClass newAdapterClass |
 	port := self removeSuffix: ':' from: aMessage selector greaseString.
+	result := nil.
+	(self classOrTraitExists: port)
+		ifTrue: [ 
+			previousAdapterClass := adapterClasses
+				          at: (self classOrTraitNamed: port)
+				          ifAbsent: [ nil ].
+			newAdapterClass := aMessage arguments first isAssociation
+					                          ifTrue: [ 
+					                          aMessage arguments first value ]
+					                          ifFalse: [ aMessage arguments first ].
 
-	^ (self classOrTraitExists: port)
-		  ifTrue: [ 
-			  | result previousAdapter |
-			  result := adapterClasses
-				            at: (self classOrTraitNamed: port)
-				            ifAbsent: [ nil ].
-			  previousAdapter := result.
-			  result := result ifNil: [ 
-				            | adapterClass |
-				            adapterClass := aMessage arguments first isAssociation
-					                            ifTrue: [ 
-					                            aMessage arguments first value ]
-					                            ifFalse: [ aMessage arguments first ].
-				            (self perform: adapterClass adapterAccessor) 
-					            ifNotNil: [ :r | r class ] ].
-			  result = previousAdapter ifFalse: [ 
-				  self
-					  updateAdapterClass: result
-					  for: port
-					  andAnnounce: (self classOrTraitNamed: port , 'Changed') ].
-			  result edaPort ]
-		  ifFalse: [ "super doesNotUnderstand: aMessage" ]
+			result := (newAdapterClass = previousAdapterClass) ifTrue: [ previousAdapterClass ] ifFalse: [ 
+(self perform: newAdapterClass adapterAccessor) ifNotNil: [ 
+					          :r | r class ].
+				self
+					updateAdapterClass: newAdapterClass
+					for: port
+					andAnnounce: (self classOrTraitNamed: port , 'Changed').
+				newAdapterClass ] ]
+		ifFalse: [ "super doesNotUnderstand: aMessage" ].
+	^ result ifNotNil: [ :r | r edaPort ]
 ]
 
 { #category : #testing }
