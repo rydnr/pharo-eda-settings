@@ -130,7 +130,9 @@
           },
           "authenticationMechanism": {
             "label": "Authentication",
-            "description": "The authentication method in MongoDB."
+            "description": "The authentication method in MongoDB.",
+            "scramsha256": "SCRAM SHA 256",
+            "mongodbcr": "Challenge/Response"
           },
           "tls": {
             "label": "TLS",
