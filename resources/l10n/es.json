@@ -42,6 +42,13 @@
           "stomp": {
             "label": "Stomp"
           }
+        },
+        "event_publisher": {
+          "label": "Publicador de eventos",
+          "description": "El tipo de adaptador de configuración usado para definir el publicador de eventos.",
+          "stomp": {
+            "label": "Stomp"
+          }
         }
       },
       "adapters": {
