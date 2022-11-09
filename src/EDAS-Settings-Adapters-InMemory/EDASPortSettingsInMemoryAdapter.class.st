@@ -91,14 +91,16 @@ EDASPortSettingsInMemoryAdapter >> doesNotUnderstand: aMessage [
 		             ifFalse: [ selector ].
 	"self halt."
 	result := (self classOrTraitExists: className)
-		  ifTrue: [ 
-			  setter
-				  ifTrue: [ self portClassSetter: aMessage ]
-				  ifFalse: [ self portClassGetter: aMessage ] ]
-		  ifFalse: [ 
-			  setter
-				  ifTrue: [ self adapterSetter: aMessage ]
-				  ifFalse: [ self adapterGetter: aMessage ] ].
+		          ifTrue: [ 
+			          setter
+				          ifTrue: [ self halt. self portClassSetter: aMessage ]
+				          ifFalse: [ self portClassGetter: aMessage ] ]
+		          ifFalse: [ 
+			          setter
+				          ifTrue: [ 
+					          self halt.
+					          self adapterSetter: aMessage ]
+				          ifFalse: [ self adapterGetter: aMessage ] ].
 	^ result
 ]
 
@@ -186,11 +188,15 @@ EDASPortSettingsInMemoryAdapter >> portClassSetter: aMessage [
 			  | result |
 			  result := adapterClasses
 				            at: (self classOrTraitNamed: port)
-				            ifAbsent: [ 
+				            ifAbsent: [ nil ].
+				result := result ifNil: [ 
 					            | t adapterClass |
-									adapterClass := aMessage arguments first isAssociation ifTrue: [ aMessage arguments first value ] ifFalse: [ aMessage arguments first ].
-					            t := self perform:
-						                 adapterClass adapterAccessor.
+					            adapterClass := aMessage arguments first
+						                            isAssociation
+						                            ifTrue: [ 
+						                            aMessage arguments first value ]
+						                            ifFalse: [ aMessage arguments first ].
+					            t := self perform: adapterClass adapterAccessor.
 					            t ifNotNil: [ :arg | 
 						            self
 							            updateAdapterClass: arg class
