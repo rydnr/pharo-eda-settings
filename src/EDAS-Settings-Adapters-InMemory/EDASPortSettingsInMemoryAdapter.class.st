@@ -50,9 +50,10 @@ EDASPortSettingsInMemoryAdapter >> adapterClassSetter: aMessage [
 			  result := adapterClasses
 				            at: (self classOrTraitNamed: port)
 				            ifAbsent: [ 
-					            | t |
+					            | t adapterClass |
+									adapterClass := aMessage arguments first isAssociation ifTrue: [ aMessage arguments first value ] ifFalse: [ aMessage arguments first ].
 					            t := self perform:
-						                 aMessage arguments first adapterAccessor.
+						                 adapterClass adapterAccessor.
 					            t ifNotNil: [ :arg | 
 						            self
 							            updateAdapterClass: arg class
@@ -263,9 +264,11 @@ EDASPortSettingsInMemoryAdapter >> settingsSetter: aMessage [
 
 	| adapterClass |
 	adapterClass := self adapterClassForSettings:
-		                (self removeSuffix: ':' from: aMessage selector greaseString).
+		                (self
+			                 removeSuffix: ':'
+			                 from: aMessage selector greaseString).
 	^ adapterClass ifNotNil: [ :a | 
-		  self adapterFor: a is: aMessage arguments first ]
+		  self adapterFor: (self classOrTraitNamed: a) is: aMessage arguments first ]
 ]
 
 { #category : #testing }
