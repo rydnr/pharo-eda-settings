@@ -64,7 +64,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> database [
 	#'pharoeda.settings.adapters.mongodb.database.label'
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.database.description'
-	icon: #database atPosition: 5 readOnly: false multiple: false>
+	icon: #eventstore atPosition: 5 readOnly: false multiple: false>
 	^ super database
 ]
 
