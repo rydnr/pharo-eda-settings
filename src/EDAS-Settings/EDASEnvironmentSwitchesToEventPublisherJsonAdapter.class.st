@@ -1,8 +1,8 @@
 Class {
 	#name : #EDASEnvironmentSwitchesToEventPublisherJsonAdapter,
 	#superclass : #Object,
-	#traits : 'EDASSettingsChangedListener + EDASEnvironmentSwitchesToJsonAdapter',
-	#classTraits : 'EDASSettingsChangedListener classTrait + EDASEnvironmentSwitchesToJsonAdapter classTrait',
+	#traits : 'EDASEnvironmentSwitchesToJsonAdapter + EDASSettingsChangedListener',
+	#classTraits : 'EDASEnvironmentSwitchesToJsonAdapter classTrait + EDASSettingsChangedListener classTrait',
 	#category : #'EDAS-Settings'
 }
 
@@ -13,4 +13,12 @@ EDASEnvironmentSwitchesToEventPublisherJsonAdapter class >> handleEnvironmentCha
 		  handleEnvironmentChangedEvent: anEvent
 		  forPort: EDASStompEventPublisherSettingsJsonAdapter
 		  orElse: EDASStompEventPublisherSettingsInMemoryAdapter
+]
+
+{ #category : #'as yet unclassified' }
+EDASEnvironmentSwitchesToEventPublisherJsonAdapter class >> subscribeToSettingsChangedEventsIn: anEDASettingsAnnouncer [
+
+	anEDASettingsAnnouncer
+		when: EDASEnvironmentChanged
+		do: [ :event | self handleEnvironmentChangedEvent: event ]
 ]

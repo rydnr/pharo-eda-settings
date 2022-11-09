@@ -32,6 +32,15 @@ EDASStompEventPublisherSettingsJsonAdapter class >> edaPort [
 	^ EDASStompEventPublisherSettingsInMemoryAdapter
 ]
 
+{ #category : #'instance creation' }
+EDASStompEventPublisherSettingsJsonAdapter class >> fromFile: aFileReference withApp: anEDAApplication [
+
+	^ self
+		  fromFile: aFileReference
+		  under: 'eventPublisher'
+		  withApp: anEDAApplication
+]
+
 { #category : #testing }
 EDASStompEventPublisherSettingsJsonAdapter class >> icon [
 
@@ -90,6 +99,12 @@ EDASStompEventPublisherSettingsJsonAdapter >> exchange [
 EDASStompEventPublisherSettingsJsonAdapter >> exchange: anObject [
 
 	exchange := anObject
+]
+
+{ #category : #testing }
+EDASStompEventPublisherSettingsJsonAdapter >> isReadOnly: aString [
+
+	^ true
 ]
 
 { #category : #accessing }

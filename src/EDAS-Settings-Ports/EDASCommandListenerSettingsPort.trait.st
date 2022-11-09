@@ -33,7 +33,7 @@ EDASCommandListenerSettingsPort classSide >> edaPort [
 	^ self
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #metadata }
 EDASCommandListenerSettingsPort classSide >> eventChangedName [
 
 	^ EDASCommandListenerSettingsPortChanged

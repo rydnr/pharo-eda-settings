@@ -32,6 +32,15 @@ EDASStompCommandListenerSettingsJsonAdapter class >> edaPort [
 	^ EDASStompCommandListenerSettingsInMemoryAdapter
 ]
 
+{ #category : #'instance creation' }
+EDASStompCommandListenerSettingsJsonAdapter class >> fromFile: aFileReference withApp: anEDAApplication [
+
+	^ self
+		  fromFile: aFileReference
+		  under: 'commandListener'
+		  withApp: anEDAApplication
+]
+
 { #category : #testing }
 EDASStompCommandListenerSettingsJsonAdapter class >> icon [
 
@@ -76,6 +85,12 @@ EDASStompCommandListenerSettingsJsonAdapter >> edaPort [
 	This adapter is not selectable (#accepts: returns false). It's only used when the environment value matches any of the json files.
 	Take a look at EDASEnvironmentSwitchesToCommandListenerJsonAdapter"
 	^ EDASStompCommandListenerSettingsInMemoryAdapter
+]
+
+{ #category : #testing }
+EDASStompCommandListenerSettingsJsonAdapter >> isReadOnly: aString [
+
+	^ true
 ]
 
 { #category : #accessing }

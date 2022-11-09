@@ -22,14 +22,6 @@ EDASEnvironmentSwitchesToJsonAdapter classSide >> handleEnvironmentChangedEvent:
 				(anotherClass withApp: anEvent edaApplication) ]
 ]
 
-{ #category : #helper }
-EDASEnvironmentSwitchesToJsonAdapter classSide >> subscribeToSettingsChangedEventsIn: anEDASettingsAnnouncer [
-
-	anEDASettingsAnnouncer
-		when: EDASEnvironmentChanged
-		do: [ :event | self handleEnvironmentChangedEvent: event ]
-]
-
 { #category : #'event handling - private' }
 EDASEnvironmentSwitchesToJsonAdapter classSide >> translateToEnglish: anEnvironment [
 
