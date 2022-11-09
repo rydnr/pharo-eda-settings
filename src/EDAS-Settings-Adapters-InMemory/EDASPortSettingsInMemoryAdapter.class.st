@@ -35,22 +35,38 @@ EDASPortSettingsInMemoryAdapter >> adapterClassGetter: aMessage [
 			  adapterClasses
 				  at: (self classOrTraitNamed: aMessage selector greaseString)
 				  ifAbsent: [ nil ] ]
-		  ifFalse: [ super doesNotUnderstand: aMessage ]
+		  ifFalse: [ "super doesNotUnderstand: aMessage" ]
 ]
 
 { #category : #'reflective operations' }
 EDASPortSettingsInMemoryAdapter >> adapterClassSetter: aMessage [
 
-	| className |
-	className := self removeSuffix: ':' from: aMessage selector greaseString.
-	
-	^ (self classOrTraitExists: className)
+	| port |
+	port := self removeSuffix: ':' from: aMessage selector greaseString.
+
+	^ (self classOrTraitExists: port)
 		  ifTrue: [ 
-			  self
-				  adapterFor:
-				  (self classOrTraitNamed: className)
-				  is: aMessage arguments first ]
-		  ifFalse: [ super doesNotUnderstand: aMessage ]
+			  | result |
+			  result := adapterClasses
+				            at: (self classOrTraitNamed: port)
+				            ifAbsent: [ 
+					            | t |
+					            t := self perform:
+						                 aMessage arguments first adapterAccessor.
+					            t ifNotNil: [ :arg | 
+						            self
+							            updateAdapterClass: arg class
+							            for: port
+							            andAnnounce:
+							            (self classOrTraitNamed: port , 'Changed') ].
+					            t class ].
+			  result edaPort ]
+		  ifFalse: [ "super doesNotUnderstand: aMessage" ]
+]
+
+{ #category : #accessing }
+EDASPortSettingsInMemoryAdapter >> adapterFor: aPort [
+	^ adapters at: aPort ifAbsent: [ nil ]
 ]
 
 { #category : #accessing }
@@ -129,20 +145,17 @@ EDASPortSettingsInMemoryAdapter >> doesNotUnderstand: aMessage [
 	selector := aMessage selector greaseString.
 	setter := selector endsWithAColon.
 	className := setter
-		             ifTrue: [ 
-		             self
-			             removeSuffix: ':'
-			             from: selector ]
+		             ifTrue: [ self removeSuffix: ':' from: selector ]
 		             ifFalse: [ selector ].
 	^ (self classOrTraitExists: className)
-		ifTrue: [ 
-			setter
-				ifTrue: [ self adapterClassSetter: aMessage ]
-				ifFalse: [ self adapterClassGetter: aMessage ] ]
-		ifFalse: [ 
-			setter
-				ifTrue: [ self settingsSetter: aMessage ]
-				ifFalse: [ self settingsGetter: aMessage ] ]
+		  ifTrue: [ 
+			  setter
+				  ifTrue: [ self adapterClassSetter: aMessage ]
+				  ifFalse: [ self adapterClassGetter: aMessage ] ]
+		  ifFalse: [ 
+			  setter
+				  ifTrue: [ self settingsSetter: aMessage ]
+				  ifFalse: [ self settingsGetter: aMessage ] ]
 ]
 
 { #category : #accessing }
@@ -256,6 +269,12 @@ EDASPortSettingsInMemoryAdapter >> settingsSetter: aMessage [
 ]
 
 { #category : #testing }
+EDASPortSettingsInMemoryAdapter >> updateAdapterClass: newValue for: aPort [
+
+	^ self updateAdapterClass: newValue for: aPort andAnnounce: nil
+]
+
+{ #category : #testing }
 EDASPortSettingsInMemoryAdapter >> updateAdapterClass: newValue for: aPort andAnnounce: anEventClass [
 
 	| oldValue |
@@ -263,6 +282,7 @@ EDASPortSettingsInMemoryAdapter >> updateAdapterClass: newValue for: aPort andAn
 	adapterClasses at: aPort put: newValue.
 	oldValue = newValue ifTrue: [ ^ self ].
 	self adapterFor: aPort is: (newValue withApp: self edaApplication).
+	anEventClass ifNotNil: [ :cls |
 	self announcer announce:
-		(anEventClass old: oldValue new: newValue on: self edaApplication)
+		(cls old: oldValue new: newValue on: self edaApplication) ]
 ]

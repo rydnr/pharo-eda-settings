@@ -6,6 +6,12 @@ Trait {
 }
 
 { #category : #accessing }
+EDASEnvironmentSettingsPort classSide >> adapterAccessor [
+
+	^ #environmentSettings
+]
+
+{ #category : #accessing }
 EDASEnvironmentSettingsPort classSide >> adapterClassAccessor [
 
 	^ #environmentSettingsAdapterClass

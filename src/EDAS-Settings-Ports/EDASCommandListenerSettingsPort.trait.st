@@ -6,6 +6,12 @@ Trait {
 }
 
 { #category : #accessing }
+EDASCommandListenerSettingsPort classSide >> adapterAccessor [
+
+	^ #commandListenerSettings
+]
+
+{ #category : #accessing }
 EDASCommandListenerSettingsPort classSide >> adapterClassAccessor [
 
 	^ #commandListenerSettingsAdapterClass

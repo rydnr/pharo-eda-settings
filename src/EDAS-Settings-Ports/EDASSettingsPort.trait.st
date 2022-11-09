@@ -31,6 +31,12 @@ EDASSettingsPort classSide >> accepts: aPortResolver [
 ]
 
 { #category : #accessing }
+EDASSettingsPort classSide >> adapterAccessor [
+
+	self subclassResponsibility
+]
+
+{ #category : #accessing }
 EDASSettingsPort classSide >> adapterClassAccessor [
 
 	self subclassResponsibility 

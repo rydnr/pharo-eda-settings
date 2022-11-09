@@ -6,6 +6,12 @@ Trait {
 }
 
 { #category : #accessing }
+EDASEventPublisherSettingsPort classSide >> adapterAccessor [
+
+	^ #eventPublisherSettings
+]
+
+{ #category : #accessing }
 EDASEventPublisherSettingsPort classSide >> adapterClassAccessor [
 
 	^ #eventPublisherSettingsAdapterClass

@@ -150,7 +150,7 @@ EDASSettings class >> port: aPort settingsOn: aBuilder under: aParent on: app or
 			            :adapterClass | 
 			            adapterClass portLabel translated -> adapterClass ]) 
 			           sorted: [ :a :b | a < b ]).
-	values ifNotEmpty: [ :v |
+	values ifNotEmpty: [ :v | 
 		(aBuilder pickOne: aPort name)
 			label: aPort label translated;
 			description: aPort description;
@@ -158,7 +158,7 @@ EDASSettings class >> port: aPort settingsOn: aBuilder under: aParent on: app or
 			target: app;
 			targetSelector: #portSettings;
 			parent: aParent;
-			default: v first key;
+			default: v first;
 			domainValues: v;
 			order: anInteger ]
 ]
