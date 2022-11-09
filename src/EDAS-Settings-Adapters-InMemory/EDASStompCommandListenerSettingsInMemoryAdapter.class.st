@@ -71,6 +71,16 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> commandListener [
 ]
 
 { #category : #accessing }
+EDASStompCommandListenerSettingsInMemoryAdapter >> debug [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.debug.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.debug.description' icon: #debug
+	atPosition: 9 readOnly: false multiple: false>
+	^ super debug
+]
+
+{ #category : #accessing }
 EDASStompCommandListenerSettingsInMemoryAdapter >> destination [
 	^ '/amq/queue/' , self queue
 ]
@@ -85,9 +95,39 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> doInitialize [
 ]
 
 { #category : #accessing }
+EDASStompCommandListenerSettingsInMemoryAdapter >> durable [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.durable.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.durable.description' icon:
+	#durable atPosition: 8 readOnly: false multiple: false>
+	^ super durable
+]
+
+{ #category : #accessing }
 EDASStompCommandListenerSettingsInMemoryAdapter >> errorStrategy [
 
 	^ super errorStrategy
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsInMemoryAdapter >> errorStrategyName [
+
+	<edaSettings:
+	#'pharoeda.settings.adapters.stomp.errorStrategyName.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.errorStrategyName.description'
+	icon: #errorstrategy atPosition: 11 readOnly: false multiple: true>
+	^ super errorStrategyName
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsInMemoryAdapter >> host [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.host.label'
+	withDescription: #'pharoeda.settings.adapters.stomp.host.description'
+	icon: #host atPosition: 1 readOnly: false multiple: false>
+	^ super host
 ]
 
 { #category : #'class initialization' }
@@ -97,8 +137,21 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> initialize [
 ]
 
 { #category : #accessing }
+EDASStompCommandListenerSettingsInMemoryAdapter >> password [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.password.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.password.description' icon:
+	#password atPosition: 4 readOnly: false multiple: false>
+	^ super password
+]
+
+{ #category : #accessing }
 EDASStompCommandListenerSettingsInMemoryAdapter >> port [
 
+	<edaSettings: #'pharoeda.settings.adapters.stomp.port.label'
+	withDescription: #'pharoeda.settings.adapters.stomp.port.description'
+	icon: #port atPosition: 2 readOnly: false multiple: false>
 	^ super port
 ]
 
@@ -137,7 +190,22 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> queue: val [
 { #category : #accessing }
 EDASStompCommandListenerSettingsInMemoryAdapter >> restartOnErrors [
 
+	<edaSettings:
+	#'pharoeda.settings.adapters.stomp.restartOnErrors.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.restartOnErrors.description' icon:
+	#restartonerrors atPosition: 10 readOnly: false multiple: false>
 	^ super restartOnErrors
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsInMemoryAdapter >> timeout [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.timeout.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.timeout.description' icon:
+	#timeout atPosition: 6 readOnly: false multiple: false>
+	^ super timeout
 ]
 
 { #category : #accessing }
@@ -150,6 +218,15 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> topicListener [
 EDASStompCommandListenerSettingsInMemoryAdapter >> topicListener: anObject [
 
 	topicListener := anObject
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsInMemoryAdapter >> user [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.user.label'
+	withDescription: #'pharoeda.settings.adapters.stomp.user.description'
+	icon: #user atPosition: 3 readOnly: false multiple: false>
+	^ super user
 ]
 
 { #category : #resolving }

@@ -41,12 +41,32 @@ EDASStompEventPublisherSettingsInMemoryAdapter class >> priority [
 	^ 0
 ]
 
+{ #category : #accessing }
+EDASStompEventPublisherSettingsInMemoryAdapter >> debug [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.debug.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.debug.description' icon: #debug
+	atPosition: 9 readOnly: false multiple: false>
+	^ super debug
+]
+
 { #category : #'class initialization' }
 EDASStompEventPublisherSettingsInMemoryAdapter >> doInitialize [
 	super doInitialize.
 	self exchange: nil.
 	self routingKey: nil.
 	self durable: true
+]
+
+{ #category : #accessing }
+EDASStompEventPublisherSettingsInMemoryAdapter >> durable [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.durable.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.durable.description' icon:
+	#durable atPosition: 8 readOnly: false multiple: false>
+	^ super durable
 ]
 
 { #category : #accessing }
@@ -83,6 +103,23 @@ EDASStompEventPublisherSettingsInMemoryAdapter >> errorRoutingKey: val [
 ]
 
 { #category : #accessing }
+EDASStompEventPublisherSettingsInMemoryAdapter >> errorStrategy [
+
+	^ super errorStrategy
+]
+
+{ #category : #accessing }
+EDASStompEventPublisherSettingsInMemoryAdapter >> errorStrategyName [
+
+	<edaSettings:
+	#'pharoeda.settings.adapters.stomp.errorStrategyName.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.errorStrategyName.description'
+	icon: #errorstrategy atPosition: 11 readOnly: false multiple: true>
+	^ super errorStrategyName
+]
+
+{ #category : #accessing }
 EDASStompEventPublisherSettingsInMemoryAdapter >> exchange [
 
 	<edaSettings:
@@ -101,6 +138,45 @@ EDASStompEventPublisherSettingsInMemoryAdapter >> exchange: val [
 ]
 
 { #category : #accessing }
+EDASStompEventPublisherSettingsInMemoryAdapter >> host [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.host.label'
+	withDescription: #'pharoeda.settings.adapters.stomp.host.description'
+	icon: #host atPosition: 1 readOnly: false multiple: false>
+	^ super host
+]
+
+{ #category : #accessing }
+EDASStompEventPublisherSettingsInMemoryAdapter >> password [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.password.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.password.description' icon:
+	#password atPosition: 4 readOnly: false multiple: false>
+	^ super password
+]
+
+{ #category : #accessing }
+EDASStompEventPublisherSettingsInMemoryAdapter >> port [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.port.label'
+	withDescription: #'pharoeda.settings.adapters.stomp.port.description'
+	icon: #port atPosition: 2 readOnly: false multiple: false>
+	^ super port
+]
+
+{ #category : #accessing }
+EDASStompEventPublisherSettingsInMemoryAdapter >> restartOnErrors [
+
+	<edaSettings:
+	#'pharoeda.settings.adapters.stomp.restartOnErrors.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.restartOnErrors.description' icon:
+	#restartonerrors atPosition: 10 readOnly: false multiple: false>
+	^ super restartOnErrors
+]
+
+{ #category : #accessing }
 EDASStompEventPublisherSettingsInMemoryAdapter >> routingKey [
 
 	<edaSettings:
@@ -114,4 +190,23 @@ EDASStompEventPublisherSettingsInMemoryAdapter >> routingKey [
 { #category : #accessing }
 EDASStompEventPublisherSettingsInMemoryAdapter >> routingKey: val [
 	routingKey := val
+]
+
+{ #category : #accessing }
+EDASStompEventPublisherSettingsInMemoryAdapter >> timeout [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.timeout.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.timeout.description' icon:
+	#timeout atPosition: 6 readOnly: false multiple: false>
+	^ super timeout
+]
+
+{ #category : #accessing }
+EDASStompEventPublisherSettingsInMemoryAdapter >> user [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.user.label'
+	withDescription: #'pharoeda.settings.adapters.stomp.user.description'
+	icon: #user atPosition: 3 readOnly: false multiple: false>
+	^ super user
 ]

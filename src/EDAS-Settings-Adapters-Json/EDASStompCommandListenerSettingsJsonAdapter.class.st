@@ -1,9 +1,18 @@
 Class {
 	#name : #EDASStompCommandListenerSettingsJsonAdapter,
 	#superclass : #Object,
-	#traits : 'EDASSettingsPort + EDASStompSettingsJsonAdapter + EDASCommandListenerSettingsPort',
-	#classTraits : 'EDASSettingsPort classTrait + EDASStompSettingsJsonAdapter classTrait + EDASCommandListenerSettingsPort classTrait',
+	#traits : 'EDASSettingsPort + EDASStompSettingsJsonAdapter + EDASCommandListenerSettingsPort + EDASStompSettingsPort',
+	#classTraits : 'EDASSettingsPort classTrait + EDASStompSettingsJsonAdapter classTrait + EDASCommandListenerSettingsPort classTrait + EDASStompSettingsPort classTrait',
 	#instVars : [
+		'host',
+		'port',
+		'user',
+		'password',
+		'timeout',
+		'debug',
+		'durable',
+		'restartOnErrors',
+		'errorStrategyName',
 		'queue',
 		'prefetchCount',
 		'ack'
@@ -78,6 +87,38 @@ EDASStompCommandListenerSettingsJsonAdapter >> ack: anObject [
 	ack := anObject
 ]
 
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> debug [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.debug.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.debug.description' icon: #debug
+	atPosition: 9 readOnly: false multiple: false>
+	^ debug
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> debug: anObject [
+
+	debug := anObject
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> durable [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.durable.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.durable.description' icon:
+	#durable atPosition: 8 readOnly: false multiple: false>
+	^ durable
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> durable: anObject [
+
+	durable := anObject
+]
+
 { #category : #metadata }
 EDASStompCommandListenerSettingsJsonAdapter >> edaPort [
 	
@@ -87,10 +128,73 @@ EDASStompCommandListenerSettingsJsonAdapter >> edaPort [
 	^ EDASStompCommandListenerSettingsInMemoryAdapter
 ]
 
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> errorStrategyName [
+
+	<edaSettings:
+	#'pharoeda.settings.adapters.stomp.errorStrategyName.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.errorStrategyName.description'
+	icon: #errorstrategy atPosition: 11 readOnly: false multiple: true>
+	^ errorStrategyName
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> errorStrategyName: anObject [
+
+	errorStrategyName := anObject
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> host [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.host.label'
+	withDescription: #'pharoeda.settings.adapters.stomp.host.description'
+	icon: #host atPosition: 1 readOnly: false multiple: false>
+	^ host
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> host: anObject [
+
+	host := anObject
+]
+
 { #category : #testing }
 EDASStompCommandListenerSettingsJsonAdapter >> isReadOnly: aString [
 
 	^ true
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> password [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.password.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.password.description' icon:
+	#password atPosition: 4 readOnly: false multiple: false>
+	^ password
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> password: anObject [
+
+	password := anObject
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> port [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.port.label'
+	withDescription: #'pharoeda.settings.adapters.stomp.port.description'
+	icon: #port atPosition: 2 readOnly: false multiple: false>
+	^ port
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> port: anObject [
+
+	port := anObject
 ]
 
 { #category : #accessing }
@@ -115,6 +219,54 @@ EDASStompCommandListenerSettingsJsonAdapter >> queue [
 EDASStompCommandListenerSettingsJsonAdapter >> queue: anObject [
 
 	queue := anObject
+]
+
+{ #category : #ambiguous }
+EDASStompCommandListenerSettingsJsonAdapter >> restartOnErrors [
+
+	<edaSettings:
+	#'pharoeda.settings.adapters.stomp.restartOnErrors.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.restartOnErrors.description' icon:
+	#restartonerrors atPosition: 10 readOnly: false multiple: false>
+	^ restartOnErrors
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> restartOnErrors: anObject [
+
+	restartOnErrors := anObject
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> timeout [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.timeout.label'
+	withDescription:
+	#'pharoeda.settings.adapters.stomp.timeout.description' icon:
+	#timeout atPosition: 6 readOnly: false multiple: false>
+	^ timeout
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> timeout: anObject [
+
+	timeout := anObject
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> user [
+
+	<edaSettings: #'pharoeda.settings.adapters.stomp.user.label'
+	withDescription: #'pharoeda.settings.adapters.stomp.user.description'
+	icon: #user atPosition: 3 readOnly: false multiple: false>
+	^ user
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> user: anObject [
+
+	user := anObject
 ]
 
 { #category : #testing }

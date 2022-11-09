@@ -1,18 +1,5 @@
 Trait {
 	#name : #EDASStompSettingsJsonAdapter,
-	#instVars : [
-		'host',
-		'port',
-		'user',
-		'password',
-		'timeout',
-		'debug',
-		'durable',
-		'restartOnErrors',
-		'errorStrategyName'
-	],
-	#traits : 'EDASStompSettingsPort',
-	#classTraits : 'EDASStompSettingsPort classTrait',
 	#category : #'EDAS-Settings-Adapters-Json'
 }
 

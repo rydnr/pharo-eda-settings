@@ -157,3 +157,11 @@ EDASStompSettingsInMemoryAdapter >> user: aString [
 
 	user := aString
 ]
+
+{ #category : #accessing }
+EDASStompSettingsInMemoryAdapter >> values: aSymbol [
+
+	aSymbol = #errorStrategyName
+		ifTrue: [ ^ self availableErrorStrategies ]
+		ifFalse: [ ^ OrderedCollection new ]
+]
