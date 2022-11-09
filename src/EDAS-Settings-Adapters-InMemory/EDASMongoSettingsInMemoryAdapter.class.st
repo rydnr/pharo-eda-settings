@@ -41,7 +41,7 @@ EDASMongoSettingsInMemoryAdapter >> authenticationMechanism: anObject [
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> database [
 
-	^ database
+	^ database ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -52,7 +52,8 @@ EDASMongoSettingsInMemoryAdapter >> database: anObject [
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> debug [
-	^ debug
+
+	^ debug ifNil: [ true ]
 ]
 
 { #category : #accessing }
@@ -92,7 +93,8 @@ EDASMongoSettingsInMemoryAdapter >> edaApplication: anEDAApplication [
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> enableReplication [
-	^ enableReplication
+
+	^ enableReplication ifNil: [ false ]
 ]
 
 { #category : #accessing }
@@ -104,7 +106,8 @@ EDASMongoSettingsInMemoryAdapter >> enableReplication: aBoolean [
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> enableSingleton [
-	^ enableSingleton
+
+	^ enableSingleton ifNil: [ false ]
 ]
 
 { #category : #accessing }
@@ -116,7 +119,8 @@ EDASMongoSettingsInMemoryAdapter >> enableSingleton: aBoolean [
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> ensuringCurrentOnSave [
-	^ ensuringCurrentOnSave
+
+	^ ensuringCurrentOnSave ifNil: [ false ]
 ]
 
 { #category : #accessing }
@@ -128,7 +132,8 @@ EDASMongoSettingsInMemoryAdapter >> ensuringCurrentOnSave: aBoolean [
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> ensuringCurrentReferencesOnQueries [
-	^ ensuringCurrentReferencesOnQueries
+
+	^ ensuringCurrentReferencesOnQueries ifNil: [ false ]
 ]
 
 { #category : #accessing }
@@ -140,7 +145,8 @@ EDASMongoSettingsInMemoryAdapter >> ensuringCurrentReferencesOnQueries: aBoolean
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> forceEager [
-	^ forceEager
+
+	^ forceEager ifNil: [ false ]
 ]
 
 { #category : #accessing }
@@ -153,7 +159,7 @@ EDASMongoSettingsInMemoryAdapter >> forceEager: aBoolean [
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> host [
 
-	^ host
+	^ host ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -170,7 +176,8 @@ EDASMongoSettingsInMemoryAdapter >> initialize [
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> lazySynchronize [
-	^ lazySynchronize
+
+	^ lazySynchronize ifNil: [ true ]
 ]
 
 { #category : #accessing }
@@ -182,7 +189,8 @@ EDASMongoSettingsInMemoryAdapter >> lazySynchronize: aBoolean [
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> password [
-	^ password
+
+	^ password ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -193,7 +201,7 @@ EDASMongoSettingsInMemoryAdapter >> password: anObject [
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> port [
 
-	^ port
+	^ port ifNil: [ 27017 ]
 ]
 
 { #category : #accessing }
@@ -204,7 +212,8 @@ EDASMongoSettingsInMemoryAdapter >> port: anObject [
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> tls [
-	^ tls
+
+	^ tls ifNil: [ false ]
 ]
 
 { #category : #accessing }
@@ -214,7 +223,8 @@ EDASMongoSettingsInMemoryAdapter >> tls: aBoolean [
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> urls [
-	^ urls
+
+	^ urls ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -225,7 +235,7 @@ EDASMongoSettingsInMemoryAdapter >> urls: aString [
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> user [
 
-	^ user
+	^ user ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -236,7 +246,8 @@ EDASMongoSettingsInMemoryAdapter >> user: anObject [
 
 { #category : #accessing }
 EDASMongoSettingsInMemoryAdapter >> wireProtocolEnabled [
-	^ wireProtocolEnabled
+
+	^ wireProtocolEnabled ifNil: [ false ]
 ]
 
 { #category : #accessing }

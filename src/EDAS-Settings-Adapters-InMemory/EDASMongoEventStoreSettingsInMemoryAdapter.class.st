@@ -17,6 +17,18 @@ EDASMongoEventStoreSettingsInMemoryAdapter class >> availableAuthenticationMecha
 	^ OrderedCollection with: 'SCRAM-SHA-256' with: 'MONGODB-CR'
 ]
 
+{ #category : #testing }
+EDASMongoEventStoreSettingsInMemoryAdapter class >> description [
+
+	^ #'pharoeda.settings.adapters.event_store.mongodb.description'
+]
+
+{ #category : #testing }
+EDASMongoEventStoreSettingsInMemoryAdapter class >> label [
+
+	^ #'pharoeda.settings.adapters.event_store.mongodb.label'
+]
+
 { #category : #metadata }
 EDASMongoEventStoreSettingsInMemoryAdapter class >> portLabel [
 
