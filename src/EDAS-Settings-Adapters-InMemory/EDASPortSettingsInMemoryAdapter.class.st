@@ -41,11 +41,14 @@ EDASPortSettingsInMemoryAdapter >> adapterClassGetter: aMessage [
 { #category : #'reflective operations' }
 EDASPortSettingsInMemoryAdapter >> adapterClassSetter: aMessage [
 
-	^ (self classOrTraitExists: aMessage selector greaseString)
+	| className |
+	className := self removeSuffix: ':' from: aMessage selector greaseString.
+	
+	^ (self classOrTraitExists: className)
 		  ifTrue: [ 
 			  self
 				  adapterFor:
-				  (self classOrTraitNamed: aMessage selector greaseString)
+				  (self classOrTraitNamed: className)
 				  is: aMessage arguments first ]
 		  ifFalse: [ super doesNotUnderstand: aMessage ]
 ]
@@ -247,9 +250,9 @@ EDASPortSettingsInMemoryAdapter >> settingsSetter: aMessage [
 
 	| adapterClass |
 	adapterClass := self adapterClassForSettings:
-		                aMessage selector greaseString.
-	^ adapterClass ifNotNil: [ :a |
-	self adapterFor: a is: aMessage arguments first ]
+		                (self removeSuffix: ':' from: aMessage selector greaseString).
+	^ adapterClass ifNotNil: [ :a | 
+		  self adapterFor: a is: aMessage arguments first ]
 ]
 
 { #category : #testing }
