@@ -186,21 +186,20 @@ EDASPortSettingsInMemoryAdapter >> portClassSetter: aMessage [
 	(self classOrTraitExists: port)
 		ifTrue: [ 
 			previousAdapterClass := adapterClasses
-				          at: (self classOrTraitNamed: port)
-				          ifAbsent: [ nil ].
+				                        at: (self classOrTraitNamed: port)
+				                        ifAbsent: [ nil ].
 			newAdapterClass := aMessage arguments first isAssociation
-					                          ifTrue: [ 
-					                          aMessage arguments first value ]
-					                          ifFalse: [ aMessage arguments first ].
+				                   ifTrue: [ aMessage arguments first value ]
+				                   ifFalse: [ aMessage arguments first ].
 
-			result := (newAdapterClass = previousAdapterClass) ifTrue: [ previousAdapterClass ] ifFalse: [ 
-(self perform: newAdapterClass adapterAccessor) ifNotNil: [ 
-					          :r | r class ].
-				self
-					updateAdapterClass: newAdapterClass
-					for: port
-					andAnnounce: (self classOrTraitNamed: port , 'Changed').
-				newAdapterClass ] ]
+			result := newAdapterClass = previousAdapterClass
+				          ifTrue: [ previousAdapterClass ]
+				          ifFalse: [ 
+					          self
+						          updateAdapterClass: newAdapterClass
+						          for: port
+						          andAnnounce: port portChangedEventName.
+					          newAdapterClass ] ]
 		ifFalse: [ "super doesNotUnderstand: aMessage" ].
 	^ result ifNotNil: [ :r | r edaPort ]
 ]

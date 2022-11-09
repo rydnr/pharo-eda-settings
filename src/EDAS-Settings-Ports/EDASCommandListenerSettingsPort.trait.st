@@ -17,6 +17,12 @@ EDASCommandListenerSettingsPort classSide >> adapterClassAccessor [
 	^ #commandListenerSettingsAdapterClass
 ]
 
+{ #category : #accessing }
+EDASCommandListenerSettingsPort classSide >> changedEventName [
+
+	^ EDASCommandListenerSettingsChanged
+]
+
 { #category : #testing }
 EDASCommandListenerSettingsPort classSide >> edaPort [
 
@@ -25,6 +31,18 @@ EDASCommandListenerSettingsPort classSide >> edaPort [
 	#'pharoeda.settings.ports.command_listener.description' icon:
 	#commandlistener atPosition: 2>
 	^ self
+]
+
+{ #category : #'as yet unclassified' }
+EDASCommandListenerSettingsPort classSide >> eventChangedName [
+
+	^ EDASCommandListenerSettingsPortChanged
+]
+
+{ #category : #accessing }
+EDASCommandListenerSettingsPort classSide >> portChangedEventName [
+
+	^ EDASCommandListenerSettingsPortChanged
 ]
 
 { #category : #testing }

@@ -17,6 +17,12 @@ EDASEventPublisherSettingsPort classSide >> adapterClassAccessor [
 	^ #eventPublisherSettingsAdapterClass
 ]
 
+{ #category : #accessing }
+EDASEventPublisherSettingsPort classSide >> changedEventName [
+
+	^ EDASEventPublisherSettingsChanged
+]
+
 { #category : #testing }
 EDASEventPublisherSettingsPort classSide >> edaPort [
 
@@ -25,6 +31,12 @@ EDASEventPublisherSettingsPort classSide >> edaPort [
 	#'pharoeda.settings.ports.event_publisher.description' icon:
 	#eventpublisher atPosition: 3>
 	^ self
+]
+
+{ #category : #accessing }
+EDASEventPublisherSettingsPort classSide >> portChangedEventName [
+
+	^ EDASEventPublisherSettingsPortChanged
 ]
 
 { #category : #accessing }

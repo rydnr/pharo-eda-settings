@@ -42,6 +42,12 @@ EDASSettingsPort classSide >> adapterClassAccessor [
 	self subclassResponsibility 
 ]
 
+{ #category : #accessing }
+EDASSettingsPort classSide >> changedEventName [
+
+	^ nil
+]
+
 { #category : #testing }
 EDASSettingsPort classSide >> description [
 
@@ -98,6 +104,12 @@ EDASSettingsPort classSide >> label [
 		   collect: [ :p | p arguments first ]) asOrderedCollection
 		  ifEmpty: [ nil ]
 		  ifNotEmpty: [ :c | c first ]
+]
+
+{ #category : #accessing }
+EDASSettingsPort classSide >> portChangedEventName [
+
+	^ nil
 ]
 
 { #category : #metadata }

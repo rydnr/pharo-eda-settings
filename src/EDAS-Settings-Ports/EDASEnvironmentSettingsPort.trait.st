@@ -17,6 +17,12 @@ EDASEnvironmentSettingsPort classSide >> adapterClassAccessor [
 	^ #environmentSettingsAdapterClass
 ]
 
+{ #category : #accessing }
+EDASEnvironmentSettingsPort classSide >> changedEventName [
+
+	^ EDASEnvironmentSettingsChanged
+]
+
 { #category : #testing }
 EDASEnvironmentSettingsPort classSide >> edaPort [
 
@@ -24,6 +30,12 @@ EDASEnvironmentSettingsPort classSide >> edaPort [
 	withDescription: #'pharoeda.settings.ports.environment.description'
 	icon: #environment atPosition: 1>
 	^ self
+]
+
+{ #category : #accessing }
+EDASEnvironmentSettingsPort classSide >> portChangedEventName [
+
+	^ EDASEnvironmentSettingsPortChanged
 ]
 
 { #category : #accessing }
