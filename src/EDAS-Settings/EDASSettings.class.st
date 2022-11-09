@@ -151,7 +151,7 @@ EDASSettings class >> port: aPort settingsOn: aBuilder under: aParent on: app or
 			            adapterClass portLabel translated -> adapterClass ]) 
 			           sorted: [ :a :b | a < b ]).
 	values ifNotEmpty: [ :v |
-		(aBuilder pickOne: aPort adapterClassAccessor)
+		(aBuilder pickOne: aPort name)
 			label: aPort label translated;
 			description: aPort description;
 			icon: aPort icon;

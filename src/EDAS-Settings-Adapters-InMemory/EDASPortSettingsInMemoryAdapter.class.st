@@ -1,8 +1,8 @@
 Class {
 	#name : #EDASPortSettingsInMemoryAdapter,
 	#superclass : #Object,
-	#traits : 'EDASPortSettingsPort',
-	#classTraits : 'EDASPortSettingsPort classTrait',
+	#traits : 'EDASPortSettingsPort + EDACLanguageHelper + EDACReflectionHelper',
+	#classTraits : 'EDASPortSettingsPort classTrait + EDACLanguageHelper classTrait + EDACReflectionHelper classTrait',
 	#instVars : [
 		'announcer',
 		'edaApplication',
@@ -19,6 +19,35 @@ EDASPortSettingsInMemoryAdapter class >> withAnnouncer: anEDASettingsAnnouncer [
 		  announcer: anEDASettingsAnnouncer;
 		edaApplication: anEDASettingsAnnouncer edaApplication;
 		  yourself
+]
+
+{ #category : #'reflective operations' }
+EDASPortSettingsInMemoryAdapter >> adapterClassForSettings: aSettingsName [
+
+	^ EDASPortResolver new availablePorts detect: [ :p | (p greaseString findString: aSettingsName capitalized) ~= 0 ] ifNone: [ nil ]
+]
+
+{ #category : #'reflective operations' }
+EDASPortSettingsInMemoryAdapter >> adapterClassGetter: aMessage [
+
+	^ (self classOrTraitExists: aMessage selector greaseString)
+		  ifTrue: [ 
+			  adapterClasses
+				  at: (self classOrTraitNamed: aMessage selector greaseString)
+				  ifAbsent: [ nil ] ]
+		  ifFalse: [ super doesNotUnderstand: aMessage ]
+]
+
+{ #category : #'reflective operations' }
+EDASPortSettingsInMemoryAdapter >> adapterClassSetter: aMessage [
+
+	^ (self classOrTraitExists: aMessage selector greaseString)
+		  ifTrue: [ 
+			  self
+				  adapterFor:
+				  (self classOrTraitNamed: aMessage selector greaseString)
+				  is: aMessage arguments first ]
+		  ifFalse: [ super doesNotUnderstand: aMessage ]
 ]
 
 { #category : #accessing }
@@ -88,6 +117,29 @@ EDASPortSettingsInMemoryAdapter >> commandListenerSettingsAdapterClass: newValue
 { #category : #accessing }
 EDASPortSettingsInMemoryAdapter >> currentEnvironment [
 	^ adapters at: EDASEnvironmentSettingsPort ifAbsent: [ nil ]
+]
+
+{ #category : #'reflective operations' }
+EDASPortSettingsInMemoryAdapter >> doesNotUnderstand: aMessage [
+
+	| selector className setter |
+	selector := aMessage selector greaseString.
+	setter := selector endsWithAColon.
+	className := setter
+		             ifTrue: [ 
+		             self
+			             removeSuffix: ':'
+			             from: selector ]
+		             ifFalse: [ selector ].
+	^ (self classOrTraitExists: className)
+		ifTrue: [ 
+			setter
+				ifTrue: [ self adapterClassSetter: aMessage ]
+				ifFalse: [ self adapterClassGetter: aMessage ] ]
+		ifFalse: [ 
+			setter
+				ifTrue: [ self settingsSetter: aMessage ]
+				ifFalse: [ self settingsGetter: aMessage ] ]
 ]
 
 { #category : #accessing }
@@ -181,6 +233,23 @@ EDASPortSettingsInMemoryAdapter >> initialize [
 	super initialize.
 	adapters := Dictionary new.
 	adapterClasses := Dictionary new.
+]
+
+{ #category : #'reflective operations' }
+EDASPortSettingsInMemoryAdapter >> settingsGetter: aMessage [
+
+	^ adapters at: (self adapterClassForSettings: aMessage selector greaseString) ifAbsent: [ nil ]
+
+]
+
+{ #category : #'reflective operations' }
+EDASPortSettingsInMemoryAdapter >> settingsSetter: aMessage [
+
+	| adapterClass |
+	adapterClass := self adapterClassForSettings:
+		                aMessage selector greaseString.
+	^ adapterClass ifNotNil: [ :a |
+	self adapterFor: a is: aMessage arguments first ]
 ]
 
 { #category : #testing }
