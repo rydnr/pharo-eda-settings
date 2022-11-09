@@ -172,11 +172,10 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> tls [
 { #category : #accessing }
 EDASMongoEventStoreSettingsInMemoryAdapter >> urls [
 
-	<edaSettings:
-	#'pharoeda.settings.adapters.mongodb.urls.label'
+	<edaSettings: #'pharoeda.settings.adapters.mongodb.urls.label'
 	withDescription:
-	#'pharoeda.settings.adapters.mongodb.urls.description'
-	icon: #urls atPosition: 8 readOnly: false multiple: false>
+	#'pharoeda.settings.adapters.mongodb.urls.description' icon: #url
+	atPosition: 8 readOnly: false multiple: false>
 	^ super urls
 ]
 
@@ -193,8 +192,19 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> user [
 { #category : #accessing }
 EDASMongoEventStoreSettingsInMemoryAdapter >> values: aSymbol [
 
-	aSymbol = #authenticationMechanism ifTrue: [ ^ self availableAuthenticationMechanisms ]
-		ifFalse: [ ^ OrderedCollection new ]
+	^ aSymbol = #authenticationMechanism
+		ifTrue: [ 
+			Dictionary new
+				at:
+					#'pharoeda.settings.adapters.mongodb.authenticationMechanism.scramsha256'
+						translated
+				put: #'SCRAM-SHA-256';
+				at:
+					#'pharoeda.settings.adapters.mongodb.authenticationMechanism.mongodbcr'
+						translated
+				put: #'MONGODB-CR';
+				associations ]
+		ifFalse: [ OrderedCollection new ]
 ]
 
 { #category : #accessing }
