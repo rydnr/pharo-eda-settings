@@ -175,7 +175,7 @@
             "description": "Whether to enable singleton mode."
           }
         },
-        "queries_listener": {
+        "command_listener": {
           "stomp": {
             "label": "Command Listener",
             "description": "Customize the Stomp settings.",
