@@ -89,16 +89,15 @@ EDASPortSettingsInMemoryAdapter >> doesNotUnderstand: aMessage [
 	className := setter
 		             ifTrue: [ self removeSuffix: ':' from: selector ]
 		             ifFalse: [ selector ].
-	"self halt."
 	result := (self classOrTraitExists: className)
 		          ifTrue: [ 
 			          setter
-				          ifTrue: [ self halt. self portClassSetter: aMessage ]
+				          ifTrue: [ 
+					          self portClassSetter: aMessage ]
 				          ifFalse: [ self portClassGetter: aMessage ] ]
 		          ifFalse: [ 
 			          setter
 				          ifTrue: [ 
-					          self halt.
 					          self adapterSetter: aMessage ]
 				          ifFalse: [ self adapterGetter: aMessage ] ].
 	^ result
@@ -180,13 +179,14 @@ EDASPortSettingsInMemoryAdapter >> portClassGetter: aMessage [
 { #category : #'reflective operations' }
 EDASPortSettingsInMemoryAdapter >> portClassSetter: aMessage [
 
-	| port result previousAdapterClass newAdapterClass |
-	port := self removeSuffix: ':' from: aMessage selector greaseString.
+	| portName result previousAdapterClass newAdapterClass |
+	portName := self removeSuffix: ':' from: aMessage selector greaseString.
 	result := nil.
-	(self classOrTraitExists: port)
-		ifTrue: [ 
+	(self classOrTraitExists: portName)
+		ifTrue: [ | port |
+			port := self classOrTraitNamed: portName.
 			previousAdapterClass := adapterClasses
-				                        at: (self classOrTraitNamed: port)
+				                        at: port
 				                        ifAbsent: [ nil ].
 			newAdapterClass := aMessage arguments first isAssociation
 				                   ifTrue: [ aMessage arguments first value ]
