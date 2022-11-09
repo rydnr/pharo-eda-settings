@@ -42,7 +42,7 @@ EDASEventPublisherSettingsPort classSide >> portChangedEventName [
 { #category : #accessing }
 EDASEventPublisherSettingsPort classSide >> selector [
 
-	"Command listener settings is not a single setting, but a collection of them"
+	"event publisher settings is not a single setting, but a collection of them"
 
 	^ nil
 ]

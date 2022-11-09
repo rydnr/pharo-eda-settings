@@ -33,11 +33,11 @@ EDASStompSettingsJsonAdapter classSide >> forEnvironment: anEnvironment withApp:
 { #category : #'instance creation' }
 EDASStompSettingsJsonAdapter classSide >> fromFile: aFileReference under: aLabel withApp: anEDAApplication [
 
-	| result json commandListener |
+	| result json stomp |
 	result := self withApp: anEDAApplication.
 	json := (NeoJSONReader on: aFileReference readStream) next.
-	commandListener := (json at: aLabel) at: 'stomp'.
-	commandListener keysAndValuesDo: [ :k :v | 
+	stomp := (json at: aLabel) at: 'stomp'.
+	stomp keysAndValuesDo: [ :k :v | 
 		result instVarNamed: k put: v ].
 	^ result
 ]

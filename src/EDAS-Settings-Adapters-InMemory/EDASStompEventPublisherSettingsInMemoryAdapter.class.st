@@ -95,12 +95,11 @@ EDASStompEventPublisherSettingsInMemoryAdapter >> errorExchange: aString [
 EDASStompEventPublisherSettingsInMemoryAdapter >> errorRoutingKey [
 
 	<edaSettings:
-#'pharoeda.settings.adapters.event_publisher.stomp.errorRoutingKey.label'
+	#'pharoeda.settings.adapters.event_publisher.stomp.errorRoutingKey.label'
 	withDescription:
 	#'pharoeda.settings.adapters.event_publisher.stomp.errorRoutingKey.description'
-	icon: #errorroutingkey
-	atPosition: 13 readOnly: false multiple: false>
-	^ errorRoutingKey ifNil: [ '' ]
+	icon: #errorroutingkey atPosition: 13 readOnly: false multiple: false>
+	^ errorRoutingKey ifNil: [ '#' ]
 ]
 
 { #category : #accessing }
@@ -189,8 +188,8 @@ EDASStompEventPublisherSettingsInMemoryAdapter >> routingKey [
 	#'pharoeda.settings.adapters.event_publisher.stomp.routingKey.label'
 	withDescription:
 	#'pharoeda.settings.adapters.event_publisher.stomp.routingKey.description'
-	atPosition: 6 readOnly: false multiple: false>
-	^ routingKey ifNil: [ '' ]
+	icon: #routingkey atPosition: 6 readOnly: false multiple: false>
+	^ routingKey ifNil: [ '#' ]
 ]
 
 { #category : #accessing }

@@ -109,6 +109,11 @@ EDASStompEventPublisherSettingsJsonAdapter >> durable: anObject [
 { #category : #accessing }
 EDASStompEventPublisherSettingsJsonAdapter >> errorExchange [
 
+	<edaSettings:
+	#'pharoeda.settings.adapters.event_publisher.stomp.errorExchange.label'
+	withDescription:
+	#'pharoeda.settings.adapters.event_publisher.stomp.errorExchange.description'
+	icon: #errorexchange atPosition: 12 readOnly: false multiple: false>
 	^ errorExchange
 ]
 
@@ -121,7 +126,12 @@ EDASStompEventPublisherSettingsJsonAdapter >> errorExchange: anObject [
 { #category : #accessing }
 EDASStompEventPublisherSettingsJsonAdapter >> errorRoutingKey [
 
-	^ errorRoutingKey
+	<edaSettings:
+	#'pharoeda.settings.adapters.event_publisher.stomp.errorRoutingKey.label'
+	withDescription:
+	#'pharoeda.settings.adapters.event_publisher.stomp.errorRoutingKey.description'
+	icon: #errorroutingkey atPosition: 13 readOnly: false multiple: false>
+	^ errorRoutingKey ifNil: [ '#' ]
 ]
 
 { #category : #accessing }
@@ -150,6 +160,11 @@ EDASStompEventPublisherSettingsJsonAdapter >> errorStrategyName: anObject [
 { #category : #accessing }
 EDASStompEventPublisherSettingsJsonAdapter >> exchange [
 
+	<edaSettings:
+	#'pharoeda.settings.adapters.event_publisher.stomp.exchange.label'
+	withDescription:
+	#'pharoeda.settings.adapters.event_publisher.stomp.exchange.description'
+	icon: #exchange atPosition: 5 readOnly: false multiple: false>
 	^ exchange
 ]
 
@@ -231,7 +246,12 @@ EDASStompEventPublisherSettingsJsonAdapter >> restartOnErrors: anObject [
 { #category : #accessing }
 EDASStompEventPublisherSettingsJsonAdapter >> routingKey [
 
-	^ routingKey
+	<edaSettings:
+	#'pharoeda.settings.adapters.event_publisher.stomp.routingKey.label'
+	withDescription:
+	#'pharoeda.settings.adapters.event_publisher.stomp.routingKey.description'
+	icon: #routingkey atPosition: 6 readOnly: false multiple: false>
+	^ routingKey ifNil: [ '#' ]
 ]
 
 { #category : #accessing }
@@ -269,4 +289,12 @@ EDASStompEventPublisherSettingsJsonAdapter >> user [
 EDASStompEventPublisherSettingsJsonAdapter >> user: anObject [
 
 	user := anObject
+]
+
+{ #category : #resolving }
+EDASStompEventPublisherSettingsJsonAdapter >> values: aSymbol [
+
+	aSymbol = #errorStrategyName
+		ifTrue: [ ^ self availableErrorStrategies ]
+		ifFalse: [ ^ OrderedCollection new ]
 ]
