@@ -49,6 +49,13 @@
           "stomp": {
             "label": "Stomp"
           }
+        },
+        "event_store": {
+          "label": "Event store",
+          "description": "The type of settings adapter used to determine the event store.",
+          "mongodb": {
+            "label": "MongoDB"
+          }
         }
       },
       "adapters": {
@@ -98,6 +105,24 @@
           "errorStrategyName": {
             "label": "Error strategy",
             "description": "The strategy to use in case of errors."
+          }
+        },
+        "mongodb": {
+          "host": {
+            "label": "Host",
+            "description": "The MongoDB host."
+          },
+          "port": {
+            "label": "Port",
+            "description": "The MongoDB port."
+          },
+          "user": {
+            "label": "User",
+            "description": "The user."
+          },
+          "password": {
+            "label": "Password",
+            "description": "The password."
           }
         },
         "command_listener": {
