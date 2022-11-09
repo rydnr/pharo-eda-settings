@@ -226,7 +226,10 @@
         }
       },
       "event_store": {
-        "mongodb": {}
+        "mongodb": {
+          "label": "Event store",
+          "description": "Customize the MongoDB connection."
+        }
       }
     }
   }

@@ -228,7 +228,10 @@
         }
       },
       "event_store": {
-        "mongodb": {}
+        "mongodb": {
+          "label": "Almacén de eventos",
+          "description": "Personalice la conexión a MongoDB."
+        }
       }
     }
   }
