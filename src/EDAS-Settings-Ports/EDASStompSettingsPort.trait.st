@@ -1,5 +1,16 @@
 Trait {
 	#name : #EDASStompSettingsPort,
+	#instVars : [
+		'host',
+		'port',
+		'user',
+		'password',
+		'timeout',
+		'debug',
+		'durable',
+		'restartOnErrors',
+		'errorStrategyName'
+	],
 	#category : #'EDAS-Settings-Ports'
 }
 
@@ -19,23 +30,33 @@ EDASStompSettingsPort >> availableErrorStrategies [
 { #category : #resolving }
 EDASStompSettingsPort >> debug [
 
-	<edaSettings:
-	#'pharoeda.settings.adapters.stomp.debug.label'
+	<edaSettings: #'pharoeda.settings.adapters.stomp.debug.label'
 	withDescription:
-	#'pharoeda.settings.adapters.stomp.debug.description'
-	icon: #debug atPosition: 9 readOnly: false multiple: false>
-	self shouldBeImplemented
+	#'pharoeda.settings.adapters.stomp.debug.description' icon: #debug
+	atPosition: 9 readOnly: false multiple: false>
+	^ debug
+]
+
+{ #category : #accessing }
+EDASStompSettingsPort >> debug: anObject [
+
+	debug := anObject
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> durable [
 
-	<edaSettings:
-	#'pharoeda.settings.adapters.stomp.durable.label'
+	<edaSettings: #'pharoeda.settings.adapters.stomp.durable.label'
 	withDescription:
-	#'pharoeda.settings.adapters.stomp.durable.description'
-	icon: #durable atPosition: 8 readOnly: false multiple: false>
-	self shouldBeImplemented
+	#'pharoeda.settings.adapters.stomp.durable.description' icon:
+	#durable atPosition: 8 readOnly: false multiple: false>
+	^ durable
+]
+
+{ #category : #accessing }
+EDASStompSettingsPort >> durable: anObject [
+
+	durable := anObject
 ]
 
 { #category : #resolving }
@@ -46,40 +67,59 @@ EDASStompSettingsPort >> errorStrategyName [
 	withDescription:
 	#'pharoeda.settings.adapters.stomp.errorStrategyName.description'
 	icon: #errorstrategy atPosition: 11 readOnly: false multiple: true>
-	self shouldBeImplemented
+	^ errorStrategyName
+]
+
+{ #category : #accessing }
+EDASStompSettingsPort >> errorStrategyName: anObject [
+
+	errorStrategyName := anObject
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> host [
 
-	<edaSettings:
-	#'pharoeda.settings.adapters.stomp.host.label'
-	withDescription:
-	#'pharoeda.settings.adapters.stomp.host.description'
+	<edaSettings: #'pharoeda.settings.adapters.stomp.host.label'
+	withDescription: #'pharoeda.settings.adapters.stomp.host.description'
 	icon: #host atPosition: 1 readOnly: false multiple: false>
-	self shouldBeImplemented
+	^ host
+]
+
+{ #category : #accessing }
+EDASStompSettingsPort >> host: anObject [
+
+	host := anObject
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> password [
 
-	<edaSettings:
-	#'pharoeda.settings.adapters.stomp.password.label'
+	<edaSettings: #'pharoeda.settings.adapters.stomp.password.label'
 	withDescription:
-	#'pharoeda.settings.adapters.stomp.password.description'
-	icon: #password atPosition: 4 readOnly: false multiple: false>
-	self shouldBeImplemented
+	#'pharoeda.settings.adapters.stomp.password.description' icon:
+	#password atPosition: 4 readOnly: false multiple: false>
+	^ password
+]
+
+{ #category : #accessing }
+EDASStompSettingsPort >> password: anObject [
+
+	password := anObject
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> port [
 
-	<edaSettings:
-	#'pharoeda.settings.adapters.stomp.port.label'
-	withDescription:
-	#'pharoeda.settings.adapters.stomp.port.description'
+	<edaSettings: #'pharoeda.settings.adapters.stomp.port.label'
+	withDescription: #'pharoeda.settings.adapters.stomp.port.description'
 	icon: #port atPosition: 2 readOnly: false multiple: false>
-	self shouldBeImplemented
+	^ port
+]
+
+{ #category : #accessing }
+EDASStompSettingsPort >> port: anObject [
+
+	port := anObject
 ]
 
 { #category : #resolving }
@@ -88,9 +128,15 @@ EDASStompSettingsPort >> restartOnErrors [
 	<edaSettings:
 	#'pharoeda.settings.adapters.stomp.restartOnErrors.label'
 	withDescription:
-	#'pharoeda.settings.adapters.stomp.restartOnErrors.description'
-	icon: #restartonerrors atPosition: 10 readOnly: false multiple: false>
-	self shouldBeImplemented
+	#'pharoeda.settings.adapters.stomp.restartOnErrors.description' icon:
+	#restartonerrors atPosition: 10 readOnly: false multiple: false>
+	^ restartOnErrors
+]
+
+{ #category : #accessing }
+EDASStompSettingsPort >> restartOnErrors: anObject [
+
+	restartOnErrors := anObject
 ]
 
 { #category : #resolving }
@@ -100,18 +146,28 @@ EDASStompSettingsPort >> timeout [
 	withDescription:
 	#'pharoeda.settings.adapters.stomp.timeout.description' icon:
 	#timeout atPosition: 6 readOnly: false multiple: false>
-	self shouldBeImplemented
+	^ timeout
+]
+
+{ #category : #accessing }
+EDASStompSettingsPort >> timeout: anObject [
+
+	timeout := anObject
 ]
 
 { #category : #resolving }
 EDASStompSettingsPort >> user [
 
-	<edaSettings:
-	#'pharoeda.settings.adapters.stomp.user.label'
-	withDescription:
-	#'pharoeda.settings.adapters.stomp.user.description'
+	<edaSettings: #'pharoeda.settings.adapters.stomp.user.label'
+	withDescription: #'pharoeda.settings.adapters.stomp.user.description'
 	icon: #user atPosition: 3 readOnly: false multiple: false>
-	self shouldBeImplemented
+	^ user
+]
+
+{ #category : #accessing }
+EDASStompSettingsPort >> user: anObject [
+
+	user := anObject
 ]
 
 { #category : #resolving }

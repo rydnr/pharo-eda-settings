@@ -1,5 +1,8 @@
 Trait {
 	#name : #EDASSettingsPort,
+	#instVars : [
+		'edaApplication'
+	],
 	#category : #'EDAS-Settings-Ports'
 }
 
@@ -181,6 +184,18 @@ EDASSettingsPort >> descriptionFor: aString [
 		    allNamed: #edaSettings:withDescription:icon:atPosition:readOnly:multiple:
 		    includingTraitsInSuperAndSubclasses: self class) select: [ :p | 
 		   p method selector = aString asSymbol ]) ifEmpty: [ nil ] ifNotEmpty: [ :col | col first argumentAt: 2 ]
+]
+
+{ #category : #accessing }
+EDASSettingsPort >> edaApplication [
+
+	^ edaApplication
+]
+
+{ #category : #accessing }
+EDASSettingsPort >> edaApplication: anObject [
+
+	edaApplication := anObject
 ]
 
 { #category : #testing }
