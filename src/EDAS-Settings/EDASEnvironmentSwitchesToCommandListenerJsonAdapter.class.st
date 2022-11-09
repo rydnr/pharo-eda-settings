@@ -1,12 +1,12 @@
 Class {
 	#name : #EDASEnvironmentSwitchesToCommandListenerJsonAdapter,
 	#superclass : #Object,
-	#traits : 'EDASEnvironmentSwitchesToJsonAdapter',
-	#classTraits : 'EDASEnvironmentSwitchesToJsonAdapter classTrait',
+	#traits : 'EDASSettingsChangedListener + EDASEnvironmentSwitchesToJsonAdapter',
+	#classTraits : 'EDASSettingsChangedListener classTrait + EDASEnvironmentSwitchesToJsonAdapter classTrait',
 	#category : #'EDAS-Settings'
 }
 
-{ #category : #'event handling - private' }
+{ #category : #'as yet unclassified' }
 EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> handleEnvironmentChangedEvent: anEvent [
 
 	^ self handleEnvironmentChangedEvent: anEvent forPort: EDASStompCommandListenerSettingsJsonAdapter orElse: EDASStompCommandListenerSettingsInMemoryAdapter

@@ -1,15 +1,7 @@
 Trait {
 	#name : #EDASEnvironmentSwitchesToJsonAdapter,
-	#traits : 'EDASSettingsChangedListener',
-	#classTraits : 'EDASSettingsChangedListener classTrait',
 	#category : #'EDAS-Settings'
 }
-
-{ #category : #'event handling - private' }
-EDASEnvironmentSwitchesToJsonAdapter classSide >> handleEnvironmentChangedEvent: anEvent [
-
-	self subclassResponsibility 
-]
 
 { #category : #'event handling - private' }
 EDASEnvironmentSwitchesToJsonAdapter classSide >> handleEnvironmentChangedEvent: anEvent forPort: aClass orElse: anotherClass [

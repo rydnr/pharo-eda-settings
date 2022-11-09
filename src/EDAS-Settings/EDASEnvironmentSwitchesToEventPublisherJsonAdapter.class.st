@@ -1,12 +1,12 @@
 Class {
 	#name : #EDASEnvironmentSwitchesToEventPublisherJsonAdapter,
 	#superclass : #Object,
-	#traits : 'EDASEnvironmentSwitchesToJsonAdapter',
-	#classTraits : 'EDASEnvironmentSwitchesToJsonAdapter classTrait',
+	#traits : 'EDASSettingsChangedListener + EDASEnvironmentSwitchesToJsonAdapter',
+	#classTraits : 'EDASSettingsChangedListener classTrait + EDASEnvironmentSwitchesToJsonAdapter classTrait',
 	#category : #'EDAS-Settings'
 }
 
-{ #category : #'event handling - private' }
+{ #category : #'as yet unclassified' }
 EDASEnvironmentSwitchesToEventPublisherJsonAdapter class >> handleEnvironmentChangedEvent: anEvent [
 
 	^ self
