@@ -126,9 +126,53 @@
             "label": "Contraseña",
             "description": "La contraseña para autenticarse en el servidor MongoDB."
           },
+          "database": {
+            "label": "Base de datos",
+            "description": "La base de datos en MongoDB."
+          },
+          "authenticationMechanism": {
+            "label": "Autenticación",
+            "description": "El método de autenticación en MongoDB."
+          },
+          "tls": {
+            "label": "TLS",
+            "description": "Si utilizar TLS para conectarse a MongoDB."
+          },
+          "urls": {
+            "label": "URLs",
+            "description": "Las URLs de conexión a MongoDB."
+          },
           "debug": {
             "label": "Depuración",
             "description": "Si habilitar el modo depuración o no."
+          },
+          "enableReplication": {
+            "label": "Replicación",
+            "description": "Si MongoDB tiene réplicas habilitadas."
+          },
+          "ensuringCurrentOnSave": {
+            "label": "Refrescar al guardar",
+            "description": "Si los objetos persistidos se refrescan al guardar."
+          },
+          "ensuringCurrentReferencesOnQueries": {
+            "label": "Referencias frescas",
+            "description": "Si los objetos referenciados se refrescan al realizar consultas."
+          },
+          "lazySynchronize": {
+            "label": "Sincronización tardía",
+            "description": "Si utilizar sincronización tardía o no."
+          },
+          "forceEager": {
+            "label": "Ansioso",
+            "description": "Si forzar el modo ansioso o no."
+          },
+          "wireProtocolEnabled": {
+            "label": "Protocolo Wire",
+            "description": "Si habilitar el protocolo Wire o no."
+          },
+          "enableSingleton": {
+            "label": "Única instancia",
+            "description": "Si usar el modo Singleton de Voyage."
           }
         },
         "command_listener": {
@@ -180,6 +224,9 @@
             }
           }
         }
+      },
+      "event_store": {
+        "mongodb": {}
       }
     }
   }

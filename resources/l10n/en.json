@@ -123,9 +123,57 @@
           "password": {
             "label": "Password",
             "description": "The password."
+          },
+          "database": {
+            "label": "Database",
+            "description": "The MongoDB database."
+          },
+          "authenticationMechanism": {
+            "label": "Authentication",
+            "description": "The authentication method in MongoDB."
+          },
+          "tls": {
+            "label": "TLS",
+            "description": "Whether to use TLS to connect to MongoDB."
+          },
+          "urls": {
+            "label": "URLs",
+            "description": "The URLs to connect to MongoDB."
+          },
+          "debug": {
+            "label": "Debug",
+            "description": "Whether to enable debug mode."
+          },
+          "enableReplication": {
+            "label": "Replication",
+            "description": "Whether MongoDB has replica set enabled."
+          },
+          "ensuringCurrentOnSave": {
+            "label": "Refresh on save",
+            "description": "Whether persisted objects get refreshed on save."
+          },
+          "ensuringCurrentReferencesOnQueries": {
+            "label": "Fresh references",
+            "description": "Whether referenced objects get refreshed on queries."
+          },
+          "lazySynchronize": {
+            "label": "Lazy synchronization",
+            "description": "Whether to use lazy synchronization or not."
+          },
+          "forceEager": {
+            "label": "Eager",
+            "description": "Whether to force eager mode."
+          },
+          "wireProtocolEnabled": {
+            "label": "Wire protocol",
+            "description": "Whether to enable Wire protocol."
+          },
+          "enableSingleton": {
+            "label": "Singleton",
+            "description": "Whether to enable singleton mode."
           }
         },
-        "command_listener": {
+        "queries_listener": {
           "stomp": {
             "label": "Command Listener",
             "description": "Customize the Stomp settings.",
@@ -174,6 +222,9 @@
             }
           }
         }
+      },
+      "event_store": {
+        "mongodb": {}
       }
     }
   }
