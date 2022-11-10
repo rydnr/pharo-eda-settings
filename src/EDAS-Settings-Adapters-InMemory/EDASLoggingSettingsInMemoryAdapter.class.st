@@ -4,7 +4,7 @@ Class {
 	#traits : 'EDASLoggingSettingsPort',
 	#classTraits : 'EDASLoggingSettingsPort classTrait',
 	#instVars : [
-		'loggingLevel',
+		'level',
 		'edaApplication'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
@@ -50,23 +50,24 @@ EDASLoggingSettingsInMemoryAdapter >> edaApplication: anEDAApplication [
 ]
 
 { #category : #accessing }
-EDASLoggingSettingsInMemoryAdapter >> loggingLevel [
+EDASLoggingSettingsInMemoryAdapter >> level [
 
 	<edaSettings: #'pharoeda.settings.adapters.logging.label'
 	withDescription: #'pharoeda.settings.adapters.logging.description'
 	icon: #level atPosition: 1 readOnly: false multiple: true>
-	^ loggingLevel ifNil: [ #info ]
+	^ level ifNil: [ #info ]
 ]
 
 { #category : #accessing }
-EDASLoggingSettingsInMemoryAdapter >> loggingLevel: aString [
-	loggingLevel := aString
+EDASLoggingSettingsInMemoryAdapter >> level: aString [
+
+	level := aString
 ]
 
 { #category : #accessing }
 EDASLoggingSettingsInMemoryAdapter >> values: aSymbol [
 
-	^ aSymbol = #loggingLevel
+	^ aSymbol = #level
 		  ifTrue: [ 
 			  Dictionary new
 				  at: #'pharoeda.settings.adapters.logging.level.trace' translated

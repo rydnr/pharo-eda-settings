@@ -4,7 +4,7 @@ Class {
 	#traits : 'EDASSettingsPort + EDASLoggingSettingsPort + EDASSettingsJsonAdapter',
 	#classTraits : 'EDASSettingsPort classTrait + EDASLoggingSettingsPort classTrait + EDASSettingsJsonAdapter classTrait',
 	#instVars : [
-		'loggingLevel'
+		'level'
 	],
 	#category : #'EDAS-Settings-Adapters-Json'
 }
@@ -21,18 +21,18 @@ EDASLoggingSettingsJsonAdapter class >> fromFile: aFileReference withApp: anEDAA
 ]
 
 { #category : #accessing }
-EDASLoggingSettingsJsonAdapter >> loggingLevel [
+EDASLoggingSettingsJsonAdapter >> level [
 
 	<edaSettings: #'pharoeda.settings.ports.logging.level.label'
 	withDescription: #'pharoeda.settings.ports.logging.level.description'
 	icon: #level atPosition: 1 readOnly: false multiple: true>
-	^ loggingLevel ifNil: [ #info ]
+	^ level ifNil: [ #info ]
 ]
 
 { #category : #accessing }
-EDASLoggingSettingsJsonAdapter >> loggingLevel: anObject [
+EDASLoggingSettingsJsonAdapter >> level: anObject [
 
-	loggingLevel := anObject
+	level := anObject
 ]
 
 { #category : #accessing }

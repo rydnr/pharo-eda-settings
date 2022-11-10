@@ -48,6 +48,7 @@ EDASLoggingSettingsPort classSide >> selector [
 ]
 
 { #category : #testing }
-EDASLoggingSettingsPort >> loggingLevel [
+EDASLoggingSettingsPort >> level [
+
 	self subclassResponsibility
 ]
