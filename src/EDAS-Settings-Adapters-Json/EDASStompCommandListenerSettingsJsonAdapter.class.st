@@ -21,7 +21,7 @@ EDASStompCommandListenerSettingsJsonAdapter class >> changedEventName [
 { #category : #testing }
 EDASStompCommandListenerSettingsJsonAdapter class >> description [
 
-	^ #'pharoeda.settings.adapters.command_listener.stomp.json.description'
+	^ #'pharoeda.settings.adapters.commandListener.stomp.json.description'
 ]
 
 { #category : #testing }
@@ -50,7 +50,7 @@ EDASStompCommandListenerSettingsJsonAdapter class >> icon [
 { #category : #testing }
 EDASStompCommandListenerSettingsJsonAdapter class >> label [
 
-	^ #'pharoeda.settings.adapters.command_listener.stomp.label'
+	^ #'pharoeda.settings.adapters.commandListener.stomp.label'
 ]
 
 { #category : #accessing }
@@ -70,9 +70,9 @@ EDASStompCommandListenerSettingsJsonAdapter class >> portLabel [
 EDASStompCommandListenerSettingsJsonAdapter >> ack [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.command_listener.stomp.ack.label'
+	#'pharoeda.settings.adapters.commandListener.stomp.ack.label'
 	withDescription:
-	#'pharoeda.settings.adapters.command_listener.stomp.ack.description'
+	#'pharoeda.settings.adapters.commandListener.stomp.ack.description'
 	icon: #ack atPosition: 12 readOnly: false multiple: true>
 	^ ack ifNil: [ #auto ]
 ]
@@ -161,9 +161,9 @@ EDASStompCommandListenerSettingsJsonAdapter >> port [
 EDASStompCommandListenerSettingsJsonAdapter >> prefetchCount [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.command_listener.stomp.prefetchCount.label'
+	#'pharoeda.settings.adapters.commandListener.stomp.prefetchCount.label'
 	withDescription:
-	#'pharoeda.settings.adapters.command_listener.stomp.prefetchCount.description'
+	#'pharoeda.settings.adapters.commandListener.stomp.prefetchCount.description'
 	icon: #prefetchcount atPosition: 7 readOnly: false multiple: false>
 	^ prefetchCount ifNil: [ 1 ]
 ]
@@ -172,9 +172,9 @@ EDASStompCommandListenerSettingsJsonAdapter >> prefetchCount [
 EDASStompCommandListenerSettingsJsonAdapter >> queue [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.command_listener.stomp.queue.label'
+	#'pharoeda.settings.adapters.commandListener.stomp.queue.label'
 	withDescription:
-	#'pharoeda.settings.adapters.command_listener.stomp.queue.description'
+	#'pharoeda.settings.adapters.commandListener.stomp.queue.description'
 	icon: #queue atPosition: 5 readOnly: false multiple: false>
 	^ queue ifNil: [ '' ]
 ]

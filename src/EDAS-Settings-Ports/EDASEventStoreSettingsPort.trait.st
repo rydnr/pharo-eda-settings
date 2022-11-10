@@ -26,8 +26,8 @@ EDASEventStoreSettingsPort classSide >> changedEventName [
 { #category : #metadata }
 EDASEventStoreSettingsPort classSide >> edaPort [
 
-	<edaPort: #'pharoeda.settings.ports.event_store.label'
-	withDescription: #'pharoeda.settings.ports.event_store.description'
+	<edaPort: #'pharoeda.settings.ports.eventStore.label'
+	withDescription: #'pharoeda.settings.ports.eventStore.description'
 	icon: #eventstore atPosition: 4>
 	^ self
 ]

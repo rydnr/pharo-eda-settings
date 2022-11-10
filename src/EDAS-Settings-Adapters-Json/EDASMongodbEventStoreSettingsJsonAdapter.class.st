@@ -15,7 +15,7 @@ EDASMongodbEventStoreSettingsJsonAdapter class >> changedEventName [
 { #category : #testing }
 EDASMongodbEventStoreSettingsJsonAdapter class >> description [
 
-	^ #'pharoeda.settings.adapters.event_store.mongodb.json.description'
+	^ #'pharoeda.settings.adapters.eventStore.mongodb.json.description'
 ]
 
 { #category : #metadata }
@@ -44,7 +44,7 @@ EDASMongodbEventStoreSettingsJsonAdapter class >> icon [
 { #category : #testing }
 EDASMongodbEventStoreSettingsJsonAdapter class >> label [
 
-	^ #'pharoeda.settings.adapters.event_store.mongodb.label'
+	^ #'pharoeda.settings.adapters.eventStore.mongodb.label'
 ]
 
 { #category : #accessing }
@@ -226,24 +226,6 @@ EDASMongodbEventStoreSettingsJsonAdapter >> user [
 	#'pharoeda.settings.adapters.mongodb.user.description' icon: #user
 	atPosition: 3 readOnly: false multiple: false>
 	^ user ifNil: [ '' ]
-]
-
-{ #category : #testing }
-EDASMongodbEventStoreSettingsJsonAdapter >> values: aSymbol [
-
-	^ aSymbol = #authenticationMechanism
-		ifTrue: [ 
-			Dictionary new
-				at:
-					#'pharoeda.settings.adapters.mongodb.authenticationMechanism.scramsha256'
-						translated
-				put: #'SCRAM-SHA-256';
-				at:
-					#'pharoeda.settings.adapters.mongodb.authenticationMechanism.mongodbcr'
-						translated
-				put: #'MONGODB-CR';
-				associations ]
-		ifFalse: [ OrderedCollection new ]
 ]
 
 { #category : #'as yet unclassified' }

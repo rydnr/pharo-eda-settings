@@ -47,9 +47,9 @@ EDASSettings class >> edaSettingsOn: aBuilder [
 		ifEmpty: [ 
 			root
 				label:
-					#'pharoeda.settings.no_applications_registered.label' translated;
+					#'pharoeda.settings.noApplicationsRegistered.label' translated;
 				description:
-					#'pharoeda.settings.no_applications_registered.description';
+					#'pharoeda.settings.noApplicationsRegistered.description';
 				icon: (iconProvider
 						 iconNamed: #noapps
 						 ifAbsent: [ Smalltalk ui iconNamed: #collection ]) ]
@@ -57,16 +57,16 @@ EDASSettings class >> edaSettingsOn: aBuilder [
 			| label description icon |
 			label := apps size = 1
 				         ifTrue: [ 
-				         #'pharoeda.settings.application_registered.label'
+				         #'pharoeda.settings.applicationRegistered.label'
 					         translated ]
 				         ifFalse: [ 
-					         #'pharoeda.settings.applications_registered.label'
+					         #'pharoeda.settings.applicationsRegistered.label'
 						         translated , apps size printString ].
 			description := apps size = 1
 				               ifTrue: [ 
-				               #'pharoeda.settings.application_registered.description' ]
+				               #'pharoeda.settings.applicationRegistered.description' ]
 				               ifFalse: [ 
-				               #'pharoeda.settings.applications_registered.description' ].
+				               #'pharoeda.settings.applicationsRegistered.description' ].
 			icon := apps size = 1
 				        ifTrue: [ #oneapp ]
 				        ifFalse: [ #someapps ].

@@ -21,19 +21,19 @@ EDASStompCommandListenerSettingsInMemoryAdapter class >> accepts: aPort [
 { #category : #metadata }
 EDASStompCommandListenerSettingsInMemoryAdapter class >> description [
 
-	^ #'pharoeda.settings.adapters.command_listener.stomp.description'
+	^ #'pharoeda.settings.adapters.commandListener.stomp.description'
 ]
 
 { #category : #metadata }
 EDASStompCommandListenerSettingsInMemoryAdapter class >> label [
 
-	^ #'pharoeda.settings.adapters.command_listener.stomp.label'
+	^ #'pharoeda.settings.adapters.commandListener.stomp.label'
 ]
 
 { #category : #metadata }
 EDASStompCommandListenerSettingsInMemoryAdapter class >> portLabel [
 
-	^ #'pharoeda.settings.ports.command_listener.stomp.label'
+	^ #'pharoeda.settings.ports.commandListener.stomp.label'
 ]
 
 { #category : #accessing }
@@ -45,9 +45,9 @@ EDASStompCommandListenerSettingsInMemoryAdapter class >> priority [
 EDASStompCommandListenerSettingsInMemoryAdapter >> ack [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.command_listener.stomp.ack.label'
+	#'pharoeda.settings.adapters.commandListener.stomp.ack.label'
 	withDescription:
-	#'pharoeda.settings.adapters.command_listener.stomp.ack.description'
+	#'pharoeda.settings.adapters.commandListener.stomp.ack.description'
 	icon: #ack atPosition: 12 readOnly: false multiple: true>
 	^ ack ifNil: [ #auto ]
 ]
@@ -159,9 +159,9 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> port [
 EDASStompCommandListenerSettingsInMemoryAdapter >> prefetchCount [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.command_listener.stomp.prefetchCount.label'
+	#'pharoeda.settings.adapters.commandListener.stomp.prefetchCount.label'
 	withDescription:
-	#'pharoeda.settings.adapters.command_listener.stomp.prefetchCount.description'
+	#'pharoeda.settings.adapters.commandListener.stomp.prefetchCount.description'
 	icon: #prefetchcount atPosition: 7 readOnly: false multiple: false>
 	^ prefetchCount ifNil: [ 1 ]
 ]
@@ -175,9 +175,9 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> prefetchCount: val [
 EDASStompCommandListenerSettingsInMemoryAdapter >> queue [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.command_listener.stomp.queue.label'
+	#'pharoeda.settings.adapters.commandListener.stomp.queue.label'
 	withDescription:
-	#'pharoeda.settings.adapters.command_listener.stomp.queue.description'
+	#'pharoeda.settings.adapters.commandListener.stomp.queue.description'
 	icon: #queue atPosition: 5 readOnly: false multiple: false>
 	^ queue ifNil: [ '' ]
 ]
@@ -236,15 +236,15 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> values: aSymbol [
 		  ifTrue: [ 
 			  Dictionary new
 				  at:
-					  #'pharoeda.settings.adapters.command_listener.stomp.ack.client-individual'
+					  #'pharoeda.settings.adapters.commandListener.stomp.ack.client-individual'
 						  translated
 				  put: #'client-individual';
 				  at:
-					  #'pharoeda.settings.adapters.command_listener.stomp.ack.client'
+					  #'pharoeda.settings.adapters.commandListener.stomp.ack.client'
 						  translated
 				  put: #client;
 				  at:
-					  #'pharoeda.settings.adapters.command_listener.stomp.ack.auto'
+					  #'pharoeda.settings.adapters.commandListener.stomp.ack.auto'
 						  translated
 				  put: #auto;
 				  associations ]

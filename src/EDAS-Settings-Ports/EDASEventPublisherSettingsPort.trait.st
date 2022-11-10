@@ -26,9 +26,9 @@ EDASEventPublisherSettingsPort classSide >> changedEventName [
 { #category : #testing }
 EDASEventPublisherSettingsPort classSide >> edaPort [
 
-	<edaPort: #'pharoeda.settings.ports.event_publisher.label'
+	<edaPort: #'pharoeda.settings.ports.eventPublisher.label'
 	withDescription:
-	#'pharoeda.settings.ports.event_publisher.description' icon:
+	#'pharoeda.settings.ports.eventPublisher.description' icon:
 	#eventpublisher atPosition: 3>
 	^ self
 ]

@@ -26,9 +26,9 @@ EDASCommandListenerSettingsPort classSide >> changedEventName [
 { #category : #testing }
 EDASCommandListenerSettingsPort classSide >> edaPort [
 
-	<edaPort: #'pharoeda.settings.ports.command_listener.label'
+	<edaPort: #'pharoeda.settings.ports.commandListener.label'
 	withDescription:
-	#'pharoeda.settings.ports.command_listener.description' icon:
+	#'pharoeda.settings.ports.commandListener.description' icon:
 	#commandlistener atPosition: 2>
 	^ self
 ]

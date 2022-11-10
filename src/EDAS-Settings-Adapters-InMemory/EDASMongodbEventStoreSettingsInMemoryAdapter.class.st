@@ -20,19 +20,19 @@ EDASMongodbEventStoreSettingsInMemoryAdapter class >> availableAuthenticationMec
 { #category : #testing }
 EDASMongodbEventStoreSettingsInMemoryAdapter class >> description [
 
-	^ #'pharoeda.settings.adapters.event_store.mongodb.description'
+	^ #'pharoeda.settings.adapters.eventStore.mongodb.description'
 ]
 
 { #category : #testing }
 EDASMongodbEventStoreSettingsInMemoryAdapter class >> label [
 
-	^ #'pharoeda.settings.adapters.event_store.mongodb.label'
+	^ #'pharoeda.settings.adapters.eventStore.mongodb.label'
 ]
 
 { #category : #metadata }
 EDASMongodbEventStoreSettingsInMemoryAdapter class >> portLabel [
 
-	^ #'pharoeda.settings.ports.event_store.mongodb.label'
+	^ #'pharoeda.settings.ports.eventStore.mongodb.label'
 ]
 
 { #category : #accessing }

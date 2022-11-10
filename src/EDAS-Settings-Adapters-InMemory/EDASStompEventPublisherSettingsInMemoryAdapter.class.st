@@ -21,19 +21,19 @@ EDASStompEventPublisherSettingsInMemoryAdapter class >> accepts: aPort [
 { #category : #accessing }
 EDASStompEventPublisherSettingsInMemoryAdapter class >> description [
 
-	^ #'pharoeda.settings.adapters.event_publisher.stomp.description'
+	^ #'pharoeda.settings.adapters.eventPublisher.stomp.description'
 ]
 
 { #category : #testing }
 EDASStompEventPublisherSettingsInMemoryAdapter class >> label [
 
-	^ #'pharoeda.settings.adapters.event_publisher.stomp.label'
+	^ #'pharoeda.settings.adapters.eventPublisher.stomp.label'
 ]
 
 { #category : #metadata }
 EDASStompEventPublisherSettingsInMemoryAdapter class >> portLabel [
 
-	^ #'pharoeda.settings.ports.event_publisher.stomp.label'
+	^ #'pharoeda.settings.ports.eventPublisher.stomp.label'
 ]
 
 { #category : #accessing }
@@ -79,9 +79,9 @@ EDASStompEventPublisherSettingsInMemoryAdapter >> durable [
 EDASStompEventPublisherSettingsInMemoryAdapter >> errorExchange [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.event_publisher.stomp.errorExchange.label'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.errorExchange.label'
 	withDescription:
-	#'pharoeda.settings.adapters.event_publisher.stomp.errorExchange.description'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.errorExchange.description'
 	icon: #errorexchange atPosition: 12 readOnly: false multiple: false>
 	^ errorExchange ifNil: [ '' ]
 ]
@@ -95,9 +95,9 @@ EDASStompEventPublisherSettingsInMemoryAdapter >> errorExchange: aString [
 EDASStompEventPublisherSettingsInMemoryAdapter >> errorRoutingKey [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.event_publisher.stomp.errorRoutingKey.label'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.errorRoutingKey.label'
 	withDescription:
-	#'pharoeda.settings.adapters.event_publisher.stomp.errorRoutingKey.description'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.errorRoutingKey.description'
 	icon: #errorroutingkey atPosition: 13 readOnly: false multiple: false>
 	^ errorRoutingKey ifNil: [ '#' ]
 ]
@@ -129,9 +129,9 @@ EDASStompEventPublisherSettingsInMemoryAdapter >> exchange [
 
 	<edaSettings:
 	
-		#'pharoeda.settings.adapters.event_publisher.stomp.exchange.label'
+		#'pharoeda.settings.adapters.eventPublisher.stomp.exchange.label'
 	withDescription:
-	#'pharoeda.settings.adapters.event_publisher.stomp.exchange.description'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.exchange.description'
 
 	icon: #exchange atPosition: 5 readOnly: false multiple: false>
 	^ exchange ifNil: [ '' ]
@@ -185,9 +185,9 @@ EDASStompEventPublisherSettingsInMemoryAdapter >> restartOnErrors [
 EDASStompEventPublisherSettingsInMemoryAdapter >> routingKey [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.event_publisher.stomp.routingKey.label'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.routingKey.label'
 	withDescription:
-	#'pharoeda.settings.adapters.event_publisher.stomp.routingKey.description'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.routingKey.description'
 	icon: #routingkey atPosition: 6 readOnly: false multiple: false>
 	^ routingKey ifNil: [ '#' ]
 ]

@@ -21,7 +21,7 @@ EDASStompEventPublisherSettingsJsonAdapter class >> changedEventName [
 { #category : #testing }
 EDASStompEventPublisherSettingsJsonAdapter class >> description [
 
-	^ #'pharoeda.settings.adapters.event_publisher.stomp.json.description'
+	^ #'pharoeda.settings.adapters.eventPublisher.stomp.json.description'
 ]
 
 { #category : #ambiguous }
@@ -50,7 +50,7 @@ EDASStompEventPublisherSettingsJsonAdapter class >> icon [
 { #category : #testing }
 EDASStompEventPublisherSettingsJsonAdapter class >> label [
 
-	^ #'pharoeda.settings.adapters.event_publisher.stomp.label'
+	^ #'pharoeda.settings.adapters.eventPublisher.stomp.label'
 ]
 
 { #category : #accessing }
@@ -89,9 +89,9 @@ EDASStompEventPublisherSettingsJsonAdapter >> durable [
 EDASStompEventPublisherSettingsJsonAdapter >> errorExchange [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.event_publisher.stomp.errorExchange.label'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.errorExchange.label'
 	withDescription:
-	#'pharoeda.settings.adapters.event_publisher.stomp.errorExchange.description'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.errorExchange.description'
 	icon: #errorexchange atPosition: 12 readOnly: false multiple: false>
 	^ errorExchange ifNil: [ '' ]
 ]
@@ -106,9 +106,9 @@ EDASStompEventPublisherSettingsJsonAdapter >> errorExchange: anObject [
 EDASStompEventPublisherSettingsJsonAdapter >> errorRoutingKey [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.event_publisher.stomp.errorRoutingKey.label'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.errorRoutingKey.label'
 	withDescription:
-	#'pharoeda.settings.adapters.event_publisher.stomp.errorRoutingKey.description'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.errorRoutingKey.description'
 	icon: #errorroutingkey atPosition: 13 readOnly: false multiple: false>
 	^ errorRoutingKey ifNil: [ '#' ]
 ]
@@ -134,9 +134,9 @@ EDASStompEventPublisherSettingsJsonAdapter >> errorStrategyName [
 EDASStompEventPublisherSettingsJsonAdapter >> exchange [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.event_publisher.stomp.exchange.label'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.exchange.label'
 	withDescription:
-	#'pharoeda.settings.adapters.event_publisher.stomp.exchange.description'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.exchange.description'
 	icon: #exchange atPosition: 5 readOnly: false multiple: false>
 	^ exchange ifNil: [ '' ]
 ]
@@ -196,9 +196,9 @@ EDASStompEventPublisherSettingsJsonAdapter >> restartOnErrors [
 EDASStompEventPublisherSettingsJsonAdapter >> routingKey [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.event_publisher.stomp.routingKey.label'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.routingKey.label'
 	withDescription:
-	#'pharoeda.settings.adapters.event_publisher.stomp.routingKey.description'
+	#'pharoeda.settings.adapters.eventPublisher.stomp.routingKey.description'
 	icon: #routingkey atPosition: 6 readOnly: false multiple: false>
 	^ routingKey ifNil: [ '#' ]
 ]

@@ -25,13 +25,13 @@ EDASPredefinedCommandListenerErrorStrategyInMemoryAdapter class >> availableStra
 { #category : #testing }
 EDASPredefinedCommandListenerErrorStrategyInMemoryAdapter class >> description [
 
-	^ #'pharoeda.settings.ports.command_listener.errorStrategy.predefined.description'
+	^ #'pharoeda.settings.ports.commandListener.errorStrategy.predefined.description'
 ]
 
 { #category : #testing }
 EDASPredefinedCommandListenerErrorStrategyInMemoryAdapter class >> label [
 
-	^ #'pharoeda.settings.ports.command_listener.errorStrategy.predefined.label'
+	^ #'pharoeda.settings.ports.commandListener.errorStrategy.predefined.label'
 ]
 
 { #category : #resolving }
