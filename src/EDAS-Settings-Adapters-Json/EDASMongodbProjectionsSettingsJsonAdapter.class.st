@@ -137,7 +137,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> enableSingleton [
 EDASMongodbProjectionsSettingsJsonAdapter >> enableSynchronization [
 
 	<edaSettings:
-	#'pharoeda.settings.adapters.projections.mongodb.enableSynchronization.label'
+	#'pharoeda.settings.adapters.projections.enableSynchronization.label'
 	withDescription:
 	#'pharoeda.settings.adapters.projections.enableSynchronization.description'
 	icon: #sync atPosition: 17 readOnly: false multiple: false>
