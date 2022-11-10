@@ -223,12 +223,12 @@
               "description": "The routing key for errors."
             }
           }
-        }
-      },
-      "event_store": {
-        "mongodb": {
-          "label": "Event store",
-          "description": "Customize the MongoDB connection."
+        },
+        "event_store": {
+          "mongodb": {
+            "label": "Event store",
+            "description": "Customize the MongoDB connection."
+          }
         }
       }
     }

@@ -225,12 +225,12 @@
               "description": "La clave de enrutado para los errores."
             }
           }
-        }
-      },
-      "event_store": {
-        "mongodb": {
-          "label": "Almacén de eventos",
-          "description": "Personalice la conexión a MongoDB."
+        },
+        "event_store": {
+          "mongodb": {
+            "label": "Almacén de eventos",
+            "description": "Personalice la conexión a MongoDB."
+          }
         }
       }
     }
