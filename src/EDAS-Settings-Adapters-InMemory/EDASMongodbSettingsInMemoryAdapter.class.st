@@ -245,6 +245,24 @@ EDASMongodbSettingsInMemoryAdapter >> user: anObject [
 ]
 
 { #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> values: aSymbol [
+
+	^ aSymbol = #authenticationMechanism
+		  ifTrue: [ 
+			  Dictionary new
+				  at:
+					  #'pharoeda.settings.adapters.mongodb.authenticationMechanism.scramsha256'
+						  translated
+				  put: #'SCRAM-SHA-256';
+				  at:
+					  #'pharoeda.settings.adapters.mongodb.authenticationMechanism.mongodbcr'
+						  translated
+				  put: #'MONGODB-CR';
+				  associations ]
+		  ifFalse: [ OrderedCollection new ]
+]
+
+{ #category : #accessing }
 EDASMongodbSettingsInMemoryAdapter >> wireProtocolEnabled [
 
 	^ wireProtocolEnabled ifNil: [ false ]

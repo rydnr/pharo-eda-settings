@@ -229,6 +229,12 @@ EDASMongodbProjectionsSettingsInMemoryAdapter >> port [
 
 { #category : #accessing }
 EDASMongodbProjectionsSettingsInMemoryAdapter >> strategy [
+
+	<edaSettings:
+	#'pharoeda.settings.adapters.projections.strategy.label'
+	withDescription:
+	#'pharoeda.settings.adapters.projections.strategy.description' icon:
+	#strategy atPosition: 20 readOnly: false multiple: false>
 	^ strategy
 ]
 

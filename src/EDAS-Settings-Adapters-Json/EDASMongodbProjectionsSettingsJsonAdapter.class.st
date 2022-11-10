@@ -1,84 +1,20 @@
 Class {
-	#name : #EDASMongodbEventStoreSettingsJsonAdapter,
+	#name : #EDASMongodbProjectionsSettingsJsonAdapter,
 	#superclass : #Object,
-	#traits : 'EDASSettingsPort + EDASEventStoreSettingsPort + EDASMongodbSettingsJsonAdapter',
-	#classTraits : 'EDASSettingsPort classTrait + EDASEventStoreSettingsPort classTrait + EDASMongodbSettingsJsonAdapter classTrait',
+	#traits : 'EDASSettingsPort + EDASProjectionsSettingsPort + EDASMongodbSettingsJsonAdapter',
+	#classTraits : 'EDASSettingsPort classTrait + EDASProjectionsSettingsPort classTrait + EDASMongodbSettingsJsonAdapter classTrait',
 	#instVars : [
-		'host',
-		'port',
-		'user',
-		'password',
-		'database',
-		'authenticationMechanism',
-		'debug',
-		'enableReplication',
-		'enableSingleton',
-		'ensuringCurrentOnSave',
-		'ensuringCurrentReferencesOnQueries',
-		'lazySynchronize',
-		'wireProtocolEnabled',
-		'tls',
-		'urls',
-		'forceEager'
+		'concurrentSynchronization',
+		'headlessMode',
+		'strategy',
+		'enableSynchronization',
+		'authenticationMechanism'
 	],
 	#category : #'EDAS-Settings-Adapters-Json'
 }
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter class >> changedEventName [
-
-	^ EDASMongodbEventStoreSettingsInMemoryAdapter changedEventName
-]
-
-{ #category : #testing }
-EDASMongodbEventStoreSettingsJsonAdapter class >> description [
-
-	^ #'pharoeda.settings.adapters.event_store.mongodb.json.description'
-]
-
-{ #category : #metadata }
-EDASMongodbEventStoreSettingsJsonAdapter class >> edaPort [
-
-	"This gets called in EDASSettings when selecting the port, so it gets selected correctly"
-
-	^ EDASMongodbEventStoreSettingsInMemoryAdapter
-]
-
-{ #category : #'instance creation' }
-EDASMongodbEventStoreSettingsJsonAdapter class >> fromFile: aFileReference withApp: anEDAApplication [
-
-	^ self
-		  fromFile: aFileReference
-		  under: 'eventStore'
-		  withApp: anEDAApplication
-]
-
-{ #category : #testing }
-EDASMongodbEventStoreSettingsJsonAdapter class >> icon [
-
-	^ EDACIconProvider new iconNamed: #eventstore orElse: #comments
-]
-
-{ #category : #testing }
-EDASMongodbEventStoreSettingsJsonAdapter class >> label [
-
-	^ #'pharoeda.settings.adapters.event_store.mongodb.label'
-]
-
-{ #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter class >> portChangedEventName [
-
-	^ EDASMongodbEventStoreSettingsInMemoryAdapter portChangedEventName
-]
-
-{ #category : #metadata }
-EDASMongodbEventStoreSettingsJsonAdapter class >> portLabel [
-
-	^ EDASMongodbEventStoreSettingsInMemoryAdapter portLabel
-]
-
-{ #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> authenticationMechanism [
+EDASMongodbProjectionsSettingsJsonAdapter >> authenticationMechanism [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.authenticationMechanism.label'
@@ -89,7 +25,24 @@ EDASMongodbEventStoreSettingsJsonAdapter >> authenticationMechanism [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> database [
+EDASMongodbProjectionsSettingsJsonAdapter >> concurrentSynchronization [
+
+	<edaSettings:
+	#'pharoeda.settings.adapters.projections.concurrentSynchronization.label'
+	withDescription:
+	#'pharoeda.settings.adapters.projections.concurrentSynchronization.description'
+	icon: #concurrent atPosition: 18 readOnly: false multiple: false>
+	^ concurrentSynchronization ifNil: [ false ]
+]
+
+{ #category : #accessing }
+EDASMongodbProjectionsSettingsJsonAdapter >> concurrentSynchronization: anObject [
+
+	concurrentSynchronization := anObject
+]
+
+{ #category : #accessing }
+EDASMongodbProjectionsSettingsJsonAdapter >> database [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.database.label'
 	withDescription:
@@ -99,7 +52,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> database [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> debug [
+EDASMongodbProjectionsSettingsJsonAdapter >> debug [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.debug.label'
 	withDescription:
@@ -109,7 +62,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> debug [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> enableReplication [
+EDASMongodbProjectionsSettingsJsonAdapter >> enableReplication [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.enableReplication.label'
@@ -120,7 +73,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> enableReplication [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> enableSingleton [
+EDASMongodbProjectionsSettingsJsonAdapter >> enableSingleton [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.enableSingleton.label'
@@ -131,13 +84,24 @@ EDASMongodbEventStoreSettingsJsonAdapter >> enableSingleton [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> enableSingleton: anObject [
+EDASMongodbProjectionsSettingsJsonAdapter >> enableSynchronization [
 
-	enableSingleton := anObject
+	<edaSettings:
+	#'pharoeda.settings.adapters.projections.mongodb.enableSynchronization.label'
+	withDescription:
+	#'pharoeda.settings.adapters.projections.enableSynchronization.description'
+	icon: #sync atPosition: 17 readOnly: false multiple: false>
+	^ enableSynchronization ifNil: [ false ]
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> ensuringCurrentOnSave [
+EDASMongodbProjectionsSettingsJsonAdapter >> enableSynchronization: anObject [
+
+	enableSynchronization := anObject
+]
+
+{ #category : #accessing }
+EDASMongodbProjectionsSettingsJsonAdapter >> ensuringCurrentOnSave [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.ensuringCurrentOnSave.label'
@@ -148,7 +112,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> ensuringCurrentOnSave [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> ensuringCurrentReferencesOnQueries [
+EDASMongodbProjectionsSettingsJsonAdapter >> ensuringCurrentReferencesOnQueries [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.ensuringCurrentReferencesOnQueries.label'
@@ -159,18 +123,34 @@ EDASMongodbEventStoreSettingsJsonAdapter >> ensuringCurrentReferencesOnQueries [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> forceEager [
+EDASMongodbProjectionsSettingsJsonAdapter >> forceEager [
 
-	<edaSettings:
-	#'pharoeda.settings.adapters.mongodb.forceEager.label'
+	<edaSettings: #'pharoeda.settings.adapters.mongodb.forceEager.label'
 	withDescription:
-	#'pharoeda.settings.adapters.mongodb.forceEager.description'
-	icon: #eager atPosition: 14 readOnly: false multiple: false>
+	#'pharoeda.settings.adapters.mongodb.forceEager.description' icon:
+	#eager atPosition: 14 readOnly: false multiple: false>
 	^ super forceEager
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> host [
+EDASMongodbProjectionsSettingsJsonAdapter >> headlessMode [
+
+	<edaSettings:
+	#'pharoeda.settings.adapters.projections.headless.label'
+	withDescription:
+	#'pharoeda.settings.adapters.projections.headless.description' icon:
+	#headless atPosition: 19 readOnly: false multiple: false>
+	^ headlessMode ifNil: [ true ]
+]
+
+{ #category : #accessing }
+EDASMongodbProjectionsSettingsJsonAdapter >> headlessMode: anObject [
+
+	headlessMode := anObject
+]
+
+{ #category : #accessing }
+EDASMongodbProjectionsSettingsJsonAdapter >> host [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.host.label'
 	withDescription:
@@ -179,14 +159,14 @@ EDASMongodbEventStoreSettingsJsonAdapter >> host [
 	^ super host
 ]
 
-{ #category : #testing }
-EDASMongodbEventStoreSettingsJsonAdapter >> isReadOnly: aString [
+{ #category : #accessing }
+EDASMongodbProjectionsSettingsJsonAdapter >> isReadOnly: aString [
 
 	^ true
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> lazySynchronize [
+EDASMongodbProjectionsSettingsJsonAdapter >> lazySynchronize [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.lazySynchronize.label'
@@ -197,7 +177,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> lazySynchronize [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> password [
+EDASMongodbProjectionsSettingsJsonAdapter >> password [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.password.label'
 	withDescription:
@@ -207,7 +187,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> password [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> port [
+EDASMongodbProjectionsSettingsJsonAdapter >> port [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.port.label'
 	withDescription:
@@ -217,7 +197,24 @@ EDASMongodbEventStoreSettingsJsonAdapter >> port [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> tls [
+EDASMongodbProjectionsSettingsJsonAdapter >> strategy [
+
+	<edaSettings:
+	#'pharoeda.settings.adapters.projections.strategy.label'
+	withDescription:
+	#'pharoeda.settings.adapters.projections.strategy.description' icon:
+	#strategy atPosition: 20 readOnly: false multiple: false>
+	^ strategy
+]
+
+{ #category : #accessing }
+EDASMongodbProjectionsSettingsJsonAdapter >> strategy: anObject [
+
+	strategy := anObject
+]
+
+{ #category : #accessing }
+EDASMongodbProjectionsSettingsJsonAdapter >> tls [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.tls.label'
 	withDescription:
@@ -227,7 +224,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> tls [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> urls [
+EDASMongodbProjectionsSettingsJsonAdapter >> urls [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.urls.label'
 	withDescription:
@@ -237,7 +234,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> urls [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> user [
+EDASMongodbProjectionsSettingsJsonAdapter >> user [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.user.label'
 	withDescription:
@@ -247,7 +244,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> user [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsJsonAdapter >> wireProtocolEnabled [
+EDASMongodbProjectionsSettingsJsonAdapter >> wireProtocolEnabled [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.wireProtocolEnabled.label'
