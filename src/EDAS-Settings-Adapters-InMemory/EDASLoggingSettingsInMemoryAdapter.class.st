@@ -56,16 +56,11 @@ EDASLoggingSettingsInMemoryAdapter >> initialize [
 
 	levelsDict := Dictionary new.
 	levelsDict
-		at: #'pharoeda.settings.adapters.logging.level.trace' 
-		put: #trace;
-		at: #'pharoeda.settings.adapters.logging.level.debug' 
-		put: #debug;
-		at: #'pharoeda.settings.adapters.logging.level.info' 
-		put: #info;
-		at: #'pharoeda.settings.adapters.logging.level.warning' 
-		put: #warning;
-		at: #'pharoeda.settings.adapters.logging.level.error'		put: #error.
-		
+		at: #'pharoeda.settings.ports.logging.level.trace' put: #trace;
+		at: #'pharoeda.settings.ports.logging.level.debug' put: #debug;
+		at: #'pharoeda.settings.ports.logging.level.info' put: #info;
+		at: #'pharoeda.settings.ports.logging.level.warning' put: #warning;
+		at: #'pharoeda.settings.ports.logging.level.error' put: #error.
 	levelsReverseDict := Dictionary new.
 	levelsDict keysAndValuesDo: [ :k :v | levelsReverseDict at: v put: k ]
 ]
