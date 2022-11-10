@@ -3,24 +3,6 @@ Class {
 	#superclass : #Object,
 	#traits : 'EDASSettingsPort + EDASEventStoreSettingsPort + EDASMongodbSettingsJsonAdapter',
 	#classTraits : 'EDASSettingsPort classTrait + EDASEventStoreSettingsPort classTrait + EDASMongodbSettingsJsonAdapter classTrait',
-	#instVars : [
-		'host',
-		'port',
-		'user',
-		'password',
-		'database',
-		'authenticationMechanism',
-		'debug',
-		'enableReplication',
-		'enableSingleton',
-		'ensuringCurrentOnSave',
-		'ensuringCurrentReferencesOnQueries',
-		'lazySynchronize',
-		'wireProtocolEnabled',
-		'tls',
-		'urls',
-		'forceEager'
-	],
 	#category : #'EDAS-Settings-Adapters-Json'
 }
 
@@ -77,7 +59,7 @@ EDASMongodbEventStoreSettingsJsonAdapter class >> portLabel [
 	^ EDASMongodbEventStoreSettingsInMemoryAdapter portLabel
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> authenticationMechanism [
 
 	<edaSettings:
@@ -85,30 +67,30 @@ EDASMongodbEventStoreSettingsJsonAdapter >> authenticationMechanism [
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.authenticationMechanism.description'
 	icon: #authentication atPosition: 6 readOnly: false multiple: true>
-	^ super authenticationMechanism
+	^ authenticationMechanism ifNil: [ self availableAuthenticationMechanisms first ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> database [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.database.label'
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.database.description' icon:
 	#database atPosition: 5 readOnly: false multiple: false>
-	^ super database
+	^ database ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> debug [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.debug.label'
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.debug.description' icon: #debug
 	atPosition: 9 readOnly: false multiple: false>
-	^ super debug
+	^ debug ifNil: [ true ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> enableReplication [
 
 	<edaSettings:
@@ -116,10 +98,10 @@ EDASMongodbEventStoreSettingsJsonAdapter >> enableReplication [
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.enableReplication.description'
 	icon: #replication atPosition: 10 readOnly: false multiple: false>
-	^ super enableReplication
+	^ enableReplication ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> enableSingleton [
 
 	<edaSettings:
@@ -127,7 +109,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> enableSingleton [
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.enableSingleton.description'
 	icon: #singleton atPosition: 16 readOnly: false multiple: false>
-	^ enableSingleton
+	^ enableSingleton ifNil: [ false ]
 ]
 
 { #category : #accessing }
@@ -136,7 +118,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> enableSingleton: anObject [
 	enableSingleton := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> ensuringCurrentOnSave [
 
 	<edaSettings:
@@ -144,10 +126,10 @@ EDASMongodbEventStoreSettingsJsonAdapter >> ensuringCurrentOnSave [
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.ensuringCurrentOnSave.description'
 	icon: #save atPosition: 11 readOnly: false multiple: false>
-	^ super ensuringCurrentOnSave
+	^ ensuringCurrentOnSave ifNil: [ true ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> ensuringCurrentReferencesOnQueries [
 
 	<edaSettings:
@@ -155,10 +137,10 @@ EDASMongodbEventStoreSettingsJsonAdapter >> ensuringCurrentReferencesOnQueries [
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.ensuringCurrentReferencesOnQueries.description'
 	icon: #query atPosition: 12 readOnly: false multiple: false>
-	^ super ensuringCurrentOnSave
+	^ ensuringCurrentReferencesOnQueries ifNil: [ true ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> forceEager [
 
 	<edaSettings:
@@ -166,17 +148,17 @@ EDASMongodbEventStoreSettingsJsonAdapter >> forceEager [
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.forceEager.description'
 	icon: #eager atPosition: 14 readOnly: false multiple: false>
-	^ super forceEager
+	^ forceEager ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> host [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.host.label'
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.host.description' icon: #host
 	atPosition: 1 readOnly: false multiple: false>
-	^ super host
+	^ host ifNil: [ 'localhost' ]
 ]
 
 { #category : #testing }
@@ -185,7 +167,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> isReadOnly: aString [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> lazySynchronize [
 
 	<edaSettings:
@@ -193,60 +175,78 @@ EDASMongodbEventStoreSettingsJsonAdapter >> lazySynchronize [
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.lazySynchronize.description'
 	icon: #lazy atPosition: 13 readOnly: false multiple: false>
-	^ super lazySynchronize
+	^ lazySynchronize ifNil: [ true ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> password [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.password.label'
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.password.description' icon:
 	#password atPosition: 4 readOnly: false multiple: false>
-	^ super password
+	^ password ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> port [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.port.label'
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.port.description' icon: #host
 	atPosition: 2 readOnly: false multiple: false>
-	^ super port
+	^ port ifNil: [ 27017 ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> tls [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.tls.label'
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.tls.description' icon: #tls
 	atPosition: 7 readOnly: false multiple: false>
-	^ super tls
+	^ tls ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> urls [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.urls.label'
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.urls.description' icon: #url
 	atPosition: 8 readOnly: false multiple: false>
-	^ super urls
+	^ urls ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> user [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.user.label'
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.user.description' icon: #user
 	atPosition: 3 readOnly: false multiple: false>
-	^ super user
+	^ user ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : #testing }
+EDASMongodbEventStoreSettingsJsonAdapter >> values: aSymbol [
+
+	^ aSymbol = #authenticationMechanism
+		ifTrue: [ 
+			Dictionary new
+				at:
+					#'pharoeda.settings.adapters.mongodb.authenticationMechanism.scramsha256'
+						translated
+				put: #'SCRAM-SHA-256';
+				at:
+					#'pharoeda.settings.adapters.mongodb.authenticationMechanism.mongodbcr'
+						translated
+				put: #'MONGODB-CR';
+				associations ]
+		ifFalse: [ OrderedCollection new ]
+]
+
+{ #category : #'as yet unclassified' }
 EDASMongodbEventStoreSettingsJsonAdapter >> wireProtocolEnabled [
 
 	<edaSettings:
@@ -254,5 +254,5 @@ EDASMongodbEventStoreSettingsJsonAdapter >> wireProtocolEnabled [
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.wireProtocolEnabled.description'
 	icon: #wire atPosition: 15 readOnly: false multiple: false>
-	^ super wireProtocolEnabled
+	^ wireProtocolEnabled ifNil: [ false ]
 ]
