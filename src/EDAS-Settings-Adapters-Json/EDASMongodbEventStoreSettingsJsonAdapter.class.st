@@ -282,7 +282,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> tls [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.tls.label'
 	withDescription:
-	#'pharoeda.settings.adapters.mongodb.tls.description' icon: #host
+	#'pharoeda.settings.adapters.mongodb.tls.description' icon: #tls
 	atPosition: 7 readOnly: false multiple: false>
 	^ tls
 ]
@@ -323,6 +323,24 @@ EDASMongodbEventStoreSettingsJsonAdapter >> user [
 EDASMongodbEventStoreSettingsJsonAdapter >> user: anObject [
 
 	user := anObject
+]
+
+{ #category : #testing }
+EDASMongodbEventStoreSettingsJsonAdapter >> values: aSymbol [
+
+	^ aSymbol = #authenticationMechanism
+		ifTrue: [ 
+			Dictionary new
+				at:
+					#'pharoeda.settings.adapters.mongodb.authenticationMechanism.scramsha256'
+						translated
+				put: #'SCRAM-SHA-256';
+				at:
+					#'pharoeda.settings.adapters.mongodb.authenticationMechanism.mongodbcr'
+						translated
+				put: #'MONGODB-CR';
+				associations ]
+		ifFalse: [ OrderedCollection new ]
 ]
 
 { #category : #accessing }

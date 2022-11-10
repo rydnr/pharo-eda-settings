@@ -181,7 +181,7 @@ EDASMongodbEventStoreSettingsInMemoryAdapter >> tls [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.tls.label'
 	withDescription:
-	#'pharoeda.settings.adapters.mongodb.tls.description' icon: #host
+	#'pharoeda.settings.adapters.mongodb.tls.description' icon: #tls
 	atPosition: 7 readOnly: false multiple: false>
 	^ super tls
 ]

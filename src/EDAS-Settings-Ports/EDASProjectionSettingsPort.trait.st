@@ -11,12 +11,12 @@ EDASProjectionSettingsPort >> concurrentSynchronization [
 ]
 
 { #category : #accessing }
-EDASProjectionSettingsPort >> headlessMode [
+EDASProjectionSettingsPort >> enableSynchronization [
 	self subclassResponsibility
 ]
 
 { #category : #accessing }
-EDASProjectionSettingsPort >> projectionSynchronizationEnabled [
+EDASProjectionSettingsPort >> headlessMode [
 	self subclassResponsibility
 ]
 
