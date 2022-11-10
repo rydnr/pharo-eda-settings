@@ -1,8 +1,8 @@
 Class {
 	#name : #EDASStompCommandListenerSettingsJsonAdapter,
 	#superclass : #Object,
-	#traits : 'EDASSettingsPort + EDASStompSettingsJsonAdapter + EDASCommandListenerSettingsPort + EDASStompSettingsPort',
-	#classTraits : 'EDASSettingsPort classTrait + EDASStompSettingsJsonAdapter classTrait + EDASCommandListenerSettingsPort classTrait + EDASStompSettingsPort classTrait',
+	#traits : 'EDASSettingsPort + EDASStompSettingsJsonAdapter + EDASCommandListenerSettingsPort',
+	#classTraits : 'EDASSettingsPort classTrait + EDASStompSettingsJsonAdapter classTrait + EDASCommandListenerSettingsPort classTrait',
 	#instVars : [
 		'queue',
 		'prefetchCount',
@@ -74,7 +74,7 @@ EDASStompCommandListenerSettingsJsonAdapter >> ack [
 	withDescription:
 	#'pharoeda.settings.adapters.commandListener.stomp.ack.description'
 	icon: #ack atPosition: 12 readOnly: false multiple: true>
-	^ ack ifNil: [ #auto ]
+	^ ack ifNil: [ (self values: #ack) first ]
 ]
 
 { #category : #accessing }
@@ -120,7 +120,7 @@ EDASStompCommandListenerSettingsJsonAdapter >> errorStrategyName [
 	withDescription:
 	#'pharoeda.settings.adapters.stomp.errorStrategyName.description'
 	icon: #errorstrategy atPosition: 11 readOnly: false multiple: true>
-	^ errorStrategyName ifNil: [ self availableErrorStrategies first ]
+	^ errorStrategyName ifNil: [ EDASStompCommandListenerSettingsInMemoryAdapter new errorStrategyName ]
 ]
 
 { #category : #accessing }
@@ -136,6 +136,12 @@ EDASStompCommandListenerSettingsJsonAdapter >> host [
 EDASStompCommandListenerSettingsJsonAdapter >> isReadOnly: aString [
 
 	^ true
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> keyIn: aSymbol forValue: aValue [
+
+	^ EDASStompCommandListenerSettingsInMemoryAdapter new keyIn: aSymbol forValue: aValue
 ]
 
 { #category : #accessing }
@@ -213,4 +219,10 @@ EDASStompCommandListenerSettingsJsonAdapter >> user [
 	withDescription: #'pharoeda.settings.adapters.stomp.user.description'
 	icon: #user atPosition: 3 readOnly: false multiple: false>
 	^ user ifNil: [ '' ]
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsJsonAdapter >> values: aSymbol [
+
+	^ EDASStompCommandListenerSettingsInMemoryAdapter new values: aSymbol
 ]

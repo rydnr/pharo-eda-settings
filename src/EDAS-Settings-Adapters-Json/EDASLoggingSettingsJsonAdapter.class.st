@@ -44,6 +44,18 @@ EDASLoggingSettingsJsonAdapter class >> label [
 	^ #'pharoeda.settings.ports.logging.label'
 ]
 
+{ #category : #testing }
+EDASLoggingSettingsJsonAdapter >> isReadOnly: aString [
+
+	^ true
+]
+
+{ #category : #accessing }
+EDASLoggingSettingsJsonAdapter >> keyIn: aSymbol forValue: aValue [
+
+	^ EDASLoggingSettingsInMemoryAdapter new keyIn: aSymbol forValue: aValue
+]
+
 { #category : #accessing }
 EDASLoggingSettingsJsonAdapter >> level [
 

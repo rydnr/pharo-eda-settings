@@ -209,17 +209,23 @@ EDASSettings class >> resetSettings [
 EDASSettings class >> settingOn: aBuilder named: aSymbol labelled: aString withDescription: aDescription icon: anIcon usingConfig: aConfig under: aParent on: app order: anInteger [
 
 	| entry |
-	(aConfig supportsMultiple: aSymbol)
+	(aConfig isReadOnly: aSymbol)
 		ifTrue: [ 
-			entry := aBuilder pickOne: aSymbol.
-			entry domainValues: ((aConfig values: aSymbol) collect: [ :v | 
-					 v key translated -> v value greaseString ]) ]
-		ifFalse: [ 
-			(aConfig isReadOnly: aSymbol)
+			| value |
+			entry := aBuilder group: aSymbol.
+			value := aConfig perform: aSymbol.
+
+			(aConfig supportsMultiple: aSymbol)
 				ifTrue: [ 
-					entry := aBuilder group: aSymbol.
-					entry dialog: [ 
-						LabelMorph newLabel: (aConfig perform: aSymbol) greaseString ] ]
+				value := (aConfig keyIn: aSymbol forValue: value) translated ]
+				ifFalse: [ value ].
+			entry dialog: [ LabelMorph newLabel: value greaseString ] ]
+		ifFalse: [ 
+			(aConfig supportsMultiple: aSymbol)
+				ifTrue: [ 
+					entry := aBuilder pickOne: aSymbol.
+					entry domainValues: ((aConfig values: aSymbol) collect: [ :v | 
+							 v key translated -> v value greaseString ]) ]
 				ifFalse: [ entry := aBuilder setting: aSymbol ] ].
 	entry
 		parent: aParent;

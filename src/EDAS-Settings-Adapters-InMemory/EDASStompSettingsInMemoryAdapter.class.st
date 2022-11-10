@@ -1,8 +1,6 @@
 Class {
 	#name : #EDASStompSettingsInMemoryAdapter,
 	#superclass : #Object,
-	#traits : 'EDASStompSettingsPort',
-	#classTraits : 'EDASStompSettingsPort classTrait',
 	#instVars : [
 		'host',
 		'port',
@@ -14,7 +12,9 @@ Class {
 		'errorStrategyName',
 		'edaApplication',
 		'restartOnErrors',
-		'user'
+		'user',
+		'errorStrategiesReverseDict',
+		'errorStrategiesDict'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
@@ -43,7 +43,12 @@ EDASStompSettingsInMemoryAdapter >> doInitialize [
 	self user: nil.
 	self password: nil.
 	self timeout: nil.
-	self durable: true
+	self durable: true.
+	errorStrategiesDict := (EDAEErrorHandlingStrategy subclasses collect: [ 
+		                       :s | s description -> s name ]) asDictionary.
+	errorStrategiesReverseDict := Dictionary new.
+	errorStrategiesDict keysAndValuesDo: [ :k :v | 
+		errorStrategiesReverseDict at: v put: k ]
 ]
 
 { #category : #accessing }
@@ -76,7 +81,7 @@ EDASStompSettingsInMemoryAdapter >> errorStrategy [
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> errorStrategyName [
 
-	^ errorStrategyName ifNil: [ self availableErrorStrategies first ]
+	^ errorStrategyName ifNil: [ errorStrategiesDict associations first value ]
 ]
 
 { #category : #accessing }
@@ -100,6 +105,14 @@ EDASStompSettingsInMemoryAdapter >> host: val [
 EDASStompSettingsInMemoryAdapter >> initialize [
 	super initialize.
 	self doInitialize
+]
+
+{ #category : #accessing }
+EDASStompSettingsInMemoryAdapter >> keyIn: aSymbol forValue: aValue [
+
+	^ aSymbol = #errorStrategyName
+		  ifTrue: [ errorStrategiesReverseDict at: aValue ]
+		  ifFalse: [ nil ]
 ]
 
 { #category : #accessing }
@@ -162,6 +175,8 @@ EDASStompSettingsInMemoryAdapter >> user: aString [
 EDASStompSettingsInMemoryAdapter >> values: aSymbol [
 
 	^ aSymbol = #errorStrategyName
-		ifTrue: [ self availableErrorStrategies ]
-		ifFalse: [ OrderedCollection new ]
+		  ifTrue: [ 
+			  (errorStrategiesDict associations collect: [ :e | 
+				   e key translated -> e value ]) ]
+		  ifFalse: [ OrderedCollection new ]
 ]

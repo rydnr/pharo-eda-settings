@@ -1,8 +1,8 @@
 Class {
 	#name : #EDASStompEventPublisherSettingsJsonAdapter,
 	#superclass : #Object,
-	#traits : 'EDASSettingsPort + EDASStompSettingsJsonAdapter + EDASEventPublisherSettingsPort + EDASStompSettingsPort',
-	#classTraits : 'EDASSettingsPort classTrait + EDASStompSettingsJsonAdapter classTrait + EDASEventPublisherSettingsPort classTrait + EDASStompSettingsPort classTrait',
+	#traits : 'EDASSettingsPort + EDASStompSettingsJsonAdapter + EDASEventPublisherSettingsPort',
+	#classTraits : 'EDASSettingsPort classTrait + EDASStompSettingsJsonAdapter classTrait + EDASEventPublisherSettingsPort classTrait',
 	#instVars : [
 		'errorExchange',
 		'errorRoutingKey',
@@ -127,7 +127,8 @@ EDASStompEventPublisherSettingsJsonAdapter >> errorStrategyName [
 	withDescription:
 	#'pharoeda.settings.adapters.stomp.errorStrategyName.description'
 	icon: #errorstrategy atPosition: 11 readOnly: false multiple: true>
-	^ errorStrategyName ifNil: [ self availableErrorStrategies first ]
+	^ errorStrategyName ifNil: [ 
+		  EDASStompEventPublisherSettingsInMemoryAdapter new errorStrategyName ]
 ]
 
 { #category : #accessing }

@@ -215,6 +215,14 @@ EDASMongodbProjectionsSettingsJsonAdapter >> isReadOnly: aString [
 	^ true
 ]
 
+{ #category : #accessing }
+EDASMongodbProjectionsSettingsJsonAdapter >> keyIn: aSymbol forValue: aValue [
+
+	^ EDASMongodbProjectionsSettingsInMemoryAdapter new
+		  keyIn: aSymbol
+		  forValue: aValue
+]
+
 { #category : #'as yet unclassified' }
 EDASMongodbProjectionsSettingsJsonAdapter >> lazySynchronize [
 
@@ -291,6 +299,13 @@ EDASMongodbProjectionsSettingsJsonAdapter >> user [
 	#'pharoeda.settings.adapters.mongodb.user.description' icon: #user
 	atPosition: 3 readOnly: false multiple: false>
 	^ user ifNil: [ '' ]
+]
+
+{ #category : #accessing }
+EDASMongodbProjectionsSettingsJsonAdapter >> values: aSymbol [
+
+	^ EDASMongodbProjectionsSettingsInMemoryAdapter new
+		  values: aSymbol
 ]
 
 { #category : #'as yet unclassified' }

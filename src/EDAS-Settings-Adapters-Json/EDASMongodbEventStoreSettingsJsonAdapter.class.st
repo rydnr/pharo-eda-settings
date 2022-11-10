@@ -3,6 +3,9 @@ Class {
 	#superclass : #Object,
 	#traits : 'EDASSettingsPort + EDASEventStoreSettingsPort + EDASMongodbSettingsJsonAdapter',
 	#classTraits : 'EDASSettingsPort classTrait + EDASEventStoreSettingsPort classTrait + EDASMongodbSettingsJsonAdapter classTrait',
+	#instVars : [
+		'authenticationMechanismsDict'
+	],
 	#category : #'EDAS-Settings-Adapters-Json'
 }
 
@@ -59,7 +62,7 @@ EDASMongodbEventStoreSettingsJsonAdapter class >> portLabel [
 	^ EDASMongodbEventStoreSettingsInMemoryAdapter portLabel
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> authenticationMechanism [
 
 	<edaSettings:
@@ -67,7 +70,8 @@ EDASMongodbEventStoreSettingsJsonAdapter >> authenticationMechanism [
 	withDescription:
 	#'pharoeda.settings.adapters.mongodb.authenticationMechanism.description'
 	icon: #authentication atPosition: 6 readOnly: false multiple: true>
-	^ authenticationMechanism ifNil: [ self availableAuthenticationMechanisms first ]
+	^ authenticationMechanism ifNil: [ 
+		  authenticationMechanismsDict associations first value ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -165,6 +169,12 @@ EDASMongodbEventStoreSettingsJsonAdapter >> host [
 EDASMongodbEventStoreSettingsJsonAdapter >> isReadOnly: aString [
 
 	^ true
+]
+
+{ #category : #accessing }
+EDASMongodbEventStoreSettingsJsonAdapter >> keyIn: aSymbol forValue: aValue [
+
+	^ EDASMongodbEventStoreSettingsInMemoryAdapter new keyIn: aSymbol forValue: aValue
 ]
 
 { #category : #'as yet unclassified' }

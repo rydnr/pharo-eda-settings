@@ -41,12 +41,6 @@ EDASStompEventPublisherSettingsInMemoryAdapter class >> priority [
 	^ 0
 ]
 
-{ #category : #resolving }
-EDASStompEventPublisherSettingsInMemoryAdapter >> availableErrorStrategies [
-
-	^ super availableErrorStrategies
-]
-
 { #category : #accessing }
 EDASStompEventPublisherSettingsInMemoryAdapter >> debug [
 

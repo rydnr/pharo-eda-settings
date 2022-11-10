@@ -7,7 +7,9 @@ Class {
 		'topicListener',
 		'prefetchCount',
 		'ack',
-		'queue'
+		'queue',
+		'ackDict',
+		'ackReverseDict'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
@@ -49,19 +51,13 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> ack [
 	withDescription:
 	#'pharoeda.settings.adapters.commandListener.stomp.ack.description'
 	icon: #ack atPosition: 12 readOnly: false multiple: true>
-	^ ack ifNil: [ #auto ]
+	^ ack ifNil: [ (self values: #ack) first value ]
 ]
 
 { #category : #accessing }
 EDASStompCommandListenerSettingsInMemoryAdapter >> ack: val [
 	self assert: (#(#auto #client #'client-individual') includes: val).
 	ack := val
-]
-
-{ #category : #resolving }
-EDASStompCommandListenerSettingsInMemoryAdapter >> availableErrorStrategies [
-
-	^ super availableErrorStrategies
 ]
 
 { #category : #accessing }
@@ -87,11 +83,23 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> destination [
 
 { #category : #'class initialization' }
 EDASStompCommandListenerSettingsInMemoryAdapter >> doInitialize [
+
 	super doInitialize.
 	self queue: nil.
-	self prefetchCount: nil.
-	self durable: true.
-	self ack: #'client-individual'
+	self prefetchCount: 1.
+	ackDict := Dictionary new.
+	ackDict
+		           at:
+			           #'pharoeda.settings.adapters.commandListener.stomp.ack.client-individual'
+		           put: #'client-individual';
+		           at:
+			           #'pharoeda.settings.adapters.commandListener.stomp.ack.client'
+		           put: #client;
+		           at:
+			           #'pharoeda.settings.adapters.commandListener.stomp.ack.auto'
+		           put: #auto.
+	ackReverseDict := Dictionary new.
+	ackDict keysAndValuesDo: [ :k :v | ackReverseDict at: v put: k ]
 ]
 
 { #category : #accessing }
@@ -134,6 +142,14 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> host [
 EDASStompCommandListenerSettingsInMemoryAdapter >> initialize [
 	super initialize.
 	self doInitialize
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsInMemoryAdapter >> keyIn: aSymbol forValue: value [
+
+	^ aSymbol = #ack
+		  ifTrue: [ ackReverseDict at: value ]
+		  ifFalse: [ super keyIn: aSymbol forValue: value ]
 ]
 
 { #category : #accessing }
@@ -233,20 +249,6 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> user [
 EDASStompCommandListenerSettingsInMemoryAdapter >> values: aSymbol [
 
 	^ aSymbol = #ack
-		  ifTrue: [ 
-			  Dictionary new
-				  at:
-					  #'pharoeda.settings.adapters.commandListener.stomp.ack.client-individual'
-						  translated
-				  put: #'client-individual';
-				  at:
-					  #'pharoeda.settings.adapters.commandListener.stomp.ack.client'
-						  translated
-				  put: #client;
-				  at:
-					  #'pharoeda.settings.adapters.commandListener.stomp.ack.auto'
-						  translated
-				  put: #auto;
-				  associations ]
+		  ifTrue: [ ackDict associations collect: [ :e | e key translated -> e value ] ]
 		  ifFalse: [ super values: aSymbol ]
 ]

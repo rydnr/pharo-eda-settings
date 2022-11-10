@@ -5,7 +5,9 @@ Class {
 	#classTraits : 'EDASLoggingSettingsPort classTrait',
 	#instVars : [
 		'level',
-		'edaApplication'
+		'edaApplication',
+		'levelsDict',
+		'levelsReverseDict'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
@@ -18,13 +20,13 @@ EDASLoggingSettingsInMemoryAdapter class >> accepts: anEDAApplication [
 { #category : #testing }
 EDASLoggingSettingsInMemoryAdapter class >> description [
 
-	^ #'pharoeda.settings.ports.logging.manual.description'
+	^ #'pharoeda.settings.ports.logging.description'
 ]
 
 { #category : #testing }
 EDASLoggingSettingsInMemoryAdapter class >> label [
 
-	^ #'pharoeda.settings.adapters.logging.manual.label'
+	^ #'pharoeda.settings.ports.logging.label'
 ]
 
 { #category : #metadata }
@@ -49,12 +51,40 @@ EDASLoggingSettingsInMemoryAdapter >> edaApplication: anEDAApplication [
 	edaApplication := anEDAApplication
 ]
 
+{ #category : #initialization }
+EDASLoggingSettingsInMemoryAdapter >> initialize [
+
+	levelsDict := Dictionary new.
+	levelsDict
+		at: #'pharoeda.settings.adapters.logging.level.trace' 
+		put: #trace;
+		at: #'pharoeda.settings.adapters.logging.level.debug' 
+		put: #debug;
+		at: #'pharoeda.settings.adapters.logging.level.info' 
+		put: #info;
+		at: #'pharoeda.settings.adapters.logging.level.warning' 
+		put: #warning;
+		at: #'pharoeda.settings.adapters.logging.level.error'		put: #error.
+		
+	levelsReverseDict := Dictionary new.
+	levelsDict keysAndValuesDo: [ :k :v | levelsReverseDict at: v put: k ]
+]
+
+{ #category : #accessing }
+EDASLoggingSettingsInMemoryAdapter >> keyIn: aSymbol forValue: value [
+
+	^ aSymbol = #level
+		  ifTrue: [ levelsReverseDict at: value ]
+		  ifFalse: [ nil ]
+]
+
 { #category : #accessing }
 EDASLoggingSettingsInMemoryAdapter >> level [
 
-	<edaSettings: #'pharoeda.settings.adapters.logging.label'
-	withDescription: #'pharoeda.settings.adapters.logging.description'
-	icon: #level atPosition: 1 readOnly: false multiple: true>
+	<edaSettings: #'pharoeda.settings.ports.logging.level.label'
+	withDescription:
+	#'pharoeda.settings.ports.logging.level.description' icon: #level
+	atPosition: 1 readOnly: false multiple: true>
 	^ level ifNil: [ #info ]
 ]
 
@@ -68,19 +98,8 @@ EDASLoggingSettingsInMemoryAdapter >> level: aString [
 EDASLoggingSettingsInMemoryAdapter >> values: aSymbol [
 
 	^ aSymbol = #level
-		  ifTrue: [ 
-			  Dictionary new
-				  at: #'pharoeda.settings.adapters.logging.level.trace' translated
-				  put: #trace;
-				  at: #'pharoeda.settings.adapters.logging.level.debug' translated
-				  put: #debug;
-				  at: #'pharoeda.settings.adapters.logging.level.info' translated
-				  put: #info;
-				  at:
-					  #'pharoeda.settings.adapters.logging.level.warning' translated
-				  put: #warning;
-				  at: #'pharoeda.settings.adapters.logging.level.error' translated
-				  put: #error;
-				  associations ]
+		  ifTrue: [  
+		  levelsDict associations collect: [ :e | e key translated -> e value ] ]
+			   
 		  ifFalse: [ OrderedCollection new ]
 ]

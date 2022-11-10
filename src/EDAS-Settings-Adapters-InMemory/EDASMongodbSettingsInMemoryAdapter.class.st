@@ -18,7 +18,9 @@ Class {
 		'tls',
 		'urls',
 		'forceEager',
-		'edaApplication'
+		'edaApplication',
+		'authenticationMechanismsDict',
+		'authenticationMechanismsReverseDict'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
@@ -78,7 +80,18 @@ EDASMongodbSettingsInMemoryAdapter >> doInitialize [
 	self ensuringCurrentReferencesOnQueries: nil.
 	self forceEager: nil.
 	self lazySynchronize: nil.
-	self wireProtocolEnabled: nil
+	self wireProtocolEnabled: nil.
+	authenticationMechanismsDict := Dictionary new.
+	authenticationMechanismsDict
+		at:
+			#'pharoeda.settings.adapters.mongodb.authenticationMechanism.scramsha256'
+		put: 'SCRAM-SHA-256';
+		at:
+			#'pharoeda.settings.adapters.mongodb.authenticationMechanism.mongodbcr'
+		put: 'MONGODB-CR'.
+		
+authenticationMechanismsReverseDict := Dictionary new.
+	authenticationMechanismsDict keysAndValuesDo: [ :k :v | authenticationMechanismsReverseDict at: v put: k ]
 ]
 
 { #category : #accessing }
@@ -175,6 +188,14 @@ EDASMongodbSettingsInMemoryAdapter >> initialize [
 ]
 
 { #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> keyIn: aSymbol forValue: value [
+
+	^ aSymbol = #authenticationMechanism
+		  ifTrue: [ authenticationMechanismsReverseDict at: value ]
+		  ifFalse: [ nil ]
+]
+
+{ #category : #accessing }
 EDASMongodbSettingsInMemoryAdapter >> lazySynchronize [
 
 	^ lazySynchronize ifNil: [ true ]
@@ -248,17 +269,7 @@ EDASMongodbSettingsInMemoryAdapter >> user: anObject [
 EDASMongodbSettingsInMemoryAdapter >> values: aSymbol [
 
 	^ aSymbol = #authenticationMechanism
-		  ifTrue: [ 
-			  Dictionary new
-				  at:
-					  #'pharoeda.settings.adapters.mongodb.authenticationMechanism.scramsha256'
-						  translated
-				  put: #'SCRAM-SHA-256';
-				  at:
-					  #'pharoeda.settings.adapters.mongodb.authenticationMechanism.mongodbcr'
-						  translated
-				  put: #'MONGODB-CR';
-				  associations ]
+		  ifTrue: [ authenticationMechanismsDict associations collect: [ :e | e key translated -> e value ] ]
 		  ifFalse: [ OrderedCollection new ]
 ]
 

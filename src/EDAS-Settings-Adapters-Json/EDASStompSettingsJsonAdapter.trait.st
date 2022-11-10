@@ -47,6 +47,12 @@ EDASStompSettingsJsonAdapter >> host: anObject [
 ]
 
 { #category : #accessing }
+EDASStompSettingsJsonAdapter >> keyIn: aSymbol forValue: value [
+
+	^ EDASStompSettingsInMemoryAdapter new keyIn: aSymbol forValue: value
+]
+
+{ #category : #accessing }
 EDASStompSettingsJsonAdapter >> password: anObject [
 
 	password := anObject

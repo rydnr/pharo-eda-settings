@@ -61,12 +61,6 @@ EDASMongodbEventStoreSettingsInMemoryAdapter >> authenticationMechanism [
 ]
 
 { #category : #accessing }
-EDASMongodbEventStoreSettingsInMemoryAdapter >> availableAuthenticationMechanisms [
-
-	^ self class availableAuthenticationMechanisms
-]
-
-{ #category : #accessing }
 EDASMongodbEventStoreSettingsInMemoryAdapter >> database [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.database.label'
@@ -212,24 +206,6 @@ EDASMongodbEventStoreSettingsInMemoryAdapter >> user [
 	#'pharoeda.settings.adapters.mongodb.user.description' icon: #user
 	atPosition: 3 readOnly: false multiple: false>
 	^ super user
-]
-
-{ #category : #accessing }
-EDASMongodbEventStoreSettingsInMemoryAdapter >> values: aSymbol [
-
-	^ aSymbol = #authenticationMechanism
-		ifTrue: [ 
-			Dictionary new
-				at:
-					#'pharoeda.settings.adapters.mongodb.authenticationMechanism.scramsha256'
-						translated
-				put: #'SCRAM-SHA-256';
-				at:
-					#'pharoeda.settings.adapters.mongodb.authenticationMechanism.mongodbcr'
-						translated
-				put: #'MONGODB-CR';
-				associations ]
-		ifFalse: [ OrderedCollection new ]
 ]
 
 { #category : #accessing }
