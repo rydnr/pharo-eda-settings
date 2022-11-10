@@ -76,7 +76,7 @@ EDASStompSettingsInMemoryAdapter >> errorStrategy [
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> errorStrategyName [
 
-	^ errorStrategyName
+	^ errorStrategyName ifNil: [ self availableErrorStrategies first ]
 ]
 
 { #category : #accessing }

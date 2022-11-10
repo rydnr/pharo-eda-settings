@@ -7,16 +7,7 @@ Class {
 		'errorExchange',
 		'errorRoutingKey',
 		'exchange',
-		'routingKey',
-		'debug',
-		'durable',
-		'errorStrategyName',
-		'host',
-		'password',
-		'port',
-		'restartOnErrors',
-		'timeout',
-		'user'
+		'routingKey'
 	],
 	#category : #'EDAS-Settings-Adapters-Json'
 }
@@ -81,13 +72,7 @@ EDASStompEventPublisherSettingsJsonAdapter >> debug [
 	withDescription:
 	#'pharoeda.settings.adapters.stomp.debug.description' icon: #debug
 	atPosition: 9 readOnly: false multiple: false>
-	^ debug
-]
-
-{ #category : #accessing }
-EDASStompEventPublisherSettingsJsonAdapter >> debug: anObject [
-
-	debug := anObject
+	^ debug ifNil: [ true ]
 ]
 
 { #category : #accessing }
@@ -97,13 +82,7 @@ EDASStompEventPublisherSettingsJsonAdapter >> durable [
 	withDescription:
 	#'pharoeda.settings.adapters.stomp.durable.description' icon:
 	#durable atPosition: 8 readOnly: false multiple: false>
-	^ durable
-]
-
-{ #category : #accessing }
-EDASStompEventPublisherSettingsJsonAdapter >> durable: anObject [
-
-	durable := anObject
+	^ durable ifNil: [ true ]
 ]
 
 { #category : #accessing }
@@ -114,7 +93,7 @@ EDASStompEventPublisherSettingsJsonAdapter >> errorExchange [
 	withDescription:
 	#'pharoeda.settings.adapters.event_publisher.stomp.errorExchange.description'
 	icon: #errorexchange atPosition: 12 readOnly: false multiple: false>
-	^ errorExchange
+	^ errorExchange ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -148,13 +127,7 @@ EDASStompEventPublisherSettingsJsonAdapter >> errorStrategyName [
 	withDescription:
 	#'pharoeda.settings.adapters.stomp.errorStrategyName.description'
 	icon: #errorstrategy atPosition: 11 readOnly: false multiple: true>
-	^ errorStrategyName
-]
-
-{ #category : #accessing }
-EDASStompEventPublisherSettingsJsonAdapter >> errorStrategyName: anObject [
-
-	errorStrategyName := anObject
+	^ errorStrategyName ifNil: [ self availableErrorStrategies first ]
 ]
 
 { #category : #accessing }
@@ -165,7 +138,7 @@ EDASStompEventPublisherSettingsJsonAdapter >> exchange [
 	withDescription:
 	#'pharoeda.settings.adapters.event_publisher.stomp.exchange.description'
 	icon: #exchange atPosition: 5 readOnly: false multiple: false>
-	^ exchange
+	^ exchange ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -180,13 +153,7 @@ EDASStompEventPublisherSettingsJsonAdapter >> host [
 	<edaSettings: #'pharoeda.settings.adapters.stomp.host.label'
 	withDescription: #'pharoeda.settings.adapters.stomp.host.description'
 	icon: #host atPosition: 1 readOnly: false multiple: false>
-	^ host
-]
-
-{ #category : #accessing }
-EDASStompEventPublisherSettingsJsonAdapter >> host: anObject [
-
-	host := anObject
+	^ host ifNil: [ 'localhost' ]
 ]
 
 { #category : #testing }
@@ -202,13 +169,7 @@ EDASStompEventPublisherSettingsJsonAdapter >> password [
 	withDescription:
 	#'pharoeda.settings.adapters.stomp.password.description' icon:
 	#password atPosition: 4 readOnly: false multiple: false>
-	^ password
-]
-
-{ #category : #accessing }
-EDASStompEventPublisherSettingsJsonAdapter >> password: anObject [
-
-	password := anObject
+	^ password ifNil: [ '' ]
 ]
 
 { #category : #accessing }
@@ -217,13 +178,7 @@ EDASStompEventPublisherSettingsJsonAdapter >> port [
 	<edaSettings: #'pharoeda.settings.adapters.stomp.port.label'
 	withDescription: #'pharoeda.settings.adapters.stomp.port.description'
 	icon: #port atPosition: 2 readOnly: false multiple: false>
-	^ port
-]
-
-{ #category : #accessing }
-EDASStompEventPublisherSettingsJsonAdapter >> port: anObject [
-
-	port := anObject
+	^ port ifNil: [ 61613 ]
 ]
 
 { #category : #accessing }
@@ -234,13 +189,7 @@ EDASStompEventPublisherSettingsJsonAdapter >> restartOnErrors [
 	withDescription:
 	#'pharoeda.settings.adapters.stomp.restartOnErrors.description' icon:
 	#restartonerrors atPosition: 10 readOnly: false multiple: false>
-	^ restartOnErrors
-]
-
-{ #category : #accessing }
-EDASStompEventPublisherSettingsJsonAdapter >> restartOnErrors: anObject [
-
-	restartOnErrors := anObject
+	^ restartOnErrors ifNil: [ true ]
 ]
 
 { #category : #accessing }
@@ -267,13 +216,7 @@ EDASStompEventPublisherSettingsJsonAdapter >> timeout [
 	withDescription:
 	#'pharoeda.settings.adapters.stomp.timeout.description' icon:
 	#timeout atPosition: 6 readOnly: false multiple: false>
-	^ timeout
-]
-
-{ #category : #accessing }
-EDASStompEventPublisherSettingsJsonAdapter >> timeout: anObject [
-
-	timeout := anObject
+	^ timeout ifNil: [ 60 ]
 ]
 
 { #category : #accessing }
@@ -282,19 +225,5 @@ EDASStompEventPublisherSettingsJsonAdapter >> user [
 	<edaSettings: #'pharoeda.settings.adapters.stomp.user.label'
 	withDescription: #'pharoeda.settings.adapters.stomp.user.description'
 	icon: #user atPosition: 3 readOnly: false multiple: false>
-	^ user
-]
-
-{ #category : #accessing }
-EDASStompEventPublisherSettingsJsonAdapter >> user: anObject [
-
-	user := anObject
-]
-
-{ #category : #resolving }
-EDASStompEventPublisherSettingsJsonAdapter >> values: aSymbol [
-
-	aSymbol = #errorStrategyName
-		ifTrue: [ ^ self availableErrorStrategies ]
-		ifFalse: [ ^ OrderedCollection new ]
+	^ user ifNil: [ '' ]
 ]
