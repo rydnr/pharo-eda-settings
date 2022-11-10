@@ -1,15 +1,15 @@
 {
   "pharoeda": {
     "settings": {
-      "no_applications_registered": {
+      "noApplicationsRegistered": {
         "label": "No PharoEDA applications",
         "description": "Running PharoEDA applications get listed here auto get here automatically."
       },
-      "application_registered": {
+      "applicationRegistered": {
         "label": "1 PharoEDA application",
         "description": "Only one PharoEDA application is currently running."
       },
-      "applications_registered": {
+      "applicationsRegistered": {
         "label": "PharoEDA applications: ",
         "description": "The running PharoEDA applications."
       },
@@ -36,21 +36,21 @@
             "label": "Manual"
           }
         },
-        "command_listener": {
+        "commandListener": {
           "label": "Command listener",
           "description": "The type of settings adapter used to determine the command listener.",
           "stomp": {
             "label": "Stomp"
           }
         },
-        "event_publisher": {
+        "eventPublisher": {
           "label": "Event publisher",
           "description": "The type of settings adapter used to determine the event publisher.",
           "stomp": {
             "label": "Stomp"
           }
         },
-        "event_store": {
+        "eventStore": {
           "label": "Event store",
           "description": "The type of settings adapter used to determine the event store.",
           "mongodb": {
@@ -182,7 +182,7 @@
             "description": "Whether to enable singleton mode."
           }
         },
-        "command_listener": {
+        "commandListener": {
           "stomp": {
             "label": "Command Listener",
             "description": "Customize the Stomp settings.",
@@ -206,7 +206,7 @@
             }
           }
         },
-        "event_publisher": {
+        "eventPublisher": {
           "stomp": {
             "label": "Event Publisher",
             "description": "Customize the Stomp settings.",
@@ -231,7 +231,7 @@
             }
           }
         },
-        "event_store": {
+        "eventStore": {
           "mongodb": {
             "label": "Event store",
             "description": "Customize the MongoDB connection.",
@@ -252,6 +252,10 @@
           "headless": {
             "label": "Headless",
             "description": "Whether the synchronization process is visible or not."
+          },
+          "strategy": {
+            "label": "Strategy",
+            "description": "TODO: The strategy to use."
           },
           "mongodb": {
             "label": "Projections",

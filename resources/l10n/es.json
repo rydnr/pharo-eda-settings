@@ -1,15 +1,15 @@
 {
   "pharoeda": {
     "settings": {
-      "no_applications_registered": {
+      "noApplicationsRegistered": {
         "label": "Ninguna aplicación PharoEDA",
         "description": "Las aplicaciones PharoEDA ejecutándose actualmente se pueden ver aquí."
       },
-      "application_registered": {
+      "applicationRegistered": {
         "label": "1 aplicación PharoEDA",
         "description": "Sólo existe una aplicación PharoEDA ejecutándose actualmente."
       },
-      "applications_registered": {
+      "applicationsRegistered": {
         "label": "Aplicaciones PharoEDA: ",
         "description": "Las aplicaciones PharoEDA ejecutándose actualmente."
       },
@@ -36,21 +36,21 @@
             "label": "Manual"
           }
         },
-        "command_listener": {
+        "commandListener": {
           "label": "Consumidor de órdenes",
           "description": "El tipo de adaptador de configuración usado para definir el consumidor de órdenes.",
           "stomp": {
             "label": "Stomp"
           }
         },
-        "event_publisher": {
+        "eventPublisher": {
           "label": "Publicador de eventos",
           "description": "El tipo de adaptador de configuración usado para definir el publicador de eventos.",
           "stomp": {
             "label": "Stomp"
           }
         },
-        "event_store": {
+        "eventStore": {
           "label": "Almacén de eventos",
           "description": "El tipo de adaptador de configuración usado para definir el almacén de eventos.",
           "mongodb": {
@@ -184,7 +184,7 @@
             "description": "Si usar el modo Singleton de Voyage."
           }
         },
-        "command_listener": {
+        "commandListener": {
           "stomp": {
             "label": "Consumidor de órdenes",
             "description": "Personalice la configuración Stomp.",
@@ -208,7 +208,7 @@
             }
           }
         },
-        "event_publisher": {
+        "eventPublisher": {
           "stomp": {
             "label": "Publicador de eventos",
             "description": "Personalice la configuración Stomp.",
@@ -233,7 +233,7 @@
             }
           }
         },
-        "event_store": {
+        "eventStore": {
           "mongodb": {
             "label": "Almacén de eventos",
             "description": "Personalice la conexión a MongoDB.",
@@ -254,6 +254,10 @@
           "headless": {
             "label": "Invisible",
             "description": "Si el proceso de sincronización es visible o no."
+          },
+          "strategy": {
+            "label": "Estrategia",
+            "description": "TODO: La estrategia a usar."
           },
           "mongodb": {
             "label": "Proyecciones",
