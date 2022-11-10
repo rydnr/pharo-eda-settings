@@ -79,7 +79,5 @@ EDASStompSettingsJsonAdapter >> user: anObject [
 { #category : #accessing }
 EDASStompSettingsJsonAdapter >> values: aSymbol [
 
-	aSymbol = #errorStrategyName
-		ifTrue: [ ^ self availableErrorStrategies ]
-		ifFalse: [ ^ OrderedCollection new ]
+	^ EDASStompSettingsInMemoryAdapter new values: aSymbol
 ]

@@ -28,6 +28,14 @@ Class {
 	#category : #'EDAS-Settings-Adapters-Json'
 }
 
+{ #category : #metadata }
+EDASMongodbProjectionsSettingsJsonAdapter class >> edaPort [
+
+	"This gets called in EDASSettings when selecting the port, so it gets selected correctly"
+
+	^ EDASMongodbProjectionsSettingsInMemoryAdapter
+]
+
 { #category : #'instance creation' }
 EDASMongodbProjectionsSettingsJsonAdapter class >> fromFile: aFileReference withApp: anEDAApplication [
 

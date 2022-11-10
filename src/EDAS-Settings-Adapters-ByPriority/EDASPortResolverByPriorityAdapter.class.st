@@ -35,8 +35,8 @@ EDASPortResolverByPriorityAdapter >> availableLoggingSettingsAdapters [
 ]
 
 { #category : #logic }
-EDASPortResolverByPriorityAdapter >> availableProjectionSettingsAdapters [
-	^ self availableAdaptersForPort: EDASProjectionSettingsPort
+EDASPortResolverByPriorityAdapter >> availableProjectionsSettingsAdapters [
+	^ self availableAdaptersForPort: EDASProjectionsSettingsPort
 ]
 
 { #category : #accessing }
@@ -75,6 +75,6 @@ EDASPortResolverByPriorityAdapter >> resolveLoggingSettingsPort [
 ]
 
 { #category : #logic }
-EDASPortResolverByPriorityAdapter >> resolveProjectionSettingsPort [
-	^ self resolvePort: EDASProjectionSettingsPort
+EDASPortResolverByPriorityAdapter >> resolveProjectionsSettingsPort [
+	^ self resolvePort: EDASProjectionsSettingsPort
 ]

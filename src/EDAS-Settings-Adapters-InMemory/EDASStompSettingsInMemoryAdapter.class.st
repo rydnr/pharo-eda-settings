@@ -161,7 +161,7 @@ EDASStompSettingsInMemoryAdapter >> user: aString [
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> values: aSymbol [
 
-	aSymbol = #errorStrategyName
-		ifTrue: [ ^ self availableErrorStrategies ]
-		ifFalse: [ ^ OrderedCollection new ]
+	^ aSymbol = #errorStrategyName
+		ifTrue: [ self availableErrorStrategies ]
+		ifFalse: [ OrderedCollection new ]
 ]

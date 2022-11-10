@@ -138,19 +138,7 @@ EDASMongodbSettingsJsonAdapter >> user: anObject [
 { #category : #accessing }
 EDASMongodbSettingsJsonAdapter >> values: aSymbol [
 
-	^ aSymbol = #authenticationMechanism
-		ifTrue: [ 
-			Dictionary new
-				at:
-					#'pharoeda.settings.adapters.mongodb.authenticationMechanism.scramsha256'
-						translated
-				put: #'SCRAM-SHA-256';
-				at:
-					#'pharoeda.settings.adapters.mongodb.authenticationMechanism.mongodbcr'
-						translated
-				put: #'MONGODB-CR';
-				associations ]
-		ifFalse: [ OrderedCollection new ]
+	^ EDASMongodbSettingsInMemoryAdapter new values: aSymbol
 ]
 
 { #category : #accessing }

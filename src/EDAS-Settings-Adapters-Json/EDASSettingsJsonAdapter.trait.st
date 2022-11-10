@@ -33,11 +33,11 @@ EDASSettingsJsonAdapter classSide >> forEnvironment: anEnvironment withApp: anED
 { #category : #'instance creation' }
 EDASSettingsJsonAdapter classSide >> fromFile: aFileReference under: aLabel for: aString withApp: anEDAApplication [
 
-	| result json stomp |
+	| result json entries |
 	result := self withApp: anEDAApplication.
 	json := (NeoJSONReader on: aFileReference readStream) next.
-	stomp := (json at: aLabel) at: aString.
-	stomp keysAndValuesDo: [ :k :v | result instVarNamed: k put: v ].
+	entries := (json at: aLabel) at: aString.
+	entries keysAndValuesDo: [ :k :v | result instVarNamed: k put: v ].
 	^ result
 ]
 
