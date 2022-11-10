@@ -28,6 +28,12 @@ Class {
 	#category : #'EDAS-Settings-Adapters-Json'
 }
 
+{ #category : #testing }
+EDASMongodbProjectionsSettingsJsonAdapter class >> description [
+
+	^ #'pharoeda.settings.adapters.projections.mongodb.json.description'
+]
+
 { #category : #metadata }
 EDASMongodbProjectionsSettingsJsonAdapter class >> edaPort [
 
@@ -43,6 +49,18 @@ EDASMongodbProjectionsSettingsJsonAdapter class >> fromFile: aFileReference with
 		  fromFile: aFileReference
 		  under: 'projections'
 		  withApp: anEDAApplication
+]
+
+{ #category : #testing }
+EDASMongodbProjectionsSettingsJsonAdapter class >> icon [
+
+	^ EDACIconProvider new iconNamed: #projections orElse: #comments
+]
+
+{ #category : #testing }
+EDASMongodbProjectionsSettingsJsonAdapter class >> label [
+
+	^ #'pharoeda.settings.adapters.projections.mongodb.label'
 ]
 
 { #category : #'as yet unclassified' }
@@ -223,7 +241,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> port [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.port.label'
 	withDescription:
-	#'pharoeda.settings.adapters.mongodb.port.description' icon: #host
+	#'pharoeda.settings.adapters.mongodb.port.description' icon: #port
 	atPosition: 2 readOnly: false multiple: false>
 	^ port ifNil: [ 27017 ]
 ]

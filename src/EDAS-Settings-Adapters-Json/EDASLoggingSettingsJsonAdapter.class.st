@@ -9,6 +9,12 @@ Class {
 	#category : #'EDAS-Settings-Adapters-Json'
 }
 
+{ #category : #testing }
+EDASLoggingSettingsJsonAdapter class >> description [
+
+	^ #'pharoeda.settings.ports.logging.description'
+]
+
 { #category : #metadata }
 EDASLoggingSettingsJsonAdapter class >> edaPort [
 
@@ -24,6 +30,18 @@ EDASLoggingSettingsJsonAdapter class >> fromFile: aFileReference withApp: anEDAA
 	entries := (json at: 'logging').
 	entries keysAndValuesDo: [ :k :v | result instVarNamed: k put: v ].
 	^ result
+]
+
+{ #category : #testing }
+EDASLoggingSettingsJsonAdapter class >> icon [
+
+	^ EDACIconProvider new iconNamed: #logging orElse: #comments
+]
+
+{ #category : #testing }
+EDASLoggingSettingsJsonAdapter class >> label [
+
+	^ #'pharoeda.settings.ports.logging.label'
 ]
 
 { #category : #accessing }

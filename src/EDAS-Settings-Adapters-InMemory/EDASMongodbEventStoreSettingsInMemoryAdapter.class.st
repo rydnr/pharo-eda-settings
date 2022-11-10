@@ -69,11 +69,10 @@ EDASMongodbEventStoreSettingsInMemoryAdapter >> availableAuthenticationMechanism
 { #category : #accessing }
 EDASMongodbEventStoreSettingsInMemoryAdapter >> database [
 
-	<edaSettings:
-	#'pharoeda.settings.adapters.mongodb.database.label'
+	<edaSettings: #'pharoeda.settings.adapters.mongodb.database.label'
 	withDescription:
-	#'pharoeda.settings.adapters.mongodb.database.description'
-	icon: #eventstore atPosition: 5 readOnly: false multiple: false>
+	#'pharoeda.settings.adapters.mongodb.database.description' icon:
+	#database atPosition: 5 readOnly: false multiple: false>
 	^ super database
 ]
 
