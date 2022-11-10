@@ -1,6 +1,6 @@
 Class {
 	#name : #EDASMongoProjectionSettingsInMemoryAdapter,
-	#superclass : #EDASMongoSettingsInMemoryAdapter,
+	#superclass : #EDASMongodbSettingsInMemoryAdapter,
 	#classTraits : 'EDASProjectionSettingsPort classTrait',
 	#instVars : [
 		'concurrentSynchronization',

@@ -180,7 +180,7 @@
             "label": "Command Listener",
             "description": "Customize the Stomp settings.",
             "json": {
-              "description": "Stomp values from config/[environment].json"
+              "description": "Stomp values from config/[environment].json."
             },
             "queue": {
               "label": "Queue",
@@ -204,7 +204,7 @@
             "label": "Event Publisher",
             "description": "Customize the Stomp settings.",
             "json": {
-              "description": "Stomp values from config/[environment].json"
+              "description": "Stomp values from config/[environment].json."
             },
             "exchange": {
               "label": "Exchange",
@@ -227,7 +227,10 @@
         "event_store": {
           "mongodb": {
             "label": "Event store",
-            "description": "Customize the MongoDB connection."
+            "description": "Customize the MongoDB connection.",
+            "json": {
+              "description": "MongoDB values from config/[environment].json."
+            }
           }
         }
       }

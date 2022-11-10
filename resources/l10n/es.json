@@ -206,7 +206,7 @@
             "label": "Publicador de eventos",
             "description": "Personalice la configuración Stomp.",
             "json": {
-              "description": "Valores obtenidos de config/[entorno].json."
+              "description": "Valores Stomp obtenidos de config/[entorno].json."
             },
             "exchange": {
               "label": "Exchange",
@@ -229,7 +229,10 @@
         "event_store": {
           "mongodb": {
             "label": "Almacén de eventos",
-            "description": "Personalice la conexión a MongoDB."
+            "description": "Personalice la conexión a MongoDB.",
+            "json": {
+              "description": "Valores de MongoDB obtenidos de config/[entorno].json."
+            }
           }
         }
       }

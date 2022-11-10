@@ -1,47 +1,47 @@
 Class {
-	#name : #EDASMongoEventStoreSettingsInMemoryAdapter,
-	#superclass : #EDASMongoSettingsInMemoryAdapter,
+	#name : #EDASMongodbEventStoreSettingsInMemoryAdapter,
+	#superclass : #EDASMongodbSettingsInMemoryAdapter,
 	#traits : 'EDASEventStoreSettingsPort',
 	#classTraits : 'EDASEventStoreSettingsPort classTrait',
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
 
 { #category : #testing }
-EDASMongoEventStoreSettingsInMemoryAdapter class >> accepts: anEDAApplication [
+EDASMongodbEventStoreSettingsInMemoryAdapter class >> accepts: anEDAApplication [
 	^ true
 ]
 
 { #category : #metadata }
-EDASMongoEventStoreSettingsInMemoryAdapter class >> availableAuthenticationMechanisms [
+EDASMongodbEventStoreSettingsInMemoryAdapter class >> availableAuthenticationMechanisms [
 
 	^ OrderedCollection with: 'SCRAM-SHA-256' with: 'MONGODB-CR'
 ]
 
 { #category : #testing }
-EDASMongoEventStoreSettingsInMemoryAdapter class >> description [
+EDASMongodbEventStoreSettingsInMemoryAdapter class >> description [
 
 	^ #'pharoeda.settings.adapters.event_store.mongodb.description'
 ]
 
 { #category : #testing }
-EDASMongoEventStoreSettingsInMemoryAdapter class >> label [
+EDASMongodbEventStoreSettingsInMemoryAdapter class >> label [
 
 	^ #'pharoeda.settings.adapters.event_store.mongodb.label'
 ]
 
 { #category : #metadata }
-EDASMongoEventStoreSettingsInMemoryAdapter class >> portLabel [
+EDASMongodbEventStoreSettingsInMemoryAdapter class >> portLabel [
 
 	^ #'pharoeda.settings.ports.event_store.mongodb.label'
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter class >> priority [
+EDASMongodbEventStoreSettingsInMemoryAdapter class >> priority [
 	^ 0
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> authenticationMechanism [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> authenticationMechanism [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.authenticationMechanism.label'
@@ -52,13 +52,13 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> authenticationMechanism [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> availableAuthenticationMechanisms [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> availableAuthenticationMechanisms [
 
 	^ self class availableAuthenticationMechanisms
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> database [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> database [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.database.label'
@@ -69,7 +69,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> database [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> debug [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> debug [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.debug.label'
 	withDescription:
@@ -79,7 +79,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> debug [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> enableReplication [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> enableReplication [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.enableReplication.label'
@@ -90,7 +90,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> enableReplication [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> enableSingleton [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> enableSingleton [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.enableSingleton.label'
@@ -101,7 +101,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> enableSingleton [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> ensuringCurrentOnSave [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> ensuringCurrentOnSave [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.ensuringCurrentOnSave.label'
@@ -112,7 +112,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> ensuringCurrentOnSave [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> ensuringCurrentReferencesOnQueries [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> ensuringCurrentReferencesOnQueries [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.ensuringCurrentReferencesOnQueries.label'
@@ -123,7 +123,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> ensuringCurrentReferencesOnQueries
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> forceEager [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> forceEager [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.forceEager.label'
@@ -134,7 +134,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> forceEager [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> host [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> host [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.host.label'
 	withDescription:
@@ -145,7 +145,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> host [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> lazySynchronize [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> lazySynchronize [
 
 	<edaSettings:
 	#'pharoeda.settings.adapters.mongodb.lazySynchronize.label'
@@ -156,7 +156,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> lazySynchronize [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> password [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> password [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.password.label'
 	withDescription:
@@ -166,7 +166,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> password [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> port [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> port [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.port.label'
 	withDescription:
@@ -176,13 +176,18 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> port [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> tls [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> tls [
 
+
+	<edaSettings: #'pharoeda.settings.adapters.mongodb.tls.label'
+	withDescription:
+	#'pharoeda.settings.adapters.mongodb.tls.description' icon: #host
+	atPosition: 7 readOnly: false multiple: false>
 	^ super tls
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> urls [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> urls [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.urls.label'
 	withDescription:
@@ -192,7 +197,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> urls [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> user [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> user [
 
 <edaSettings: #'pharoeda.settings.adapters.mongodb.user.label'
 	withDescription:
@@ -202,7 +207,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> user [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> values: aSymbol [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> values: aSymbol [
 
 	^ aSymbol = #authenticationMechanism
 		ifTrue: [ 
@@ -220,7 +225,7 @@ EDASMongoEventStoreSettingsInMemoryAdapter >> values: aSymbol [
 ]
 
 { #category : #accessing }
-EDASMongoEventStoreSettingsInMemoryAdapter >> wireProtocolEnabled [
+EDASMongodbEventStoreSettingsInMemoryAdapter >> wireProtocolEnabled [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.wireProtocolEnabled.label'
 	withDescription:

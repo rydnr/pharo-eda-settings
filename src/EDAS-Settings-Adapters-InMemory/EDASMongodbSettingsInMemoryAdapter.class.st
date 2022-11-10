@@ -1,5 +1,5 @@
 Class {
-	#name : #EDASMongoSettingsInMemoryAdapter,
+	#name : #EDASMongodbSettingsInMemoryAdapter,
 	#superclass : #Object,
 	#instVars : [
 		'host',
@@ -24,47 +24,47 @@ Class {
 }
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter class >> iconFor: arg1 in: arg2 [ 
+EDASMongodbSettingsInMemoryAdapter class >> iconFor: arg1 in: arg2 [ 
 	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> authenticationMechanism [
+EDASMongodbSettingsInMemoryAdapter >> authenticationMechanism [
 	^ authenticationMechanism
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> authenticationMechanism: anObject [
+EDASMongodbSettingsInMemoryAdapter >> authenticationMechanism: anObject [
 	authenticationMechanism := anObject
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> database [
+EDASMongodbSettingsInMemoryAdapter >> database [
 
 	^ database ifNil: [ '' ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> database: anObject [
+EDASMongodbSettingsInMemoryAdapter >> database: anObject [
 
 	database := anObject
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> debug [
+EDASMongodbSettingsInMemoryAdapter >> debug [
 
 	^ debug ifNil: [ true ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> debug: aBoolean [
+EDASMongodbSettingsInMemoryAdapter >> debug: aBoolean [
 	debug = aBoolean
 		ifTrue: [ ^ self ].
 	debug := aBoolean
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> doInitialize [
+EDASMongodbSettingsInMemoryAdapter >> doInitialize [
 
 	self urls: nil.
 	self tls: nil.
@@ -82,176 +82,176 @@ EDASMongoSettingsInMemoryAdapter >> doInitialize [
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> edaApplication [
+EDASMongodbSettingsInMemoryAdapter >> edaApplication [
 	^ edaApplication
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> edaApplication: anEDAApplication [
+EDASMongodbSettingsInMemoryAdapter >> edaApplication: anEDAApplication [
 	edaApplication := anEDAApplication
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> enableReplication [
+EDASMongodbSettingsInMemoryAdapter >> enableReplication [
 
 	^ enableReplication ifNil: [ false ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> enableReplication: aBoolean [
+EDASMongodbSettingsInMemoryAdapter >> enableReplication: aBoolean [
 	enableReplication = aBoolean
 		ifTrue: [ ^ self ].
 	enableReplication := aBoolean
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> enableSingleton [
+EDASMongodbSettingsInMemoryAdapter >> enableSingleton [
 
 	^ enableSingleton ifNil: [ false ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> enableSingleton: aBoolean [
+EDASMongodbSettingsInMemoryAdapter >> enableSingleton: aBoolean [
 	enableSingleton = aBoolean
 		ifTrue: [ ^ self ].
 	enableSingleton := aBoolean
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> ensuringCurrentOnSave [
+EDASMongodbSettingsInMemoryAdapter >> ensuringCurrentOnSave [
 
 	^ ensuringCurrentOnSave ifNil: [ false ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> ensuringCurrentOnSave: aBoolean [
+EDASMongodbSettingsInMemoryAdapter >> ensuringCurrentOnSave: aBoolean [
 	ensuringCurrentOnSave = aBoolean
 		ifTrue: [ ^ self ].
 	ensuringCurrentOnSave := aBoolean
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> ensuringCurrentReferencesOnQueries [
+EDASMongodbSettingsInMemoryAdapter >> ensuringCurrentReferencesOnQueries [
 
 	^ ensuringCurrentReferencesOnQueries ifNil: [ false ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> ensuringCurrentReferencesOnQueries: aBoolean [
+EDASMongodbSettingsInMemoryAdapter >> ensuringCurrentReferencesOnQueries: aBoolean [
 	ensuringCurrentReferencesOnQueries = aBoolean
 		ifTrue: [ ^ self ].
 	ensuringCurrentReferencesOnQueries := aBoolean
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> forceEager [
+EDASMongodbSettingsInMemoryAdapter >> forceEager [
 
 	^ forceEager ifNil: [ false ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> forceEager: aBoolean [
+EDASMongodbSettingsInMemoryAdapter >> forceEager: aBoolean [
 	forceEager = aBoolean
 		ifTrue: [ ^ self ].
 	forceEager := aBoolean
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> host [
+EDASMongodbSettingsInMemoryAdapter >> host [
 
 	^ host ifNil: [ '' ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> host: aString [
+EDASMongodbSettingsInMemoryAdapter >> host: aString [
 
 	^ host ifNil: [ 'localhost' ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> initialize [
+EDASMongodbSettingsInMemoryAdapter >> initialize [
 	super initialize.
 	self doInitialize
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> lazySynchronize [
+EDASMongodbSettingsInMemoryAdapter >> lazySynchronize [
 
 	^ lazySynchronize ifNil: [ true ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> lazySynchronize: aBoolean [
+EDASMongodbSettingsInMemoryAdapter >> lazySynchronize: aBoolean [
 	lazySynchronize = aBoolean
 		ifTrue: [ ^ self ].
 	lazySynchronize := aBoolean
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> password [
+EDASMongodbSettingsInMemoryAdapter >> password [
 
 	^ password ifNil: [ '' ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> password: anObject [
+EDASMongodbSettingsInMemoryAdapter >> password: anObject [
 	password := anObject
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> port [
+EDASMongodbSettingsInMemoryAdapter >> port [
 
 	^ port ifNil: [ 27017 ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> port: anObject [
+EDASMongodbSettingsInMemoryAdapter >> port: anObject [
 
 	port := anObject
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> tls [
+EDASMongodbSettingsInMemoryAdapter >> tls [
 
 	^ tls ifNil: [ false ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> tls: aBoolean [
+EDASMongodbSettingsInMemoryAdapter >> tls: aBoolean [
 	tls := aBoolean
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> urls [
+EDASMongodbSettingsInMemoryAdapter >> urls [
 
 	^ urls ifNil: [ '' ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> urls: aString [
+EDASMongodbSettingsInMemoryAdapter >> urls: aString [
 	urls := aString
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> user [
+EDASMongodbSettingsInMemoryAdapter >> user [
 
 	^ user ifNil: [ '' ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> user: anObject [
+EDASMongodbSettingsInMemoryAdapter >> user: anObject [
 
 	user := anObject
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> wireProtocolEnabled [
+EDASMongodbSettingsInMemoryAdapter >> wireProtocolEnabled [
 
 	^ wireProtocolEnabled ifNil: [ false ]
 ]
 
 { #category : #accessing }
-EDASMongoSettingsInMemoryAdapter >> wireProtocolEnabled: aBoolean [
+EDASMongodbSettingsInMemoryAdapter >> wireProtocolEnabled: aBoolean [
 	wireProtocolEnabled = aBoolean
 		ifTrue: [ ^ self ].
 	wireProtocolEnabled := aBoolean
