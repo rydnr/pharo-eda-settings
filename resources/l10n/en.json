@@ -37,21 +37,21 @@
           }
         },
         "commandListener": {
-          "label": "Command listener",
+          "label": "Command Listener",
           "description": "The type of settings adapter used to determine the command listener.",
           "stomp": {
             "label": "Stomp"
           }
         },
         "eventPublisher": {
-          "label": "Event publisher",
+          "label": "Event Publisher",
           "description": "The type of settings adapter used to determine the event publisher.",
           "stomp": {
             "label": "Stomp"
           }
         },
         "eventStore": {
-          "label": "Event store",
+          "label": "Event Store",
           "description": "The type of settings adapter used to determine the event store.",
           "mongodb": {
             "label": "MongoDB"
@@ -233,7 +233,7 @@
         },
         "eventStore": {
           "mongodb": {
-            "label": "Event store",
+            "label": "Event Store",
             "description": "Customize the MongoDB connection.",
             "json": {
               "description": "MongoDB values from config/[environment].json."
