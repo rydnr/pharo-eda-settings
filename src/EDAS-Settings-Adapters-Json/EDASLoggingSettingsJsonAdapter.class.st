@@ -9,6 +9,12 @@ Class {
 	#category : #'EDAS-Settings-Adapters-Json'
 }
 
+{ #category : #metadata }
+EDASLoggingSettingsJsonAdapter class >> edaPort [
+
+	^ EDASLoggingSettingsInMemoryAdapter
+]
+
 { #category : #'instance creation' }
 EDASLoggingSettingsJsonAdapter class >> fromFile: aFileReference withApp: anEDAApplication [
 
