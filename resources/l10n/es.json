@@ -56,6 +56,13 @@
           "mongodb": {
             "label": "MongoDB"
           }
+        },
+        "projections": {
+          "label": "Proyecciones",
+          "description": "El tipo de adaptador de configuración usado para definir la persistencia de las proyecciones.",
+          "mongodb": {
+            "label": "MongoDB"
+          }
         }
       },
       "adapters": {
@@ -229,6 +236,27 @@
         "event_store": {
           "mongodb": {
             "label": "Almacén de eventos",
+            "description": "Personalice la conexión a MongoDB.",
+            "json": {
+              "description": "Valores de MongoDB obtenidos de config/[entorno].json."
+            }
+          }
+        },
+        "projections": {
+          "enableSynchronization": {
+            "label": "Sincronización",
+            "description": "Habilitar la sincronización."
+          },
+          "concurrentSynchronization": {
+            "label": "Sincronización concurrente",
+            "description": "Si la sincronización puede hacerse concurrentemente mientras se ejecuta la aplicación."
+          },
+          "headless": {
+            "label": "Invisible",
+            "description": "Si el proceso de sincronización es visible o no."
+          },
+          "mongodb": {
+            "label": "Proyecciones",
             "description": "Personalice la conexión a MongoDB.",
             "json": {
               "description": "Valores de MongoDB obtenidos de config/[entorno].json."

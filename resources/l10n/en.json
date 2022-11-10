@@ -56,6 +56,13 @@
           "mongodb": {
             "label": "MongoDB"
           }
+        },
+        "projections": {
+          "label": "Projections",
+          "description": "The type of settings adapter used to determine the projections database.",
+          "mongodb": {
+            "label": "MongoDB"
+          }
         }
       },
       "adapters": {
@@ -227,6 +234,27 @@
         "event_store": {
           "mongodb": {
             "label": "Event store",
+            "description": "Customize the MongoDB connection.",
+            "json": {
+              "description": "MongoDB values from config/[environment].json."
+            }
+          }
+        },
+        "projections": {
+          "enableSynchronization": {
+            "label": "Synchronization",
+            "description": "Enable synchronization."
+          },
+          "concurrentSynchronization": {
+            "label": "Concurrent synchronization",
+            "description": "Whether the synchronization can run in parallel while the application is running."
+          },
+          "headless": {
+            "label": "Headless",
+            "description": "Whether the synchronization process is visible or not."
+          },
+          "mongodb": {
+            "label": "Projections",
             "description": "Customize the MongoDB connection.",
             "json": {
               "description": "MongoDB values from config/[environment].json."
