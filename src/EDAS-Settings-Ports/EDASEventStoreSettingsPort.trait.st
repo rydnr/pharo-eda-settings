@@ -28,7 +28,7 @@ EDASEventStoreSettingsPort classSide >> edaPort [
 
 	<edaPort: #'pharoeda.settings.ports.eventStore.label'
 	withDescription: #'pharoeda.settings.ports.eventStore.description'
-	icon: #eventstore atPosition: 4>
+	icon: #database atPosition: 4>
 	^ self
 ]
 

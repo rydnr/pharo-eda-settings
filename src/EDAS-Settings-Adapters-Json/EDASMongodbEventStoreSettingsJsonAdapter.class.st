@@ -38,7 +38,7 @@ EDASMongodbEventStoreSettingsJsonAdapter class >> fromFile: aFileReference withA
 { #category : #testing }
 EDASMongodbEventStoreSettingsJsonAdapter class >> icon [
 
-	^ EDACIconProvider new iconNamed: #eventstore orElse: #comments
+	^ EDACIconProvider new iconNamed: #database orElse: #comments
 ]
 
 { #category : #testing }
