@@ -69,7 +69,12 @@
           "description": "El tipo de adaptador de configuración usado para personalizar las trazas de la aplicación.",
           "level": {
             "label": "Nivel",
-            "description": "El nivel de trazas."
+            "description": "El nivel de trazas.",
+            "trace": "Trazas",
+            "debug": "Depuración",
+            "info": "Informativas",
+            "warning": "Avisos",
+            "error": "Errores"
           },
           "manual": {
             "label": "Manual"
@@ -276,15 +281,6 @@
             "json": {
               "description": "Valores de MongoDB obtenidos de config/[entorno].json."
             }
-          }
-        },
-        "logging": {
-          "level": {
-            "trace": "Trazas",
-            "debug": "Depuración",
-            "info": "Informativas",
-            "warning": "Avisos",
-            "error": "Errores"
           }
         }
       }

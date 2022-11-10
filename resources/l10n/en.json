@@ -69,7 +69,12 @@
           "description": "The type of settings adapter used to customize logging.",
           "level": {
             "label": "Level",
-            "description": "The logging level."
+            "description": "The logging level.",
+            "trace": "Trace",
+            "debug": "Debug",
+            "info": "Info",
+            "warning": "Warning",
+            "error": "Error"
           },
           "manual": {
             "label": "Manual"
@@ -274,15 +279,6 @@
             "json": {
               "description": "MongoDB values from config/[environment].json."
             }
-          }
-        },
-        "logging": {
-          "level": {
-            "trace": "Trace",
-            "debug": "Debug",
-            "info": "Info",
-            "warning": "Warning",
-            "error": "Error"
           }
         }
       }
