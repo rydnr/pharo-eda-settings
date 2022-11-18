@@ -74,7 +74,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> authenticationMechanism [
 		  authenticationMechanismsDict associations first value ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> database [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.database.label'
@@ -84,7 +84,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> database [
 	^ database ifNil: [ '' ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> debug [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.debug.label'
@@ -94,7 +94,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> debug [
 	^ debug ifNil: [ true ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> enableReplication [
 
 	<edaSettings:
@@ -105,7 +105,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> enableReplication [
 	^ enableReplication ifNil: [ false ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> enableSingleton [
 
 	<edaSettings:
@@ -122,7 +122,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> enableSingleton: anObject [
 	enableSingleton := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> ensuringCurrentOnSave [
 
 	<edaSettings:
@@ -133,7 +133,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> ensuringCurrentOnSave [
 	^ ensuringCurrentOnSave ifNil: [ true ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> ensuringCurrentReferencesOnQueries [
 
 	<edaSettings:
@@ -144,7 +144,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> ensuringCurrentReferencesOnQueries [
 	^ ensuringCurrentReferencesOnQueries ifNil: [ true ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> forceEager [
 
 	<edaSettings:
@@ -155,7 +155,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> forceEager [
 	^ forceEager ifNil: [ false ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> host [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.host.label'
@@ -177,7 +177,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> keyIn: aSymbol forValue: aValue [
 	^ EDASMongodbEventStoreSettingsInMemoryAdapter new keyIn: aSymbol forValue: aValue
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> lazySynchronize [
 
 	<edaSettings:
@@ -188,7 +188,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> lazySynchronize [
 	^ lazySynchronize ifNil: [ true ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> password [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.password.label'
@@ -198,7 +198,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> password [
 	^ password ifNil: [ '' ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> port [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.port.label'
@@ -208,7 +208,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> port [
 	^ port ifNil: [ 27017 ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> tls [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.tls.label'
@@ -218,7 +218,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> tls [
 	^ tls ifNil: [ false ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> urls [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.urls.label'
@@ -228,7 +228,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> urls [
 	^ urls ifNil: [ '' ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> user [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.user.label'
@@ -238,7 +238,7 @@ EDASMongodbEventStoreSettingsJsonAdapter >> user [
 	^ user ifNil: [ '' ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbEventStoreSettingsJsonAdapter >> wireProtocolEnabled [
 
 	<edaSettings:

@@ -63,7 +63,7 @@ EDASMongodbProjectionsSettingsJsonAdapter class >> label [
 	^ #'pharoeda.settings.adapters.projections.mongodb.label'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> authenticationMechanism [
 
 	<edaSettings:
@@ -91,7 +91,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> concurrentSynchronization: anObject
 	concurrentSynchronization := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> database [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.database.label'
@@ -101,7 +101,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> database [
 	^ database ifNil: [ '' ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> debug [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.debug.label'
@@ -111,7 +111,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> debug [
 	^ debug ifNil: [ true ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> enableReplication [
 
 	<edaSettings:
@@ -122,7 +122,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> enableReplication [
 	^ enableReplication ifNil: [ false ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> enableSingleton [
 
 	<edaSettings:
@@ -150,7 +150,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> enableSynchronization: anObject [
 	enableSynchronization := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> ensuringCurrentOnSave [
 
 	<edaSettings:
@@ -161,7 +161,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> ensuringCurrentOnSave [
 	^ ensuringCurrentOnSave ifNil: [ true ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> ensuringCurrentReferencesOnQueries [
 
 	<edaSettings:
@@ -172,7 +172,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> ensuringCurrentReferencesOnQueries 
 	^ ensuringCurrentReferencesOnQueries ifNil: [ true ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> forceEager [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.forceEager.label'
@@ -199,7 +199,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> headlessMode: anObject [
 	headlessMode := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> host [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.host.label'
@@ -223,7 +223,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> keyIn: aSymbol forValue: aValue [
 		  forValue: aValue
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> lazySynchronize [
 
 	<edaSettings:
@@ -234,7 +234,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> lazySynchronize [
 	^ lazySynchronize ifNil: [ true ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> password [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.password.label'
@@ -244,7 +244,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> password [
 	^ password ifNil: [ '' ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> port [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.port.label'
@@ -271,7 +271,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> strategy: anObject [
 	strategy := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> tls [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.tls.label'
@@ -281,7 +281,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> tls [
 	^ tls ifNil: [ false ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> urls [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.urls.label'
@@ -291,7 +291,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> urls [
 	^ urls ifNil: [ '' ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> user [
 
 	<edaSettings: #'pharoeda.settings.adapters.mongodb.user.label'
@@ -308,7 +308,7 @@ EDASMongodbProjectionsSettingsJsonAdapter >> values: aSymbol [
 		  values: aSymbol
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 EDASMongodbProjectionsSettingsJsonAdapter >> wireProtocolEnabled [
 
 	<edaSettings:

@@ -29,15 +29,6 @@ EDASMongodbProjectionsSettingsInMemoryAdapter class >> description [
 	^ #'pharoeda.settings.adapters.projections.mongodb.description'
 ]
 
-{ #category : #metadata }
-EDASMongodbProjectionsSettingsInMemoryAdapter class >> edaPort [
-
-	<edaPort: #'pharoeda.settings.ports.projections.label'
-	withDescription: #'pharoeda.settings.ports.projections.description'
-	icon: #projections atPosition: 5>
-	^ self
-]
-
 { #category : #accessing }
 EDASMongodbProjectionsSettingsInMemoryAdapter class >> label [
 

@@ -23,15 +23,6 @@ EDASMongodbEventStoreSettingsInMemoryAdapter class >> description [
 	^ #'pharoeda.settings.adapters.eventStore.mongodb.description'
 ]
 
-{ #category : #metadata }
-EDASMongodbEventStoreSettingsInMemoryAdapter class >> edaPort [
-
-	<edaPort: #'pharoeda.settings.ports.eventStore.label'
-	withDescription: #'pharoeda.settings.ports.eventStore.description'
-	icon: #database atPosition: 4>
-	^ self
-]
-
 { #category : #testing }
 EDASMongodbEventStoreSettingsInMemoryAdapter class >> label [
 
