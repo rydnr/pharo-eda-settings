@@ -3,10 +3,7 @@ Extension { #name : #SettingTreeBuilder }
 { #category : #'*EDAS-Settings' }
 SettingTreeBuilder >> pharoedasettings [
 
-	"Process a <systemsettings> pragma"
+	"Process a <pharoedasettings> pragma"
 
-	<settingPragmaProcessor>
-	currentPragma methodClass instanceSide
-		perform: currentPragma methodSelector
-		with: self
+	^ self systemsettings
 ]
