@@ -12,9 +12,10 @@ Class {
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
 
-{ #category : #testing }
-EDASLoggingSettingsInMemoryAdapter class >> accepts: anEDAApplication [
-	^ true
+{ #category : #'as yet unclassified' }
+EDASLoggingSettingsInMemoryAdapter class >> accepts: aPort inApp: anEDAApplication [
+
+	^ aPort = EDASLoggingSettingsPort
 ]
 
 { #category : #testing }

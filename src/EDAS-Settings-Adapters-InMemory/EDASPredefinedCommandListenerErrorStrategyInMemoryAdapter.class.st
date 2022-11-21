@@ -10,10 +10,10 @@ Class {
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
 
-{ #category : #testing }
-EDASPredefinedCommandListenerErrorStrategyInMemoryAdapter class >> accepts: aPort [
+{ #category : #'as yet unclassified' }
+EDASPredefinedCommandListenerErrorStrategyInMemoryAdapter class >> accepts: aPort inApp: anEDAApplication [
 
-	^ aPort = EDASCommandListenerErrorStrategySettingsPort 
+	^ aPort = EDASCommandListenerErrorStrategySettingsPort
 ]
 
 { #category : #resolving }

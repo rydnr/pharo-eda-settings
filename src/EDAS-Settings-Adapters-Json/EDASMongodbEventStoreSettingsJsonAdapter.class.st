@@ -1,8 +1,8 @@
 Class {
 	#name : #EDASMongodbEventStoreSettingsJsonAdapter,
 	#superclass : #Object,
-	#traits : 'EDASSettingsPort + EDASEventStoreSettingsPort + EDASMongodbSettingsJsonAdapter',
-	#classTraits : 'EDASSettingsPort classTrait + EDASEventStoreSettingsPort classTrait + EDASMongodbSettingsJsonAdapter classTrait',
+	#traits : 'EDASSettingsPort + EDASEventStoreSettingsPort + EDASMongodbSettingsJsonAdapter + EDASMongodbEventStoreSettingsAdapter',
+	#classTraits : 'EDASSettingsPort classTrait + EDASEventStoreSettingsPort classTrait + EDASMongodbSettingsJsonAdapter classTrait + EDASMongodbEventStoreSettingsAdapter classTrait',
 	#instVars : [
 		'authenticationMechanismsDict'
 	],

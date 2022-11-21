@@ -12,10 +12,10 @@ Class {
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
 
-{ #category : #testing }
-EDASStompEventPublisherSettingsInMemoryAdapter class >> accepts: aPort [
+{ #category : #'as yet unclassified' }
+EDASStompEventPublisherSettingsInMemoryAdapter class >> accepts: aPort inApp: anEDAApplication [
 
-	^ true
+	^ aPort = EDASEventPublisherSettingsPort
 ]
 
 { #category : #accessing }

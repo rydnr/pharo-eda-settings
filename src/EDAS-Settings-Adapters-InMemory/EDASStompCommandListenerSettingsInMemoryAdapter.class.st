@@ -14,8 +14,8 @@ Class {
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
 
-{ #category : #testing }
-EDASStompCommandListenerSettingsInMemoryAdapter class >> accepts: aPort [
+{ #category : #'as yet unclassified' }
+EDASStompCommandListenerSettingsInMemoryAdapter class >> accepts: aPort inApp: anEDAApplication [
 
 	^ aPort = EDASCommandListenerSettingsPort
 ]

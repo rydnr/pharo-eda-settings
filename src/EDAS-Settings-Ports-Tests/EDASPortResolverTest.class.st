@@ -5,17 +5,6 @@ Class {
 }
 
 { #category : #tests }
-EDASPortResolverTest >> testAvailableAdaptersFor [
-
-	| sut |
-	sut := EDASPortResolver new.
-	self
-		assert: (sut availableAdaptersFor: #environment)
-		equals:
-		(OrderedCollection withAll: (sut availableAdaptersForPort: EDASEnvironmentSettingsPort))
-]
-
-{ #category : #tests }
 EDASPortResolverTest >> testPortAdapterClassSymbol [
 
 	| sut |
@@ -31,6 +20,6 @@ EDASPortResolverTest >> testPortDescription [
 	| sut |
 	sut := EDASPortResolver new.
 	self
-		assert: (sut portDescription: #environment)
-		equals: 'Environment'
+		assert: (sut portDescription: EDASEnvironmentSettingsPort class)
+		equals: #'pharoeda.settings.ports.environment.description'
 ]

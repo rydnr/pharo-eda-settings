@@ -12,9 +12,10 @@ Class {
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
 
-{ #category : #testing }
-EDASMongodbProjectionsSettingsInMemoryAdapter class >> accepts: anEDAApplication [
-	^ true
+{ #category : #'as yet unclassified' }
+EDASMongodbProjectionsSettingsInMemoryAdapter class >> accepts: aPort inApp: anEDAApplication [
+
+	^ aPort = EDASProjectionsSettingsPort
 ]
 
 { #category : #accessing }

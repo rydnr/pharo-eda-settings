@@ -14,8 +14,9 @@ EDASEnvironmentSwitchesToEventStoreJsonAdapter class >> handleEnvironmentChanged
 		                ifTrue: [ anEvent newValue ]
 		                ifFalse: [ 
 		                self translateToEnglish: anEvent newValue ].
-	(EDASMongodbEventStoreSettingsJsonAdapter supportsEnvironment:
-		 englishValue)
+	(EDASMongodbEventStoreSettingsJsonAdapter
+		 supportsEnvironment: englishValue
+		 forApp: anEvent edaApplication)
 		ifTrue: [ 
 			anEvent edaApplication portSettings eventStoreSettings:
 				(EDASMongodbEventStoreSettingsJsonAdapter

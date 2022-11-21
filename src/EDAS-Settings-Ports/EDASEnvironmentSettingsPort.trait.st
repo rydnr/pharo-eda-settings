@@ -52,12 +52,13 @@ EDASEnvironmentSettingsPort classSide >> settingsBlock [
 ]
 
 { #category : #testing }
-EDASEnvironmentSettingsPort >> availableEnvironments [
+EDASEnvironmentSettingsPort >> availableEnvironments: anEDAApplication [
+
 	self subclassResponsibility
 ]
 
 { #category : #testing }
 EDASEnvironmentSettingsPort >> values: aSymbol [
 
-	^ self availableEnvironments
+	^ self availableEnvironments: self edaApplication
 ]

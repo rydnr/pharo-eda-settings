@@ -36,9 +36,18 @@ EDASSettings class >> adapterSettingsOn: aBuilder for: aPort implementedBy: anAd
 ]
 
 { #category : #settings }
+EDASSettings class >> default [
+
+	self open.
+	(self currentWorld submorphs select: [ :w | 
+		 w model class = SettingBrowser ]) collect: [ :w | w delete ]
+]
+
+{ #category : #settings }
 EDASSettings class >> edaSettingsOn: aBuilder [
 
 	<systemsettings>
+	<pharoedasettings>
 	| root rootSymbol iconProvider |
 	rootSymbol := #edaApps.
 	root := aBuilder group: rootSymbol.
@@ -112,6 +121,12 @@ EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymb
 		order: ports size + 1
 ]
 
+{ #category : #'class initialization' }
+EDASSettings class >> initialize [
+
+	"self default"
+]
+
 { #category : #settings }
 EDASSettings class >> multiAttributeAdapterSettingsOn: aBuilder for: aPort implementedBy: anAdapter under: aParent on: app order: anInteger [
 
@@ -141,12 +156,18 @@ EDASSettings class >> multiAttributeAdapterSettingsOn: aBuilder for: aPort imple
 ]
 
 { #category : #settings }
+EDASSettings class >> open [
+
+	(SettingBrowser forKeywords: #('pharoedasettings')) open
+]
+
+{ #category : #settings }
 EDASSettings class >> port: aPort settingsOn: aBuilder under: aParent on: app order: anInteger [
 
 	| values portResolver |
 	portResolver := EDASPortResolver new.
 	values := OrderedCollection withAll:
-		          (((portResolver availableAdaptersForPort: aPort) collect: [ 
+		          (((portResolver availableAdaptersForPort: aPort andApp: app) collect: [ 
 			            :adapterClass | 
 			            adapterClass portLabel translated -> adapterClass ]) 
 			           sorted: [ :a :b | a < b ]).
@@ -164,14 +185,14 @@ EDASSettings class >> port: aPort settingsOn: aBuilder under: aParent on: app or
 ]
 
 { #category : #settings }
-EDASSettings class >> portEntries [
+EDASSettings class >> portEntriesForApp: anEDAApplication [
 
 	| portResolver result |
 	result := OrderedCollection new.
 	portResolver := EDASPortResolver new.
 	portResolver availablePorts keysAndValuesDo: [ :i :p | 
 		result add: (OrderedCollection withAll:
-				 (((portResolver availableAdaptersForPort: p) collect: [ 
+				 (((portResolver availableAdaptersForPort: p andApp: anEDAApplication) collect: [ 
 					   :adapterClass | 
 					   adapterClass description translated -> adapterClass ]) 
 					  sorted: [ :a :b | a < b ])) ].

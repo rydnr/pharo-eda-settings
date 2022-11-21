@@ -15,28 +15,33 @@ EDASPortResolverByPriorityAdapter class >> description [
 ]
 
 { #category : #'as yet unclassified' }
-EDASPortResolverByPriorityAdapter >> availableCommandListenerSettingsAdapters [
-	^ self availableAdaptersForPort: EDASCommandListenerSettingsPort
+EDASPortResolverByPriorityAdapter >> availableCommandListenerSettingsAdaptersForApp: anEDAApplication [
+
+	^ self availableAdaptersForPort: EDASCommandListenerSettingsPort andApp: anEDAApplication
 ]
 
 { #category : #logic }
-EDASPortResolverByPriorityAdapter >> availableEventPublisherSettingsAdapters [
-	^ self availableAdaptersForPort: EDASEventPublisherSettingsPort
+EDASPortResolverByPriorityAdapter >> availableEventPublisherSettingsAdaptersForApp: anEDAApplication [
+
+	^ self availableAdaptersForPort: EDASEventPublisherSettingsPort andApp: anEDAApplication
 ]
 
 { #category : #logic }
-EDASPortResolverByPriorityAdapter >> availableEventStoreSettingsAdapters [
-	^ self availableAdaptersForPort: EDASEventStoreSettingsPort
+EDASPortResolverByPriorityAdapter >> availableEventStoreSettingsAdaptersForApp: anEDAApplication [
+
+	^ self availableAdaptersForPort: EDASEventStoreSettingsPort andApp: anEDAApplication
 ]
 
 { #category : #logic }
-EDASPortResolverByPriorityAdapter >> availableLoggingSettingsAdapters [
-	^ self availableAdaptersForPort: EDASLoggingSettingsPort
+EDASPortResolverByPriorityAdapter >> availableLoggingSettingsAdaptersForApp: anEDAApplication [
+
+	^ self availableAdaptersForPort: EDASLoggingSettingsPort andApp: anEDAApplication
 ]
 
 { #category : #logic }
-EDASPortResolverByPriorityAdapter >> availableProjectionsSettingsAdapters [
-	^ self availableAdaptersForPort: EDASProjectionsSettingsPort
+EDASPortResolverByPriorityAdapter >> availableProjectionsSettingsAdaptersForApp: anEDAApplication [
+
+	^ self availableAdaptersForPort: EDASProjectionsSettingsPort andApp: anEDAApplication
 ]
 
 { #category : #accessing }

@@ -11,9 +11,9 @@ Class {
 }
 
 { #category : #testing }
-EDASEnvironmentSettingsInMemoryAdapter class >> accepts: anEDAApplication [
+EDASEnvironmentSettingsInMemoryAdapter class >> accepts: aPort inApp: anEDAApplication [
 
-	^ true
+	^ aPort = EDASEnvironmentSettingsPort
 ]
 
 { #category : #metadata }

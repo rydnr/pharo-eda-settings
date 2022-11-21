@@ -10,7 +10,7 @@ Class {
 }
 
 { #category : #testing }
-EDASEnvironmentSettingsEnvVarAdapter class >> accepts: aPort [
+EDASEnvironmentSettingsEnvVarAdapter class >> accepts: aPort inApp: anEDAApplication [
 
 	^ aPort = EDASEnvironmentSettingsPort and: [ 
 		  (self getValueFor: self environmentVariableName orElse: nil)
@@ -33,7 +33,7 @@ EDASEnvironmentSettingsEnvVarAdapter class >> priority [
 	^ 50
 ]
 
-{ #category : #testing }
+{ #category : #'as yet unclassified' }
 EDASEnvironmentSettingsEnvVarAdapter >> availableEnvironments [ 
 	^ OrderedCollection with: (self currentEnvironment)
 ]

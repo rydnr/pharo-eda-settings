@@ -11,15 +11,16 @@ Class {
 }
 
 { #category : #testing }
-EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> accepts: aPort [
+EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> accepts: aPort inApp: anEDAApplication [
 
-	^ aPort = EDASEnvironmentSettingsPort and: [ self availableEnvironments isNotEmpty  ]
+	^ aPort = EDASEnvironmentSettingsPort and: [ 
+		  (self availableEnvironments: anEDAApplication) isNotEmpty ]
 ]
 
 { #category : #meta }
-EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> availableEnvironments [
+EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> availableEnvironments: anEDAApplication [
 
-	^ EDASStompCommandListenerSettingsJsonAdapter availableEnvironments 
+	^ (EDASStompCommandListenerSettingsJsonAdapter availableEnvironments: anEDAApplication)
 		  collect: [ :e | 
 			  ('pharoeda.settings.ports.environment.predefined.' , e) asSymbol
 				  translated -> e ]
@@ -49,19 +50,20 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter class >> priority [
 ]
 
 { #category : #meta }
-EDASPredefinedEnvironmentSettingsInMemoryAdapter >> availableEnvironments [
-	^ self class availableEnvironments 
+EDASPredefinedEnvironmentSettingsInMemoryAdapter >> availableEnvironments: anEDAApplication [
+
+	^ self class availableEnvironments: anEDAApplication
 ]
 
 { #category : #accessing }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
-	
+
 	<edaSettings: #'pharoeda.settings.adapters.environment.label'
 	withDescription:
 	#'pharoeda.settings.adapters.environment.description' icon:
-	#environment atPosition: 1 readOnly: false multiple: true>	
+	#environment atPosition: 1 readOnly: false multiple: true>
 	^ currentEnvironment ifNil: [ 
-		  self availableEnvironments
+		  (self availableEnvironments: self edaApplication)
 			  ifEmpty: [ '' ]
 			  ifNotEmpty: [ :c | c first value ] ]
 ]

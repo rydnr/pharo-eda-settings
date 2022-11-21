@@ -14,8 +14,7 @@ EDASEnvironmentSwitchesToLoggingJsonAdapter class >> handleEnvironmentChangedEve
 		                ifTrue: [ anEvent newValue ]
 		                ifFalse: [ 
 		                self translateToEnglish: anEvent newValue ].
-	(EDASLoggingSettingsJsonAdapter supportsEnvironment:
-		 englishValue)
+	(EDASLoggingSettingsJsonAdapter supportsEnvironment: englishValue forApp: anEvent edaApplication)
 		ifTrue: [ 
 			anEvent edaApplication portSettings loggingSettings:
 				(EDASLoggingSettingsJsonAdapter

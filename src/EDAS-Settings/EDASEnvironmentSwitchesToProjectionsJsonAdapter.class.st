@@ -15,7 +15,7 @@ EDASEnvironmentSwitchesToProjectionsJsonAdapter class >> handleEnvironmentChange
 		                ifFalse: [ 
 		                self translateToEnglish: anEvent newValue ].
 	(EDASMongodbProjectionsSettingsJsonAdapter supportsEnvironment:
-		 englishValue)
+		 englishValue forApp: anEvent edaApplication)
 		ifTrue: [ 
 			anEvent edaApplication portSettings projectionsSettings:
 				(EDASMongodbProjectionsSettingsJsonAdapter

@@ -29,7 +29,7 @@ EDASSettingsPort classSide >> >= anotherAdapterClass [
 ]
 
 { #category : #testing }
-EDASSettingsPort classSide >> accepts: anEDAApplication [
+EDASSettingsPort classSide >> accepts: aPort inApp: anEDAApplication [
 
 	^ false
 ]

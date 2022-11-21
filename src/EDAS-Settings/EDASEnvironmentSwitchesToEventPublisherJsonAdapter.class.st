@@ -15,7 +15,7 @@ EDASEnvironmentSwitchesToEventPublisherJsonAdapter class >> handleEnvironmentCha
 		                ifFalse: [ 
 		                self translateToEnglish: anEvent newValue ].
 	(EDASStompEventPublisherSettingsJsonAdapter supportsEnvironment:
-		 englishValue)
+		 englishValue forApp: anEvent edaApplication)
 		ifTrue: [ 
 			anEvent edaApplication portSettings eventPublisherSettings:
 				(EDASStompEventPublisherSettingsJsonAdapter

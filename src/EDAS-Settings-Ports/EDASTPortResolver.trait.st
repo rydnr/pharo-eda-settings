@@ -4,10 +4,15 @@ Trait {
 }
 
 { #category : #logic }
-EDASTPortResolver >> availableAdaptersForPort: aPort [
+EDASTPortResolver >> availableAdaptersForPort: aPort andApp: anEDAApplication [
+
 	| accepted |
-	accepted := [ :port :cls :blk | (cls accepts: aPort) or: [ cls subclasses do: [ :c | blk value: port value: c value: blk ] ] ].
-	^ (aPort traitUsers select: [ :cls | cls accepts: aPort ]) sorted
+	accepted := [ :port :cls :blk | 
+	            (cls accepts: aPort inApp: anEDAApplication) or: [ 
+		            cls subclasses do: [ :c | 
+			            blk value: port value: c value: blk ] ] ].
+	^ (aPort traitUsers select: [ :cls | 
+		   cls accepts: aPort inApp: anEDAApplication ]) sorted
 		  asOrderedCollection
 ]
 
@@ -82,7 +87,8 @@ EDASTPortResolver >> resolvePort: aPort1 [
 EDASTPortResolver >> resolvePort: aPort forApp: app [
 
 	| candidates candidate |
-	candidates := (self availableAdaptersForPort: aPort) sorted.
+	candidates := (self availableAdaptersForPort: aPort andApp: app)
+		              sorted.
 	candidate := candidates ifEmpty: [ nil ] ifNotEmpty: [ :col | 
 		             (col select: [ :adapter | 
 			              (self resolvePortForAdapter: adapter) = aPort ])

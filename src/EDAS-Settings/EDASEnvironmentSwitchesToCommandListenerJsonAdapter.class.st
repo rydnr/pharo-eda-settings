@@ -14,7 +14,8 @@ EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> handleEnvironmentCh
 		                ifTrue: [ anEvent newValue ]
 		                ifFalse: [ 
 		                self translateToEnglish: anEvent newValue ].
-	(EDASStompCommandListenerSettingsJsonAdapter supportsEnvironment: englishValue)
+	(EDASStompCommandListenerSettingsJsonAdapter supportsEnvironment:
+		 englishValue forApp: anEvent edaApplication)
 		ifTrue: [ 
 			anEvent edaApplication portSettings commandListenerSettings:
 				(EDASStompCommandListenerSettingsJsonAdapter
@@ -22,10 +23,11 @@ EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> handleEnvironmentCh
 					 withApp: anEvent edaApplication) ]
 		ifFalse: [ 
 			anEvent edaApplication portSettings commandListenerSettings:
-				(EDASStompCommandListenerSettingsInMemoryAdapter withApp: anEvent edaApplication) ]
+				(EDASStompCommandListenerSettingsInMemoryAdapter withApp:
+					 anEvent edaApplication) ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'event handling - private' }
 EDASEnvironmentSwitchesToCommandListenerJsonAdapter class >> subscribeToSettingsChangedEventsIn: anEDASettingsAnnouncer [
 
 	anEDASettingsAnnouncer

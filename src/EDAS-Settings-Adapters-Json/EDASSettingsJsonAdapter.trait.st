@@ -4,11 +4,11 @@ Trait {
 }
 
 { #category : #resolving }
-EDASSettingsJsonAdapter classSide >> availableEnvironments [
+EDASSettingsJsonAdapter classSide >> availableEnvironments: anEDAApplication [
 
 	| helper folder |
 	helper := EDACSourceCodeHelperStub new.
-	folder := FileSystem workingDirectory / 'config'.
+	folder := anEDAApplication configFolder.
 	folder exists
 		ifTrue: [ 
 			folder isDirectory ifFalse: [ 
@@ -26,7 +26,7 @@ EDASSettingsJsonAdapter classSide >> forEnvironment: anEnvironment withApp: anED
 
 	^ self
 		  fromFile:
-		  FileSystem workingDirectory / 'config' / (anEnvironment , '.json')
+		  anEDAApplication configFolder / (anEnvironment , '.json')
 		  withApp: anEDAApplication
 ]
 
@@ -42,8 +42,8 @@ EDASSettingsJsonAdapter classSide >> fromFile: aFileReference under: aLabel for:
 ]
 
 { #category : #resolving }
-EDASSettingsJsonAdapter classSide >> supportsEnvironment: anEnvironment [
+EDASSettingsJsonAdapter classSide >> supportsEnvironment: anEnvironment forApp: anEDAApplication [
 
-	^ (FileSystem workingDirectory / 'config' / (anEnvironment , '.json'))
+	^ (anEDAApplication configFolder / (anEnvironment , '.json'))
 		  exists
 ]

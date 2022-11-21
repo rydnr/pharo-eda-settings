@@ -1,14 +1,15 @@
 Class {
 	#name : #EDASMongodbEventStoreSettingsInMemoryAdapter,
 	#superclass : #EDASMongodbSettingsInMemoryAdapter,
-	#traits : 'EDASEventStoreSettingsPort',
-	#classTraits : 'EDASEventStoreSettingsPort classTrait',
+	#traits : 'EDASEventStoreSettingsPort + EDASMongodbEventStoreSettingsAdapter',
+	#classTraits : 'EDASEventStoreSettingsPort classTrait + EDASMongodbEventStoreSettingsAdapter classTrait',
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
 
-{ #category : #testing }
-EDASMongodbEventStoreSettingsInMemoryAdapter class >> accepts: anEDAApplication [
-	^ true
+{ #category : #'as yet unclassified' }
+EDASMongodbEventStoreSettingsInMemoryAdapter class >> accepts: aPort inApp: anEDAApplication [
+
+	^ aPort = EDASEventStoreSettingsPort
 ]
 
 { #category : #metadata }
