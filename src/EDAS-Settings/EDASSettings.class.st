@@ -10,6 +10,8 @@ Build Settings menu entries with EDA-specific configuration settings, for the us
 Class {
 	#name : #EDASSettings,
 	#superclass : #Object,
+	#traits : 'EDACSettingBrowserHelper',
+	#classTraits : 'EDACSettingBrowserHelper classTrait',
 	#category : #'EDAS-Settings'
 }
 
@@ -41,6 +43,12 @@ EDASSettings class >> default [
 	self open.
 	(self currentWorld submorphs select: [ :w | 
 		 w model class = SettingBrowser ]) collect: [ :w | w delete ]
+]
+
+{ #category : #settings }
+EDASSettings class >> delete [
+
+	^ self deleteSettingBrowsers
 ]
 
 { #category : #settings }
