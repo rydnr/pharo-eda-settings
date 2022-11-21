@@ -132,6 +132,8 @@ EDASSettings class >> edaSettingsOn: aBuilder for: anEDAApplication under: aSymb
 { #category : #'class initialization' }
 EDASSettings class >> initialize [
 
+	EDAApplications uniqueInstance addApplicationsSubscriber:
+		EDASInitializeNewlyRegisteredApplication new
 	"self default"
 ]
 
