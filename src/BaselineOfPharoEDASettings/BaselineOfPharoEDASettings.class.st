@@ -17,21 +17,8 @@ Class {
 	#category : #BaselineOfPharoEDASettings
 }
 
-{ #category : #baselines }
-BaselineOfPharoEDASettings >> baseline: spec [
-
-	<baseline>
-	spec for: #common do: [ 
-		spec blessing: #baseline.
-		spec postLoadDoIt: #'postload:package:'.
-		self includeDeployUtils: spec.
-		self includePharoEDACommon: spec.
-		self declarePackagesIn: spec.
-		self declareGroupsIn: spec ]
-]
-
 { #category : #meta }
-BaselineOfPharoEDASettings >> declareGroupsIn: spec [
+BaselineOfPharoEDASettings class >> declareGroupsIn: spec [
 
 	spec
 		group: 'core'
@@ -46,7 +33,7 @@ BaselineOfPharoEDASettings >> declareGroupsIn: spec [
 ]
 
 { #category : #meta }
-BaselineOfPharoEDASettings >> declarePackagesIn: spec [
+BaselineOfPharoEDASettings class >> declarePackagesIn: spec [
 
 	spec
 		package: #'EDAS-Settings'
@@ -73,17 +60,30 @@ BaselineOfPharoEDASettings >> declarePackagesIn: spec [
 ]
 
 { #category : #dependencies }
-BaselineOfPharoEDASettings >> includeDeployUtils: spec [
+BaselineOfPharoEDASettings class >> includeDeployUtils: spec [
 	spec baseline: 'DeployUtils' with: [ spec repository: 'github://fstephany/DeployUtils/repository' ].
 	^ spec
 ]
 
 { #category : #dependencies }
-BaselineOfPharoEDASettings >> includePharoEDACommon: spec [
+BaselineOfPharoEDASettings class >> includePharoEDACommon: spec [
 spec
 		baseline: 'PharoEDACommon'
 		with: [ spec repository: 'github://rydnr/pharo-eda-common:main' ].
 	^ spec
+]
+
+{ #category : #baselines }
+BaselineOfPharoEDASettings >> baseline: spec [
+
+	<baseline>
+	spec for: #common do: [ 
+		spec blessing: #baseline.
+		spec postLoadDoIt: #postload:package:.
+		self class includeDeployUtils: spec;
+		 includePharoEDACommon: spec;
+		 declarePackagesIn: spec;
+		 declareGroupsIn: spec ]
 ]
 
 { #category : #hooks }
