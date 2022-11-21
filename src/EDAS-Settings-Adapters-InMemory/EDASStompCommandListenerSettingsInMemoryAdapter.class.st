@@ -227,7 +227,7 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> timeout [
 { #category : #accessing }
 EDASStompCommandListenerSettingsInMemoryAdapter >> topicListener [
 
-	^ topicListener ifNil: [ self topicListener: (EDAACommandStompTopicListener withConfig: self). topicListener  ]
+	^ topicListener ifNil: [ self topicListener: (EDAACommandStompTopicListener withConfig: self forApplication: self edaApplication). topicListener  ]
 ]
 
 { #category : #accessing }
