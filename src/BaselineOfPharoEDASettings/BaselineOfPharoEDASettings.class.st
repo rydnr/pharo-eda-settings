@@ -37,7 +37,7 @@ BaselineOfPharoEDASettings class >> declarePackagesIn: spec [
 
 	spec
 		package: #'EDAS-Settings'
-		with: [ spec requires: #( 'DeployUtils' ) ];
+		with: [ spec requires: #( 'DeployUtils' 'PharoEDACore' ) ];
 		package: #'EDAS-Settings-Tests'
 		with: [ spec requires: #( 'EDAS-Settings' ) ];
 		package: #'EDAS-Settings-Ports'
@@ -73,6 +73,15 @@ spec
 	^ spec
 ]
 
+{ #category : #dependencies }
+BaselineOfPharoEDASettings class >> includePharoEDACore: spec [
+
+	spec
+		baseline: 'PharoEDACore'
+		with: [ spec repository: 'github://rydnr/pharo-eda-core:main' ].
+	^ spec
+]
+
 { #category : #baselines }
 BaselineOfPharoEDASettings >> baseline: spec [
 
@@ -80,10 +89,12 @@ BaselineOfPharoEDASettings >> baseline: spec [
 	spec for: #common do: [ 
 		spec blessing: #baseline.
 		spec postLoadDoIt: #postload:package:.
-		self class includeDeployUtils: spec;
-		 includePharoEDACommon: spec;
-		 declarePackagesIn: spec;
-		 declareGroupsIn: spec ]
+		self class
+			includeDeployUtils: spec;
+			includePharoEDACommon: spec;
+			includePharoEDACore: spec;
+			declarePackagesIn: spec;
+			declareGroupsIn: spec ]
 ]
 
 { #category : #hooks }
