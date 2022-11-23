@@ -5,8 +5,7 @@ Class {
 	#classTraits : 'EDASEnvironmentSettingsPort classTrait',
 	#instVars : [
 		'currentEnvironment',
-		'defaultEnvironment',
-		'edaApplication'
+		'defaultEnvironment'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
@@ -77,14 +76,4 @@ EDASEnvironmentSettingsInMemoryAdapter >> defaultEnvironment [
 EDASEnvironmentSettingsInMemoryAdapter >> defaultEnvironment: anObject [
 
 	defaultEnvironment := anObject
-]
-
-{ #category : #accessing }
-EDASEnvironmentSettingsInMemoryAdapter >> edaApplication [
-	^ edaApplication
-]
-
-{ #category : #accessing }
-EDASEnvironmentSettingsInMemoryAdapter >> edaApplication: anEDAApplication [
-	edaApplication := anEDAApplication
 ]
