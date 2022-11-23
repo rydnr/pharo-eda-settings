@@ -57,6 +57,18 @@ EDASEnvironmentSettingsPort >> availableEnvironments: anEDAApplication [
 	self subclassResponsibility
 ]
 
+{ #category : #abstract }
+EDASEnvironmentSettingsPort >> currentEnvironment [
+
+	self shouldBeImplemented
+]
+
+{ #category : #abstract }
+EDASEnvironmentSettingsPort >> defaultEnvironment [
+
+	self shouldBeImplemented
+]
+
 { #category : #testing }
 EDASEnvironmentSettingsPort >> values: aSymbol [
 

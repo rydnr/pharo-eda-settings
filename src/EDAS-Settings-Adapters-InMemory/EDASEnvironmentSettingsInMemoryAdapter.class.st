@@ -5,6 +5,7 @@ Class {
 	#classTraits : 'EDASEnvironmentSettingsPort classTrait',
 	#instVars : [
 		'currentEnvironment',
+		'defaultEnvironment',
 		'edaApplication'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
@@ -39,7 +40,7 @@ EDASEnvironmentSettingsInMemoryAdapter class >> priority [
 	^ 99
 ]
 
-{ #category : #accessing }
+{ #category : #abstract }
 EDASEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
 
 	<edaSettings: 
@@ -61,6 +62,21 @@ EDASEnvironmentSettingsInMemoryAdapter >> currentEnvironment: anObject [
 	self edaApplication
 		notifyEnvironmentChangedFrom: oldValue
 		to: anObject
+]
+
+{ #category : #accessing }
+EDASEnvironmentSettingsInMemoryAdapter >> defaultEnvironment [
+
+	^ defaultEnvironment ifNil: [ 
+		  (self availableEnvironments: self edaApplication)
+			  ifEmpty: [ self currentEnvironment ]
+			  ifNotEmpty: [ :c | c first ] ]
+]
+
+{ #category : #accessing }
+EDASEnvironmentSettingsInMemoryAdapter >> defaultEnvironment: anObject [
+
+	defaultEnvironment := anObject
 ]
 
 { #category : #accessing }

@@ -5,7 +5,8 @@ Class {
 	#classTraits : 'EDASEnvironmentSettingsPort classTrait + EDACCollectionHelper classTrait',
 	#instVars : [
 		'currentEnvironment',
-		'edaApplication'
+		'edaApplication',
+		'defaultEnvironment'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
@@ -55,7 +56,7 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> availableEnvironments: anEDA
 	^ self class availableEnvironments: anEDAApplication
 ]
 
-{ #category : #accessing }
+{ #category : #abstract }
 EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
 
 	<edaSettings: #'pharoeda.settings.adapters.environment.label'
@@ -63,9 +64,10 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment [
 	#'pharoeda.settings.adapters.environment.description' icon:
 	#environment atPosition: 1 readOnly: false multiple: true>
 	^ currentEnvironment ifNil: [ 
+		self defaultEnvironment ifNil: [ 
 		  (self availableEnvironments: self edaApplication)
 			  ifEmpty: [ '' ]
-			  ifNotEmpty: [ :c | c first value ] ]
+			  ifNotEmpty: [ :c | c first value ] ] ]
 ]
 
 { #category : #accessing }
@@ -78,6 +80,12 @@ EDASPredefinedEnvironmentSettingsInMemoryAdapter >> currentEnvironment: anObject
 	self edaApplication
 		notifyEnvironmentChangedFrom: oldValue
 		to: anObject
+]
+
+{ #category : #abstract }
+EDASPredefinedEnvironmentSettingsInMemoryAdapter >> defaultEnvironment [
+
+	^ defaultEnvironment
 ]
 
 { #category : #accessing }
