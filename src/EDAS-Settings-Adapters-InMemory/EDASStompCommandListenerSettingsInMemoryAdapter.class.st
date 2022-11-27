@@ -14,7 +14,7 @@ Class {
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #helpers }
 EDASStompCommandListenerSettingsInMemoryAdapter class >> accepts: aPort inApp: anEDAApplication [
 
 	^ aPort = EDASCommandListenerSettingsPort
@@ -24,6 +24,12 @@ EDASStompCommandListenerSettingsInMemoryAdapter class >> accepts: aPort inApp: a
 EDASStompCommandListenerSettingsInMemoryAdapter class >> description [
 
 	^ #'pharoeda.settings.adapters.commandListener.stomp.description'
+]
+
+{ #category : #metadata }
+EDASStompCommandListenerSettingsInMemoryAdapter class >> icon [
+
+	^ EDACIconProvider new iconNamed: #commandlistener orElse: #comments
 ]
 
 { #category : #metadata }
@@ -74,6 +80,13 @@ EDASStompCommandListenerSettingsInMemoryAdapter >> debug [
 	#'pharoeda.settings.adapters.stomp.debug.description' icon: #debug
 	atPosition: 9 readOnly: false multiple: false>
 	^ super debug
+]
+
+{ #category : #accessing }
+EDASStompCommandListenerSettingsInMemoryAdapter >> description [
+
+	^ #'pharoeda.settings.adapters.commandListener.stomp.json.description'
+
 ]
 
 { #category : #accessing }

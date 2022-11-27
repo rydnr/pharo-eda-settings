@@ -25,6 +25,12 @@ EDASStompEventPublisherSettingsInMemoryAdapter class >> description [
 ]
 
 { #category : #testing }
+EDASStompEventPublisherSettingsInMemoryAdapter class >> icon [
+
+	^ EDACIconProvider new iconNamed: #eventpublisher orElse: #comments
+]
+
+{ #category : #testing }
 EDASStompEventPublisherSettingsInMemoryAdapter class >> label [
 
 	^ #'pharoeda.settings.adapters.eventPublisher.stomp.label'
@@ -143,6 +149,13 @@ EDASStompEventPublisherSettingsInMemoryAdapter >> host [
 	withDescription: #'pharoeda.settings.adapters.stomp.host.description'
 	icon: #host atPosition: 1 readOnly: false multiple: false>
 	^ super host
+]
+
+{ #category : #initialization }
+EDASStompEventPublisherSettingsInMemoryAdapter >> initialize [
+
+	super initialize.
+	self initErrorStrategies
 ]
 
 { #category : #accessing }

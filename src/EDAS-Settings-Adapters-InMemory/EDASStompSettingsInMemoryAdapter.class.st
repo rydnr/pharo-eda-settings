@@ -1,6 +1,8 @@
 Class {
 	#name : #EDASStompSettingsInMemoryAdapter,
 	#superclass : #Object,
+	#traits : 'EDASErrorStrategySettingsAdapter',
+	#classTraits : 'EDASErrorStrategySettingsAdapter classTrait',
 	#instVars : [
 		'host',
 		'port',
@@ -9,15 +11,18 @@ Class {
 		'timeout',
 		'debug',
 		'durable',
-		'errorStrategyName',
 		'edaApplication',
 		'restartOnErrors',
-		'user',
-		'errorStrategiesReverseDict',
-		'errorStrategiesDict'
+		'user'
 	],
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
+
+{ #category : #helpers }
+EDASStompSettingsInMemoryAdapter class >> accepts: aPort inApp: anEDAApplication [
+
+	^ false
+]
 
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> debug [
@@ -44,11 +49,7 @@ EDASStompSettingsInMemoryAdapter >> doInitialize [
 	self password: nil.
 	self timeout: nil.
 	self durable: true.
-	errorStrategiesDict := (EDAEErrorHandlingStrategy subclasses collect: [ 
-		                       :s | s description -> s name ]) asDictionary.
-	errorStrategiesReverseDict := Dictionary new.
-	errorStrategiesDict keysAndValuesDo: [ :k :v | 
-		errorStrategiesReverseDict at: v put: k ]
+	self initErrorStrategies
 ]
 
 { #category : #accessing }
@@ -70,24 +71,6 @@ EDASStompSettingsInMemoryAdapter >> edaApplication [
 { #category : #accessing }
 EDASStompSettingsInMemoryAdapter >> edaApplication: anEDAApplication [
 	edaApplication := anEDAApplication
-]
-
-{ #category : #accessing }
-EDASStompSettingsInMemoryAdapter >> errorStrategy [
-
-	^ Smalltalk at: self errorStrategyName asSymbol
-]
-
-{ #category : #accessing }
-EDASStompSettingsInMemoryAdapter >> errorStrategyName [
-
-	^ errorStrategyName ifNil: [ errorStrategiesDict associations first value ]
-]
-
-{ #category : #accessing }
-EDASStompSettingsInMemoryAdapter >> errorStrategyName: anObject [
-
-	errorStrategyName := anObject
 ]
 
 { #category : #accessing }

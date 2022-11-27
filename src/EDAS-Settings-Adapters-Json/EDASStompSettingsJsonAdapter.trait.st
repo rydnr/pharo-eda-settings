@@ -8,8 +8,7 @@ Trait {
 		'timeout',
 		'debug',
 		'durable',
-		'restartOnErrors',
-		'errorStrategyName'
+		'restartOnErrors'
 	],
 	#traits : 'EDASSettingsJsonAdapter',
 	#classTraits : 'EDASSettingsJsonAdapter classTrait',
@@ -32,12 +31,6 @@ EDASStompSettingsJsonAdapter >> debug: anObject [
 EDASStompSettingsJsonAdapter >> durable: anObject [
 
 	durable := anObject
-]
-
-{ #category : #accessing }
-EDASStompSettingsJsonAdapter >> errorStrategyName: anObject [
-
-	errorStrategyName := anObject
 ]
 
 { #category : #accessing }

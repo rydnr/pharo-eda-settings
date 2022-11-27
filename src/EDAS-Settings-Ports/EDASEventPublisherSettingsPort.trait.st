@@ -1,7 +1,7 @@
 Trait {
 	#name : #EDASEventPublisherSettingsPort,
-	#traits : 'EDASSettingsPort',
-	#classTraits : 'EDASSettingsPort classTrait',
+	#traits : 'EDASSettingsPort + EDASErrorStrategySettingsAdapter',
+	#classTraits : 'EDASSettingsPort classTrait + EDASErrorStrategySettingsAdapter classTrait',
 	#category : #'EDAS-Settings-Ports'
 }
 

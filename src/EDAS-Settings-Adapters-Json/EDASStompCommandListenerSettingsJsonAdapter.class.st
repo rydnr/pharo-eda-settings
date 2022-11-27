@@ -21,7 +21,7 @@ EDASStompCommandListenerSettingsJsonAdapter class >> changedEventName [
 { #category : #testing }
 EDASStompCommandListenerSettingsJsonAdapter class >> description [
 
-	^ #'pharoeda.settings.adapters.commandListener.stomp.json.description'
+	^ EDASStompCommandListenerSettingsInMemoryAdapter description
 ]
 
 { #category : #testing }
@@ -44,13 +44,13 @@ EDASStompCommandListenerSettingsJsonAdapter class >> fromFile: aFileReference wi
 { #category : #testing }
 EDASStompCommandListenerSettingsJsonAdapter class >> icon [
 
-	^ EDACIconProvider new iconNamed: #commandlistener orElse: #comments
+	^ EDASStompCommandListenerSettingsInMemoryAdapter icon
 ]
 
 { #category : #testing }
 EDASStompCommandListenerSettingsJsonAdapter class >> label [
 
-	^ #'pharoeda.settings.adapters.commandListener.stomp.label'
+	^ EDASStompCommandListenerSettingsInMemoryAdapter label
 ]
 
 { #category : #accessing }
@@ -120,7 +120,10 @@ EDASStompCommandListenerSettingsJsonAdapter >> errorStrategyName [
 	withDescription:
 	#'pharoeda.settings.adapters.stomp.errorStrategyName.description'
 	icon: #errorstrategy atPosition: 11 readOnly: false multiple: true>
-	^ errorStrategyName ifNil: [ EDASStompCommandListenerSettingsInMemoryAdapter new errorStrategyName ]
+	^ errorStrategyName ifNil: [ 
+		  self errorStrategyName: EDASStompCommandListenerSettingsInMemoryAdapter new
+			  errorStrategyName.
+			errorStrategyName ]
 ]
 
 { #category : #accessing }
@@ -132,10 +135,17 @@ EDASStompCommandListenerSettingsJsonAdapter >> host [
 	^ host ifNil: [ 'localhost' ]
 ]
 
+{ #category : #initialization }
+EDASStompCommandListenerSettingsJsonAdapter >> initialize [
+
+	super initialize.
+	self initErrorStrategies
+]
+
 { #category : #testing }
 EDASStompCommandListenerSettingsJsonAdapter >> isReadOnly: aString [
 
-	^ true
+	^ aString ~= 'errorStrategyName'
 ]
 
 { #category : #accessing }
@@ -199,7 +209,7 @@ EDASStompCommandListenerSettingsJsonAdapter >> restartOnErrors [
 	withDescription:
 	#'pharoeda.settings.adapters.stomp.restartOnErrors.description' icon:
 	#restartonerrors atPosition: 10 readOnly: false multiple: false>
-	^ restartOnErrors ifNil: [ true ]
+	^ restartOnErrors ifNil: [ self restartOnErrors: true. restartOnErrors ]
 ]
 
 { #category : #accessing }

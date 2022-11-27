@@ -21,7 +21,7 @@ EDASStompEventPublisherSettingsJsonAdapter class >> changedEventName [
 { #category : #testing }
 EDASStompEventPublisherSettingsJsonAdapter class >> description [
 
-	^ #'pharoeda.settings.adapters.eventPublisher.stomp.json.description'
+	^ EDASStompEventPublisherSettingsInMemoryAdapter description
 ]
 
 { #category : #ambiguous }
@@ -44,13 +44,13 @@ EDASStompEventPublisherSettingsJsonAdapter class >> fromFile: aFileReference wit
 { #category : #testing }
 EDASStompEventPublisherSettingsJsonAdapter class >> icon [
 
-	^ EDACIconProvider new iconNamed: #eventpublisher orElse: #comments
+	^ EDASStompEventPublisherSettingsInMemoryAdapter icon
 ]
 
 { #category : #testing }
 EDASStompEventPublisherSettingsJsonAdapter class >> label [
 
-	^ #'pharoeda.settings.adapters.eventPublisher.stomp.label'
+	^ EDASStompEventPublisherSettingsInMemoryAdapter label
 ]
 
 { #category : #accessing }
@@ -160,7 +160,7 @@ EDASStompEventPublisherSettingsJsonAdapter >> host [
 { #category : #testing }
 EDASStompEventPublisherSettingsJsonAdapter >> isReadOnly: aString [
 
-	^ true
+	^ aString ~= 'errorStrategyName'
 ]
 
 { #category : #accessing }

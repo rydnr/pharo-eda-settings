@@ -6,7 +6,7 @@ Class {
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #helpers }
 EDASMongodbEventStoreSettingsInMemoryAdapter class >> accepts: aPort inApp: anEDAApplication [
 
 	^ aPort = EDASEventStoreSettingsPort

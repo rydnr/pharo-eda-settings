@@ -1,7 +1,7 @@
 Trait {
 	#name : #EDASCommandListenerSettingsPort,
-	#traits : 'EDASSettingsPort',
-	#classTraits : 'EDASSettingsPort classTrait',
+	#traits : 'EDASSettingsPort + EDASErrorStrategySettingsAdapter',
+	#classTraits : 'EDASSettingsPort classTrait + EDASErrorStrategySettingsAdapter classTrait',
 	#category : #'EDAS-Settings-Ports'
 }
 
@@ -50,12 +50,6 @@ EDASCommandListenerSettingsPort classSide >> selector [
 EDASCommandListenerSettingsPort >> availableErrorStrategies [
 
 	<edaPort: #commandListener as: 'Command listener'>
-	self subclassResponsibility
-]
-
-{ #category : #testing }
-EDASCommandListenerSettingsPort >> errorStrategy [
-
 	self subclassResponsibility
 ]
 
