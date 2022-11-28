@@ -36,10 +36,6 @@ BaselineOfPharoEDASettings class >> declareGroupsIn: spec [
 BaselineOfPharoEDASettings class >> declarePackagesIn: spec [
 
 	spec
-		package: #'EDAS-Settings'
-		with: [ spec requires: #( 'DeployUtils' 'PharoEDACore' ) ];
-		package: #'EDAS-Settings-Tests'
-		with: [ spec requires: #( 'EDAS-Settings' ) ];
 		package: #'EDAS-Settings-Ports'
 		with: [ spec requires: #( 'PharoEDACommon' ) ];
 		package: #'EDAS-Settings-Adapters-InMemory'
@@ -56,7 +52,11 @@ BaselineOfPharoEDASettings class >> declarePackagesIn: spec [
 			spec requires:
 					#( 'PharoEDACommon' 'EDAS-Settings-Ports' 'EDAS-Settings-Adapters-InMemory'
 					   'EDAS-Settings-Adapters-EnvVars'
-					   'EDAS-Settings-Adapters-Json' ) ]
+					   'EDAS-Settings-Adapters-Json' ) ];
+		package: #'EDAS-Settings'
+		with: [ spec requires: #( 'DeployUtils' 'PharoEDACore' ) ];
+		package: #'EDAS-Settings-Tests'
+		with: [ spec requires: #( 'EDAS-Settings' ) ]
 ]
 
 { #category : #dependencies }
