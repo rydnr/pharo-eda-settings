@@ -82,6 +82,16 @@ BaselineOfPharoEDASettings class >> includePharoEDACore: spec [
 	^ spec
 ]
 
+{ #category : #dependencies }
+BaselineOfPharoEDASettings class >> includeSpec: spec [
+
+	"Required by DeployUtils"
+	spec
+		baseline: 'Spec2'
+		with: [ spec repository: 'github://pharo-spec/Spec:Pharo10' ].
+	^ spec
+]
+
 { #category : #baselines }
 BaselineOfPharoEDASettings >> baseline: spec [
 
@@ -90,6 +100,7 @@ BaselineOfPharoEDASettings >> baseline: spec [
 		spec blessing: #baseline.
 		spec postLoadDoIt: #postload:package:.
 		self class
+			includeSpec: spec;
 			includeDeployUtils: spec;
 			includePharoEDACommon: spec;
 			includePharoEDACore: spec;
