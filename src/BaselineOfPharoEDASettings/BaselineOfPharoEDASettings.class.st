@@ -54,7 +54,7 @@ BaselineOfPharoEDASettings class >> declarePackagesIn: spec [
 					   'EDAS-Settings-Adapters-EnvVars'
 					   'EDAS-Settings-Adapters-Json' ) ];
 		package: #'EDAS-Settings'
-		with: [ spec requires: #( 'DeployUtils' 'PharoEDACore' ) ];
+		with: [ spec requires: #( 'DeployUtils' 'PharoEDACore' 'EDAS-Settings-Ports') ];
 		package: #'EDAS-Settings-Tests'
 		with: [ spec requires: #( 'EDAS-Settings' ) ]
 ]
