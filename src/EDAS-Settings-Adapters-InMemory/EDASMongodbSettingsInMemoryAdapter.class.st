@@ -203,7 +203,7 @@ EDASMongodbSettingsInMemoryAdapter >> doInitialize [
 	self lazySynchronize: nil.
 	self wireProtocolEnabled: nil.
 	authenticationMechanismsDict := Dictionary new.
-	(MongoAuthMechanism subclasses reject: [ :s | s isAbstract ]) do: [ 
+	(MongoAuthMechanism allSubclasses reject: [ :s | s isAbstract ]) do: [ 
 		:s | 
 		authenticationMechanismsDict
 			at: ('pharoeda.settings.adapters.mongodb.authenticationMechanism.'
