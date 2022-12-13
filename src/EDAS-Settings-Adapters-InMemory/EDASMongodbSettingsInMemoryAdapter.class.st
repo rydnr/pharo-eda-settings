@@ -1,6 +1,8 @@
 Class {
 	#name : #EDASMongodbSettingsInMemoryAdapter,
 	#superclass : #Object,
+	#traits : 'EDACSourceCodeHelper',
+	#classTraits : 'EDACSourceCodeHelper classTrait',
 	#instVars : [
 		'host',
 		'port',
@@ -25,8 +27,117 @@ Class {
 	#category : #'EDAS-Settings-Adapters-InMemory'
 }
 
+{ #category : #testing }
+EDASMongodbSettingsInMemoryAdapter class >> < anotherAdapterClass [
+
+	self subclassResponsibility
+]
+
+{ #category : #testing }
+EDASMongodbSettingsInMemoryAdapter class >> <= anotherAdapterClass [
+
+	self subclassResponsibility
+]
+
+{ #category : #testing }
+EDASMongodbSettingsInMemoryAdapter class >> > anotherAdapterClass [
+
+	self subclassResponsibility
+]
+
+{ #category : #testing }
+EDASMongodbSettingsInMemoryAdapter class >> >= anotherAdapterClass [
+
+	self subclassResponsibility 
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> accepts: arg1 inApp: arg2 [ 
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> adapterAccessor [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> adapterClassAccessor [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> availableAuthenticationMechanisms [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> changedEventName [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> description [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> edaPort [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> icon [
+	^ self subclassResponsibility
+]
+
 { #category : #accessing }
 EDASMongodbSettingsInMemoryAdapter class >> iconFor: arg1 in: arg2 [ 
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> portChangedEventName [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> portLabel [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> position [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> priority [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> selector [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> settingsAttributes [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> settingsBlock [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter class >> withApp: arg1 [ 
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> adapterFor: arg1 is: arg2 [ 
 	^ self subclassResponsibility
 ]
 
@@ -66,6 +177,16 @@ EDASMongodbSettingsInMemoryAdapter >> debug: aBoolean [
 ]
 
 { #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> description [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> descriptionFor: arg1 [ 
+	^ self subclassResponsibility
+]
+
+{ #category : #initialization }
 EDASMongodbSettingsInMemoryAdapter >> doInitialize [
 
 	self urls: nil.
@@ -82,16 +203,15 @@ EDASMongodbSettingsInMemoryAdapter >> doInitialize [
 	self lazySynchronize: nil.
 	self wireProtocolEnabled: nil.
 	authenticationMechanismsDict := Dictionary new.
-	authenticationMechanismsDict
-		at:
-			#'pharoeda.settings.adapters.mongodb.authenticationMechanism.scramsha256'
-		put: 'SCRAM-SHA-256';
-		at:
-			#'pharoeda.settings.adapters.mongodb.authenticationMechanism.mongodbcr'
-		put: 'MONGODB-CR'.
-		
-authenticationMechanismsReverseDict := Dictionary new.
-	authenticationMechanismsDict keysAndValuesDo: [ :k :v | authenticationMechanismsReverseDict at: v put: k ]
+	(MongoAuthMechanism subclasses reject: [ :s | s isAbstract ]) do: [ 
+		:s | 
+		authenticationMechanismsDict
+			at: ('pharoeda.settings.adapters.mongodb.authenticationMechanism.'
+				 , (self toCamelCase: s mechanismName) asLowercase) asSymbol
+			put: s mechanismName ].
+	authenticationMechanismsReverseDict := Dictionary new.
+	authenticationMechanismsDict keysAndValuesDo: [ :k :v | 
+		authenticationMechanismsReverseDict at: v put: k ]
 ]
 
 { #category : #accessing }
@@ -182,9 +302,29 @@ EDASMongodbSettingsInMemoryAdapter >> host: aString [
 ]
 
 { #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> icon [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> iconFor: arg1 [ 
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> iconFor: arg1 in: arg2 [ 
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
 EDASMongodbSettingsInMemoryAdapter >> initialize [
 	super initialize.
 	self doInitialize
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> isReadOnly: arg1 [ 
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
@@ -193,6 +333,16 @@ EDASMongodbSettingsInMemoryAdapter >> keyIn: aSymbol forValue: value [
 	^ aSymbol = #authenticationMechanism
 		  ifTrue: [ authenticationMechanismsReverseDict at: value ]
 		  ifFalse: [ nil ]
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> label [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> labelFor: arg1 [ 
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
@@ -229,6 +379,16 @@ EDASMongodbSettingsInMemoryAdapter >> port [
 EDASMongodbSettingsInMemoryAdapter >> port: anObject [
 
 	port := anObject
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> selector [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+EDASMongodbSettingsInMemoryAdapter >> supportsMultiple: arg1 [ 
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
