@@ -54,15 +54,9 @@ BaselineOfPharoEDASettings class >> declarePackagesIn: spec [
 					   'EDAS-Settings-Adapters-EnvVars'
 					   'EDAS-Settings-Adapters-Json' ) ];
 		package: #'EDAS-Settings'
-		with: [ spec requires: #( 'DeployUtils' 'PharoEDACore' 'EDAS-Settings-Ports') ];
+		with: [ spec requires: #( 'PharoEDACore' 'EDAS-Settings-Ports') ];
 		package: #'EDAS-Settings-Tests'
 		with: [ spec requires: #( 'EDAS-Settings' ) ]
-]
-
-{ #category : #dependencies }
-BaselineOfPharoEDASettings class >> includeDeployUtils: spec [
-	spec baseline: 'DeployUtils' with: [ spec repository: 'github://fstephany/DeployUtils/repository' ].
-	^ spec
 ]
 
 { #category : #dependencies }
@@ -82,16 +76,6 @@ BaselineOfPharoEDASettings class >> includePharoEDACore: spec [
 	^ spec
 ]
 
-{ #category : #dependencies }
-BaselineOfPharoEDASettings class >> includeSpec: spec [
-
-	"Required by DeployUtils"
-	spec
-		baseline: 'Spec2'
-		with: [ spec repository: 'github://pharo-spec/Spec:Pharo10' ].
-	^ spec
-]
-
 { #category : #baselines }
 BaselineOfPharoEDASettings >> baseline: spec [
 
@@ -100,8 +84,6 @@ BaselineOfPharoEDASettings >> baseline: spec [
 		spec blessing: #baseline.
 		spec postLoadDoIt: #postload:package:.
 		self class
-			includeSpec: spec;
-			includeDeployUtils: spec;
 			includePharoEDACommon: spec;
 			includePharoEDACore: spec;
 			declarePackagesIn: spec;
@@ -111,10 +93,16 @@ BaselineOfPharoEDASettings >> baseline: spec [
 { #category : #hooks }
 BaselineOfPharoEDASettings >> postload: loader package: packageSpec [
 
-	| location |
-	location := (IceRepository registry detect: [ :each | 
-		             each name = 'pharo-eda-settings' ]) location.
-	EDACIconProvider addDefaultLocation: location / 'resources' / 'icons'.
-	EDACTranslationProvider addDefaultLocation:
-		location / 'resources' / 'l10n'
+	Locale localeID: 'es'.
+	(IceRepository registry
+		 detect: [ :each | each name = 'pharo-eda-settings' ]
+		 ifNone: nil) ifNotNil: [ :repo |
+		| location |
+		location := repo location.
+		EDACIconProvider addDefaultLocation:
+			location / 'resources' / 'icons'.
+		EDACTranslationProvider addDefaultLocation:
+			location / 'resources' / 'l10n'.
+		NaturalLanguageTranslator current:
+			EDACCompositeTranslationProvider wrapCurrent ]
 ]

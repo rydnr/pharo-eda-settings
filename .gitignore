@@ -1,6 +1,7 @@
 *.changes
 *.chg
 credentials.st
+.*_st.done
 *.errors
 /github-cache
 github-*.zip
@@ -12,10 +13,18 @@ image.*/
 *.img7
 /package-cache
 PharoDebug.log
-pharo-eda
 Pharo*.sources
 /play-cache
-# playground cache
 /play-stash
 *.sml
 SqueakDebug.log
+pharo-local/
+icon-packs/
+GlamorousToolkit-Linux-x86_64*.zip
+bin/
+crash.dmp
+gt-extra/
+lib/
+*.log
+**/*.orig.png
+result
