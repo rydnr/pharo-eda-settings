@@ -29,7 +29,7 @@
         org = "rydnr";
         repo = "pharo-eda-settings";
         pname = "${repo}";
-        tag = "0.1.1";
+        tag = "0.1.0";
         baseline = "PharoEDASettings";
         pkgs = import nixpkgs { inherit system; };
         description = "Manage EDAApplications' and PharoEDA adapters' settings using the standard Pharo tool: Settings Browser.";
